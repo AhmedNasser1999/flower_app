@@ -1,3 +1,17 @@
 {
-  "appName": "Flower E-Commerce App"
+  "appName": "Flower E-Commerce App",
+  "login" : "Login",
+  "emailLabel" : "Email",
+  "emailHintText": "Enter you email",
+  "passwordLabel" : "password",
+  "passwordHintText": "Enter you password",
+  "emailIsEmptyErrorMessage": "Email is required",
+  "emailValidationErrorMsg": "This Email is not valid",
+  "passwordRequiredErrorMsg": "Password is required",
+  "passwordValidationErrorMsg": "must be at least 6 characters and have M#12m",
+  "rememberMe": "Remember me",
+  "forgetPasswordTextButton": "Forget password?",
+  "continueAsGuestButton": "Continue as guest",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign up"
 }
