@@ -13,5 +13,12 @@
   "forgetPasswordTextButton": "Forget password?",
   "continueAsGuestButton": "Continue as guest",
   "dontHaveAnAccount": "Don't have an account?",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "dashboard": "Dashboard",
+  "home": "Home",
+  "profile": "Profile",
+  "settings": "Settings",
+  "logout": "Logout",
+  "categories": "Categories",
+  "cart": "Cart"
 }

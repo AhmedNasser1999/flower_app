@@ -1,12 +1,15 @@
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
+import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
+import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/extensions/validations.dart';
+import '../../../../../core/routes/route_names.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -23,7 +26,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               GestureDetector(
                   onTap: () {},
-                  child: Image.asset('assets/icons/arrow_back_icon.png')
+                  child: Image.asset(AppImages.arrowBack)
                       .setHorizontalAndVerticalPadding(context, 0.05, 0.07)),
               Text(
                 local!.login,
@@ -39,11 +42,13 @@ class LoginScreen extends StatelessWidget {
               label: local.emailLabel,
               hint: local.emailHintText,
               validator: (value) {
-                if (value == null || value.isEmpty)
+                if (value == null || value.isEmpty) {
                   return local.emailIsEmptyErrorMessage;
+                }
                 if (!Validations.validateEmail(value)) {
                   return local.emailValidationErrorMsg;
                 }
+                return null;
               }),
           const SizedBox(
             height: 20,
@@ -97,7 +102,11 @@ class LoginScreen extends StatelessWidget {
           CustomElevatedButton(
             text: local.continueAsGuestButton,
             textColor: AppColors.grey,
-            onPressed: () {},
+            onPressed: () {
+              GuestService.startGuestSession();
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.dashboard, (route) => false);
+            },
             color: AppColors.white,
             borderColor: AppColors.grey,
           ),
@@ -107,9 +116,10 @@ class LoginScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(local.dontHaveAnAccount, style: TextStyle(
-                fontSize: 19
-              ),),
+              Text(
+                local.dontHaveAnAccount,
+                style: TextStyle(fontSize: 19),
+              ),
               TextButton(
                   onPressed: () {},
                   child: Text(
@@ -121,10 +131,8 @@ class LoginScreen extends StatelessWidget {
                         decorationColor: AppColors.pink,
                         fontSize: 19),
                   )),
-
             ],
           )
-          
         ],
       ).setHorizontalPadding(context, 0.04),
     );

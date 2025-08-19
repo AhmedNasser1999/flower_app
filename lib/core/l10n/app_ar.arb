@@ -13,5 +13,12 @@
   "forgetPasswordTextButton": "هل نسيت كلمة المرور؟",
   "continueAsGuestButton": "المتابعة كضيف",
   "dontHaveAnAccount": "ليس لديك حساب؟",
-  "signUp": "إنشاء حساب"
+  "signUp": "إنشاء حساب",
+  "dashboard": "لوحة التحكم",
+  "home": "الرئيسية",
+  "profile": "الملف الشخصي",
+  "settings": "الاعدادات",
+  "logout": "تسجيل الخروج",
+  "categories": "التصنيفات",
+  "cart": "عربة التسوق"
 }

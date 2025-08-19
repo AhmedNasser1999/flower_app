@@ -52,4 +52,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signUp => 'إنشاء حساب';
+
+  @override
+  String get dashboard => 'لوحة التحكم';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get settings => 'الاعدادات';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get categories => 'التصنيفات';
+
+  @override
+  String get cart => 'عربة التسوق';
 }
