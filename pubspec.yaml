@@ -50,7 +50,12 @@ flutter:
     - assets/icons/
     - assets/images/
 
-  # fonts:
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/font/Inter_18pt-Regular.ttf
+        - asset: assets/font/Inter_18pt-Medium.ttf
+        - asset: assets/font/Inter_18pt-Bold.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

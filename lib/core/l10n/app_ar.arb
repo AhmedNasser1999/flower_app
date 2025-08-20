@@ -1,3 +1,24 @@
 {
-  "appName": "تظبيق متجر الزهور الالكتروني"
+  "appName": "تظبيق متجر الزهور الالكتروني",
+  "login": "تسجيل الدخول",
+  "emailLabel": "البريد الإلكتروني",
+  "emailHintText": "أدخل بريدك الإلكتروني",
+  "passwordLabel": "كلمة المرور",
+  "passwordHintText": "أدخل كلمة المرور",
+  "emailIsEmptyErrorMessage": "البريد الإلكتروني مطلوب",
+  "emailValidationErrorMsg": "هذا البريد الإلكتروني غير صالح",
+  "passwordRequiredErrorMsg": "كلمة المرور مطلوبة",
+  "passwordValidationErrorMsg": "يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m",
+  "rememberMe": "تذكرني",
+  "forgetPasswordTextButton": "هل نسيت كلمة المرور؟",
+  "continueAsGuestButton": "المتابعة كضيف",
+  "dontHaveAnAccount": "ليس لديك حساب؟",
+  "signUp": "إنشاء حساب",
+  "dashboard": "لوحة التحكم",
+  "home": "الرئيسية",
+  "profile": "الملف الشخصي",
+  "settings": "الاعدادات",
+  "logout": "تسجيل الخروج",
+  "categories": "التصنيفات",
+  "cart": "عربة التسوق"
 }

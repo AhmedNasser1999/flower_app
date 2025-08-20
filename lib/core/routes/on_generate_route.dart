@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 
 class Routes {
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());

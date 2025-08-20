@@ -100,6 +100,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Flower E-Commerce App'**
   String get appName;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @emailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get emailLabel;
+
+  /// No description provided for @emailHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter you email'**
+  String get emailHintText;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'password'**
+  String get passwordLabel;
+
+  /// No description provided for @passwordHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter you password'**
+  String get passwordHintText;
+
+  /// No description provided for @emailIsEmptyErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailIsEmptyErrorMessage;
+
+  /// No description provided for @emailValidationErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'This Email is not valid'**
+  String get emailValidationErrorMsg;
+
+  /// No description provided for @passwordRequiredErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequiredErrorMsg;
+
+  /// No description provided for @passwordValidationErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'must be at least 6 characters and have M#12m'**
+  String get passwordValidationErrorMsg;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get rememberMe;
+
+  /// No description provided for @forgetPasswordTextButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget password?'**
+  String get forgetPasswordTextButton;
+
+  /// No description provided for @continueAsGuestButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuestButton;
+
+  /// No description provided for @dontHaveAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAnAccount;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signUp;
+
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
