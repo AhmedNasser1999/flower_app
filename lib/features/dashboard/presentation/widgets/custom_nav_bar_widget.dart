@@ -31,10 +31,10 @@ class CustomBottomNavBarWidget extends StatelessWidget {
               child: _buildNavBarItem(
                   AppIcons.categoriesIcon, 'Categories', 1, context)),
           Expanded(
-              child: _buildNavBarItem(AppIcons.cartIcon, 'Cart', 3, context)),
+              child: _buildNavBarItem(AppIcons.cartIcon, 'Cart', 2, context)),
           Expanded(
               child: _buildNavBarItem(
-                  AppIcons.profileIcon, 'Profile', 2, context)),
+                  AppIcons.profileIcon, 'Profile', 3, context)),
         ],
       ),
     );
