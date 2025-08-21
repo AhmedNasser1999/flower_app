@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.dashboard,
-                  (route) => false,
+              (route) => false,
             );
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
@@ -91,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       GestureDetector(
                         onTap: () {},
                         child: Image.asset(AppImages.arrowBack)
-                            .setHorizontalAndVerticalPadding(context, 0.05, 0.07),
+                            .setHorizontalAndVerticalPadding(
+                                context, 0.05, 0.07),
                       ),
                       Text(
                         local!.login,
@@ -137,7 +138,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      Checkbox(value: false, onChanged: (value) {}),
+                      Checkbox(
+                          value: viewModel.rememberMe, onChanged: (value) {
+                            setState(() {
+                              viewModel.toggleRememberMe(value ?? false);
+                            });
+                      }),
                       Text(
                         local.rememberMe,
                         style: const TextStyle(color: AppColors.black),
@@ -178,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushNamedAndRemoveUntil(
                         context,
                         AppRoutes.dashboard,
-                            (route) => false,
+                        (route) => false,
                       );
                     },
                     color: AppColors.white,
