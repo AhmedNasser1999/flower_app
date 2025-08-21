@@ -1,6 +1,7 @@
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
 
+import 'core/config/di.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
@@ -12,6 +13,7 @@ void main() async {
   await SecureStorage.initialize();
 
   final initialRoute = await _getInitialRoute();
+  await configureDependencies();
 
   runApp(MyApp(initialRoute: initialRoute));
 }
@@ -22,9 +24,8 @@ Future<String> _getInitialRoute() async {
 
   if (isLoggedIn) {
     return AppRoutes.dashboard;
-  } else if (isGuest) {
-    return AppRoutes.dashboard;
-  } else {
+  }
+   else {
     return AppRoutes.login;
   }
 }
