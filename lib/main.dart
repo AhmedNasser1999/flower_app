@@ -25,7 +25,10 @@ Future<String> _getInitialRoute() async {
   if (isLoggedIn) {
     return AppRoutes.dashboard;
   }
-   else {
+  else if (isGuest) {
+    return AppRoutes.dashboard;
+  }
+  else {
     return AppRoutes.login;
   }
 }

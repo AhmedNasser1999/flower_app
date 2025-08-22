@@ -179,13 +179,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomElevatedButton(
                     text: local.continueAsGuestButton,
                     textColor: AppColors.grey,
-                    onPressed: () {
-                      GuestService.startGuestSession();
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        AppRoutes.dashboard,
-                        (route) => false,
-                      );
+                    onPressed: () async {
+                      try {
+                        await GuestService.startGuestSession();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.dashboard,
+                              (route) => false,
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Failed to start guest session: $e')),
+                        );
+                      }
                     },
                     color: AppColors.white,
                     borderColor: AppColors.grey,
