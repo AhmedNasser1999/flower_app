@@ -78,7 +78,9 @@ class LoginScreen extends StatelessWidget {
               ),
               Spacer(),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                  },
                   child: Text(
                     local.forgetPasswordTextButton,
                     style: TextStyle(

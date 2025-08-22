@@ -226,6 +226,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cart'**
   String get cart;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @resetPasswordUnderMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain 6 characters with upper case letter and one number at least'**
+  String get resetPasswordUnderMsg;
+
+  /// No description provided for @emailVerificationScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get emailVerificationScreen;
+
+  /// No description provided for @emailVerificationScreenUnderMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your code that was sent to your\nemail address'**
+  String get emailVerificationScreenUnderMsg;
+
+  /// No description provided for @codeReceiveMsgError.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code?'**
+  String get codeReceiveMsgError;
+
+  /// No description provided for @forgetPasswordUnderText.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated to\nyour account'**
+  String get forgetPasswordUnderText;
+
+  /// No description provided for @forgetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password'**
+  String get forgetPassword;
+
+  /// No description provided for @validationEmailErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This Email is not valid'**
+  String get validationEmailErrorMessage;
+
+  /// No description provided for @requiredEmailErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get requiredEmailErrorMessage;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPasswordLabel;
+
+  /// No description provided for @newPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter new password'**
+  String get newPasswordHint;
+
+  /// No description provided for @wrongPasswordErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong password, Try Again'**
+  String get wrongPasswordErrorMsg;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
