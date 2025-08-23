@@ -1,3 +1,5 @@
+import 'package:flower_app/features/auth/domain/services/guest_service.dart';
+
 import '../../../../core/contants/secure_storage.dart';
 
 class AuthService {
@@ -10,6 +12,25 @@ class AuthService {
 
   static Future<void> saveUserId(String userId) async {
     await SecureStorage.write(key: userIdKey, value: userId);
+  }
+
+  static Future<bool> isUserAuthenticated() async {
+    if (await AuthService.isLoggedIn()) {
+      return true;
+    }
+    if (await GuestService.isGuest()) {
+      return true;
+    }
+    return false;
+  }
+
+  static Future<String?> getCurrentUserId() async {
+    // Try to get logged-in user ID first
+    final userId = await AuthService.getUserId();
+    if (userId != null) return userId;
+
+    // Fall back to guest ID
+    return await GuestService.getGuestId();
   }
 
   static Future<bool> isLoggedIn() async {
