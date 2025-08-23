@@ -22,8 +22,15 @@ class AuthRepoImpl implements AuthRepo {
   AuthRepoImpl(this._authRemoteDatasource);
 
   @override
-  Future<LoginResponse> login(LoginRequest loginRequest) {
-    return _authRemoteDatasource.login(loginRequest);
+  Future<LoginResponse> login(LoginRequest loginRequest) async {
+    try {
+      return await _authRemoteDatasource.login(loginRequest);
+    } on DioException catch (e) {
+      final message = _extractApiMessage(e);
+      throw Exception(message);
+    } catch (e) {
+      throw Exception('Unexpected error: $e');
+    }
   }
 
   String _extractApiMessage(DioException e) {
