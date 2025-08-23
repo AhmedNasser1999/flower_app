@@ -10,7 +10,6 @@ import '../../features/auth/forget_password/presentation/views/screens/ResetPass
 import '../../features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../config/di.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 
 class Routes {
@@ -25,7 +24,7 @@ class Routes {
         );
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+        return MaterialPageRoute(builder: (_) => DashboardScreen());
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
           builder:
@@ -56,9 +55,7 @@ class Routes {
           ),
         );
 
-        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
-
-      default:
+        default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
             body: Center(child: Text('404 - Page Not Found')),

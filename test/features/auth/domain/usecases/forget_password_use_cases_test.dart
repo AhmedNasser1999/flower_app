@@ -7,7 +7,7 @@ import 'package:flower_app/features/auth/domain/usecases/forget_password_usecase
 import 'package:flower_app/features/auth/domain/usecases/reset_password_usecase.dart';
 import 'package:flower_app/features/auth/domain/usecases/verify_code_usecase.dart';
 
-import 'use_cases_test.mocks.dart';
+import 'forget_password_use_cases_test.mocks.dart';
 
 @GenerateMocks([AuthRepo])
 void main() {
