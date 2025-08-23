@@ -14,8 +14,8 @@ import 'package:flower_app/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp(
-      initialRoute: AppRoutes.login,
+    await tester.pumpWidget( MyApp(
+    //  initialRoute: AppRoutes.login,
     ));
 
     // Verify that our counter starts at 0.

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../contants/api_constants.dart';
+
 @module
 abstract class DioModule {
   @lazySingleton
@@ -21,4 +23,6 @@ abstract class DioModule {
       ),
     );
   }
+  @Named('baseurl')
+  String get baseUrl => ApiConstant.baseUrl;
 }

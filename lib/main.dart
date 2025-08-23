@@ -1,6 +1,6 @@
+import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
-
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
@@ -12,8 +12,9 @@ void main() async {
   await SecureStorage.initialize();
 
   final initialRoute = await _getInitialRoute();
-
-  runApp(MyApp(initialRoute: initialRoute));
+  await configureDependencies();
+  await Future.delayed(Duration(milliseconds: 100)); // Add a small delay
+  runApp(MyApp());
 }
 
 Future<String> _getInitialRoute() async {
@@ -30,15 +31,15 @@ Future<String> _getInitialRoute() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String initialRoute;
+//  final String initialRoute;
 
-  const MyApp({super.key, required this.initialRoute});
+//  const MyApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: initialRoute,
+      initialRoute: AppRoutes.signUp,
       onGenerateRoute: Routes.onGenerateRoute,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

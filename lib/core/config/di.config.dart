@@ -20,6 +20,9 @@ import '../../features/auth/data/datasource/auth_remote_datasource.dart'
 import '../../features/auth/data/repositories_implementation/auth_repo_impl.dart'
     as _i303;
 import '../../features/auth/domain/repositories/Auth_repo.dart' as _i669;
+import '../../features/auth/domain/usecase/signup_usecase/signup_usecase.dart'
+    as _i195;
+import '../../features/auth/signup/cubit/signup_cubit.dart' as _i387;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -34,6 +37,10 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioModule = _$DioModule();
+    gh.factory<String>(
+      () => dioModule.baseUrl,
+      instanceName: 'baseurl',
+    );
     gh.lazySingleton<_i361.Dio>(
         () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
     gh.factory<_i213.AuthApiClient>(() => _i213.AuthApiClient(
@@ -44,6 +51,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
     gh.factory<_i669.AuthRepo>(
         () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
+    gh.factory<_i195.SignupUsecase>(
+        () => _i195.SignupUsecase(gh<_i669.AuthRepo>()));
+    gh.factory<_i387.SignupCubit>(
+        () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     return this;
   }
 }

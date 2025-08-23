@@ -104,8 +104,9 @@ class LoginScreen extends StatelessWidget {
             textColor: AppColors.grey,
             onPressed: () {
               GuestService.startGuestSession();
-              Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.dashboard, (route) => false);
+              //! Do not forget to remove it and change it to pushAndRemoveUntil
+              Navigator.pushNamed(
+                  context, AppRoutes.dashboard);
             },
             color: AppColors.white,
             borderColor: AppColors.grey,
