@@ -37,6 +37,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     var local = AppLocalizations.of(context)!;
     final cubit = context.watch<ForgetPasswordCubit>();
     return Scaffold(
+      backgroundColor: AppColors.white,
+
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),

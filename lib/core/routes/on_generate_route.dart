@@ -9,6 +9,7 @@ import '../../features/auth/forget_password/presentation/viewmodel/verify_code_v
 import '../../features/auth/forget_password/presentation/views/screens/ResetPasswordScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
+import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../config/di.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../core/config/di.dart';
@@ -27,7 +28,6 @@ class Routes {
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) =>  DashboardScreen());
 
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
           builder:

@@ -4,12 +4,16 @@ import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/extensions/validations.dart';
 import '../../../../../core/routes/route_names.dart';
+import '../viewmodel/login_states.dart';
+import '../viewmodel/login_viewmodel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -146,7 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const Spacer(),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                        },
                         child: Text(
                           local.forgetPasswordTextButton,
                           style: TextStyle(

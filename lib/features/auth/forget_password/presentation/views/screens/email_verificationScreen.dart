@@ -5,6 +5,7 @@ import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../../core/routes/route_names.dart';
+import '../../../../../../core/theme/app_colors.dart';
 import '../../viewmodel/states/verify_code_states.dart';
 import '../../viewmodel/verify_code_viewmodel.dart';
 import '../widgets/verification_code_field.dart';
@@ -31,6 +32,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
+
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
