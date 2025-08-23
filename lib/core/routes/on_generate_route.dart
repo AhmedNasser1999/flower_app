@@ -1,4 +1,7 @@
+import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
+import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +14,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../config/di.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../core/config/di.dart';
 
@@ -18,6 +22,13 @@ class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case AppRoutes.signUp:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<SignupCubit>(),
+                  child: const SignupScreen(),
+                ));
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<LoginViewModel>(),

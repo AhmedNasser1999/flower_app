@@ -2,6 +2,8 @@ import 'package:flower_app/features/auth/api/client/auth_api_client.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../data/models/forget_password_models/forget_password_request.dart';
@@ -20,6 +22,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     return await _authApiClient.login(loginRequest);
 
   }
+  @override
+  Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
+    return _authApiClient.signUp(registerRequest);
+  }
+}
 
 
   @override
