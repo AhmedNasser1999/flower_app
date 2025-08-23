@@ -1,4 +1,5 @@
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,13 +10,20 @@ import '../../features/auth/forget_password/presentation/views/screens/ResetPass
 import '../../features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../config/di.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LoginViewModel>(),
+            child: const LoginScreen(),
+          ),
+        );
+
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
       case AppRoutes.forgetPassword:
@@ -47,6 +55,8 @@ class Routes {
             child: ResetPasswordScreen(email: email),
           ),
         );
+
+        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
 
       default:
         return MaterialPageRoute(

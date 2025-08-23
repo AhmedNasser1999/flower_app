@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
 import 'package:flower_app/features/auth/data/model/forget_password_request.dart';
 import 'package:flower_app/features/auth/data/model/verify_code_request_model.dart';
@@ -72,4 +74,9 @@ class AuthRepoImpl implements AuthRepo {
       return AuthResponse.error(e.toString());
     }
   }
+  @override
+  Future<LoginResponse> login(LoginRequest loginRequest) {
+    return _authRemoteDatasource.login(loginRequest);
+  }
+
 }

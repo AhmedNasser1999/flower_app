@@ -1,3 +1,7 @@
+
+import 'package:flower_app/core/contants/app_constants.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -24,5 +28,9 @@ abstract class AuthApiClient {
 
   @PUT(AppConstants.restPassword)
   Future<String> resetPassword(@Body() ResetPasswordRequestModel resetPasswordRequestModel);
+
+  @POST(AppConstants.signIn)
+  Future<LoginResponse> login(@Body() LoginRequest loginRequest);
+
 
 }

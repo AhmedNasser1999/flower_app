@@ -1,5 +1,7 @@
 import 'package:flower_app/features/auth/api/client/auth_api_client.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
+import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:injectable/injectable.dart';
 import '../../data/model/forget_password_request.dart';
 import '../../data/model/reset_password_request_model.dart';
@@ -25,6 +27,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<String> verifyResetPassword(VerifyCodeRequestModel verifyCodeRequestModel) async{
     return await _authApiClient.verifyResetCode(verifyCodeRequestModel);
+  }
+
+  @override
+  Future<LoginResponse> login(LoginRequest loginRequest) async {
+    return await _authApiClient.login(loginRequest);
+
   }
 
 }
