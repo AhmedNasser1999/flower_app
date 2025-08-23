@@ -127,17 +127,17 @@ void main() {
         ),
       );
 
-      when(mockAuthRemoteDatasource.login(loginRequest))
+      when(mockDatasource.login(loginRequest))
           .thenAnswer((_) async => loginResponse);
 
       // Act
-      final result = await authRepoImpl.login(loginRequest);
+      final result = await repo.login(loginRequest);
 
       // Assert
       expect(result.message, "success");
       expect(result.token, "fakeToken");
       expect(result.user?.firstName, "Test");
-      verify(mockAuthRemoteDatasource.login(loginRequest)).called(1);
+      verify(mockDatasource.login(loginRequest)).called(1);
     });
 
     test('Should throw exception when remote datasource fails', () async {
@@ -147,17 +147,17 @@ void main() {
         password: "wrongpass",
       );
 
-      when(mockAuthRemoteDatasource.login(loginRequest))
+      when(mockDatasource.login(loginRequest))
           .thenThrow(Exception("Login failed"));
 
       // Act & Assert
       expect(
-            () => authRepoImpl.login(loginRequest),
+            () => repo.login(loginRequest),
         throwsA(isA<Exception>()),
       );
 
-      verify(mockAuthRemoteDatasource.login(loginRequest)).called(1);
-      verifyNoMoreInteractions(mockAuthRemoteDatasource);
+      verify(mockDatasource.login(loginRequest)).called(1);
+      verifyNoMoreInteractions(mockDatasource);
     });
   });
 }

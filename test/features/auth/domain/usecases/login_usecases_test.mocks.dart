@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
-    as _i5;
+    as _i6;
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart'
-    as _i2;
-import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
     as _i3;
+import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
+    as _i4;
+import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -27,8 +29,19 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
-  _FakeLoginResponse_0(
+class _FakeAuthResponse_0<T> extends _i1.SmartFake
+    implements _i2.AuthResponse<T> {
+  _FakeAuthResponse_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeLoginResponse_1 extends _i1.SmartFake implements _i3.LoginResponse {
+  _FakeLoginResponse_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -40,24 +53,84 @@ class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
 /// A class which mocks [AuthRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
+class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
   MockAuthRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.LoginResponse> login(_i5.LoginRequest? loginRequest) =>
+  _i5.Future<_i2.AuthResponse<String>> forgetPassword(String? email) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [email],
+        ),
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [email],
+          ),
+        )),
+      ) as _i5.Future<_i2.AuthResponse<String>>);
+
+  @override
+  _i5.Future<_i2.AuthResponse<String>> verifyCode(String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verifyCode,
+          [code],
+        ),
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #verifyCode,
+            [code],
+          ),
+        )),
+      ) as _i5.Future<_i2.AuthResponse<String>>);
+
+  @override
+  _i5.Future<_i2.AuthResponse<String>> resetPassword(
+    String? email,
+    String? newPassword,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #resetPassword,
+          [
+            email,
+            newPassword,
+          ],
+        ),
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [
+              email,
+              newPassword,
+            ],
+          ),
+        )),
+      ) as _i5.Future<_i2.AuthResponse<String>>);
+
+  @override
+  _i5.Future<_i3.LoginResponse> login(_i6.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [loginRequest],
         ),
-        returnValue: _i4.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i5.Future<_i3.LoginResponse>.value(_FakeLoginResponse_1(
           this,
           Invocation.method(
             #login,
             [loginRequest],
           ),
         )),
-      ) as _i4.Future<_i2.LoginResponse>);
+      ) as _i5.Future<_i3.LoginResponse>);
 }
