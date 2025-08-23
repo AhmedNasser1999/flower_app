@@ -3,9 +3,10 @@ import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:injectable/injectable.dart';
-import '../../data/model/forget_password_request.dart';
-import '../../data/model/reset_password_request_model.dart';
-import '../../data/model/verify_code_request_model.dart';
+
+import '../../data/models/forget_password_models/forget_password_request.dart';
+import '../../data/models/forget_password_models/reset_password_request_model.dart';
+import '../../data/models/forget_password_models/verify_code_request_model.dart';
 
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {

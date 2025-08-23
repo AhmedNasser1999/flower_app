@@ -4,12 +4,15 @@ import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
-import 'package:flower_app/features/auth/data/model/forget_password_request.dart';
-import 'package:flower_app/features/auth/data/model/verify_code_request_model.dart';
-import 'package:flower_app/features/auth/data/model/reset_password_request_model.dart';
+
 import 'package:flower_app/core/errors/failure.dart';
+
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart';
 import 'dart:convert';
+
+import '../models/forget_password_models/forget_password_request.dart';
+import '../models/forget_password_models/reset_password_request_model.dart';
+import '../models/forget_password_models/verify_code_request_model.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {

@@ -1,12 +1,12 @@
+import 'package:flower_app/features/auth/data/models/forget_password_models/forget_password_request.dart';
+import 'package:flower_app/features/auth/data/models/forget_password_models/reset_password_request_model.dart';
+import 'package:flower_app/features/auth/data/models/forget_password_models/verify_code_request_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/auth/api/datasource_implemenation/auth_remote_datasource_impl.dart';
 import 'package:flower_app/features/auth/api/client/auth_api_client.dart';
-import 'package:flower_app/features/auth/data/model/forget_password_request.dart';
-import 'package:flower_app/features/auth/data/model/reset_password_request_model.dart';
-import 'package:flower_app/features/auth/data/model/verify_code_request_model.dart';
 
 import 'auth_remote_datasource_impl_test.mocks.dart';
 
