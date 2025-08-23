@@ -5,6 +5,10 @@ import 'package:flower_app/features/auth/data/models/login_models/login_response
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import '../../../../core/contants/app_constants.dart';
+import '../../data/model/forget_password_request.dart';
+import '../../data/model/reset_password_request_model.dart';
+import '../../data/model/verify_code_request_model.dart';
 
 
 part 'auth_api_client.g.dart';
@@ -16,6 +20,14 @@ abstract class AuthApiClient {
   @factoryMethod
   factory AuthApiClient(Dio dio, {@Named('baseurl') String? baseUrl}) = _AuthApiClient;
 
+  @POST(AppConstants.forgetPassword)
+  Future<String> forgetPassword(@Body() ForgetPasswordRequestModel forgetPasswordRequestModel);
+
+  @POST(AppConstants.verifyResetCode)
+  Future<String> verifyResetCode(@Body() VerifyCodeRequestModel verifyResetCode);
+
+  @PUT(AppConstants.restPassword)
+  Future<String> resetPassword(@Body() ResetPasswordRequestModel resetPasswordRequestModel);
 
   @POST(AppConstants.signIn)
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);

@@ -20,5 +20,20 @@
   "settings": "الاعدادات",
   "logout": "تسجيل الخروج",
   "categories": "التصنيفات",
-  "cart": "عربة التسوق"
+  "cart": "عربة التسوق",
+  "password": "كلمة المرور",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "resetPasswordUnderMsg": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل",
+  "emailVerificationScreen": "التحقق من البريد الإلكتروني",
+  "emailVerificationScreenUnderMsg": "يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني",
+  "codeReceiveMsgError": "لم تستلم الرمز؟",
+  "forgetPasswordUnderText": "يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك",
+  "forgetPassword": "نسيت كلمة المرور",
+  "validationEmailErrorMessage": "هذا البريد الإلكتروني غير صالح",
+  "requiredEmailErrorMessage": "البريد الإلكتروني مطلوب",
+  "continueButton": "متابعة",
+  "confirmPasswordLabel": "تأكيد كلمة المرور",
+  "newPasswordLabel": "كلمة مرور جديدة",
+  "newPasswordHint": "أدخل كلمة المرور الجديدة",
+  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى"
 }

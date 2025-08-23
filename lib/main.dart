@@ -1,7 +1,6 @@
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
 
-import 'core/config/di.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
@@ -10,10 +9,10 @@ import 'features/auth/domain/services/guest_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   await SecureStorage.initialize();
 
   final initialRoute = await _getInitialRoute();
-  await configureDependencies();
 
   runApp(MyApp(initialRoute: initialRoute));
 }
