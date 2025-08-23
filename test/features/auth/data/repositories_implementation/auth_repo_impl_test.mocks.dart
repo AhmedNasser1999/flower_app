@@ -7,11 +7,11 @@ import 'dart:async' as _i4;
 
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart'
     as _i3;
-import 'package:flower_app/features/auth/data/model/forget_password_request.dart'
+import 'package:flower_app/features/auth/data/models/forget_password_models/forget_password_request.dart'
     as _i5;
-import 'package:flower_app/features/auth/data/model/reset_password_request_model.dart'
+import 'package:flower_app/features/auth/data/models/forget_password_models/reset_password_request_model.dart'
     as _i8;
-import 'package:flower_app/features/auth/data/model/verify_code_request_model.dart'
+import 'package:flower_app/features/auth/data/models/forget_password_models/verify_code_request_model.dart'
     as _i7;
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
     as _i9;

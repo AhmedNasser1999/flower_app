@@ -1,7 +1,7 @@
 
-import '../model/forget_password_request.dart';
-import '../model/reset_password_request_model.dart';
-import '../model/verify_code_request_model.dart';
+import '../models/forget_password_models/forget_password_request.dart';
+import '../models/forget_password_models/reset_password_request_model.dart';
+import '../models/forget_password_models/verify_code_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 

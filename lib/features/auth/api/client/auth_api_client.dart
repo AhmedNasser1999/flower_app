@@ -6,9 +6,9 @@ import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/contants/app_constants.dart';
-import '../../data/model/forget_password_request.dart';
-import '../../data/model/reset_password_request_model.dart';
-import '../../data/model/verify_code_request_model.dart';
+import '../../data/models/forget_password_models/forget_password_request.dart';
+import '../../data/models/forget_password_models/reset_password_request_model.dart';
+import '../../data/models/forget_password_models/verify_code_request_model.dart';
 
 
 part 'auth_api_client.g.dart';
