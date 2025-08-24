@@ -26,8 +26,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
     return _authApiClient.signUp(registerRequest);
   }
-}
-
 
   @override
   Future<String> forgetPassword(ForgetPasswordRequestModel forgetPasswordRequestModel) async{
@@ -43,5 +41,4 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   Future<String> verifyResetPassword(VerifyCodeRequestModel verifyCodeRequestModel) async{
     return await _authApiClient.verifyResetCode(verifyCodeRequestModel);
   }
-
 }

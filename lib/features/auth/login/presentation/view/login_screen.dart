@@ -207,7 +207,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: const TextStyle(fontSize: 19),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.signUp);
+                        },
                         child: Text(
                           local.signUp,
                           style: const TextStyle(

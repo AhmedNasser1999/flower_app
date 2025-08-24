@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -34,7 +36,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg =>
+      'must be at least 6 characters and have M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -79,19 +82,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
-  String get resetPasswordUnderMsg => 'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
 
   @override
   String get emailVerificationScreen => 'Email verification';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'Please enter your code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter your code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText => 'Please enter your email associated to\nyour account';
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated to\nyour account';
 
   @override
   String get forgetPassword => 'Forget Password';

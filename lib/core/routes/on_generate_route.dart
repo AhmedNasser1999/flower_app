@@ -22,19 +22,19 @@ class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case AppRoutes.signUp:
-        return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<SignupCubit>(),
-                  child: const SignupScreen(),
-                ));
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<LoginViewModel>(),
             child: const LoginScreen(),
           ),
         );
+
+      case AppRoutes.signUp:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+              create: (context) => getIt<SignupCubit>(),
+              child: const SignupScreen(),
+            ));
 
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) =>  DashboardScreen());
