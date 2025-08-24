@@ -13,10 +13,7 @@ import '../../features/auth/forget_password/presentation/views/screens/ResetPass
 import '../../features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
-import '../config/di.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
-import '../../core/config/di.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
