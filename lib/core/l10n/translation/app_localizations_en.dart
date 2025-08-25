@@ -122,4 +122,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
+
+  @override
+  String get addToCartBtn => 'Add to cart';
+
+  @override
+  String get mostSellingTitle => 'Best Seller';
+
+  @override
+  String get mostSellingSubTitle => 'Bloom with our exquisite best sellers';
 }

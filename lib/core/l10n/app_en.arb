@@ -35,5 +35,8 @@
   "confirmPasswordLabel": "Confirm Password",
   "newPasswordLabel": "New Password",
   "newPasswordHint": "Enter new password",
-  "wrongPasswordErrorMsg": "Wrong password, Try Again"
+  "wrongPasswordErrorMsg": "Wrong password, Try Again",
+  "addToCartBtn": "Add to cart",
+  "mostSellingTitle": "Best Seller",
+  "mostSellingSubTitle": "Bloom with our exquisite best sellers"
 }
