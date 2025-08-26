@@ -7,6 +7,8 @@ import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_ba
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../categories/presentation/view/categories_screen.dart';
+
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});
 
@@ -14,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       Center(child: Text("home")),
-      Center(child: Text("categories")),
+      CategoriesScreen(),
       Center(child: Text("cart")),
       Center(
           child: CustomElevatedButton(
