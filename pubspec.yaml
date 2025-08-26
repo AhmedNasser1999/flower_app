@@ -31,7 +31,6 @@ dependencies:
     sdk: flutter
   intl: any
   flutter_svg: ^2.2.0
-  loading_indicator: ^3.1.1
   mockito: ^5.4.5
   loading_indicator: ^3.1.1
   google_fonts: ^6.2.1
