@@ -1,3 +1,5 @@
+import 'package:flower_app/features/categories/data/models/category_model.dart';
+
 import '../../data/models/categories_response.dart';
 import '../../data/models/categoryResponse_byId_model.dart';
 
@@ -8,7 +10,7 @@ class CategoriesInitial extends CategoriesState {}
 class GetAllCategoriesLoading extends CategoriesState {}
 
 class GetAllCategoriesSuccess extends CategoriesState {
-  final CategoriesResponse categories;
+  final List<Categories> categories;
   GetAllCategoriesSuccess(this.categories);
 }
 
