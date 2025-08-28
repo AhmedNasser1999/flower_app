@@ -19,24 +19,34 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       Center(child: Text("home")),
-      BlocProvider(
-        create: (context) =>
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
             getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+          ),
+          BlocProvider(
+            create: (context) =>
+            getIt<CategoriesCubit>()..getAllCategories(),
+          ),
+        ],
         child: const CategoriesScreen(),
       ),
       Center(child: Text("cart")),
       Center(
-          child: CustomElevatedButton(
-              text: "Logout",
-              onPressed: () async {
-                await AuthService.logout();
-                await GuestService.endGuestSession();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  AppRoutes.login,
+        child: CustomElevatedButton(
+          text: "Logout",
+          onPressed: () async {
+            await AuthService.logout();
+            await GuestService.endGuestSession();
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.login,
                   (route) => false,
-                );
-              })),
+            );
+          },
+        ),
+      ),
     ];
 
     return BlocProvider(

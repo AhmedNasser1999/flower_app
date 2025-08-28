@@ -9,8 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../core/Widgets/products_card.dart';
-import '../viewmodel/categories_states.dart';
-import '../viewmodel/categories_viewmodel.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -21,6 +19,8 @@ class CategoriesScreen extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 60),
+
+          // Search bar
           Row(
             children: [
               Expanded(
@@ -53,40 +53,15 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ],
           ),
-          DefaultTabBarWidget(),
-          // BlocBuilder<CategoriesCubit, CategoriesState>(
-          //   builder: (context, state) {
-          //     if (state is GetAllCategoriesLoading) {
-          //       return const Center(
-          //         child: SizedBox(
-          //           height: 40,
-          //           width: 40,
-          //           child: LoadingIndicator(
-          //             indicatorType: Indicator.lineScalePulseOut,
-          //             colors: [AppColors.pink],
-          //             strokeWidth: 2,
-          //             backgroundColor: Colors.transparent,
-          //           ),
-          //         ),
-          //       );;
-          //     } else if (state is GetAllCategoriesError) {
-          //       return Center(child: Text("Error: ${state.message}"));
-          //     } else if (state is GetAllCategoriesSuccess) {
-          //       final categories = state.categories
-          //           .map((c) => c.name)
-          //           .where((name) => name != null)
-          //           .cast<String>()
-          //           .toList();
-          //
-          //       final tabs = ["All", ...categories];
-          //
-          //
-          //       return DefaultTabBarWidget(tabs: tabs);
-          //     }
-          //     return const SizedBox.shrink();
-          //   },
-          // ),
-          const SizedBox(height: 10,),
+
+          const SizedBox(height: 10),
+
+          const DefaultTabBarWidget(
+            tabs: ["All"],
+          ),
+
+          const SizedBox(height: 10),
+
           Expanded(
             child: BlocConsumer<MostSellingProductsViewmodel, MostSellingProductStates>(
               listener: (context, state) {
@@ -149,7 +124,7 @@ class CategoriesScreen extends StatelessWidget {
 
   int calculateDiscountPercentage(int originalPrice, int discountedPrice) {
     if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
-      return 0; // fallback
+      return 0;
     }
     double discount = ((originalPrice - discountedPrice) / originalPrice) * 100;
     return discount.round();
