@@ -5,6 +5,7 @@ import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
 import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_bar_widget.dart';
 import 'package:flower_app/features/home_screen/presentation/view/home_screen.dart';
+import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

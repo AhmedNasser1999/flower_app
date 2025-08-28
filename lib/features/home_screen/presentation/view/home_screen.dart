@@ -1,6 +1,7 @@
 import 'package:flower_app/core/Widgets/section_header.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/app_logo.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/best_seller_list.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/category_list.dart';
@@ -36,7 +37,9 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 10.0),
               SectionHeader(
                 title: 'Best Seller',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
+                },
               ),
               BestSellerList(
                 image: 'assets/images/image.png',

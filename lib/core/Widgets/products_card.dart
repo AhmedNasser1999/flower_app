@@ -29,6 +29,7 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
         color: AppColors.white,
         shape: RoundedRectangleBorder(

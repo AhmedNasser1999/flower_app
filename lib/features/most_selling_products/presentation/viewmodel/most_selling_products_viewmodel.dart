@@ -15,9 +15,29 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
 
     try {
       final products = await _allProductsUseCase();
-      emit(MostSellingSuccessState(products));
+
+      // filter out invalid products (bad price/discount values)
+      final validProducts = products.where((p) {
+        try {
+          _calculateDiscountPercentage(p.price, p.priceAfterDiscount);
+          return true;
+        } on ArgumentError {
+          return false;
+        }
+      }).toList();
+
+      emit(MostSellingSuccessState(validProducts));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
     }
+  }
+
+  int _calculateDiscountPercentage(int originalPrice, int discountedPrice) {
+    if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
+      throw ArgumentError("Invalid price values");
+    }
+
+    double discount = ((originalPrice - discountedPrice) / originalPrice) * 100;
+    return discount.round();
   }
 }

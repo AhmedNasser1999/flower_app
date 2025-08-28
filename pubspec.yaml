@@ -31,7 +31,6 @@ dependencies:
     sdk: flutter
   intl: any
   flutter_svg: ^2.2.0
-  mockito: ^5.4.4  
   loading_indicator: ^3.1.1
   google_fonts: ^6.2.1
 
@@ -44,6 +43,7 @@ dev_dependencies:
   injectable_generator: ^2.6.2
   json_serializable: ^6.8.0
   retrofit_generator: ^8.2.1
+  mockito: ^5.4.4  # Downgraded from ^5.4.5 to resolve conflict
 
 flutter:
   uses-material-design: true

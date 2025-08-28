@@ -44,7 +44,8 @@ class MostSellingProducts extends StatelessWidget {
             BlocBuilder<MostSellingProductsViewmodel, MostSellingProductStates>(
           builder: (context, state) {
             if (state is MostSellingLoadingState) {
-              return Center(child: SizedBox(
+              return Center(
+                  child: SizedBox(
                 height: 50,
                 width: 50,
                 child: LoadingIndicator(
@@ -56,32 +57,38 @@ class MostSellingProducts extends StatelessWidget {
               ));
             } else if (state is MostSellingSuccessState) {
               final List<ProductsEntity> products = state.products;
-              products.sort((a,b)=>b.sold.compareTo(a.sold));
+              products.sort((a, b) => b.sold.compareTo(a.sold));
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: GridView.builder(
-                      itemCount: state.products.length,
+                      itemCount: products.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: 0.7,
                       ),
                       itemBuilder: (context, index) {
+                        final product = products[index];
 
                         return ProductCard(
-                          productImg: products[index].imgCover,
-                          productPrice: products[index].price,
-                          productPriceDiscount: products[index].priceAfterDiscount,
-                          priceDiscount: calculateDiscountPercentage(products[index].price, products[index].priceAfterDiscount),
-                          productTitle: products[index].title,
+                          productImg: product.imgCover,
+                          productPrice: product.price,
+                          productPriceDiscount: product.priceAfterDiscount,
+                          priceDiscount:
+                              ((product.price - product.priceAfterDiscount) /
+                                      product.price *
+                                      100)
+                                  .round(),
+                          productTitle: product.title,
                         );
                       },
                     ),
                   )
                 ],
-              ).setHorizontalAndVerticalPadding(context, 0.05, 0.02);
+              ).setHorizontalAndVerticalPadding(context, 0.03, 0.02);
             } else if (state is MostSellingProductsErrorState) {
               return Center(child: Text("Error: ${state.message}"));
             } else {
@@ -90,13 +97,4 @@ class MostSellingProducts extends StatelessWidget {
           },
         ));
   }
-  int calculateDiscountPercentage(int originalPrice, int discountedPrice) {
-    if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
-      throw ArgumentError("Invalid price values");
-    }
-
-    double discount = ((originalPrice - discountedPrice) / originalPrice) * 100;
-    return discount.round();
-  }
 }
-
