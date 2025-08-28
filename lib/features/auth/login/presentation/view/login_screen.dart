@@ -3,7 +3,6 @@ import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 

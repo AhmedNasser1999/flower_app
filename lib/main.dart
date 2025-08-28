@@ -12,7 +12,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   await SecureStorage.initialize();
-
   final initialRoute = await _getInitialRoute();
 
   runApp(MyApp(initialRoute: initialRoute));

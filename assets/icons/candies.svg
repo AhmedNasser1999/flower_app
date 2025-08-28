@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Wrapped candy">
+  <title>Candies</title>
+  <ellipse cx="12" cy="12" rx="4" ry="3"/>
+  <path d="M8 12c-2 0-3-1-4-2l2-2M8 12c-2 0-3 1-4 2l2 2"/>
+  <path d="M16 12c2 0 3-1 4-2l-2-2M16 12c2 0 3 1 4 2l-2 2"/>
+</svg>
