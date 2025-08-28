@@ -47,6 +47,10 @@ import '../../features/categories/data/repositories_impl/categories_repo_impl.da
     as _i738;
 import '../../features/categories/domain/repositories/categories_repo.dart'
     as _i594;
+import '../../features/categories/domain/usecases/get_all_categories_usecase.dart'
+    as _i943;
+import '../../features/categories/domain/usecases/get_category_byId_usecase.dart'
+    as _i557;
 import '../../features/most_selling_products/api/client/product_api_client.dart'
     as _i67;
 import '../../features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart'
@@ -117,6 +121,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
     gh.factory<_i594.CategoriesRepo>(() =>
         _i738.CategoriesRepoImpl(gh<_i904.GetCategoriesRemoteDataSource>()));
+    gh.lazySingleton<_i943.GetAllCategoriesUseCase>(
+        () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
+    gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
+        () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
     gh.factory<_i195.SignupUsecase>(
         () => _i195.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
