@@ -1,3 +1,4 @@
+import 'package:flower_app/core/Widgets/product_details.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,9 @@ class Routes {
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
+      case AppRoutes.productDetails:
+        return MaterialPageRoute(builder: (_) =>  ProductDetails());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
