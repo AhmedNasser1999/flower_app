@@ -1,3 +1,4 @@
+import 'package:flower_app/features/categories/presentation/view/widgets/filter_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
@@ -40,6 +41,18 @@ class SearchAndFilterWidget extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         GestureDetector(
+          onTap: (){
+            showModalBottomSheet(
+              backgroundColor: AppColors.white,
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(37))
+                ),
+                builder: (context) {
+              return const FilterBottomSheet();
+                }
+            );
+          },
           child: Container(
             width: 64,
             height: 59,

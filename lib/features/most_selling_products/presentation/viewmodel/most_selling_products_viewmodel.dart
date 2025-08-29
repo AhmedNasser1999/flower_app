@@ -1,14 +1,12 @@
+import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 import 'package:flower_app/features/most_selling_products/domain/usecases/get_all_products_usecase.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_product_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entity/products_entity.dart';
-
 @injectable
 class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
   final GetAllProductsUseCase _allProductsUseCase;
-
   List<ProductsEntity> _allProducts = [];
 
   MostSellingProductsViewmodel(this._allProductsUseCase)
@@ -16,13 +14,31 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
 
   Future<void> getMostSellingProducts() async {
     emit(MostSellingLoadingState());
+
     try {
       final products = await _allProductsUseCase();
-      _allProducts = products;
-      emit(MostSellingSuccessState(products));
+      final validProducts = products.where((p) {
+        try {
+          _calculateDiscountPercentage(p.price, p.priceAfterDiscount);
+          return true;
+        } on ArgumentError {
+          return false;
+        }
+      }).toList();
+
+      emit(MostSellingSuccessState(validProducts));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
     }
+  }
+
+  int _calculateDiscountPercentage(int originalPrice, int discountedPrice) {
+    if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
+      throw ArgumentError("Invalid price values");
+    }
+
+    double discount = ((originalPrice - discountedPrice) / originalPrice) * 100;
+    return discount.round();
   }
 
   void filterProducts(String query) {
@@ -53,6 +69,4 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
         .toList();
     emit(MostSellingSuccessState(filtered));
   }
-
-
 }
