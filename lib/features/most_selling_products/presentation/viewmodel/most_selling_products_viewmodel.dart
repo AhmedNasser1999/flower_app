@@ -14,7 +14,6 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
   MostSellingProductsViewmodel(this._allProductsUseCase)
       : super(MostSellingInitialState());
 
-  /// Get all products (main API call)
   Future<void> getMostSellingProducts() async {
     emit(MostSellingLoadingState());
     try {
@@ -48,5 +47,12 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
       emit(MostSellingSuccessState(filtered));
     }
   }
+  void filterByCategoryAndSearch(String categoryId, String query) {
+    final filtered = _allProducts
+        .where((p) => p.category == categoryId && p.title.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    emit(MostSellingSuccessState(filtered));
+  }
+
 
 }

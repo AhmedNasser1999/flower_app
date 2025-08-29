@@ -1,5 +1,5 @@
+import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
 
 class DefaultTabBarWidget extends StatelessWidget {
   final List<String> tabs;
@@ -15,18 +15,28 @@ class DefaultTabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
-      child: TabBar(
-        isScrollable: true,
-        labelColor: AppColors.pink,
-        unselectedLabelColor: AppColors.grey,
-        indicatorColor: AppColors.pink,
-        indicatorWeight: 4.5,
-        onTap: (index) {
-          if (onTabSelected != null) {
-            onTabSelected!(tabs[index]);
-          }
-        },
-        tabs: tabs.map((name) => Tab(text: name)).toList(),
+      child: Column(
+        children: [
+          TabBar(
+            tabAlignment: TabAlignment.start,
+            isScrollable: true,
+            labelColor: AppColors.pink,
+            unselectedLabelColor: AppColors.grey,
+            labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            unselectedLabelStyle: const TextStyle(fontSize: 15),
+            dividerColor: Colors.transparent,
+            indicator: const UnderlineTabIndicator(
+              borderSide: BorderSide(width: 3.5, color: AppColors.pink),
+              insets: EdgeInsets.symmetric(horizontal: 12),
+            ),
+            onTap: (index) {
+              if (onTabSelected != null) {
+                onTabSelected!(tabs[index]);
+              }
+            },
+            tabs: tabs.map((t) => Tab(text: t)).toList(),
+          ),
+        ],
       ),
     );
   }

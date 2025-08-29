@@ -51,6 +51,8 @@ import '../../features/categories/domain/usecases/get_all_categories_usecase.dar
     as _i943;
 import '../../features/categories/domain/usecases/get_category_byId_usecase.dart'
     as _i557;
+import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart'
+    as _i820;
 import '../../features/most_selling_products/api/client/product_api_client.dart'
     as _i67;
 import '../../features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart'
@@ -137,6 +139,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
     gh.factory<_i72.MostSellingProductsViewmodel>(() =>
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
+    gh.factory<_i820.CategoriesCubit>(() => _i820.CategoriesCubit(
+          getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
+          getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
+        ));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     return this;
