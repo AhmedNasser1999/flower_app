@@ -5,23 +5,14 @@ import 'package:injectable/injectable.dart';
 import '../../data/datasource/product_remote_datasource.dart';
 
 @LazySingleton(as: ProductRemoteDataSource)
-class ProductRemoteDataSourceImpl implements ProductRemoteDataSource{
-
+class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   final ProductApiClient productApiClient;
 
   ProductRemoteDataSourceImpl(this.productApiClient);
 
   @override
-  Future<List<Products>> getAllProduct({
-    String? occasionId,
-    int? page,
-    int? limit,
-  }) async {
-    final response = await productApiClient.getAllProducts(
-      occasionId: occasionId,
-      page: page,
-      limit: limit,
-    );
+  Future<List<Products>> getAllProduct() async {
+    final response = await productApiClient.getAllProducts();
     return response.products;
   }
 }

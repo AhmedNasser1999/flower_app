@@ -2,31 +2,35 @@ import 'package:flower_app/features/occasion/domain/usecases/get_occasions_use_c
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../data/models/occasion_model.dart';
 import 'occasion_states.dart';
 
 @injectable
 class OccasionViewmodel extends Cubit<OccasionState> {
-  final GetOccasionProductsUseCase _getOccasionProductsUseCase;
+  final GetOccasionsUseCase _getOccasionsUseCase;
   String? _selectedOccasionId;
+
   String? get selectedOccasionId => _selectedOccasionId;
 
-  OccasionViewmodel(this._getOccasionProductsUseCase) : super(OccasionInitial());
+  OccasionViewmodel(this._getOccasionsUseCase)
+      : super(OccasionInitial());
 
-  Future<void> getOccasionProducts(String occasionId) async {
+  Future<void> getOccasions({int? page, int? limit}) async {
     emit(OccasionLoading());
-    _selectedOccasionId = occasionId;
 
     try {
-      final products = await _getOccasionProductsUseCase(occasionId);
-      emit(OccasionLoaded(products));
+      final occasions = await _getOccasionsUseCase(page: page, limit: limit);
+      emit(OccasionLoaded(occasions));
     } catch (e) {
       emit(OccasionError(e.toString()));
     }
   }
 
-  Future<void> refreshOccasionProducts() async {
-    if (_selectedOccasionId != null) {
-      await getOccasionProducts(_selectedOccasionId!);
-    }
+  void selectOccasion(String occasionId) {
+    _selectedOccasionId = occasionId;
+  }
+
+  Future<void> refreshOccasions() async {
+    await getOccasions();
   }
 }

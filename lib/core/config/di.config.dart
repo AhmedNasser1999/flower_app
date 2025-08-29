@@ -104,7 +104,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
-    gh.factory<_i67.ProductApiClient>(() => _i67.ProductApiClient(
+    gh.factory<_i361.CategoryApiClient>(() => _i361.CategoryApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
@@ -112,7 +112,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
-    gh.factory<_i361.CategoryApiClient>(() => _i361.CategoryApiClient(
+    gh.factory<_i67.ProductApiClient>(() => _i67.ProductApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
@@ -144,6 +144,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
     gh.factory<_i594.CategoriesRepo>(() =>
         _i738.CategoriesRepoImpl(gh<_i904.GetCategoriesRemoteDataSource>()));
+    gh.factory<_i202.GetOccasionsUseCase>(
+        () => _i202.GetOccasionsUseCase(gh<_i682.OccasionRepository>()));
     gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
         () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
     gh.lazySingleton<_i943.GetAllCategoriesUseCase>(
@@ -160,16 +162,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
     gh.factory<_i72.MostSellingProductsViewmodel>(() =>
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
+    gh.factory<_i473.OccasionViewmodel>(
+        () => _i473.OccasionViewmodel(gh<_i202.GetOccasionsUseCase>()));
     gh.factory<_i820.CategoriesCubit>(() => _i820.CategoriesCubit(
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
         ));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
-    gh.factory<_i202.GetOccasionProductsUseCase>(() =>
-        _i202.GetOccasionProductsUseCase(gh<_i144.GetAllProductsUseCase>()));
-    gh.factory<_i473.OccasionViewmodel>(
-        () => _i473.OccasionViewmodel(gh<_i202.GetOccasionProductsUseCase>()));
     return this;
   }
 }

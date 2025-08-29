@@ -9,15 +9,7 @@ class GetAllProductsUseCase {
 
   GetAllProductsUseCase(this._productRepo);
 
-  Future<List<ProductsEntity>> call({
-    String? occasionId,
-    int? page,
-    int? limit,
-  }) async {
-    return await _productRepo.getAllProducts(
-      occasionId: occasionId,
-      page: page,
-      limit: limit,
-    );
+  Future<List<ProductsEntity>> call() async {
+    return await _productRepo.getAllProducts();
   }
 }

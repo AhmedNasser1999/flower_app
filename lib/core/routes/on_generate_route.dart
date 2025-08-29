@@ -77,17 +77,7 @@ class Routes {
         );
       case AppRoutes.occasions:
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (_) => getIt<OccasionViewmodel>(),
-              ),
-              BlocProvider(
-                create: (_) => getIt<CategoriesCubit>()..getAllCategories(),
-              ),
-            ],
-            child: const OccasionScreen(),
-          ),
+          builder: (context) => const OccasionScreen(),
         );
 
       default:

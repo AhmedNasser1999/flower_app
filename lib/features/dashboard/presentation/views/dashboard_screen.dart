@@ -56,9 +56,6 @@ class DashboardScreen extends StatelessWidget {
           return BlocBuilder<NavBarCubit, NavBarState>(
             builder: (context, state) {
               return Scaffold(
-                floatingActionButton: FloatingActionButton(onPressed: (){
-                  Navigator.pushNamed(context, AppRoutes.occasions);
-                }),
                 backgroundColor: Colors.white,
                 body: screens[state.selectedIndex],
                 bottomNavigationBar: SizedBox(

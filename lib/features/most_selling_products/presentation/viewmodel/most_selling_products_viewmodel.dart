@@ -47,6 +47,16 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
       emit(MostSellingSuccessState(filtered));
     }
   }
+  void filterByOccasion(String? occasionId) {
+    if (occasionId == null || occasionId.isEmpty) {
+      emit(MostSellingSuccessState(_allProducts));
+    } else {
+      final filtered = _allProducts
+          .where((product) => product.occasion == occasionId)
+          .toList();
+      emit(MostSellingSuccessState(filtered));
+    }
+  }
   void filterByCategoryAndSearch(String categoryId, String query) {
     final filtered = _allProducts
         .where((p) => p.category == categoryId && p.title.toLowerCase().contains(query.toLowerCase()))
