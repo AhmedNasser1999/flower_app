@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const String resetPassword="/ResetPasswordScreen";
   static const String dashboard="/dashboard";
   static const String mostSellingProducts="/mostSellingProducts";
+  static const String occasions="/occasions";
 }

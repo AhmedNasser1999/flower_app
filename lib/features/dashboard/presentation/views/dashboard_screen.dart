@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardScreen extends StatelessWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,9 @@ class DashboardScreen extends StatelessWidget {
           return BlocBuilder<NavBarCubit, NavBarState>(
             builder: (context, state) {
               return Scaffold(
+                floatingActionButton: FloatingActionButton(onPressed: (){
+                  Navigator.pushNamed(context, AppRoutes.occasions);
+                }),
                 backgroundColor: Colors.white,
                 body: screens[state.selectedIndex],
                 bottomNavigationBar: SizedBox(

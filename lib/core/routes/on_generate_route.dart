@@ -5,6 +5,8 @@ import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import 'package:flower_app/features/occasion/presentation/view/occasion_screen.dart';
+import 'package:flower_app/features/occasion/presentation/viewmodel/occasion_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,11 +69,18 @@ class Routes {
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            create: (_) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
             child: MostSellingProducts(),
           ),
         );
-
+      case AppRoutes.occasions:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (_) => getIt<OccasionViewmodel>(),
+            child: const OccasionScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

@@ -38,5 +38,7 @@
   "wrongPasswordErrorMsg": "Wrong password, Try Again",
   "addToCartBtn": "Add to cart",
   "mostSellingTitle": "Best Seller",
-  "mostSellingSubTitle": "Bloom with our exquisite best sellers"
+  "mostSellingSubTitle": "Bloom with our exquisite best sellers",
+  "occasionsTitle": "Occasions",
+  "occasionsSubTitle": "Bloom with our exquisite best sellers"
 }
