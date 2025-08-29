@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
+import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import 'widgets/search_and_filter_widget.dart';
+import 'widgets/categories_tab_bar_widget.dart';
+import 'widgets/products_grid_widget.dart';
+
+class CategoriesScreen extends StatefulWidget {
+  const CategoriesScreen({super.key});
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  String _currentTab = "All";
+  String? _currentCategoryId;
+  @override
+  void initState() {
+    super.initState();
+    context.read<CategoriesCubit>().getAllCategories();
+    context.read<MostSellingProductsViewmodel>().getMostSellingProducts();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          const SizedBox(height: 60),
+          SearchAndFilterWidget(
+            currentTab: _currentTab,
+            categoryId: _currentCategoryId,
+          ),
+          const SizedBox(height: 10),
+          CategoriesTabBarWidget(
+            onTabChanged: (tab, categoryId) {
+              setState(() {
+                _currentTab = tab;
+                _currentCategoryId = categoryId;
+              });
+            },
+          ),
+          const SizedBox(height: 10),
+          const Expanded(child: ProductsGridWidget()),
+        ],
+      ).setHorizontalPadding(context, 0.04),
+    );
+  }
+}

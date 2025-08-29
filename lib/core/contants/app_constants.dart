@@ -10,4 +10,5 @@ class AppConstants {
   static const String forgetPassword = "auth/forgotPassword";
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String restPassword = "auth/resetPassword";
+  static const String categories = "/categories";
 }
