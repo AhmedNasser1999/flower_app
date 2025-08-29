@@ -34,6 +34,8 @@ void main() {
         sold: 20,
         rateAvg: 4,
         rateCount: 10,
+        category: '673c47751159920171827c93',
+        occasion: '673b368c1159920171827afc',
       );
 
       when(mockProductRepo.getAllProducts())

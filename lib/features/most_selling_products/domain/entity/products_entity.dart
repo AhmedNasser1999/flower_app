@@ -12,19 +12,24 @@ class ProductsEntity {
   final int quantity;
   final int sold;
   final String id;
+  final String category;
+  final String occasion;
 
-  ProductsEntity(
-      {required this.rateAvg,
-      required this.rateCount,
-      required this.Id,
-      required this.title,
-      required this.slug,
-      required this.description,
-      required this.imgCover,
-      required this.images,
-      required this.price,
-      required this.priceAfterDiscount,
-      required this.quantity,
-      required this.sold,
-      required this.id});
+  ProductsEntity({
+    required this.rateAvg,
+    required this.rateCount,
+    required this.Id,
+    required this.title,
+    required this.slug,
+    required this.description,
+    required this.imgCover,
+    required this.images,
+    required this.price,
+    required this.priceAfterDiscount,
+    required this.quantity,
+    required this.sold,
+    required this.id,
+    required this.category,
+    required this.occasion,
+  });
 }

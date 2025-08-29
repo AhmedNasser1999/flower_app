@@ -30,7 +30,9 @@ class ProductRepoImpl implements ProductRepo {
             priceAfterDiscount: models.priceAfterDiscount,
             quantity: models.quantity,
             sold: models.sold,
-            id: models.id
+            id: models.id,
+            category: models.category,
+            occasion: models.occasion,
     ),
     ).toList();
   }
