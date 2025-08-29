@@ -3,21 +3,50 @@ import 'package:flower_app/features/most_selling_products/presentation/viewmodel
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/entity/products_entity.dart';
+
 @injectable
 class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
   final GetAllProductsUseCase _allProductsUseCase;
 
+  List<ProductsEntity> _allProducts = [];
+
   MostSellingProductsViewmodel(this._allProductsUseCase)
       : super(MostSellingInitialState());
 
+  /// Get all products (main API call)
   Future<void> getMostSellingProducts() async {
     emit(MostSellingLoadingState());
-
     try {
       final products = await _allProductsUseCase();
+      _allProducts = products;
       emit(MostSellingSuccessState(products));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
     }
   }
+
+  void filterProducts(String query) {
+    if (query.isEmpty) {
+      emit(MostSellingSuccessState(_allProducts));
+    } else {
+      final filtered = _allProducts
+          .where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      emit(MostSellingSuccessState(filtered));
+    }
+  }
+
+  void filterByCategory(String? categoryId) {
+    if (categoryId == null || categoryId.isEmpty) {
+      emit(MostSellingSuccessState(_allProducts));
+    } else {
+      final filtered = _allProducts
+          .where((product) => product.category == categoryId)
+          .toList();
+      emit(MostSellingSuccessState(filtered));
+    }
+  }
+
 }
