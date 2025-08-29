@@ -81,29 +81,40 @@ class ProductCard extends StatelessWidget {
                       "EGP $productPrice",
                       style: theme.textTheme.bodyMedium,
                     )
-                  : Row(
-                      children: [
-                        Text(
-                          "EGP $productPriceDiscount",
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          "EGP $productPrice",
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.grey,
-                            decoration: TextDecoration.lineThrough,
+                  : Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            flex: 2,
+                            child: Text(
+                              "EGP $productPriceDiscount",
+                              style: theme.textTheme.bodyMedium,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          "$priceDiscount%",
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.green,
+                          const SizedBox(width: 2),
+                          Flexible(
+                            flex: 2,
+                            child: Text(
+                              "EGP $productPrice",
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: Colors.grey,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                          const SizedBox(width: 2),
+                          Flexible(
+                            child: Text(
+                              "$priceDiscount%",
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: Colors.green,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                  ),
               const SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,

@@ -12,28 +12,35 @@ class ProductRepoImpl implements ProductRepo {
   ProductRepoImpl(this._productRemoteDataSource);
 
   @override
-  Future<List<ProductsEntity>> getAllProducts() async {
-    final List<Products> models =
-        await _productRemoteDataSource.getAllProduct();
+  Future<List<ProductsEntity>> getAllProducts({
+    String? occasionId,
+    int? page,
+    int? limit,
+  }) async {
+    final List<Products> models = await _productRemoteDataSource.getAllProduct(
+      occasionId: occasionId,
+      page: page,
+      limit: limit,
+    );
 
     return models
-        .map((models) => ProductsEntity(
-            rateAvg: models.rateAvg,
-            rateCount: models.rateCount,
-            Id: models.Id,
-            title: models.title,
-            slug: models.slug,
-            description: models.description,
-            imgCover: models.imgCover,
-            images: models.images,
-            price: models.price,
-            priceAfterDiscount: models.priceAfterDiscount,
-            quantity: models.quantity,
-            sold: models.sold,
-            id: models.id,
-      category: models.category,
-
-    ),
-    ).toList();
+        .map((model) => ProductsEntity(
+              rateAvg: model.rateAvg,
+              rateCount: model.rateCount,
+              Id: model.Id,
+              title: model.title,
+              slug: model.slug,
+              description: model.description,
+              imgCover: model.imgCover,
+              images: model.images,
+              price: model.price,
+              priceAfterDiscount: model.priceAfterDiscount,
+              quantity: model.quantity,
+              sold: model.sold,
+              id: model.id,
+              category: model.category,
+              occasion: model.occasion, // Add occasion to entity
+            ))
+        .toList();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
+import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 
 abstract class OccasionState {}
 
@@ -7,9 +7,9 @@ class OccasionInitial extends OccasionState {}
 class OccasionLoading extends OccasionState {}
 
 class OccasionLoaded extends OccasionState {
-  final List<OccasionEntity> occasions;
+  final List<ProductsEntity> products;
 
-  OccasionLoaded(this.occasions);
+  OccasionLoaded(this.products);
 }
 
 class OccasionError extends OccasionState {

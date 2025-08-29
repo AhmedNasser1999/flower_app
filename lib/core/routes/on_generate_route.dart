@@ -2,6 +2,7 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
+import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
@@ -76,11 +77,19 @@ class Routes {
         );
       case AppRoutes.occasions:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (_) => getIt<OccasionViewmodel>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<OccasionViewmodel>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<CategoriesCubit>()..getAllCategories(),
+              ),
+            ],
             child: const OccasionScreen(),
           ),
         );
+
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

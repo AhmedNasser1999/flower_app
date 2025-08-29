@@ -4,12 +4,20 @@ import 'package:injectable/injectable.dart';
 import '../repositories/product_repo.dart';
 
 @injectable
-class GetAllProductsUseCase{
+class GetAllProductsUseCase {
   final ProductRepo _productRepo;
 
   GetAllProductsUseCase(this._productRepo);
 
-  Future<List<ProductsEntity>> call() async {
-    return await _productRepo.getAllProducts();
+  Future<List<ProductsEntity>> call({
+    String? occasionId,
+    int? page,
+    int? limit,
+  }) async {
+    return await _productRepo.getAllProducts(
+      occasionId: occasionId,
+      page: page,
+      limit: limit,
+    );
   }
 }

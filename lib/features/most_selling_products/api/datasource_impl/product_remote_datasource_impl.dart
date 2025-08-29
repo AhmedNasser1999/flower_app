@@ -12,8 +12,16 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource{
   ProductRemoteDataSourceImpl(this.productApiClient);
 
   @override
-  Future<List<Products>> getAllProduct() async{
-    final response = await productApiClient.getAllProducts();
+  Future<List<Products>> getAllProduct({
+    String? occasionId,
+    int? page,
+    int? limit,
+  }) async {
+    final response = await productApiClient.getAllProducts(
+      occasionId: occasionId,
+      page: page,
+      limit: limit,
+    );
     return response.products;
   }
 }

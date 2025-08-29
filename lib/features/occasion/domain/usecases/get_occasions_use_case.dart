@@ -1,14 +1,14 @@
-import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
+import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
+import 'package:flower_app/features/most_selling_products/domain/usecases/get_all_products_usecase.dart';
 import 'package:injectable/injectable.dart';
-import '../repositories/occasion_repository.dart';
 
 @injectable
-class GetOccasionsUseCase {
-  final OccasionRepository _occasionRepository;
+class GetOccasionProductsUseCase {
+  final GetAllProductsUseCase _getAllProductsUseCase;
 
-  GetOccasionsUseCase(this._occasionRepository);
+  GetOccasionProductsUseCase(this._getAllProductsUseCase);
 
-  Future<List<OccasionEntity>> call({int? page, int? limit}) async {
-    return await _occasionRepository.getOccasions(page: page, limit: limit);
+  Future<List<ProductsEntity>> call(String occasionId) async {
+    return await _getAllProductsUseCase(occasionId: occasionId);
   }
 }
