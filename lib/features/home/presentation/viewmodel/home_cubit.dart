@@ -15,36 +15,79 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit(this._allProductsUseCase, this.getAllCategoriesUseCase,
       this.getAllOccasionsUseCase)
-      : super(HomeInitial());
+      : super(HomeState());
+
+  // Initialize all data
+  Future<void> initializeHomeData() async {
+    await Future.wait([
+      getMostSellingProducts(),
+      getAllCategories(),
+      getAllOccasions(),
+    ]);
+  }
 
   Future<void> getMostSellingProducts() async {
-    emit(HomeLoadingState());
+    emit(state.copyWith(isProductsLoadingArg: true, productsErrorArg: null));
     try {
       final products = await _allProductsUseCase();
-      emit(HomeSuccessState(products: products));
+      emit(state.copyWith(
+        isProductsLoadingArg: false,
+        productsListArg: products,
+        productsErrorArg: null,
+      ));
     } catch (e) {
-      emit(HomeErrorState(e.toString()));
+      emit(state.copyWith(
+        isProductsLoadingArg: false,
+        productsErrorArg: e.toString(),
+      ));
     }
   }
 
   Future<void> getAllCategories() async {
-    emit(HomeLoadingState());
+    emit(state.copyWith(isCategoriesLoadingArg: true, categoriesErrorArg: null));
     try {
       final response = await getAllCategoriesUseCase();
-      emit(HomeSuccessState(categories: response.categories ?? []));
+      final categories = response.categories ?? [];
+      emit(state.copyWith(
+        isCategoriesLoadingArg: false,
+        categoriesListArg: categories,
+        categoriesErrorArg: null,
+      ));
     } catch (e) {
-      emit(HomeErrorState(e.toString()));
+      emit(state.copyWith(
+        isCategoriesLoadingArg: false,
+        categoriesErrorArg: e.toString(),
+      ));
     }
   }
 
-    Future<void> getAllOccasions() async {
-      emit(HomeLoadingState());
-      try {
-        final occasions = await getAllOccasionsUseCase();
-        emit(HomeSuccessState(occasions: occasions));
-      } catch (e) {
-        emit(HomeErrorState(e.toString()));
-      }
+  Future<void> getAllOccasions() async {
+    emit(state.copyWith(isOccasionsLoadingArg: true, occasionsErrorArg: null));
+    try {
+      final occasions = await getAllOccasionsUseCase();
+      emit(state.copyWith(
+        isOccasionsLoadingArg: false,
+        occasionsListArg: occasions,
+        occasionsErrorArg: null,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isOccasionsLoadingArg: false,
+        occasionsErrorArg: e.toString(),
+      ));
     }
+  }
 
+  // Refresh individual sections
+  Future<void> refreshCategories() async {
+    await getAllCategories();
+  }
+
+  Future<void> refreshProducts() async {
+    await getMostSellingProducts();
+  }
+
+  Future<void> refreshOccasions() async {
+    await getAllOccasions();
+  }
 }

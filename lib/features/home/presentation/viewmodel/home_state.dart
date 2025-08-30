@@ -1,29 +1,56 @@
 import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
-import 'package:flower_app/features/categories/data/models/category_model.dart'; // 👈 استبدل الـ Entity بالـ Model
+import 'package:flower_app/features/categories/data/models/category_model.dart';
 
-abstract class HomeState {}
+class HomeState {
+  // Categories
+  bool isCategoriesLoading;
+  List<Categories> categoriesList;
+  String? categoriesError;
 
-class HomeInitial extends HomeState {}
+  // Products
+  bool isProductsLoading;
+  List<ProductsEntity> productsList;
+  String? productsError;
 
-class HomeLoadingState extends HomeState {}
+  // Occasions
+  bool isOccasionsLoading;
+  List<OccasionEntity> occasionsList;
+  String? occasionsError;
 
-class HomeSuccessState extends HomeState {
-  final List<Categories> categories;
-
-  final List<ProductsEntity> products;
-
-  final List<OccasionEntity> occasions;
-
-  HomeSuccessState({
-    this.categories = const [],
-    this.products = const [],
-    this.occasions = const [],
+  HomeState({
+    this.isCategoriesLoading = true,
+    this.categoriesList = const [],
+    this.categoriesError,
+    this.isProductsLoading = true,
+    this.productsList = const [],
+    this.productsError,
+    this.isOccasionsLoading = true,
+    this.occasionsList = const [],
+    this.occasionsError,
   });
-}
 
-class HomeErrorState extends HomeState {
-  final String message;
-
-  HomeErrorState(this.message);
+  HomeState copyWith({
+    bool? isCategoriesLoadingArg,
+    List<Categories>? categoriesListArg,
+    String? categoriesErrorArg,
+    bool? isProductsLoadingArg,
+    List<ProductsEntity>? productsListArg,
+    String? productsErrorArg,
+    bool? isOccasionsLoadingArg,
+    List<OccasionEntity>? occasionsListArg,
+    String? occasionsErrorArg,
+  }) {
+    return HomeState(
+      isCategoriesLoading: isCategoriesLoadingArg ?? isCategoriesLoading,
+      categoriesList: categoriesListArg ?? categoriesList,
+      categoriesError: categoriesErrorArg,
+      isProductsLoading: isProductsLoadingArg ?? isProductsLoading,
+      productsList: productsListArg ?? productsList,
+      productsError: productsErrorArg,
+      isOccasionsLoading: isOccasionsLoadingArg ?? isOccasionsLoading,
+      occasionsList: occasionsListArg ?? occasionsList,
+      occasionsError: occasionsErrorArg,
+    );
+  }
 }

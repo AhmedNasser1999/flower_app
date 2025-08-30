@@ -40,15 +40,9 @@ class CategoriesTabBarWidget extends StatelessWidget {
           );
         } else if (state is GetAllCategoriesLoading) {
           return const Center(
-            child: SizedBox(
-              height: 40,
-              width: 40,
-              child: LoadingIndicator(
-                indicatorType: Indicator.lineScalePulseOut,
-                colors: [AppColors.pink],
-                strokeWidth: 2,
-                backgroundColor: Colors.transparent,
-              ),
+            child: LinearProgressIndicator(
+              color: AppColors.pink,
+              backgroundColor: AppColors.white,
             ),
           );
         } else {
