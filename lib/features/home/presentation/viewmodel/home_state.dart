@@ -1,7 +1,6 @@
 import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
-
-import '../../../categories/domain/entity/category_entity.dart';
+import 'package:flower_app/features/categories/data/models/category_model.dart'; // 👈 استبدل الـ Entity بالـ Model
 
 abstract class HomeState {}
 
@@ -10,7 +9,7 @@ class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class HomeSuccessState extends HomeState {
-  final List<Category> categories;
+  final List<Categories> categories;
 
   final List<ProductsEntity> products;
 

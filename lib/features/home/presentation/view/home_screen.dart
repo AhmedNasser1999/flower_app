@@ -46,8 +46,11 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 10.0),
                       CategoryList(
-                        onTap: () {},
                         categories: state.categories,
+                        onTap: (category) {
+                          print("Category tapped: ${category.Id}");
+                          // context.read<CategoriesCubit>().getCategoryDetails(category.Id ?? "");
+                        },
                       ),
                       SizedBox(height: 10.0),
                       SectionHeader(

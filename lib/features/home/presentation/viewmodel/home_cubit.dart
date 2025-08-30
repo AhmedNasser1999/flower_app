@@ -30,9 +30,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getAllCategories() async {
     emit(HomeLoadingState());
     try {
-      final categories = await getAllCategoriesUseCase();
-      emit(HomeSuccessState(
-          categories: categories.categories as List<Category>));
+      final response = await getAllCategoriesUseCase();
+      emit(HomeSuccessState(categories: response.categories ?? []));
     } catch (e) {
       emit(HomeErrorState(e.toString()));
     }

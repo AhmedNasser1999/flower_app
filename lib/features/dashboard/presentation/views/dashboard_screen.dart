@@ -18,6 +18,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
     final List<Widget> screens = [
       HomeScreen(),
       MultiBlocProvider(
