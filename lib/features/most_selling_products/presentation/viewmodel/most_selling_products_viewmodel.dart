@@ -26,6 +26,7 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
         }
       }).toList();
 
+      _allProducts = validProducts;
       emit(MostSellingSuccessState(validProducts));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
