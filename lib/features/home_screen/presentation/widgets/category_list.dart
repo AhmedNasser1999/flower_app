@@ -1,15 +1,12 @@
+import 'package:flower_app/features/categories/domain/entities/category_entity.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/category_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategoryList extends StatelessWidget {
+  final List<CategoryEntity> categories;
   final VoidCallback onTap;
-  final String icon;
-  final String title;
   const CategoryList(
-      {super.key,
-      required this.onTap,
-      required this.icon,
-      required this.title});
+      {super.key, required this.categories, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +16,13 @@ class CategoryList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => CategoryWidget(
           onTap: onTap,
-          icon: icon,
-          title: title,
+          icon: categories[index].catImage!,
+          title: categories[index].catName,
         ),
         separatorBuilder: (context, index) => SizedBox(width: 16.0),
-        itemCount: 20,
+        itemCount: categories.length,
       ),
     );
+    
   }
 }

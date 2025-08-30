@@ -2,12 +2,16 @@ import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/auth/domain/services/auth_service.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
+import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
 import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_bar_widget.dart';
 import 'package:flower_app/features/home_screen/presentation/view/home_screen.dart';
-import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/config/di.dart';
+import '../../../categories/presentation/view/categories_screen.dart';
+import '../../../most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -15,8 +19,20 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      HomeScreen(),
-      Center(child: Text("categories")),
+     HomeScreen(),
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+            getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+          ),
+          BlocProvider(
+            create: (context) =>
+            getIt<CategoriesCubit>()..getAllCategories(),
+          ),
+        ],
+        child: const CategoriesScreen(),
+      ),
       Center(child: Text("cart")),
       Center(
         child: CustomElevatedButton(
@@ -27,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.login,
-              (route) => false,
+                  (route) => false,
             );
           },
         ),

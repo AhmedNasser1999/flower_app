@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class OccasionList extends StatelessWidget {
   final String image;
   final String name;
-  final String price;
+  final int price;
   const OccasionList(
       {super.key,
       required this.image,
@@ -14,7 +14,7 @@ class OccasionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 200,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => ProductItem(

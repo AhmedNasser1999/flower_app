@@ -4,7 +4,6 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -58,7 +57,6 @@ class MostSellingProducts extends StatelessWidget {
             } else if (state is MostSellingSuccessState) {
               final List<ProductsEntity> products = state.products;
               products.sort((a, b) => b.sold.compareTo(a.sold));
-
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

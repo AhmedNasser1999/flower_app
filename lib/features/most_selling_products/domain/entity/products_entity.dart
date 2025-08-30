@@ -12,6 +12,7 @@ class ProductsEntity {
   final int quantity;
   final int sold;
   final String id;
+  final String category;
 
   ProductsEntity(
       {required this.rateAvg,
@@ -26,5 +27,6 @@ class ProductsEntity {
       required this.priceAfterDiscount,
       required this.quantity,
       required this.sold,
+        required this.category,
       required this.id});
 }

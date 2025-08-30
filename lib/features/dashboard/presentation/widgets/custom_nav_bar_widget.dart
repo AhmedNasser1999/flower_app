@@ -1,7 +1,6 @@
 import 'package:flower_app/core/contants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../core/theme/app_colors.dart';
 
 class CustomBottomNavBarWidget extends StatelessWidget {

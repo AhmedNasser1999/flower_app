@@ -33,7 +33,7 @@ void main() {
         quantity: 5,
         sold: 20,
         rateAvg: 4,
-        rateCount: 10,
+        rateCount: 10, category: '',
       );
 
       when(mockProductRepo.getAllProducts())

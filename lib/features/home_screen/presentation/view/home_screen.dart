@@ -1,62 +1,80 @@
 import 'package:flower_app/core/Widgets/section_header.dart';
-import 'package:flower_app/core/contants/app_icons.dart';
+import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/home_screen/presentation/view_model/home_cubit.dart';
+import 'package:flower_app/features/home_screen/presentation/view_model/home_state.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/app_logo.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/best_seller_list.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/category_list.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/occasion_list.dart';
 import 'package:flower_app/features/home_screen/presentation/widgets/order_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
+  static const String routeName = AppRoutes.homeScreen;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppLogo(),
-              SizedBox(height: 10.0),
-              OrderInfo(),
-              SizedBox(height: 10.0),
-              SectionHeader(
-                title: 'Categories',
-                onPressed: () {},
-              ),
-              SizedBox(height: 10.0),
-              CategoryList(
-                onTap: () {},
-                icon: AppIcons.tulip,
-                title: 'Flowers',
-              ),
-              SizedBox(height: 10.0),
-              SectionHeader(
-                title: 'Best Seller',
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
-                },
-              ),
-              BestSellerList(
-                image: 'assets/images/image.png',
-                name: 'Flower Name',
-                price: '600 EGP',
-              ),
-              SectionHeader(
-                title: 'Occasion',
-                onPressed: () {},
-              ),
-              OccasionList(
-                image: 'assets/images/image.png',
-                name: 'Flower Name',
-                price: '600 EGP',
-              ),
-            ],
-          ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+    return BlocProvider(
+      create: (_) => getIt<HomeCubit>()
+        ..getMostSellingProducts()
+        ..getAllCategories(),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) => Scaffold(
+          body: () {
+            if (state is HomeLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is HomeSuccessState) {
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppLogo(),
+                      SizedBox(height: 10.0),
+                      OrderInfo(),
+                      SizedBox(height: 10.0),
+                      SectionHeader(
+                        title: 'Categories',
+                        onPressed: () {},
+                      ),
+                      SizedBox(height: 10.0),
+                      CategoryList(
+                        onTap: () {},
+                        categories: state.categories,
+                      ),
+                      SizedBox(height: 10.0),
+                      SectionHeader(
+                        title: 'Best Seller',
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.mostSellingProducts);
+                        },
+                      ),
+                      BestSellerList(
+                        productList: state.products,
+                      ),
+                      SectionHeader(
+                        title: 'Occasion',
+                        onPressed: () {},
+                      ),
+                      OccasionList(
+                        image: 'assets/images/image.png',
+                        name: 'Flower Name',
+                        price: 600,
+                      ),
+                    ],
+                  ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+                ),
+              );
+            } else if (state is HomeErrorState) {
+              print('==================${state.message}=================');
+              return Center(child: Text(state.message));
+            }
+            return const SizedBox.shrink();
+          }(),
         ),
       ),
     );

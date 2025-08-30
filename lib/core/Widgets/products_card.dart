@@ -47,7 +47,7 @@ class ProductCard extends StatelessWidget {
                     color: AppColors.lightPink),
                 child: Image.network(
                   productImg,
-                  height: 140,
+                  height: 120,
                   width: double.infinity,
                   fit: BoxFit.fitHeight,
                   errorBuilder: (context, error, stackTrace) {
@@ -76,7 +76,7 @@ class ProductCard extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               productPriceDiscount == 0
                   ? Text(
                       "EGP $productPrice",
@@ -88,7 +88,7 @@ class ProductCard extends StatelessWidget {
                           "EGP $productPriceDiscount",
                           style: theme.textTheme.bodyMedium,
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 2),
                         Text(
                           "EGP $productPrice",
                           style: theme.textTheme.bodyMedium?.copyWith(
@@ -96,7 +96,7 @@ class ProductCard extends StatelessWidget {
                             decoration: TextDecoration.lineThrough,
                           ),
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 2),
                         Text(
                           "$priceDiscount%",
                           style: theme.textTheme.bodyMedium?.copyWith(
@@ -105,7 +105,7 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
