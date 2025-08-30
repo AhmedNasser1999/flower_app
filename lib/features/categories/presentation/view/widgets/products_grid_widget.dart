@@ -7,6 +7,8 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_product_states.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
+import '../../../../../core/routes/route_names.dart';
+
 class ProductsGridWidget extends StatelessWidget {
   const ProductsGridWidget({super.key});
 
@@ -65,6 +67,9 @@ class ProductsGridWidget extends StatelessWidget {
                   product.priceAfterDiscount,
                 ),
                 productTitle: product.title,
+                onTap: (){
+                  Navigator.pushNamed(context, AppRoutes.productDetails, arguments: product);
+                },
               );
             },
           );

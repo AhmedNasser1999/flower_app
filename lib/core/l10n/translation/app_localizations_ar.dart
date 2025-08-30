@@ -131,4 +131,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+
+  @override
+  String get occasionsTitle => 'المناسبات';
+
+  @override
+  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
 }

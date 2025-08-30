@@ -16,6 +16,8 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/most_selling_products/domain/entity/products_entity.dart';
+import '../../features/occasion/presentation/view/occasion_screen.dart';
 import '../Widgets/product_details.dart';
 
 class Routes {
@@ -74,7 +76,14 @@ class Routes {
         );
 
       case AppRoutes.productDetails:
-        return MaterialPageRoute(builder: (_) =>  ProductDetails());
+        final product = settings.arguments as ProductsEntity;
+        return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
+
+      case AppRoutes.occasions:
+        return MaterialPageRoute(
+          builder: (context) => const OccasionScreen(),
+        );
+
 
       default:
         return MaterialPageRoute(
