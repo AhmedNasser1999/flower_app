@@ -16,6 +16,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../Widgets/product_details.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -71,6 +72,9 @@ class Routes {
             child: MostSellingProducts(),
           ),
         );
+
+      case AppRoutes.productDetails:
+        return MaterialPageRoute(builder: (_) =>  ProductDetails());
 
       default:
         return MaterialPageRoute(
