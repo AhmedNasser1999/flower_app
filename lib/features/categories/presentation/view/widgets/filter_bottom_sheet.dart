@@ -1,5 +1,6 @@
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           const SizedBox(height: 40,),
 
           CustomElevatedButton(text: "Filter", onPressed: (){
-            Navigator.pop(context);
+            Navigator.pushNamed(context, AppRoutes.occasions);
           },)
         ],
       ),
