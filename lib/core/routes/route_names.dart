@@ -8,4 +8,6 @@ abstract class AppRoutes {
   static const String mostSellingProducts="/mostSellingProducts";
   static const String occasions = "/occasions";
   static const String productDetails="/productDetails";
+  static const String homeScreen="/homeScreen";
+  static const String categoriesScreen="/categoriesScreen";
 }

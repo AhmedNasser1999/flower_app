@@ -2,7 +2,9 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
+import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
+import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
 import '../../features/occasion/presentation/view/occasion_screen.dart';
 import '../Widgets/product_details.dart';
@@ -30,6 +33,9 @@ class Routes {
             child: const LoginScreen(),
           ),
         );
+
+      case AppRoutes.homeScreen:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
 
       case AppRoutes.signUp:
         return MaterialPageRoute(
@@ -83,6 +89,23 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => const OccasionScreen(),
         );
+      case AppRoutes.categoriesScreen:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                getIt<CategoriesCubit>()..getAllCategories(),
+              ),
+            ],
+            child: const CategoriesScreen(),
+          ),
+        );
+
 
 
       default:

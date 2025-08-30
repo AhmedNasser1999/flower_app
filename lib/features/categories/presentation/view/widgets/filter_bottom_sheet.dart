@@ -61,7 +61,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           const SizedBox(height: 40,),
 
           CustomElevatedButton(text: "Filter", onPressed: (){
-            Navigator.pushNamed(context, AppRoutes.occasions);
+            Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
           },)
         ],
       ),

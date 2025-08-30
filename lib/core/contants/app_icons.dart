@@ -3,4 +3,5 @@ abstract final class AppIcons {
   static const String categoriesIcon = 'assets/icons/cat_icon.svg';
   static const String profileIcon = 'assets/icons/profile_icon.svg';
   static const String cartIcon = 'assets/icons/cart_icon.svg';
+  static const String logo = 'assets/icons/Logo.svg';
 }

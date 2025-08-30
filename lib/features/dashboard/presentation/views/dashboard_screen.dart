@@ -10,15 +10,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/config/di.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
+import '../../../home/presentation/view/home_screen.dart';
 import '../../../most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      Center(child: Text("home")),
+      HomeScreen(),
       MultiBlocProvider(
         providers: [
           BlocProvider(

@@ -53,6 +53,7 @@ import '../../features/categories/domain/usecases/get_category_byId_usecase.dart
     as _i557;
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart'
     as _i820;
+import '../../features/home/presentation/viewmodel/home_cubit.dart' as _i925;
 import '../../features/most_selling_products/api/client/product_api_client.dart'
     as _i67;
 import '../../features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart'
@@ -170,6 +171,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
+    gh.factory<_i925.HomeCubit>(() => _i925.HomeCubit(
+          gh<_i144.GetAllProductsUseCase>(),
+          gh<_i943.GetAllCategoriesUseCase>(),
+        ));
     return this;
   }
 }
