@@ -4,14 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../categories/domain/entity/category_entity.dart';
+import '../../../occasion/domain/usecases/get_occasions_use_case.dart';
 import 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
   final GetAllProductsUseCase _allProductsUseCase;
   final GetAllCategoriesUseCase getAllCategoriesUseCase;
+  final GetOccasionsUseCase getAllOccasionsUseCase;
 
-  HomeCubit(this._allProductsUseCase, this.getAllCategoriesUseCase)
+  HomeCubit(this._allProductsUseCase, this.getAllCategoriesUseCase,
+      this.getAllOccasionsUseCase)
       : super(HomeInitial());
 
   Future<void> getMostSellingProducts() async {
@@ -28,9 +31,21 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoadingState());
     try {
       final categories = await getAllCategoriesUseCase();
-      emit(HomeSuccessState(categories: categories.categories as List<Category>));
+      emit(HomeSuccessState(
+          categories: categories.categories as List<Category>));
     } catch (e) {
       emit(HomeErrorState(e.toString()));
     }
   }
+
+    Future<void> getAllOccasions() async {
+      emit(HomeLoadingState());
+      try {
+        final occasions = await getAllOccasionsUseCase();
+        emit(HomeSuccessState(occasions: occasions));
+      } catch (e) {
+        emit(HomeErrorState(e.toString()));
+      }
+    }
+
 }

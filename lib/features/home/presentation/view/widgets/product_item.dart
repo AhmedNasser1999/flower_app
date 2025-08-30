@@ -4,11 +4,13 @@ class ProductItem extends StatelessWidget {
   final String image;
   final String name;
   final int price;
+  final bool isOccasion;
   const ProductItem(
       {super.key,
       required this.image,
       required this.name,
-      required this.price});
+      required this.price,
+      this.isOccasion = false});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ProductItem extends StatelessWidget {
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
-                   width: 150,
+                  width: 150,
                   color: Colors.grey[300],
                   child: Icon(Icons.error_outline, color: Colors.red),
                 );
@@ -45,14 +47,16 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4.0),
-          Expanded(
-            child: Text(
-              '$price LE',
-              style: TextStyle(
-                fontSize: 12,
-              ),
-            ),
-          ),
+          isOccasion
+              ? Text('')
+              : Expanded(
+                  child: Text(
+                    '$price LE',
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
         ],
       ),
     );

@@ -165,16 +165,17 @@ extension GetItInjectableX on _i174.GetIt {
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
     gh.factory<_i473.OccasionViewmodel>(
         () => _i473.OccasionViewmodel(gh<_i202.GetOccasionsUseCase>()));
+    gh.factory<_i925.HomeCubit>(() => _i925.HomeCubit(
+          gh<_i144.GetAllProductsUseCase>(),
+          gh<_i943.GetAllCategoriesUseCase>(),
+          gh<_i202.GetOccasionsUseCase>(),
+        ));
     gh.factory<_i820.CategoriesCubit>(() => _i820.CategoriesCubit(
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
         ));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
-    gh.factory<_i925.HomeCubit>(() => _i925.HomeCubit(
-          gh<_i144.GetAllProductsUseCase>(),
-          gh<_i943.GetAllCategoriesUseCase>(),
-        ));
     return this;
   }
 }

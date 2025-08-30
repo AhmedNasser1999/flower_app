@@ -1,4 +1,5 @@
 import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
+import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
 
 import '../../../categories/domain/entity/category_entity.dart';
 
@@ -13,9 +14,12 @@ class HomeSuccessState extends HomeState {
 
   final List<ProductsEntity> products;
 
+  final List<OccasionEntity> occasions;
+
   HomeSuccessState({
     this.categories = const [],
     this.products = const [],
+    this.occasions = const [],
   });
 }
 

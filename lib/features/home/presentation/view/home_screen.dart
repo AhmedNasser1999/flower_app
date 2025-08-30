@@ -20,7 +20,8 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => getIt<HomeCubit>()
         ..getMostSellingProducts()
-        ..getAllCategories(),
+        ..getAllCategories()
+        ..getAllOccasions(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
           body: () {
@@ -39,7 +40,8 @@ class HomeScreen extends StatelessWidget {
                       SectionHeader(
                         title: 'Categories',
                         onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.categoriesScreen);
+                          Navigator.pushNamed(
+                              context, AppRoutes.categoriesScreen);
                         },
                       ),
                       SizedBox(height: 10.0),
@@ -63,9 +65,7 @@ class HomeScreen extends StatelessWidget {
                         onPressed: () {},
                       ),
                       OccasionList(
-                        image: 'assets/images/image.png',
-                        name: 'Flower Name',
-                        price: 600,
+                        occasionList: state.occasions,
                       ),
                     ],
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
