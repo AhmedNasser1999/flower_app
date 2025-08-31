@@ -7,6 +7,10 @@ import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_ba
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/config/di.dart';
+import '../../../profile/presentation/view/profile_screen.dart';
+import '../../../profile/presentation/viewmodel/profile_viewmodel.dart';
+
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});
 
@@ -16,18 +20,9 @@ class DashboardScreen extends StatelessWidget {
       Center(child: Text("home")),
       Center(child: Text("categories")),
       Center(child: Text("cart")),
-      Center(
-          child: CustomElevatedButton(
-              text: "Logout",
-              onPressed: () async {
-                await AuthService.logout();
-                await GuestService.endGuestSession();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  AppRoutes.login,
-                  (route) => false,
-                );
-              })),
+      BlocProvider(
+          create: (_) => getIt<ProfileViewModel>()..getProfile(),
+          child: const ProfileScreen()),
     ];
 
     return BlocProvider(
