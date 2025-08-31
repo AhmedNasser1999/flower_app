@@ -145,4 +145,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
+
+  @override
+  String get notificationCount => '3';
+
+  @override
+  String get myOrders => 'My orders';
+
+  @override
+  String get savedAddress => 'Saved address';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageChanged => 'English';
+
+  @override
+  String get aboutUs => 'About us';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get termsConditions => 'Terms & conditions';
+
+  @override
+  String get error => 'Error:';
+
+  @override
+  String get versionInfo => 'v 6.3.0 - (446)';
 }
