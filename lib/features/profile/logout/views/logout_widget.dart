@@ -17,9 +17,14 @@ class LogoutDialogWidget extends StatelessWidget {
       ),
       title: Text(locale!.logoutAlertMsg,
       textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Inter"),
       ),
-      content: Text(locale.logoutConfirmTextCenter, textAlign: TextAlign.center,),
+      content: Text(locale.logoutConfirmTextCenter, textAlign: TextAlign.center,
+      style: TextStyle(color: AppColors.grey,
+      fontSize: 16,
+          fontWeight: FontWeight.w500,
+          fontFamily: "Inter"
+      ),),
       actions: [
         Row(
           children: [
