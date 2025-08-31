@@ -1,6 +1,5 @@
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
-import 'package:flower_app/features/profile/presentation/change_password/presentation/views/screens/change_password_screen.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
@@ -15,6 +14,8 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
+import '../../features/profile/logout/views/logout_widget.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -58,7 +59,8 @@ class Routes {
         );
       case AppRoutes.changePasswordScreen:
         return MaterialPageRoute(builder: (_) =>  ChangePasswordScreen());
-
+      case AppRoutes.logoutWidget:
+        return MaterialPageRoute(builder: (_) =>  LogoutDialogWidget());
 
 
       case AppRoutes.resetPassword:

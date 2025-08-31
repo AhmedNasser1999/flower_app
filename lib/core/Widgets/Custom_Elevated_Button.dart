@@ -9,6 +9,8 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? borderColor;        // Outline/border color
   final double borderRadius;       // Border radius
   final bool isLoading;            // New loading flag
+  final double? width;             // Custom width
+  final double? height;            // Custom height
 
   const CustomElevatedButton({
     super.key,
@@ -18,14 +20,16 @@ class CustomElevatedButton extends StatelessWidget {
     this.textColor,
     this.borderColor,
     this.borderRadius = 22.0,
-    this.isLoading = false, // default to false
+    this.isLoading = false,
+    this.width,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 373,
-      height: 52,
+      width: width,   // now flexible
+      height: height,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(

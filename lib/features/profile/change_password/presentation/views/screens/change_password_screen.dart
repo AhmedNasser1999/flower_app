@@ -6,6 +6,7 @@ import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../../core/routes/route_names.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -47,7 +48,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             )
           ],
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 35),
         CustomTextFormField(
           hint: locale.currentPassword,
           label: locale.currentPassword,
@@ -59,7 +60,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             return null;
           },
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 25),
         CustomTextFormField(
           hint: locale.newPassword,
           label: locale.newPassword,
@@ -73,7 +74,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             return null;
           },
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 25),
         CustomTextFormField(
           hint: locale.confirmPassword,
           label: locale.confirmPassword,
@@ -88,8 +89,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             return null;
           },
         ),
-        const SizedBox(height: 40),
-        CustomElevatedButton(text: locale.updateText, onPressed: (){})
+        const SizedBox(height: 50),
+        CustomElevatedButton(text: locale.updateText, onPressed: (){
+          Navigator.pushNamed(context, AppRoutes.logoutWidget);
+        })
         
       ]).setHorizontalPadding(context, 0.05),
     );

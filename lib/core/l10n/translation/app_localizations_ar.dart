@@ -99,6 +99,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateText => 'Update';
 
   @override
+  String get logoutAlertMsg => 'LOGOUT';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logoutConfirmTextCenter => 'Confirm logout!!';
+
+  @override
   String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override

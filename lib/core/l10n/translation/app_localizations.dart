@@ -275,6 +275,24 @@ abstract class AppLocalizations {
   /// **'Update'**
   String get updateText;
 
+  /// No description provided for @logoutAlertMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'LOGOUT'**
+  String get logoutAlertMsg;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logoutConfirmTextCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm logout!!'**
+  String get logoutConfirmTextCenter;
+
   /// No description provided for @resetPasswordUnderMsg.
   ///
   /// In en, this message translates to:
