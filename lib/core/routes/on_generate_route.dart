@@ -1,5 +1,6 @@
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/profile/presentation/change_password/presentation/views/screens/change_password_screen.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
@@ -55,6 +56,10 @@ class Routes {
 
           ),
         );
+      case AppRoutes.changePasswordScreen:
+        return MaterialPageRoute(builder: (_) =>  ChangePasswordScreen());
+
+
 
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;

@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تظبيق متجر الزهور الالكتروني';
+  String get appName => 'تطبيق متجر الزهور الالكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -36,8 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -58,13 +57,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الاعدادات';
+  String get settings => 'الإعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -82,22 +81,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get currentPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get newPassword => 'كلمة مرور جديدة';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get invalidPasswordMsg => 'invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Password unmatching!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText =>
-      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';

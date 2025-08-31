@@ -36,8 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -82,22 +81,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get invalidPasswordMsg => 'invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Password unmatching!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get resetPasswordUnderMsg => 'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
 
   @override
   String get emailVerificationScreen => 'Email verification';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'Please enter your code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg => 'Please enter your code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText =>
-      'Please enter your email associated to\nyour account';
+  String get forgetPasswordUnderText => 'Please enter your email associated to\nyour account';
 
   @override
   String get forgetPassword => 'Forget Password';

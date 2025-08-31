@@ -19,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
     final List<Widget> screens = [
       Center(child: Text("home")),
       Center(child: Text("categories")),
-      Center(child: Text("cart")),
+      Center(child: Center(child: CustomElevatedButton(text: "change password", onPressed: () {Navigator.pushNamed(context, AppRoutes.changePasswordScreen);}))),
       BlocProvider(
           create: (_) => getIt<ProfileViewModel>()..getProfile(),
           child: const ProfileScreen()),
