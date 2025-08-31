@@ -35,5 +35,15 @@
   "confirmPasswordLabel": "Confirm Password",
   "newPasswordLabel": "New Password",
   "newPasswordHint": "Enter new password",
-  "wrongPasswordErrorMsg": "Wrong password, Try Again"
+  "wrongPasswordErrorMsg": "Wrong password, Try Again",
+  "notificationCount": "3",
+  "myOrders": "My orders",
+  "savedAddress": "Saved address",
+  "language": "Language",
+  "languageChanged": "English",
+  "aboutUs": "About us",
+  "notification": "Notification",
+  "termsConditions": "Terms & conditions",
+  "error": "Error:",
+  "versionInfo": "v 6.3.0 - (446)"
 }

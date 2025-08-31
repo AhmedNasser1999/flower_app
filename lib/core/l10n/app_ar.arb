@@ -35,5 +35,15 @@
   "confirmPasswordLabel": "تأكيد كلمة المرور",
   "newPasswordLabel": "كلمة مرور جديدة",
   "newPasswordHint": "أدخل كلمة المرور الجديدة",
-  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى"
+  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
+  "notificationCount": "٣",
+  "myOrders": "طلباتي",
+  "savedAddress": "العناوين المحفوظة",
+  "language": "اللغة",
+  "languageChanged": "العربيه",
+  "aboutUs": "معلومات عنا",
+  "notification": "أشعارات",
+  "termsConditions": "الشروط والأحكام",
+  "error": "خطأ:",
+  "versionInfo": "الإصدار 6.3.0 - (446)"
 }

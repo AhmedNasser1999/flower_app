@@ -122,4 +122,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
+
+  @override
+  String get notificationCount => '٣';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get savedAddress => 'العناوين المحفوظة';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get languageChanged => 'العربيه';
+
+  @override
+  String get aboutUs => 'معلومات عنا';
+
+  @override
+  String get notification => 'أشعارات';
+
+  @override
+  String get termsConditions => 'الشروط والأحكام';
+
+  @override
+  String get error => 'خطأ:';
+
+  @override
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
 }
