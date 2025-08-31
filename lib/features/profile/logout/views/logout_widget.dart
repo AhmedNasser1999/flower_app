@@ -34,7 +34,7 @@ class LogoutDialogWidget extends StatelessWidget {
               color: AppColors.white,
               textColor: AppColors.grey,
               borderColor: AppColors.grey,
-              text: locale.cancel, onPressed: () {  },),
+              text: locale.cancel, onPressed: () { Navigator.pop(context); },),
             const SizedBox(width: 20,),
             CustomElevatedButton(
               width: 120,
