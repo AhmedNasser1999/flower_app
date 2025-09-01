@@ -152,4 +152,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get profileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
+
+  @override
+  String get passwordChangeText => 'تغيير';
+
+  @override
+  String get phoneNumberLabel => 'رقم الهاتف';
+
+  @override
+  String get updateButton => 'تحديث';
+
+  @override
+  String get errorText => 'خطأ';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 }

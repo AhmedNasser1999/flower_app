@@ -5,6 +5,9 @@ import '../../domain/repositories/profile_repository.dart';
 import '../datasource/profile_remote_datasource.dart';
 import 'package:injectable/injectable.dart';
 
+import '../models/edit_profile_request_model.dart';
+import '../models/edit_profile_response_model.dart';
+
 @LazySingleton(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDatasource remoteDatasource;
@@ -28,5 +31,14 @@ class ProfileRepositoryImpl implements ProfileRepository {
       )),
       ApiErrorResult(:final errorMessage) => ApiErrorResult(errorMessage),
     };
+  }
+
+  @override
+  Future<EditProfileResponseModel> editProfile(EditProfileRequestModel model) async{
+    try {
+      return await remoteDatasource.editProfile(model);
+    } catch(e) {
+      throw e.toString();
+    }
   }
 }

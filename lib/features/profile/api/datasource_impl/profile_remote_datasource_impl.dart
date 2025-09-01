@@ -4,6 +4,8 @@ import 'package:flower_app/features/profile/data/models/profile_response.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../data/datasource/profile_remote_datasource.dart';
+import '../../data/models/edit_profile_request_model.dart';
+import '../../data/models/edit_profile_response_model.dart';
 import '../client/profile_api_client.dart';
 
 @LazySingleton(as: ProfileRemoteDatasource)
@@ -23,4 +25,11 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
       return ApiErrorResult('Unexpected error');
     }
   }
+
+  @override
+  Future<EditProfileResponseModel> editProfile(EditProfileRequestModel model)async {
+    final response = await _profileApiClient.editProfile(model);
+    return response;
+  }
+
 }

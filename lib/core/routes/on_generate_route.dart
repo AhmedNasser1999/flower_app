@@ -15,6 +15,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
 
@@ -76,7 +77,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) =>  AboutUs());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen());
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
 
       default:
         return MaterialPageRoute(

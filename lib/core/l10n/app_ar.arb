@@ -45,5 +45,14 @@
   "notification": "أشعارات",
   "termsConditions": "الشروط والأحكام",
   "error": "خطأ:",
-  "versionInfo": "الإصدار 6.3.0 - (446)"
+  "versionInfo": "الإصدار 6.3.0 - (446)",
+  "profileTitle": "تعديل الملف الشخصي",
+  "usernameLabel": "اسم المستخدم",
+  "firstNameLabel": "الاسم الأول",
+  "lastNameLabel": "اسم العائلة",
+  "passwordChangeText": "تغيير",
+  "phoneNumberLabel": "رقم الهاتف",
+  "updateButton": "تحديث",
+  "errorText": "خطأ",
+  "profileUpdatedSuccessMsg": "تم تغيير الملف الشخصي بنجاح!"
 }

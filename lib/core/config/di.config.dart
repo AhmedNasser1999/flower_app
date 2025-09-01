@@ -46,6 +46,8 @@ import '../../features/profile/data/repositories_impl/profile_repository_impl.da
     as _i357;
 import '../../features/profile/domain/repositories/profile_repository.dart'
     as _i894;
+import '../../features/profile/domain/usecases/edit_profile_data_usecase.dart'
+    as _i691;
 import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
     as _i68;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
@@ -109,6 +111,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1063.LoginViewModel(gh<_i1037.LoginUseCase>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.factory<_i691.EditProfileDataUseCase>(
+        () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     gh.factory<_i351.ProfileViewModel>(
