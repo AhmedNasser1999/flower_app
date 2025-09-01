@@ -1,4 +1,5 @@
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
+import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/l10n/translation/app_localizations.dart';
@@ -39,7 +40,7 @@ class LogoutDialogWidget extends StatelessWidget {
             CustomElevatedButton(
               width: 120,
               height: 50,
-              text: locale.logout, onPressed: () {  },),
+              text: locale.logout, onPressed: () { Navigator.pushNamed(context, AppRoutes.login); },),
           ],
         )
       ]

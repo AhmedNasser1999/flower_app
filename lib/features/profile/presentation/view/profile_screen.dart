@@ -1,4 +1,5 @@
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/features/profile/logout/views/logout_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/notification_toggle_widget.dart';
 import 'package:flutter/material.dart';
@@ -177,7 +178,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   title: local.logout,
                   trailing: Icon(Icons.logout),
-                  onTap: () {},
+                  onTap: () {
+                    showDialog(context: context, builder: (context) => const LogoutDialogWidget());
+                  },
                 ),
 
                 Spacer(),
