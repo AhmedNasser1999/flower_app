@@ -123,6 +123,27 @@ void main() {
 
       verify(mockAuthApiClient.verifyResetCode(request)).called(1);
     });
+
   });
+
+  test('logout should throw DioException when API fails', () async {
+    when(mockAuthApiClient.logout()).thenThrow(DioException(
+      requestOptions: RequestOptions(path: '/logout'),
+      type: DioExceptionType.badResponse,
+      response: Response(
+        requestOptions: RequestOptions(path: '/logout'),
+        statusCode: 401,
+        statusMessage: "Unauthorized",
+      ),
+    ));
+
+    expect(
+          () => datasource.logout(),
+      throwsA(isA<DioException>()),
+    );
+
+    verify(mockAuthApiClient.logout()).called(1);
+  });
+
 
 }
