@@ -15,11 +15,12 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
+import '../../features/auth/logout/views/logout_widget.dart';
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
-import '../../features/profile/logout/views/logout_widget.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -68,9 +69,14 @@ class Routes {
             child: const ChangePasswordScreen(),
           ),
         );
-
       case AppRoutes.logoutWidget:
-        return MaterialPageRoute(builder: (_) =>  LogoutDialogWidget());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LogoutViewModel>(),
+            child: const LogoutDialogWidget(),
+          ),
+        );
+
 
 
       case AppRoutes.resetPassword:

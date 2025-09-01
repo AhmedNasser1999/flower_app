@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/routes/route_names.dart';
-import '../../../domain/usecases/forget_password_usecase.dart';
-import '../../../domain/usecases/verify_code_usecase.dart';
+import '../../../domain/usecases/forget_password_usecase/forget_password_usecase.dart';
+import '../../../domain/usecases/verify_code_usecase/verify_code_usecase.dart';
 
 @injectable
 class VerifyCodeCubit extends Cubit<VerifyCodeStates> {

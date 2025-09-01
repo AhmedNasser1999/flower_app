@@ -7,6 +7,7 @@ class AppConstants {
   static const String success = "success";
   static const String signIn = "auth/signin";
   static const String signup = "auth/signup";
+  static const String logout = "auth/logout";
   static const String forgetPassword = "auth/forgotPassword";
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String restPassword = "auth/resetPassword";

@@ -1,15 +1,17 @@
 import 'package:flower_app/core/extensions/extensions.dart';
-import 'package:flower_app/features/profile/logout/views/logout_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/notification_toggle_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/config/di.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../auth/logout/viewmodel/logout_viewmodel.dart';
+import '../../../auth/logout/views/logout_widget.dart';
 import '../viewmodel/profile_viewmodel.dart';
 import '../viewmodel/states/profile_states.dart';
 
@@ -81,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, AppRoutes.editProfile);
                   },
                   child: Column(
@@ -179,7 +181,12 @@ class ProfileScreen extends StatelessWidget {
                   title: local.logout,
                   trailing: Icon(Icons.logout),
                   onTap: () {
-                    showDialog(context: context, builder: (context) => const LogoutDialogWidget());
+                    showDialog(
+                        context: context,
+                        builder: (context) => BlocProvider(
+                              create: (context) => getIt<LogoutViewModel>(),
+                              child: const LogoutDialogWidget(),
+                            ));
                   },
                 ),
 

@@ -3,9 +3,9 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart';
-import 'package:flower_app/features/auth/domain/usecases/forget_password_usecase.dart';
-import 'package:flower_app/features/auth/domain/usecases/reset_password_usecase.dart';
-import 'package:flower_app/features/auth/domain/usecases/verify_code_usecase.dart';
+import 'package:flower_app/features/auth/domain/usecases/forget_password_usecase/forget_password_usecase.dart';
+import 'package:flower_app/features/auth/domain/usecases/reset_password_usecase/reset_password_usecase.dart';
+import 'package:flower_app/features/auth/domain/usecases/verify_code_usecase/verify_code_usecase.dart';
 
 import 'forget_password_use_cases_test.mocks.dart';
 

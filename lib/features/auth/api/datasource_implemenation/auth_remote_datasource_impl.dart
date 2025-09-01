@@ -41,4 +41,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   Future<String> verifyResetPassword(VerifyCodeRequestModel verifyCodeRequestModel) async{
     return await _authApiClient.verifyResetCode(verifyCodeRequestModel);
   }
+
+  @override
+  Future<String> logout() async{
+    return await _authApiClient.logout();
+  }
+
+
 }
