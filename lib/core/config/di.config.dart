@@ -40,12 +40,16 @@ import '../../features/auth/signup/cubit/signup_cubit.dart' as _i387;
 import '../../features/profile/api/client/profile_api_client.dart' as _i418;
 import '../../features/profile/api/datasource_impl/profile_remote_datasource_impl.dart'
     as _i121;
+import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart'
+    as _i346;
 import '../../features/profile/data/datasource/profile_remote_datasource.dart'
     as _i1031;
 import '../../features/profile/data/repositories_impl/profile_repository_impl.dart'
     as _i357;
 import '../../features/profile/domain/repositories/profile_repository.dart'
     as _i894;
+import '../../features/profile/domain/usecases/change_password_usecase.dart'
+    as _i550;
 import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
     as _i68;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
@@ -109,6 +113,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1063.LoginViewModel(gh<_i1037.LoginUseCase>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.lazySingleton<_i550.ChangePasswordUseCases>(
+        () => _i550.ChangePasswordUseCases(gh<_i894.ProfileRepository>()));
+    gh.factory<_i346.ChangePasswordViewModel>(() =>
+        _i346.ChangePasswordViewModel(gh<_i550.ChangePasswordUseCases>()));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     gh.factory<_i351.ProfileViewModel>(

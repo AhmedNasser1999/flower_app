@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تطبيق متجر الزهور الالكتروني';
+  String get appName => 'تظبيق متجر الزهور الالكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -57,13 +57,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الإعدادات';
+  String get settings => 'الاعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -81,13 +81,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get currentPassword => 'كلمة المرور الحالية';
+  String get currentPassword => 'Current Password';
 
   @override
-  String get newPassword => 'كلمة مرور جديدة';
+  String get newPassword => 'New Password';
 
   @override
-  String get confirmPassword => 'تأكيد كلمة المرور';
+  String get confirmPassword => 'Confirm Password';
 
   @override
   String get invalidPasswordMsg => 'invalid password';
@@ -147,32 +147,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
-  String get notificationCount => '٣';
+  String get notificationCount => '3';
 
   @override
-  String get myOrders => 'طلباتي';
+  String get myOrders => 'My orders';
 
   @override
-  String get savedAddress => 'العناوين المحفوظة';
+  String get savedAddress => 'Saved address';
 
   @override
-  String get language => 'اللغة';
+  String get language => 'Language';
 
   @override
-  String get languageChanged => 'العربيه';
+  String get languageChanged => 'English';
 
   @override
-  String get aboutUs => 'معلومات عنا';
+  String get aboutUs => 'About us';
 
   @override
-  String get notification => 'أشعارات';
+  String get notification => 'Notification';
 
   @override
-  String get termsConditions => 'الشروط والأحكام';
+  String get termsConditions => 'Terms & conditions';
 
   @override
-  String get error => 'خطأ:';
+  String get error => 'Error:';
 
   @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+  String get versionInfo => 'v 6.3.0 - (446)';
 }

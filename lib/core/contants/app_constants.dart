@@ -11,4 +11,5 @@ class AppConstants {
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String restPassword = "auth/resetPassword";
   static const String profile = "/auth/profile-data";
+  static const String changePassword = "/auth/change-password";
 }
