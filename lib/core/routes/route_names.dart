@@ -10,4 +10,6 @@ abstract class AppRoutes {
   static const String editProfile="/editProfile";
   static const String changePasswordScreen="/changePasswordScreen";
   static const String logoutWidget="/logoutWidget";
+
+
 }
