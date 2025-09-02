@@ -3,13 +3,10 @@ import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
-import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/extensions/validations.dart';
 import '../../../../../core/routes/route_names.dart';
 import '../viewmodel/login_states.dart';
@@ -84,147 +81,149 @@ class _LoginScreenState extends State<LoginScreen> {
           return Form(
             key: _formKey,
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(AppImages.arrowBack)
-                            .setHorizontalAndVerticalPadding(
-                                context, 0.05, 0.07),
-                      ),
-                      Text(
-                        local!.login,
-                        style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Inter",
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomTextFormField(
-                    controller: viewModel.emailController,
-                    label: local.emailLabel,
-                    hint: local.emailHintText,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return local.emailIsEmptyErrorMessage;
-                      }
-                      if (!Validations.validateEmail(value)) {
-                        return local.emailValidationErrorMsg;
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 18),
-                  CustomTextFormField(
-                    controller: viewModel.passwordController,
-                    label: local.passwordLabel,
-                    hint: local.passwordHintText,
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return local.passwordRequiredErrorMsg;
-                      }
-                      if (!Validations.validatePassword(value)) {
-                        return local.passwordValidationErrorMsg;
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: viewModel.rememberMe, onChanged: (value) {
-                            setState(() {
-                              viewModel.toggleRememberMe(value ?? false);
-                            });
-                      }),
-                      Text(
-                        local.rememberMe,
-                        style: const TextStyle(color: AppColors.black),
-                      ),
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.forgetPassword);
-                        },
-                        child: Text(
-                          local.forgetPasswordTextButton,
-                          style: TextStyle(
-                            color: AppColors.black.withOpacity(0.4),
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 1.5,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  CustomElevatedButton(
-                    text: local.login,
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        viewModel.login(
-                          viewModel.emailController.text,
-                          viewModel.passwordController.text,
-                        );
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  CustomElevatedButton(
-                    text: local.continueAsGuestButton,
-                    textColor: AppColors.grey,
-                    onPressed: () async {
-                      try {
-                        await GuestService.startGuestSession();
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          AppRoutes.dashboard,
-                              (route) => false,
-                        );
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Failed to start guest session: $e')),
-                        );
-                      }
-                    },
-                    color: AppColors.white,
-                    borderColor: AppColors.grey,
-                  ),
-                  const SizedBox(height: 3),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        local.dontHaveAnAccount,
-                        style: const TextStyle(fontSize: 19),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.signUp);
-                        },
-                        child: Text(
-                          local.signUp,
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    SizedBox(height: 25),
+                    Row(
+                      children: [
+                        Text(
+                          local!.login,
                           style: const TextStyle(
-                            color: AppColors.pink,
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 1.5,
-                            decorationColor: AppColors.pink,
-                            fontSize: 19,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Inter",
+                            fontStyle: FontStyle.normal,
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              ).setHorizontalPadding(context, 0.04),
+                      ],
+                    ),
+                    SizedBox(height: 25),
+                    CustomTextFormField(
+                      controller: viewModel.emailController,
+                      label: local.emailLabel,
+                      hint: local.emailHintText,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return local.emailIsEmptyErrorMessage;
+                        }
+                        if (!Validations.validateEmail(value)) {
+                          return local.emailValidationErrorMsg;
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 25),
+                    CustomTextFormField(
+                      controller: viewModel.passwordController,
+                      label: local.passwordLabel,
+                      hint: local.passwordHintText,
+                      obscureText: true,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return local.passwordRequiredErrorMsg;
+                        }
+                        if (!Validations.validatePassword(value)) {
+                          return local.passwordValidationErrorMsg;
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: viewModel.rememberMe,
+                            onChanged: (value) {
+                              setState(() {
+                                viewModel.toggleRememberMe(value ?? false);
+                              });
+                            }),
+                        Text(
+                          local.rememberMe,
+                          style: const TextStyle(color: AppColors.black),
+                        ),
+                        const Spacer(),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, AppRoutes.forgetPassword);
+                          },
+                          child: Text(
+                            local.forgetPasswordTextButton,
+                            style: TextStyle(
+                              color: AppColors.black.withOpacity(0.4),
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 1.5,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 40),
+                    CustomElevatedButton(
+                      text: local.login,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          viewModel.login(
+                            viewModel.emailController.text,
+                            viewModel.passwordController.text,
+                          );
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    CustomElevatedButton(
+                      text: local.continueAsGuestButton,
+                      textColor: AppColors.grey,
+                      onPressed: () async {
+                        try {
+                          await GuestService.startGuestSession();
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            AppRoutes.dashboard,
+                            (route) => false,
+                          );
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                    Text('Failed to start guest session: $e')),
+                          );
+                        }
+                      },
+                      color: AppColors.white,
+                      borderColor: AppColors.grey,
+                    ),
+                    const SizedBox(height: 3),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          local.dontHaveAnAccount,
+                          style: const TextStyle(fontSize: 19),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, AppRoutes.signUp);
+                          },
+                          child: Text(
+                            local.signUp,
+                            style: const TextStyle(
+                              color: AppColors.pink,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 1.5,
+                              decorationColor: AppColors.pink,
+                              fontSize: 19,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ).setHorizontalPadding(context, 0.04),
+              ),
             ),
           );
         },
