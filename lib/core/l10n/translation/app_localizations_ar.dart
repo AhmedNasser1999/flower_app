@@ -36,8 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -82,22 +81,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText =>
-      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -122,4 +118,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
+
+  @override
+  String get deliverTo => 'توصيل إلي';
+
+  @override
+  String get subTotal => 'المجموع الفرعي';
+
+  @override
+  String get deliveryFee => 'رسوم التوصيل';
+
+  @override
+  String get total => 'المبلغ الإجمالي';
+
+  @override
+  String get checkout => 'الدفع';
 }

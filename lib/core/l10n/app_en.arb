@@ -35,5 +35,10 @@
   "confirmPasswordLabel": "Confirm Password",
   "newPasswordLabel": "New Password",
   "newPasswordHint": "Enter new password",
-  "wrongPasswordErrorMsg": "Wrong password, Try Again"
+  "wrongPasswordErrorMsg": "Wrong password, Try Again",
+  "deliverTo": "Deliver to",
+  "subTotal": "Sub Total",
+  "deliveryFee": "Delivery Fee",
+  "total": "Total",
+  "checkout": "Checkout"
 }

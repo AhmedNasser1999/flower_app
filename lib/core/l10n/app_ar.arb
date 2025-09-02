@@ -35,5 +35,10 @@
   "confirmPasswordLabel": "تأكيد كلمة المرور",
   "newPasswordLabel": "كلمة مرور جديدة",
   "newPasswordHint": "أدخل كلمة المرور الجديدة",
-  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى"
+  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
+  "deliverTo": "توصيل إلي",
+  "subTotal": "المجموع الفرعي",
+  "deliveryFee": "رسوم التوصيل",
+  "total": "المبلغ الإجمالي",
+  "checkout": "الدفع"
 }
