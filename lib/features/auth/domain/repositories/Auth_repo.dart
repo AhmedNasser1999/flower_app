@@ -6,5 +6,5 @@ abstract class AuthRepo {
   Future<AuthResponse<String>> forgetPassword(String email);
   Future<AuthResponse<String>> verifyCode(String code);
   Future<AuthResponse<String>> resetPassword(String email, String newPassword);
-  Future<LoginResponse> login(LoginRequest loginRequest);
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
 }
