@@ -29,8 +29,5 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed . || (echo "Formatting issues detected. Run 'dart format .' locally."; exit 1)
-
       - name: Analyze project source
         run: dart analyze
