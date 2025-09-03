@@ -150,7 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const Spacer(),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                        },
                         child: Text(
                           local.forgetPasswordTextButton,
                           style: TextStyle(

@@ -7,11 +7,18 @@ import 'dart:async' as _i4;
 
 import 'package:flower_app/features/auth/api/client/auth_api_client.dart'
     as _i3;
-import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
+import 'package:flower_app/features/auth/data/models/forget_password_models/forget_password_request.dart'
     as _i5;
+import 'package:flower_app/features/auth/data/models/forget_password_models/reset_password_request_model.dart'
+    as _i8;
+import 'package:flower_app/features/auth/data/models/forget_password_models/verify_code_request_model.dart'
+    as _i7;
+import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
+    as _i9;
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -46,7 +53,58 @@ class MockAuthApiClient extends _i1.Mock implements _i3.AuthApiClient {
   }
 
   @override
-  _i4.Future<_i2.LoginResponse> login(_i5.LoginRequest? loginRequest) =>
+  _i4.Future<String> forgetPassword(
+          _i5.ForgetPasswordRequestModel? forgetPasswordRequestModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [forgetPasswordRequestModel],
+        ),
+        returnValue: _i4.Future<String>.value(_i6.dummyValue<String>(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [forgetPasswordRequestModel],
+          ),
+        )),
+      ) as _i4.Future<String>);
+
+  @override
+  _i4.Future<String> verifyResetCode(
+          _i7.VerifyCodeRequestModel? verifyResetCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verifyResetCode,
+          [verifyResetCode],
+        ),
+        returnValue: _i4.Future<String>.value(_i6.dummyValue<String>(
+          this,
+          Invocation.method(
+            #verifyResetCode,
+            [verifyResetCode],
+          ),
+        )),
+      ) as _i4.Future<String>);
+
+  @override
+  _i4.Future<String> resetPassword(
+          _i8.ResetPasswordRequestModel? resetPasswordRequestModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #resetPassword,
+          [resetPasswordRequestModel],
+        ),
+        returnValue: _i4.Future<String>.value(_i6.dummyValue<String>(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [resetPasswordRequestModel],
+          ),
+        )),
+      ) as _i4.Future<String>);
+
+  @override
+  _i4.Future<_i2.LoginResponse> login(_i9.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,

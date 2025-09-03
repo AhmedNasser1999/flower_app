@@ -36,7 +36,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -73,4 +74,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cart => 'عربة التسوق';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get resetPasswordUnderMsg =>
+      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+
+  @override
+  String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
+
+  @override
+  String get emailVerificationScreenUnderMsg =>
+      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+
+  @override
+  String get codeReceiveMsgError => 'لم تستلم الرمز؟';
+
+  @override
+  String get forgetPasswordUnderText =>
+      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+
+  @override
+  String get forgetPassword => 'نسيت كلمة المرور';
+
+  @override
+  String get validationEmailErrorMessage => 'هذا البريد الإلكتروني غير صالح';
+
+  @override
+  String get requiredEmailErrorMessage => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get continueButton => 'متابعة';
+
+  @override
+  String get confirmPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get newPasswordLabel => 'كلمة مرور جديدة';
+
+  @override
+  String get newPasswordHint => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 }

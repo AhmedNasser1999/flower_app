@@ -20,5 +20,20 @@
   "settings": "Settings",
   "logout": "Logout",
   "categories": "Categories",
-  "cart": "Cart"
+  "cart": "Cart",
+  "password": "Password",
+  "resetPassword": "Reset Password",
+  "resetPasswordUnderMsg": "Password must not be empty and must contain 6 characters with upper case letter and one number at least",
+  "emailVerificationScreen": "Email verification",
+  "emailVerificationScreenUnderMsg": "Please enter your code that was sent to your\nemail address",
+  "codeReceiveMsgError": "Didn't receive code?",
+  "forgetPasswordUnderText": "Please enter your email associated to\nyour account",
+  "forgetPassword": "Forget Password",
+  "validationEmailErrorMessage": "This Email is not valid",
+  "requiredEmailErrorMessage": "Email is required",
+  "continueButton": "Continue",
+  "confirmPasswordLabel": "Confirm Password",
+  "newPasswordLabel": "New Password",
+  "newPasswordHint": "Enter new password",
+  "wrongPasswordErrorMsg": "Wrong password, Try Again"
 }

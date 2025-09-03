@@ -8,5 +8,6 @@ class AppConstants {
   static const String signIn = "auth/signin";
   static const String signup = "auth/signup";
   static const String forgetPassword = "auth/forgotPassword";
-
+  static const String verifyResetCode = "auth/verifyResetCode";
+  static const String restPassword = "auth/resetPassword";
 }
