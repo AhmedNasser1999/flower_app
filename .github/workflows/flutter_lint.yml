@@ -14,7 +14,6 @@ on:
 
 jobs:
   lint:
-    name: Run Flutter Analyze
     runs-on: ubuntu-latest
 
     steps:
@@ -30,5 +29,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run flutter analyze
-        run: flutter analyze --no-pub --no-fatal-warnings
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed
+
+      - name: Analyze project source
+        run: dart analyze --fatal-infos
