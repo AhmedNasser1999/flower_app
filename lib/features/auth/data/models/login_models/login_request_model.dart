@@ -9,7 +9,7 @@ class LoginRequest {
   @JsonKey(name: "password")
   final String? password;
 
-  LoginRequest ({
+  LoginRequest({
     this.email,
     this.password,
   });
@@ -22,5 +22,3 @@ class LoginRequest {
     return _$LoginRequestToJson(this);
   }
 }
-
-

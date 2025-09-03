@@ -24,11 +24,9 @@ Future<String> _getInitialRoute() async {
 
   if (isLoggedIn) {
     return AppRoutes.dashboard;
-  }
-  else if (isGuest) {
+  } else if (isGuest) {
     return AppRoutes.dashboard;
-  }
-  else {
+  } else {
     return AppRoutes.login;
   }
 }

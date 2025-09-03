@@ -36,7 +36,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg =>
+      'must be at least 6 characters and have M#12m';
 
   @override
   String get rememberMe => 'Remember me';

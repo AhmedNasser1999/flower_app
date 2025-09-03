@@ -27,7 +27,7 @@ class User {
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  User ({
+  User({
     this.Id,
     this.firstName,
     this.lastName,
@@ -49,5 +49,3 @@ class User {
     return _$UserToJson(this);
   }
 }
-
-

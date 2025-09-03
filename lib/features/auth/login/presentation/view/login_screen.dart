@@ -139,11 +139,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Checkbox(
-                          value: viewModel.rememberMe, onChanged: (value) {
+                          value: viewModel.rememberMe,
+                          onChanged: (value) {
                             setState(() {
                               viewModel.toggleRememberMe(value ?? false);
                             });
-                      }),
+                          }),
                       Text(
                         local.rememberMe,
                         style: const TextStyle(color: AppColors.black),
@@ -185,11 +186,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.dashboard,
-                              (route) => false,
+                          (route) => false,
                         );
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Failed to start guest session: $e')),
+                          SnackBar(
+                              content:
+                                  Text('Failed to start guest session: $e')),
                         );
                       }
                     },
