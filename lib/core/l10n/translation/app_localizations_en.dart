@@ -175,4 +175,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get versionInfo => 'v 6.3.0 - (446)';
+
+  @override
+  String get profileTitle => 'Edit Profile';
+
+  @override
+  String get usernameLabel => 'User name';
+
+  @override
+  String get firstNameLabel => 'First name';
+
+  @override
+  String get lastNameLabel => 'Last Name';
+
+  @override
+  String get passwordChangeText => 'Change';
+
+  @override
+  String get phoneNumberLabel => 'Phone Number';
+
+  @override
+  String get updateButton => 'Update';
+
+  @override
+  String get errorText => 'Error';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'Profile changed successfully!';
 }

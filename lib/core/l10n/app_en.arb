@@ -54,5 +54,14 @@
   "notification": "Notification",
   "termsConditions": "Terms & conditions",
   "error": "Error:",
-  "versionInfo": "v 6.3.0 - (446)"
+  "versionInfo": "v 6.3.0 - (446)",
+  "profileTitle": "Edit Profile",
+  "usernameLabel": "User name",
+  "firstNameLabel": "First name",
+  "lastNameLabel": "Last Name",
+  "passwordChangeText": "Change",
+  "phoneNumberLabel": "Phone Number",
+  "updateButton": "Update",
+  "errorText": "Error",
+  "profileUpdatedSuccessMsg":"Profile changed successfully!"
 }

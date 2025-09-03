@@ -4,12 +4,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
+import 'dart:io' as _i12;
 
 import 'package:flower_app/core/errors/api_result.dart' as _i5;
 import 'package:flower_app/features/profile/data/models/change_password_request_model.dart'
     as _i8;
 import 'package:flower_app/features/profile/data/models/change_password_response_model.dart'
     as _i2;
+import 'package:flower_app/features/profile/data/models/edit_profile_request_model.dart'
+    as _i10;
+import 'package:flower_app/features/profile/data/models/edit_profile_response_model.dart'
+    as _i9;
+import 'package:flower_app/features/profile/data/models/upload_photo_response.dart'
+    as _i11;
 import 'package:flower_app/features/profile/domain/entity/user_entity.dart'
     as _i6;
 import 'package:flower_app/features/profile/domain/repositories/profile_repository.dart'
@@ -83,4 +90,41 @@ class MockProfileRepository extends _i1.Mock implements _i3.ProfileRepository {
           ),
         )),
       ) as _i4.Future<_i2.ChangePasswordResponseModel>);
+
+  @override
+  _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>> editProfile(
+          _i10.EditProfileRequestModel? model) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [model],
+        ),
+        returnValue:
+            _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>.value(
+                _i7.dummyValue<_i5.ApiResult<_i9.EditProfileResponseModel>>(
+          this,
+          Invocation.method(
+            #editProfile,
+            [model],
+          ),
+        )),
+      ) as _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>);
+
+  @override
+  _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>> uploadPhoto(
+          _i12.File? photo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [photo],
+        ),
+        returnValue: _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>.value(
+            _i7.dummyValue<_i5.ApiResult<_i11.UploadPhotoResponse>>(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [photo],
+          ),
+        )),
+      ) as _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>);
 }

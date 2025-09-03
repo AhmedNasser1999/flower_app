@@ -18,6 +18,7 @@ import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
 import '../../features/auth/logout/views/logout_widget.dart';
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
+import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
@@ -96,7 +97,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) =>  AboutUs());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen());
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
 
       default:
         return MaterialPageRoute(

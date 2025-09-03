@@ -123,6 +123,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                 formKey.currentState!.validate()
                             ? () {
                                 viewModel.changePassword();
+                                Navigator.pushNamed(context, AppRoutes.editProfile);
                               }
                             : null,
                       )

@@ -147,32 +147,59 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
-  String get notificationCount => '3';
+  String get notificationCount => '٣';
 
   @override
-  String get myOrders => 'My orders';
+  String get myOrders => 'طلباتي';
 
   @override
-  String get savedAddress => 'Saved address';
+  String get savedAddress => 'العناوين المحفوظة';
 
   @override
-  String get language => 'Language';
+  String get language => 'اللغة';
 
   @override
-  String get languageChanged => 'English';
+  String get languageChanged => 'العربيه';
 
   @override
-  String get aboutUs => 'About us';
+  String get aboutUs => 'معلومات عنا';
 
   @override
-  String get notification => 'Notification';
+  String get notification => 'أشعارات';
 
   @override
-  String get termsConditions => 'Terms & conditions';
+  String get termsConditions => 'الشروط والأحكام';
 
   @override
-  String get error => 'Error:';
+  String get error => 'خطأ:';
 
   @override
-  String get versionInfo => 'v 6.3.0 - (446)';
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get profileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
+
+  @override
+  String get passwordChangeText => 'تغيير';
+
+  @override
+  String get phoneNumberLabel => 'رقم الهاتف';
+
+  @override
+  String get updateButton => 'تحديث';
+
+  @override
+  String get errorText => 'خطأ';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 }
