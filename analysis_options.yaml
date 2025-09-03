@@ -26,3 +26,8 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - lib/core/l10n/translation/app_localizations.dart
+    - lib/core/l10n/translation/app_localizations_ar.dart
+    - lib/core/l10n/translation/app_localizations_en.dart
