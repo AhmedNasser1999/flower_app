@@ -12,4 +12,5 @@ class AppConstants {
   static const String restPassword = "auth/resetPassword";
   static const String profile = "/auth/profile-data";
   static const String editProfile = "/auth/editProfile";
+  static const String uploadPhoto = "/auth/upload-photo";
 }

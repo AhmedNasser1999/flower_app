@@ -6,13 +6,13 @@ part 'edit_profile_response_model.g.dart';
 @JsonSerializable()
 class EditProfileResponseModel {
   @JsonKey(name: "message")
-  final String? message;
+  final String message;
   @JsonKey(name: "user")
-  final User? user;
+  final User user;
 
   EditProfileResponseModel ({
-    this.message,
-    this.user,
+    required this.message,
+    required this.user,
   });
 
   factory EditProfileResponseModel.fromJson(Map<String, dynamic> json) {

@@ -9,10 +9,8 @@ part of 'edit_profile_response_model.dart';
 EditProfileResponseModel _$EditProfileResponseModelFromJson(
         Map<String, dynamic> json) =>
     EditProfileResponseModel(
-      message: json['message'] as String?,
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+      message: json['message'] as String,
+      user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EditProfileResponseModelToJson(

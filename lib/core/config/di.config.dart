@@ -50,6 +50,8 @@ import '../../features/profile/domain/usecases/edit_profile_data_usecase.dart'
     as _i691;
 import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
     as _i68;
+import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
+    as _i971;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
 import 'dio_module/dio_module.dart' as _i484;
@@ -97,10 +99,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i474.ResetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i294.VerifyCodeUseCase>(
         () => _i294.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i164.ForgetPasswordCubit>(
-        () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
     gh.lazySingleton<_i894.ProfileRepository>(() =>
         _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
+    gh.factory<_i164.ForgetPasswordCubit>(
+        () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
+    gh.factory<_i691.EditProfileDataUseCase>(
+        () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.factory<_i68.GetProfileDataUseCase>(
+        () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i195.SignupUsecase>(
         () => _i195.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
@@ -109,14 +115,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1063.LoginViewModel>(
         () => _i1063.LoginViewModel(gh<_i1037.LoginUseCase>()));
-    gh.factory<_i68.GetProfileDataUseCase>(
-        () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
-    gh.factory<_i691.EditProfileDataUseCase>(
-        () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
-    gh.factory<_i387.SignupCubit>(
-        () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
+    gh.factory<_i971.UploadPhotoUseCase>(
+        () => _i971.UploadPhotoUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i351.ProfileViewModel>(
         () => _i351.ProfileViewModel(gh<_i68.GetProfileDataUseCase>()));
+    gh.factory<_i387.SignupCubit>(
+        () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     return this;
   }
 }

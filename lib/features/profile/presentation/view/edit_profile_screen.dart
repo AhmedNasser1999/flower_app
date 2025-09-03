@@ -1,16 +1,17 @@
+import 'dart:io';
 import 'package:flower_app/core/extensions/extensions.dart';
-import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
-import 'package:flower_app/features/profile/domain/entity/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/Widgets/custom_text_field.dart';
 import '../../../../core/config/di.dart';
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../domain/entity/user_entity.dart';
 import '../../domain/usecases/edit_profile_data_usecase.dart';
+import '../../domain/usecases/upload_photo_usecase.dart';
 import '../viewmodel/edit_profile_viewmodel.dart';
 import '../viewmodel/states/edit_profile_states.dart';
 
@@ -18,14 +19,30 @@ class EditProfileScreen extends StatelessWidget {
   final UserEntity user;
   const EditProfileScreen({super.key, required this.user});
 
+  Future<void> _pickAndUploadPhoto(
+    BuildContext context,
+    EditProfileViewModel cubit,
+  ) async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+
+    if (picked != null) {
+      final file = File(picked.path);
+      cubit.uploadPhoto(file);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context, true);
-        }, icon: Image.asset(AppImages.arrowBack),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+          icon: Image.asset(AppImages.arrowBack),
+        ),
         title: Text(
           local.profileTitle,
           style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
@@ -62,39 +79,72 @@ class EditProfileScreen extends StatelessWidget {
         create: (_) {
           final cubit = EditProfileViewModel(
             getIt<EditProfileDataUseCase>(),
+            getIt<UploadPhotoUseCase>(),
           );
           cubit.setInitialData(user);
           return cubit;
         },
         child: BlocConsumer<EditProfileViewModel, EditProfileStates>(
+          listener: (context, state) {
+            if (state is EditProfileSuccessState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(local.profileUpdatedSuccessMsg)),
+              );
+            } else if (state is EditProfileErrorState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${local.errorText}: ${state.message}')),
+              );
+            } else if (state is ProfilePhotoUpdatedState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Updating photo ${state.message}")),
+              );
+            } else if (state is ProfilePhotoErrorState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message)),
+              );
+            }
+          },
           builder: (context, state) {
-            final editCubitController = context.read<EditProfileViewModel>();
+            final cubit = context.read<EditProfileViewModel>();
 
             return SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Stack(
                     children: [
                       CircleAvatar(
                         radius: 50,
-                        backgroundImage: NetworkImage(user.photo),
+                        backgroundImage: cubit.currentPhotoUrl != null
+                            ? (cubit.currentPhotoUrl!.startsWith("http")
+                                ? NetworkImage(cubit.currentPhotoUrl!)
+                                : FileImage(File(cubit.currentPhotoUrl!))
+                                    as ImageProvider)
+                            : NetworkImage(user.photo),
                       ),
                       Positioned(
                         bottom: 0,
                         right: 4,
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: AppColors.lightPink,
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: const Icon(
-                            Icons.camera_alt_outlined,
-                            color: AppColors.grey,
-                            size: 20,
+                        child: GestureDetector(
+                          onTap: () => _pickAndUploadPhoto(context, cubit),
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: AppColors.lightPink,
+                            ),
+                            padding: const EdgeInsets.all(4),
+                            child: state is ProfilePhotoLoadingState
+                                ? const CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor:
+                                        AlwaysStoppedAnimation(AppColors.grey),
+                                  )
+                                : const Icon(
+                                    Icons.camera_alt_outlined,
+                                    color: AppColors.grey,
+                                    size: 20,
+                                  ),
                           ),
                         ),
                       ),
@@ -106,14 +156,14 @@ class EditProfileScreen extends StatelessWidget {
                       Expanded(
                         child: CustomTextFormField(
                           label: local.firstNameLabel,
-                          controller: editCubitController.firstnameController,
+                          controller: cubit.firstnameController,
                         ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
                         child: CustomTextFormField(
                           label: local.lastNameLabel,
-                          controller: editCubitController.lastnameController,
+                          controller: cubit.lastnameController,
                         ),
                       ),
                       const SizedBox(width: 16),
@@ -122,12 +172,12 @@ class EditProfileScreen extends StatelessWidget {
                   const SizedBox(height: 13),
                   CustomTextFormField(
                     label: local.emailLabel,
-                    controller: editCubitController.emailController,
+                    controller: cubit.emailController,
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.005),
                   const SizedBox(height: 13),
                   CustomTextFormField(
                     label: local.phoneNumberLabel,
-                    controller: editCubitController.phoneController,
+                    controller: cubit.phoneController,
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.005),
                   const SizedBox(height: 13),
                   CustomTextFormField(
@@ -137,7 +187,7 @@ class EditProfileScreen extends StatelessWidget {
                     suffixText: local.passwordChangeText,
                     onPressed: () {},
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.004),
-                  const SizedBox(height: 13),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Text(
@@ -189,28 +239,17 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ).setHorizontalPadding(context, 0.05),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
                   CustomElevatedButton(
                     text: local.updateButton,
                     isLoading: state is EditProfileLoadingState,
                     onPressed: () {
-                      editCubitController.submitProfileUpdate();
+                      cubit.submitProfileUpdate();
                     },
                   ).setVerticalPadding(context, 0.03),
                 ],
               ),
             );
-          },
-          listener: (context, state) {
-            if (state is EditProfileSuccessState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(local.profileUpdatedSuccessMsg)),
-              );
-            } else if (state is EditProfileErrorState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('${local.errorText}: ${state.message}')),
-              );
-            }
           },
         ),
       ),
