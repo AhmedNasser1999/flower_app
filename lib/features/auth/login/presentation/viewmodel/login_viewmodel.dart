@@ -1,7 +1,7 @@
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/domain/services/auth_service.dart';
-import 'package:flower_app/features/auth/domain/usecases/login_usecases.dart';
+import 'package:flower_app/features/auth/domain/usecases/login_usecase/login_usecases.dart';
 import 'package:flower_app/features/auth/login/presentation/viewmodel/login_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

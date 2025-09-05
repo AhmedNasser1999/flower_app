@@ -239,6 +239,60 @@ abstract class AppLocalizations {
   /// **'Reset Password'**
   String get resetPassword;
 
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @invalidPasswordMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'invalid password'**
+  String get invalidPasswordMsg;
+
+  /// No description provided for @passwordErrorMatchingMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password unmatching!'**
+  String get passwordErrorMatchingMsg;
+
+  /// No description provided for @updateText.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateText;
+
+  /// No description provided for @logoutAlertMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'LOGOUT'**
+  String get logoutAlertMsg;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logoutConfirmTextCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm logout!!'**
+  String get logoutConfirmTextCenter;
+
   /// No description provided for @resetPasswordUnderMsg.
   ///
   /// In en, this message translates to:
@@ -346,6 +400,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Bloom with our exquisite best sellers'**
   String get occasionsSubTitle;
+
+  /// No description provided for @notificationCount.
+  ///
+  /// In en, this message translates to:
+  /// **'3'**
+  String get notificationCount;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get myOrders;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved address'**
+  String get savedAddress;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @languageChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageChanged;
+
+  /// No description provided for @aboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About us'**
+  String get aboutUs;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @termsConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & conditions'**
+  String get termsConditions;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error:'**
+  String get error;
+
+  /// No description provided for @versionInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'v 6.3.0 - (446)'**
+  String get versionInfo;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get profileTitle;
+
+  /// No description provided for @usernameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User name'**
+  String get usernameLabel;
+
+  /// No description provided for @firstNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get firstNameLabel;
+
+  /// No description provided for @lastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastNameLabel;
+
+  /// No description provided for @passwordChangeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get passwordChangeText;
+
+  /// No description provided for @phoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumberLabel;
+
+  /// No description provided for @updateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateButton;
+
+  /// No description provided for @errorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get errorText;
+
+  /// No description provided for @profileUpdatedSuccessMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile changed successfully!'**
+  String get profileUpdatedSuccessMsg;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

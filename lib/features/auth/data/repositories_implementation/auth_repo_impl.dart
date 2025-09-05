@@ -18,7 +18,6 @@ import '../models/forget_password_models/verify_code_request_model.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
-
   final AuthRemoteDatasource _authRemoteDatasource;
 
   AuthRepoImpl(this._authRemoteDatasource);
@@ -38,13 +37,17 @@ class AuthRepoImpl implements AuthRepo {
   String _extractApiMessage(DioException e) {
     final data = e.response?.data;
     if (data is Map) {
-      return data['error'] ?? data['message'] ?? ServerFailure.fromDio(e).errorMessage;
+      return data['error'] ??
+          data['message'] ??
+          ServerFailure.fromDio(e).errorMessage;
     }
     if (data is String) {
       try {
         final decoded = json.decode(data);
         if (decoded is Map) {
-          return decoded['error'] ?? decoded['message'] ?? ServerFailure.fromDio(e).errorMessage;
+          return decoded['error'] ??
+              decoded['message'] ??
+              ServerFailure.fromDio(e).errorMessage;
         }
       } catch (_) {}
     }
@@ -68,7 +71,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<AuthResponse<String>> verifyCode(String code) async {
     try {
-      final model= VerifyCodeRequestModel(resetCode: code);
+      final model = VerifyCodeRequestModel(resetCode: code);
       final result = await _authRemoteDatasource.verifyResetPassword(model);
       return AuthResponse.success(result);
     } on DioException catch (e) {
@@ -80,9 +83,11 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<AuthResponse<String>> resetPassword(String email, String newPassword) async {
+  Future<AuthResponse<String>> resetPassword(
+      String email, String newPassword) async {
     try {
-      final model = ResetPasswordRequestModel(email: email , newPassword: newPassword);
+      final model =
+          ResetPasswordRequestModel(email: email, newPassword: newPassword);
       final result = await _authRemoteDatasource.resetPassword(model);
       return AuthResponse.success(result);
     } on DioException catch (e) {
@@ -92,9 +97,14 @@ class AuthRepoImpl implements AuthRepo {
       return AuthResponse.error(e.toString());
     }
   }
+
   @override
   Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
     return _authRemoteDatasource.signUp(registerRequest);
   }
 
+  @override
+  Future<String> logout() {
+    return _authRemoteDatasource.logout();
+  }
 }

@@ -70,7 +70,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       validator: widget.validator,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.black,
         fontWeight: FontWeight.w400,
         fontSize: 18,
@@ -79,18 +79,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.pink, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.pink, width: 1.5),
           borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.black),
+          borderSide: const BorderSide(color: AppColors.black),
           borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         labelText: widget.label,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: AppColors.black,
           fontWeight: FontWeight.w400,
         ),
@@ -98,7 +98,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintStyle: TextStyle(
           color: AppColors.grey.withValues(alpha: 0.5),
         ),
-        prefixIcon: widget.prefixIcon, // هنا أضفنا الـ prefixIcon
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.obscureText
             ? IconButton(
           icon: Icon(
@@ -111,13 +111,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             });
           },
         )
-            : null,
-        suffix: widget.suffixText != null
+            : (widget.suffixText != null
             ? GestureDetector(
           onTap: widget.onPressed ?? () {},
           child: Text(
             widget.suffixText!,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.pink,
               fontWeight: FontWeight.w600,
               fontSize: 14,
@@ -125,7 +124,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
           ),
         )
-            : null,
+            : null),
         errorStyle: const TextStyle(color: Colors.red, fontSize: 12),
       ),
     );
