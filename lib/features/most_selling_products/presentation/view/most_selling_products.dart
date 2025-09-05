@@ -20,7 +20,10 @@ class MostSellingProducts extends StatelessWidget {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
+
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -32,11 +35,11 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: theme.textTheme.headlineMedium,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: theme.textTheme.displayMedium,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
