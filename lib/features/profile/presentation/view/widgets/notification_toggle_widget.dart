@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../../core/theme/app_colors.dart';
 
 class NotificationToggleWidget extends StatefulWidget {
   const NotificationToggleWidget({super.key});
@@ -25,7 +24,7 @@ class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
             _enabled = val;
           });
         },
-        activeColor: Colors.white,
+        activeThumbColor: Colors.white,
         activeTrackColor: Colors.pink,
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Colors.grey.shade400,
