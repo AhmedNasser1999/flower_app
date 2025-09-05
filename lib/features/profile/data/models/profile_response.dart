@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../auth/data/models/login_models/login_response_model.dart';
+import '../../../auth/data/models/login_models/user_model.dart';
+
 
 part 'profile_response.g.dart';
 

@@ -18,6 +18,7 @@ import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -166,4 +167,19 @@ class MockAuthRepo extends _i1.Mock implements _i5.AuthRepo {
           ),
         )),
       ) as _i6.Future<_i4.RegisterResponse>);
+
+  @override
+  _i6.Future<String> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i6.Future<String>.value(_i9.dummyValue<String>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i6.Future<String>);
 }

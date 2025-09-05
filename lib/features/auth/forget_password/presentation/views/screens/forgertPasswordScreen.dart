@@ -1,8 +1,9 @@
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
-import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
 import '../../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/extensions/validations.dart';
@@ -11,7 +12,6 @@ import '../../../../../../core/routes/route_names.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../viewmodel/forget_password_viewmodel.dart';
 import '../../viewmodel/states/forget_password_states.dart';
-
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});
@@ -60,12 +60,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 Text(
+                Text(
                   local.forgetPassword,
-                  style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 20),
                 ),
                 const SizedBox(height: 10),
-                 Text(local.forgetPasswordUnderText,
+                Text(local.forgetPasswordUnderText,
                     textAlign: TextAlign.center),
                 const SizedBox(height: 40),
                 CustomTextFormField(
@@ -84,19 +85,27 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
-                    ? const Center(child: CircularProgressIndicator())
+                    ? SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: LoadingIndicator(
+                        indicatorType: Indicator.lineScalePulseOut,
+                        colors: [AppColors.pink],
+                        strokeWidth: 2,
+                        backgroundColor: Colors.transparent,
+                      ),
+                    )
                     : CustomElevatedButton(
-                  text: "Continue",
-                  onPressed: cubit.isFormValid
-                      ? () {
-                    if (_formState.currentState!.validate()) {
-                      cubit.sendResetCode();
-                    }
-                  }
-                      : null,
-                  color:
-                  cubit.isFormValid ? AppColors.pink : Colors.grey,
-                )
+                        text: "Continue",
+                        onPressed: cubit.isFormValid
+                            ? () {
+                                if (_formState.currentState!.validate()) {
+                                  cubit.sendResetCode();
+                                }
+                              }
+                            : null,
+                        color: cubit.isFormValid ? AppColors.pink : Colors.grey,
+                      )
               ],
             ).setHorizontalAndVerticalPadding(context, 0.055, 0.05),
           );
@@ -110,7 +119,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               arguments: cubit.emailController.text,
               AppRoutes.emailVerification,
             );
-
           } else if (state is ForgetPasswordErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),

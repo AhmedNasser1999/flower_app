@@ -81,6 +81,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get invalidPasswordMsg => 'invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Password unmatching!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get logoutAlertMsg => 'LOGOUT';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logoutConfirmTextCenter => 'Confirm logout!!';
+
+  @override
   String get resetPasswordUnderMsg => 'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
 
   @override
@@ -120,6 +147,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
 
   @override
+  String get addToCartBtn => 'Add to cart';
+
+  @override
+  String get mostSellingTitle => 'Best Seller';
+
+  @override
+  String get mostSellingSubTitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get occasionsTitle => 'Occasions';
+
+  @override
+  String get occasionsSubTitle => 'Bloom with our exquisite best sellers';
+
+  @override
   String get notificationCount => '3';
 
   @override
@@ -148,6 +190,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get versionInfo => 'v 6.3.0 - (446)';
+
+  @override
+  String get profileTitle => 'Edit Profile';
+
+  @override
+  String get usernameLabel => 'User name';
+
+  @override
+  String get firstNameLabel => 'First name';
+
+  @override
+  String get lastNameLabel => 'Last Name';
+
+  @override
+  String get passwordChangeText => 'Change';
+
+  @override
+  String get phoneNumberLabel => 'Phone Number';
+
+  @override
+  String get updateButton => 'Update';
+
+  @override
+  String get errorText => 'Error';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'Profile changed successfully!';
 
   @override
   String get deliverTo => 'Deliver to';

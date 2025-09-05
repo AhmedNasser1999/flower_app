@@ -36,9 +36,11 @@ abstract class AuthApiClient {
   @POST(AppConstants.signIn)
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
 
-
-
-
   @POST(AppConstants.signup)
   Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);
+
+  @GET(AppConstants.logout)
+  @Extra({'auth': true})
+  Future<String> logout();
+
 }

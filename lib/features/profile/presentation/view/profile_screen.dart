@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/config/di.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../auth/logout/viewmodel/logout_viewmodel.dart';
+import '../../../auth/logout/views/logout_widget.dart';
 import '../viewmodel/profile_viewmodel.dart';
 import '../viewmodel/states/profile_states.dart';
 
@@ -80,8 +83,11 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(context, AppRoutes.editProfile);
+                  onTap: () async {
+                    final updated = await Navigator.pushNamed(context, AppRoutes.editProfile,arguments: profile);
+                    if(updated==true){
+                      context.read<ProfileViewModel>().getProfile();
+                    }
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -177,7 +183,14 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   title: local.logout,
                   trailing: Icon(Icons.logout),
-                  onTap: () {},
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => BlocProvider(
+                              create: (context) => getIt<LogoutViewModel>(),
+                              child: const LogoutDialogWidget(),
+                            ));
+                  },
                 ),
 
                 Spacer(),

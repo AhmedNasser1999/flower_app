@@ -2,7 +2,11 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
+import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
+import 'package:flower_app/features/home/presentation/view/home_screen.dart';
+import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
+import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +19,17 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
+import '../../features/auth/logout/views/logout_widget.dart';
+import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
+import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
+import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
+import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
+import '../../features/most_selling_products/domain/entity/products_entity.dart';
+import '../../features/occasion/presentation/view/occasion_screen.dart';
+import '../Widgets/product_details.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -28,6 +41,9 @@ class Routes {
             child: const LoginScreen(),
           ),
         );
+
+      case AppRoutes.homeScreen:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
 
       case AppRoutes.signUp:
         return MaterialPageRoute(
@@ -58,6 +74,22 @@ class Routes {
 
           ),
         );
+      case AppRoutes.changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ChangePasswordViewModel>(),
+            child: const ChangePasswordScreen(),
+          ),
+        );
+      case AppRoutes.logoutWidget:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LogoutViewModel>(),
+            child: const LogoutDialogWidget(),
+          ),
+        );
+
+
 
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
@@ -69,6 +101,41 @@ class Routes {
           ),
         );
 
+      case AppRoutes.mostSellingProducts:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            child: MostSellingProducts(),
+          ),
+        );
+
+      case AppRoutes.productDetails:
+        final product = settings.arguments as ProductsEntity;
+        return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
+
+      case AppRoutes.occasions:
+        return MaterialPageRoute(
+          builder: (context) => const OccasionScreen(),
+        );
+      case AppRoutes.categoriesScreen:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                getIt<CategoriesCubit>()..getAllCategories(),
+              ),
+            ],
+            child: const CategoriesScreen(),
+          ),
+        );
+
+
+
       case AppRoutes.termsAndConditions:
         return MaterialPageRoute(builder: (_) =>  TermsAndConditions());
 
@@ -76,7 +143,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) =>  AboutUs());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen());
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
 
       default:
         return MaterialPageRoute(

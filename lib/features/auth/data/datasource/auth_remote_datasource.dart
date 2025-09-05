@@ -16,4 +16,6 @@ abstract class AuthRemoteDatasource {
 
   Future<LoginResponse> login(LoginRequest loginRequest);
   Future<RegisterResponse> signUp(RegisterRequest registerRequest);
+
+  Future<String> logout();
 }

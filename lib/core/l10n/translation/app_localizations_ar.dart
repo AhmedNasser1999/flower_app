@@ -81,6 +81,33 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get invalidPasswordMsg => 'invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Password unmatching!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get logoutAlertMsg => 'LOGOUT';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logoutConfirmTextCenter => 'Confirm logout!!';
+
+  @override
   String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
@@ -120,6 +147,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
+  String get addToCartBtn => 'أضف إلى السلة';
+
+  @override
+  String get mostSellingTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+
+  @override
+  String get occasionsTitle => 'المناسبات';
+
+  @override
+  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+
+  @override
   String get notificationCount => '٣';
 
   @override
@@ -148,6 +190,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get profileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
+
+  @override
+  String get passwordChangeText => 'تغيير';
+
+  @override
+  String get phoneNumberLabel => 'رقم الهاتف';
+
+  @override
+  String get updateButton => 'تحديث';
+
+  @override
+  String get errorText => 'خطأ';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 
   @override
   String get deliverTo => 'توصيل إلي';

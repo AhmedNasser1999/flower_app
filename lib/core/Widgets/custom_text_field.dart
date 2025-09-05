@@ -9,11 +9,13 @@ class CustomTextFormField extends StatefulWidget {
   final String? label;
   final String? hint;
   final String? suffixText;
-  final bool obscureText; // formerly isPassword
+  final bool obscureText;
   final TextInputType keyboardType;
   final bool enabled;
   final bool readonly;
   final String? initialText;
+  final double borderRadius;
+  final Widget? prefixIcon;
 
   const CustomTextFormField({
     super.key,
@@ -29,6 +31,8 @@ class CustomTextFormField extends StatefulWidget {
     this.enabled = true,
     this.readonly = false,
     this.initialText,
+    this.borderRadius = 8.0,
+    this.prefixIcon,
   });
 
   @override
@@ -58,7 +62,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       controller: _controller,
       enabled: widget.enabled,
       readOnly: widget.readonly,
@@ -67,7 +70,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       validator: widget.validator,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.black,
         fontWeight: FontWeight.w400,
         fontSize: 18,
@@ -76,49 +79,52 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.pink, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.pink, width: 1.5),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: AppColors.black),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         labelText: widget.label,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: AppColors.black,
           fontWeight: FontWeight.w400,
-          
         ),
         hintText: widget.hint,
         hintStyle: TextStyle(
           color: AppColors.grey.withValues(alpha: 0.5),
         ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.obscureText
             ? IconButton(
-                icon: Icon(
-                  isTextObscured ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.grey,
-                ),
-                onPressed: () {
-                  setState(() {
-                    isTextObscured = !isTextObscured;
-                  });
-                },
-              )
-            : null,
-        suffix: widget.suffixText != null
+          icon: Icon(
+            isTextObscured ? Icons.visibility_off : Icons.visibility,
+            color: AppColors.grey,
+          ),
+          onPressed: () {
+            setState(() {
+              isTextObscured = !isTextObscured;
+            });
+          },
+        )
+            : (widget.suffixText != null
             ? GestureDetector(
-                onTap: widget.onPressed ?? () {},
-                child: Text(
-                  widget.suffixText!,
-                  style: TextStyle(
-                    color: AppColors.pink,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              )
-            : null,
-        border: const OutlineInputBorder(),
-        disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.black),
-        ),
+          onTap: widget.onPressed ?? () {},
+          child: Text(
+            widget.suffixText!,
+            style: const TextStyle(
+              color: AppColors.pink,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        )
+            : null),
         errorStyle: const TextStyle(color: Colors.red, fontSize: 12),
       ),
     );
