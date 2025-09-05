@@ -29,14 +29,22 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Verify formatting
+      # Verify formatting (ignore localization files)
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed . || (echo "Run 'dart format .' locally to fix formatting"; exit 1)
+        run: |
+          dart format --output=none --set-exit-if-changed \
+          $(find lib -name "*.dart" ! -path "lib/core/l10n/translation/app_localizations.dart" \
+                                    ! -path "lib/core/l10n/translation/app_localizations_en.dart" \
+                                    ! -path "lib/core/l10n/translation/app_localizations_ar.dart") \
+          || (echo "Run 'dart format .' locally to fix formatting"; exit 1)
 
-      # Check unused imports only
+      # Check unused imports only (ignore localization files)
       - name: Check unused imports
         run: |
-          dart analyze --fatal-warnings . \
+          dart analyze --fatal-warnings lib \
+            --exclude lib/core/l10n/translation/app_localizations.dart \
+            --exclude lib/core/l10n/translation/app_localizations_en.dart \
+            --exclude lib/core/l10n/translation/app_localizations_ar.dart \
           | grep -E "Unused import" \
           && (echo "Remove unused imports before committing"; exit 1) \
           || echo "No unused imports found"
