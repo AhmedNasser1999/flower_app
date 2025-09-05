@@ -40,5 +40,15 @@
   "subTotal": "Sub Total",
   "deliveryFee": "Delivery Fee",
   "total": "Total",
-  "checkout": "Checkout"
+  "checkout": "Checkout",
+  "notificationCount": "3",
+  "myOrders": "My orders",
+  "savedAddress": "Saved address",
+  "language": "Language",
+  "languageChanged": "English",
+  "aboutUs": "About us",
+  "notification": "Notification",
+  "termsConditions": "Terms & conditions",
+  "error": "Error:",
+  "versionInfo": "v 6.3.0 - (446)"
 }
