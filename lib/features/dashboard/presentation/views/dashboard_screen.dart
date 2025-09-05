@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/config/di.dart';
+import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
 import '../../../categories/presentation/viewmodel/categories_viewmodel.dart';
 

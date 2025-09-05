@@ -42,6 +42,21 @@ import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart'
     as _i1063;
 import '../../features/auth/logout/viewmodel/logout_viewmodel.dart' as _i71;
 import '../../features/auth/signup/cubit/signup_cubit.dart' as _i387;
+import '../../features/cart/api/client/cart_api_client.dart' as _i131;
+import '../../features/cart/api/data_source_impl/cart_remote_data_source_impl.dart'
+    as _i948;
+import '../../features/cart/data/data_source/cart_remote_data_source.dart'
+    as _i1026;
+import '../../features/cart/data/repo_impl/cart_repo_impl.dart' as _i966;
+import '../../features/cart/domain/repositories/cart_repository.dart' as _i322;
+import '../../features/cart/domain/use_cases/add_to_cart_use_case.dart'
+    as _i252;
+import '../../features/cart/domain/use_cases/get_cart_use_case.dart' as _i176;
+import '../../features/cart/domain/use_cases/remove_from_cart_use_case.dart'
+    as _i30;
+import '../../features/cart/domain/use_cases/update_cart_use_case.dart'
+    as _i147;
+import '../../features/cart/presentation/view_model/cart_cubit.dart' as _i818;
 import '../../features/categories/api/client/categories_api_client.dart'
     as _i361;
 import '../../features/categories/api/datasource_impl/catogries_remote_datasource_impl.dart'
@@ -131,10 +146,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
-    gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
-          gh<_i361.Dio>(),
-          baseUrl: gh<String>(instanceName: 'baseurl'),
-        ));
     gh.factory<_i361.CategoryApiClient>(() => _i361.CategoryApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
@@ -147,8 +158,18 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
+    gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
+    gh.factory<_i131.CartApiClient>(() => _i131.CartApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.lazySingleton<_i175.AuthRemoteDatasource>(
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
+    gh.lazySingleton<_i1026.CartRemoteDataSource>(
+        () => _i948.CartRemoteDataSourceImpl(gh<_i131.CartApiClient>()));
     gh.lazySingleton<_i904.GetCategoriesRemoteDataSource>(() =>
         _i315.GetCategoriesRemoteDataSourceImpl(gh<_i361.CategoryApiClient>()));
     gh.factory<_i341.ResetPasswordCubit>(
@@ -164,6 +185,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
         _i121.ProfileRemoteDatasourceImpl(
             apiClient: gh<_i418.ProfileApiClient>()));
+    gh.lazySingleton<_i322.CartRepository>(
+        () => _i966.CartRepositoryImpl(gh<_i1026.CartRemoteDataSource>()));
+    gh.factory<_i252.AddToCartUseCase>(
+        () => _i252.AddToCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i176.GetCartUseCase>(
+        () => _i176.GetCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i30.RemoveFromCartUseCase>(
+        () => _i30.RemoveFromCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i147.UpdateCartItemUseCase>(
+        () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
@@ -181,6 +212,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i894.ProfileRepository>(() =>
         _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
+    gh.factory<_i818.CartCubit>(() => _i818.CartCubit(
+          gh<_i252.AddToCartUseCase>(),
+          gh<_i176.GetCartUseCase>(),
+          gh<_i30.RemoveFromCartUseCase>(),
+          gh<_i147.UpdateCartItemUseCase>(),
+        ));
     gh.factory<_i594.CategoriesRepo>(() =>
         _i738.CategoriesRepoImpl(gh<_i904.GetCategoriesRemoteDataSource>()));
     gh.factory<_i691.EditProfileDataUseCase>(

@@ -8,11 +8,10 @@ import 'package:retrofit/retrofit.dart';
 
 abstract class AuthRepo{
 
-Future<LoginResponse> login(LoginRequest loginRequest);
+  Future<LoginResponse> login(LoginRequest loginRequest);
   Future<AuthResponse<String>> forgetPassword(String email);
   Future<AuthResponse<String>> verifyCode(String code);
   Future<AuthResponse<String>> resetPassword(String email, String newPassword);
   Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);
   Future<String> logout();
-  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
 }
