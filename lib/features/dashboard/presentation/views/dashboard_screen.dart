@@ -71,7 +71,8 @@ class DashboardScreen extends StatelessWidget {
                                   context
                                       .read<LocalizationCubit>()
                                       .selectLanguage(
-                                          "Arabic"); // toggle selection
+                                        "Arabic",
+                                      );
                                   Navigator.pop(context);
                                 },
                                 child: Row(
@@ -81,9 +82,9 @@ class DashboardScreen extends StatelessWidget {
                                       context
                                               .read<LocalizationCubit>()
                                               .isSelected("Arabic")
-                                          ? Icons.check_box
-                                          : Icons.check_box_outline_blank,
-                                      color: Theme.of(context).primaryColor,
+                                          ? Icons.radio_button_checked
+                                          : Icons.radio_button_unchecked,
+                                      color: Colors.pink,
                                     ),
                                     const Spacer(),
                                     Text(
@@ -110,7 +111,8 @@ class DashboardScreen extends StatelessWidget {
                                   context
                                       .read<LocalizationCubit>()
                                       .selectLanguage(
-                                          "English"); // toggle selection
+                                        "English",
+                                      );
                                   Navigator.pop(context);
                                 },
                                 child: Row(
@@ -120,9 +122,9 @@ class DashboardScreen extends StatelessWidget {
                                       context
                                               .read<LocalizationCubit>()
                                               .isSelected("English")
-                                          ? Icons.check_box
-                                          : Icons.check_box_outline_blank,
-                                      color: Theme.of(context).primaryColor,
+                                          ? Icons.radio_button_checked
+                                          : Icons.radio_button_unchecked,
+                                      color: Colors.pink,
                                     ),
                                     const Spacer(),
                                     Text(
