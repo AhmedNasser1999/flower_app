@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class OccasionList extends StatelessWidget {
   final List<OccasionEntity> occasionList;
+  final Function(OccasionEntity)? onTap;
   const OccasionList({
     super.key,
     required this.occasionList,
+    this.onTap,
   });
 
   @override
@@ -20,6 +22,7 @@ class OccasionList extends StatelessWidget {
           name: occasionList[index].name,
           isOccasion: true,
           price: 0,
+          onTap: onTap != null ? () => onTap!(occasionList[index]) : null,
         ),
         separatorBuilder: (context, index) => SizedBox(width: 16.0),
         itemCount: occasionList.length,

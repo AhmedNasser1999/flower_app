@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
         categories: state.categoriesList,
         onTap: (category) {
           print("Category tapped: ${category.Id}");
-          // context.read<CategoriesCubit>().getCategoryDetails(category.Id ?? "");
+          Navigator.pushNamed(context, AppRoutes.categoriesScreen);
         },
       );
     }
@@ -140,6 +140,10 @@ class HomeScreen extends StatelessWidget {
     } else {
       return BestSellerList(
         productList: state.productsList,
+        onTap: (product) {
+          print("Best seller product tapped: ${product.title}");
+          Navigator.pushNamed(context, AppRoutes.productDetails, arguments: product);
+        },
       );
     }
   }
@@ -177,6 +181,10 @@ class HomeScreen extends StatelessWidget {
     } else {
       return OccasionList(
         occasionList: state.occasionsList,
+        onTap: (occasion) {
+          print("Occasion tapped: ${occasion.name}");
+          Navigator.pushNamed(context, AppRoutes.occasions);
+        },
       );
     }
   }

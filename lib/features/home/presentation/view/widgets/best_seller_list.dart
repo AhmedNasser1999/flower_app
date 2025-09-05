@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class BestSellerList extends StatelessWidget {
   final List<ProductsEntity> productList;
-  const BestSellerList({super.key, required this.productList});
+  final Function(ProductsEntity)? onTap;
+  const BestSellerList({super.key, required this.productList, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class BestSellerList extends StatelessWidget {
           image: productList[index].imgCover,
           name: productList[index].title,
           price: productList[index].price,
+          onTap: onTap != null ? () => onTap!(productList[index]) : null,
         ),
         separatorBuilder: (context, index) => SizedBox(width: 16.0),
         itemCount: productList.length,
