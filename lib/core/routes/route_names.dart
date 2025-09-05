@@ -17,4 +17,5 @@ abstract class AppRoutes {
   static const String logoutWidget="/logoutWidget";
 
 
+  static const String cart="/cart";
 }

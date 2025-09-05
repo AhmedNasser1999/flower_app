@@ -147,6 +147,108 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
 
   @override
+  String get deliverTo => 'Deliver to';
+
+  @override
+  String get subTotal => 'Sub Total';
+
+  @override
+  String get deliveryFee => 'Delivery Fee';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get yourCartIsEmpty => 'Your cart is empty';
+
+  @override
+  String get addItemsToGetStarted => 'Add items to get started';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
+
+  @override
+  String get removeItem => 'Remove item';
+
+  @override
+  String get updateQuantity => 'Update quantity';
+
+  @override
+  String get itemAddedToCart => 'Item added to cart';
+
+  @override
+  String get itemRemovedFromCart => 'Item removed from cart';
+
+  @override
+  String get quantityUpdated => 'Quantity updated';
+
+  @override
+  String get cartLoading => 'Loading cart...';
+
+  @override
+  String get cartError => 'Error loading cart';
+
+  @override
+  String get proceedToCheckout => 'Proceed to Checkout';
+
+  @override
+  String get cartItems => 'Cart Items';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get shoppingCart => 'Shopping Cart';
+
+  @override
+  String get emptyCartMessage => 'Your shopping cart is empty. Start adding some beautiful flowers!';
+
+  @override
+  String get viewProducts => 'View Products';
+
+  @override
+  String get cartSummary => 'Cart Summary';
+
+  @override
+  String get applyCoupon => 'Apply Coupon';
+
+  @override
+  String get couponCode => 'Coupon Code';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get secureCheckout => 'Secure Checkout';
+
+  @override
+  String get moneyBackGuarantee => '30-Day Money Back Guarantee';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get taxes => 'Taxes';
+
+  @override
+  String get shipping => 'Shipping';
+
+  @override
+  String get discount => 'Discount';
+
+  @override
+  String get placeOrder => 'Place Order';
+
+  @override
   String get addToCartBtn => 'Add to cart';
 
   @override
@@ -219,17 +321,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUpdatedSuccessMsg => 'Profile changed successfully!';
 
   @override
-  String get deliverTo => 'Deliver to';
-
-  @override
-  String get subTotal => 'Sub Total';
-
-  @override
-  String get deliveryFee => 'Delivery Fee';
-
-  @override
-  String get total => 'Total';
-
-  @override
-  String get checkout => 'Checkout';
+  String get egp => 'EGP';
 }

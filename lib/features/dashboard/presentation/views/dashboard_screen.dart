@@ -1,3 +1,4 @@
+import 'package:flower_app/features/cart/presentation/view_model/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,34 +39,10 @@ class DashboardScreen extends StatelessWidget {
         ],
         child: const CategoriesScreen(),
       ),
-
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomElevatedButton(
-              text: "Change Password",
-              onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
-              },
-            ),
-            const SizedBox(height: 20),
-            CustomElevatedButton(
-              text: "Logout",
-              onPressed: () async {
-                await AuthService.logout();
-                await GuestService.endGuestSession();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  AppRoutes.login,
-                      (route) => false,
-                );
-              },
-            ),
-          ],
-        ),
+      BlocProvider(
+        create: (_) => getIt<CartCubit>()..getCart(),
+        child: const CartScreen(isFromNavBar: true),
       ),
-
       BlocProvider(
         create: (_) => getIt<ProfileViewModel>()..getProfile(),
         child: const ProfileScreen(),
@@ -81,13 +58,6 @@ class DashboardScreen extends StatelessWidget {
               return Scaffold(
                 backgroundColor: Colors.white,
                 body: screens[state.selectedIndex],
-                floatingActionButton: FloatingActionButton(
-                  backgroundColor: AppColors.black,
-                  child: const Icon(Icons.shopping_cart,color: AppColors.pink,),
-                    onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartScreen()));
-                }),
                 bottomNavigationBar: SizedBox(
                   height: 80,
                   child: CustomBottomNavBarWidget(

@@ -371,6 +371,210 @@ abstract class AppLocalizations {
   /// **'Wrong password, Try Again'**
   String get wrongPasswordErrorMsg;
 
+  /// No description provided for @deliverTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Deliver to'**
+  String get deliverTo;
+
+  /// No description provided for @subTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Sub Total'**
+  String get subTotal;
+
+  /// No description provided for @deliveryFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Fee'**
+  String get deliveryFee;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @yourCartIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get yourCartIsEmpty;
+
+  /// No description provided for @addItemsToGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Add items to get started'**
+  String get addItemsToGetStarted;
+
+  /// No description provided for @continueShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Shopping'**
+  String get continueShopping;
+
+  /// No description provided for @removeItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove item'**
+  String get removeItem;
+
+  /// No description provided for @updateQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Update quantity'**
+  String get updateQuantity;
+
+  /// No description provided for @itemAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Item added to cart'**
+  String get itemAddedToCart;
+
+  /// No description provided for @itemRemovedFromCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Item removed from cart'**
+  String get itemRemovedFromCart;
+
+  /// No description provided for @quantityUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity updated'**
+  String get quantityUpdated;
+
+  /// No description provided for @cartLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading cart...'**
+  String get cartLoading;
+
+  /// No description provided for @cartError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading cart'**
+  String get cartError;
+
+  /// No description provided for @proceedToCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed to Checkout'**
+  String get proceedToCheckout;
+
+  /// No description provided for @cartItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart Items'**
+  String get cartItems;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @quantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get quantity;
+
+  /// No description provided for @shoppingCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping Cart'**
+  String get shoppingCart;
+
+  /// No description provided for @emptyCartMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your shopping cart is empty. Start adding some beautiful flowers!'**
+  String get emptyCartMessage;
+
+  /// No description provided for @viewProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'View Products'**
+  String get viewProducts;
+
+  /// No description provided for @cartSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart Summary'**
+  String get cartSummary;
+
+  /// No description provided for @applyCoupon.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Coupon'**
+  String get applyCoupon;
+
+  /// No description provided for @couponCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Code'**
+  String get couponCode;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @secureCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure Checkout'**
+  String get secureCheckout;
+
+  /// No description provided for @moneyBackGuarantee.
+  ///
+  /// In en, this message translates to:
+  /// **'30-Day Money Back Guarantee'**
+  String get moneyBackGuarantee;
+
+  /// No description provided for @orderSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get orderSummary;
+
+  /// No description provided for @taxes.
+  ///
+  /// In en, this message translates to:
+  /// **'Taxes'**
+  String get taxes;
+
+  /// No description provided for @shipping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping'**
+  String get shipping;
+
+  /// No description provided for @discount.
+  ///
+  /// In en, this message translates to:
+  /// **'Discount'**
+  String get discount;
+
+  /// No description provided for @placeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get placeOrder;
+
   /// No description provided for @addToCartBtn.
   ///
   /// In en, this message translates to:
@@ -515,35 +719,11 @@ abstract class AppLocalizations {
   /// **'Profile changed successfully!'**
   String get profileUpdatedSuccessMsg;
 
-  /// No description provided for @deliverTo.
+  /// No description provided for @egp.
   ///
   /// In en, this message translates to:
-  /// **'Deliver to'**
-  String get deliverTo;
-
-  /// No description provided for @subTotal.
-  ///
-  /// In en, this message translates to:
-  /// **'Sub Total'**
-  String get subTotal;
-
-  /// No description provided for @deliveryFee.
-  ///
-  /// In en, this message translates to:
-  /// **'Delivery Fee'**
-  String get deliveryFee;
-
-  /// No description provided for @total.
-  ///
-  /// In en, this message translates to:
-  /// **'Total'**
-  String get total;
-
-  /// No description provided for @checkout.
-  ///
-  /// In en, this message translates to:
-  /// **'Checkout'**
-  String get checkout;
+  /// **'EGP'**
+  String get egp;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

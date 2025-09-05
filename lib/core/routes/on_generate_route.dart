@@ -25,6 +25,8 @@ import '../../features/profile/change_password/presentation/viewmodel/change_pas
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
+import '../../features/cart/presentation/view_model/cart_cubit.dart';
+import '../../features/cart/presentation/views/cart_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
@@ -48,17 +50,16 @@ class Routes {
       case AppRoutes.signUp:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-              create: (context) => getIt<SignupCubit>(),
-              child: const SignupScreen(),
-            ));
+                  create: (context) => getIt<SignupCubit>(),
+                  child: const SignupScreen(),
+                ));
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
+        return MaterialPageRoute(builder: (_) => DashboardScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ForgetPasswordCubit>(),
             child: const ForgetPasswordScreen(),
           ),
@@ -67,11 +68,9 @@ class Routes {
       case AppRoutes.emailVerification:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<VerifyCodeCubit>(),
             child: EmailVerificationScreen(email: email),
-
           ),
         );
       case AppRoutes.changePasswordScreen:
@@ -94,12 +93,19 @@ class Routes {
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ResetPasswordCubit>(),
             child: ResetPasswordScreen(email: email),
           ),
         );
+      case AppRoutes.cart:
+        final bool isFromNavBar = settings.arguments as bool? ?? false;
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<CartCubit>(),
+              child: CartScreen(isFromNavBar: isFromNavBar),
+
+                ));
 
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
@@ -111,8 +117,12 @@ class Routes {
 
       case AppRoutes.productDetails:
         final product = settings.arguments as ProductsEntity;
-        return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
-
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<CartCubit>(),
+            child: ProductDetails(product: product),
+          ),
+        );
       case AppRoutes.occasions:
         return MaterialPageRoute(
           builder: (context) => const OccasionScreen(),

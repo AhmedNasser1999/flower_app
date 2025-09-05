@@ -147,6 +147,108 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
+  String get deliverTo => 'توصيل إلي';
+
+  @override
+  String get subTotal => 'المجموع الفرعي';
+
+  @override
+  String get deliveryFee => 'رسوم التوصيل';
+
+  @override
+  String get total => 'المبلغ الإجمالي';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get yourCartIsEmpty => 'سلة التسوق فارغة';
+
+  @override
+  String get addItemsToGetStarted => 'أضف منتجات للبدء';
+
+  @override
+  String get continueShopping => 'مواصلة التسوق';
+
+  @override
+  String get removeItem => 'إزالة المنتج';
+
+  @override
+  String get updateQuantity => 'تحديث الكمية';
+
+  @override
+  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
+
+  @override
+  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+
+  @override
+  String get quantityUpdated => 'تم تحديث الكمية';
+
+  @override
+  String get cartLoading => 'جاري تحميل السلة...';
+
+  @override
+  String get cartError => 'خطأ في تحميل السلة';
+
+  @override
+  String get proceedToCheckout => 'المتابعة إلى الدفع';
+
+  @override
+  String get cartItems => 'عناصر السلة';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get quantity => 'الكمية';
+
+  @override
+  String get shoppingCart => 'سلة التسوق';
+
+  @override
+  String get emptyCartMessage => 'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
+
+  @override
+  String get viewProducts => 'عرض المنتجات';
+
+  @override
+  String get cartSummary => 'ملخص السلة';
+
+  @override
+  String get applyCoupon => 'تطبيق كوبون';
+
+  @override
+  String get couponCode => 'كود الكوبون';
+
+  @override
+  String get apply => 'تطبيق';
+
+  @override
+  String get remove => 'إزالة';
+
+  @override
+  String get secureCheckout => 'دفع آمن';
+
+  @override
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+
+  @override
+  String get orderSummary => 'ملخص الطلب';
+
+  @override
+  String get taxes => 'الضرائب';
+
+  @override
+  String get shipping => 'الشحن';
+
+  @override
+  String get discount => 'الخصم';
+
+  @override
+  String get placeOrder => 'تقديم الطلب';
+
+  @override
   String get addToCartBtn => 'أضف إلى السلة';
 
   @override
@@ -219,17 +321,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 
   @override
-  String get deliverTo => 'توصيل إلي';
-
-  @override
-  String get subTotal => 'المجموع الفرعي';
-
-  @override
-  String get deliveryFee => 'رسوم التوصيل';
-
-  @override
-  String get total => 'المبلغ الإجمالي';
-
-  @override
-  String get checkout => 'الدفع';
+  String get egp => 'جنيهاً';
 }
