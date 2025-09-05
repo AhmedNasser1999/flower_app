@@ -3,22 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i4;
 
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
-    as _i7;
+    as _i6;
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart'
-    as _i2;
-import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart'
-    as _i8;
-import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart'
-    as _i4;
-import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
     as _i5;
-import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
+import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
     as _i3;
+import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,30 +29,9 @@ import 'package:mockito/src/dummies.dart' as _i9;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
-  _FakeLoginResponse_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeAuthResponse_1<T> extends _i1.SmartFake
-    implements _i3.AuthResponse<T> {
-  _FakeAuthResponse_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeRegisterResponse_2 extends _i1.SmartFake
-    implements _i4.RegisterResponse {
-  _FakeRegisterResponse_2(
+class _FakeAuthResponse_0<T> extends _i1.SmartFake
+    implements _i2.AuthResponse<T> {
+  _FakeAuthResponse_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -69,63 +43,47 @@ class _FakeRegisterResponse_2 extends _i1.SmartFake
 /// A class which mocks [AuthRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepo extends _i1.Mock implements _i5.AuthRepo {
+class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
   MockAuthRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.LoginResponse> login(_i7.LoginRequest? loginRequest) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #login,
-          [loginRequest],
-        ),
-        returnValue: _i6.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
-          this,
-          Invocation.method(
-            #login,
-            [loginRequest],
-          ),
-        )),
-      ) as _i6.Future<_i2.LoginResponse>);
-
-  @override
-  _i6.Future<_i3.AuthResponse<String>> forgetPassword(String? email) =>
+  _i4.Future<_i2.AuthResponse<String>> forgetPassword(String? email) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i6.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
             #forgetPassword,
             [email],
           ),
         )),
-      ) as _i6.Future<_i3.AuthResponse<String>>);
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i6.Future<_i3.AuthResponse<String>> verifyCode(String? code) =>
+  _i4.Future<_i2.AuthResponse<String>> verifyCode(String? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyCode,
           [code],
         ),
-        returnValue: _i6.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
             #verifyCode,
             [code],
           ),
         )),
-      ) as _i6.Future<_i3.AuthResponse<String>>);
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i6.Future<_i3.AuthResponse<String>> resetPassword(
+  _i4.Future<_i2.AuthResponse<String>> resetPassword(
     String? email,
     String? newPassword,
   ) =>
@@ -137,8 +95,8 @@ class MockAuthRepo extends _i1.Mock implements _i5.AuthRepo {
             newPassword,
           ],
         ),
-        returnValue: _i6.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
             #resetPassword,
@@ -148,38 +106,23 @@ class MockAuthRepo extends _i1.Mock implements _i5.AuthRepo {
             ],
           ),
         )),
-      ) as _i6.Future<_i3.AuthResponse<String>>);
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i6.Future<_i4.RegisterResponse> signUp(
-          _i8.RegisterRequest? registerRequest) =>
+  _i4.Future<_i2.AuthResponse<_i5.LoginResponse>> login(
+          _i6.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
-          #signUp,
-          [registerRequest],
+          #login,
+          [loginRequest],
         ),
-        returnValue:
-            _i6.Future<_i4.RegisterResponse>.value(_FakeRegisterResponse_2(
+        returnValue: _i4.Future<_i2.AuthResponse<_i5.LoginResponse>>.value(
+            _FakeAuthResponse_0<_i5.LoginResponse>(
           this,
           Invocation.method(
-            #signUp,
-            [registerRequest],
+            #login,
+            [loginRequest],
           ),
         )),
-      ) as _i6.Future<_i4.RegisterResponse>);
-
-  @override
-  _i6.Future<String> logout() => (super.noSuchMethod(
-        Invocation.method(
-          #logout,
-          [],
-        ),
-        returnValue: _i6.Future<String>.value(_i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #logout,
-            [],
-          ),
-        )),
-      ) as _i6.Future<String>);
+      ) as _i4.Future<_i2.AuthResponse<_i5.LoginResponse>>);
 }
