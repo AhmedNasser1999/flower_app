@@ -36,7 +36,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';

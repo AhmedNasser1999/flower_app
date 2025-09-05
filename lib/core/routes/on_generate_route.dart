@@ -19,7 +19,7 @@ class Routes {
         );
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
+        return MaterialPageRoute(builder: (_) => DashboardScreen());
 
       default:
         return MaterialPageRoute(

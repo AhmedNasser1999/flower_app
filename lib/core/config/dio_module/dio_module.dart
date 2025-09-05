@@ -15,14 +15,15 @@ abstract class DioModule {
         contentType: 'application/json',
       ),
     )..interceptors.add(
-      LogInterceptor(
-        request: true,
-        requestBody: true,
-        responseBody: true,
-        error: true,
-      ),
-    );
+        LogInterceptor(
+          request: true,
+          requestBody: true,
+          responseBody: true,
+          error: true,
+        ),
+      );
   }
+
   @Named('baseurl')
   String get baseUrl => ApiConstant.baseUrl;
 }

@@ -70,11 +70,11 @@ abstract class SecureStorage {
   }
 
   static void _handleError(
-      String operation,
-      Object error,
-      StackTrace stackTrace, {
-        String? key,
-      }) {
+    String operation,
+    Object error,
+    StackTrace stackTrace, {
+    String? key,
+  }) {
     log('SecureStorage $operation error${key != null ? " for key: $key" : ""}: $error');
   }
 }

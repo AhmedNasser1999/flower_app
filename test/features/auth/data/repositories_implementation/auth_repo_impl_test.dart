@@ -62,7 +62,7 @@ void main() {
 
       // Act & Assert
       expect(
-            () => authRepoImpl.login(loginRequest),
+        () => authRepoImpl.login(loginRequest),
         throwsA(isA<Exception>()),
       );
 

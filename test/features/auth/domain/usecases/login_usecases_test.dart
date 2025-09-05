@@ -1,4 +1,3 @@
-
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
@@ -10,20 +9,19 @@ import 'package:mockito/mockito.dart';
 import 'login_usecases_test.mocks.dart';
 
 @GenerateMocks([AuthRepo])
-void main(){
-
+void main() {
   late MockAuthRepo mockAuthRepo;
   late LoginUseCase loginUseCase;
 
-  setUp((){
+  setUp(() {
     mockAuthRepo = MockAuthRepo();
     loginUseCase = LoginUseCase(mockAuthRepo);
   });
 
-  group('LoginUseCases', (){
+  group('LoginUseCases', () {
     test("Should return LoginResponse when repo call is Successful", () async {
       //Arrange
-      final loginRequest= LoginRequest(
+      final loginRequest = LoginRequest(
         email: "test@example.com",
         password: "password123",
       );
@@ -50,8 +48,6 @@ void main(){
       expect(result.token, "fakeToken");
       expect(result.user?.firstName, "Test");
       verify(mockAuthRepo.login(loginRequest)).called(1);
-
     });
   });
-
 }

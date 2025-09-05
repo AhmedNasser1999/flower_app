@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 extension PaddingtoWidget on Widget {
   Widget setHorizontalPadding(BuildContext context, double value,
       {bool enableMediaQuery = true}) {
-
     var mediaQuery = MediaQuery.of(context);
 
     return Padding(
@@ -13,8 +12,6 @@ extension PaddingtoWidget on Widget {
       child: this,
     );
   }
-
-
 
   Widget setVerticalPadding(BuildContext context, double value,
       {bool enableMediaQuery = true}) {
@@ -58,4 +55,3 @@ extension PaddingtoWidget on Widget {
     );
   }
 }
-

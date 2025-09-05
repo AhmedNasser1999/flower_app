@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
-
   final AuthApiClient _authApiClient;
 
   AuthRemoteDatasourceImpl(this._authApiClient);
@@ -14,10 +13,5 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<LoginResponse> login(LoginRequest loginRequest) async {
     return await _authApiClient.login(loginRequest);
-
   }
-
-  
-
-
 }
