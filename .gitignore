@@ -43,3 +43,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Ignore localization generated files
+lib/core/l10n/translation/app_localizations.dart
+lib/core/l10n/translation/app_localizations_ar.dart
+lib/core/l10n/translation/app_localizations_en.dart
