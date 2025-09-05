@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
@@ -10,7 +9,6 @@ import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
 import 'package:flower_app/core/errors/failure.dart';
 
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart';
-import 'dart:convert';
 
 import '../models/forget_password_models/forget_password_request.dart';
 import '../models/forget_password_models/reset_password_request_model.dart';
@@ -56,20 +54,14 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<AuthResponse<String>> forgetPassword(String email) async {
-    try {
-      final model = ForgetPasswordRequestModel(email: email);
-      final result = await _authRemoteDatasource.forgetPassword(model);
-      return AuthResponse.success(result);
-    } on DioException catch (e) {
-      String apiMessage = _extractApiMessage(e);
-      return AuthResponse.error(apiMessage);
-    } catch (e) {
-      return AuthResponse.error(e.toString());
-    }
+    final model = ForgetPasswordRequestModel(email: email);
+    return await _authRemoteDatasource.forgetPassword(model);
   }
 
   @override
   Future<AuthResponse<String>> verifyCode(String code) async {
+    final model = VerifyCodeRequestModel(resetCode: code);
+    return await _authRemoteDatasource.verifyResetPassword(model);
     try {
       final model = VerifyCodeRequestModel(resetCode: code);
       final result = await _authRemoteDatasource.verifyResetPassword(model);
@@ -83,6 +75,9 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<AuthResponse<String>> resetPassword(String email, String newPassword) async {
+    final model = ResetPasswordRequestModel(email: email, newPassword: newPassword);
+    return await _authRemoteDatasource.resetPassword(model);
   Future<AuthResponse<String>> resetPassword(
       String email, String newPassword) async {
     try {
@@ -99,6 +94,8 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {
+    return await _authRemoteDatasource.login(loginRequest);
   Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
     return _authRemoteDatasource.signUp(registerRequest);
   }

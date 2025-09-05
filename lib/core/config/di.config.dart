@@ -131,6 +131,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
+    gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.factory<_i361.CategoryApiClient>(() => _i361.CategoryApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
@@ -140,10 +144,6 @@ extension GetItInjectableX on _i174.GetIt {
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
     gh.factory<_i1040.OccasionApiClient>(() => _i1040.OccasionApiClient(
-          gh<_i361.Dio>(),
-          baseUrl: gh<String>(instanceName: 'baseurl'),
-        ));
-    gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));

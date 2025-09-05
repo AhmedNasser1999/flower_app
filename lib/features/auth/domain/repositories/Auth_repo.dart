@@ -14,4 +14,5 @@ Future<LoginResponse> login(LoginRequest loginRequest);
   Future<AuthResponse<String>> resetPassword(String email, String newPassword);
   Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);
   Future<String> logout();
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
 }

@@ -31,12 +31,11 @@ class LoginViewModel extends Cubit<LoginStates> {
       final response = await _loginUseCase(request);
 
       if(rememberMe) {
-        await AuthService.saveAuthToken(response.token?? "");
-        await AuthService.saveUserId(response.user!.Id.toString());
+        await AuthService.saveAuthToken(response.data?.token?? "");
+        await AuthService.saveUserId(response.data!.user!.Id.toString());
       }
 
-      print(response);
-      emit(LoginSuccessState(response));
+      emit(LoginSuccessState(response.data!));
 
     }catch(e){
       emit(LoginErrorState(e.toString()));
