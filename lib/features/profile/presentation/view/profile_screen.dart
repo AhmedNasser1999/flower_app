@@ -1,4 +1,5 @@
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/features/localization/localization_controller/localization_cubit.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/notification_toggle_widget.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, AppRoutes.editProfile);
                   },
                   child: Column(
@@ -148,7 +149,116 @@ class ProfileScreen extends StatelessWidget {
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: AppColors.pink),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 300,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              spacing: 16.0,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'Change Language',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.pink,
+                                      ),
+                                ),
+                                Card(
+                                  child: SizedBox(
+                                    height: 60,
+                                    width: double.infinity,
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage(
+                                              "Arabic",
+                                            );
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          const SizedBox(width: 16),
+                                          Icon(
+                                            context
+                                                    .read<LocalizationCubit>()
+                                                    .isSelected("Arabic")
+                                                ? Icons.radio_button_checked
+                                                : Icons.radio_button_unchecked,
+                                            color: Colors.pink,
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            'Arabic',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                          const SizedBox(width: 16),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  child: SizedBox(
+                                    height: 60,
+                                    width: double.infinity,
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage(
+                                              "English",
+                                            );
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          const SizedBox(width: 16),
+                                          Icon(
+                                            context
+                                                    .read<LocalizationCubit>()
+                                                    .isSelected("English")
+                                                ? Icons.radio_button_checked
+                                                : Icons.radio_button_unchecked,
+                                            color: Colors.pink,
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            'English',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                          const SizedBox(width: 16),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
 
                 MenuItemWidget(

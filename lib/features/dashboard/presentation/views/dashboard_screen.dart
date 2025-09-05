@@ -1,7 +1,3 @@
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
-import 'package:flower_app/core/routes/route_names.dart';
-import 'package:flower_app/features/auth/domain/services/auth_service.dart';
-import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
 import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +8,7 @@ import '../../../profile/presentation/view/profile_screen.dart';
 import '../../../profile/presentation/viewmodel/profile_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
