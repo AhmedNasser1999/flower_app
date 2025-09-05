@@ -40,7 +40,112 @@ class DashboardScreen extends StatelessWidget {
           CustomElevatedButton(
             text: 'Change language',
             onPressed: () {
-              context.read<LocalizationCubit>().changeLanguage();
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 300,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        spacing: 16.0,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Change Language',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.pink,
+                                ),
+                          ),
+                          Card(
+                            child: SizedBox(
+                              height: 60,
+                              width: double.infinity,
+                              child: InkWell(
+                                onTap: () {
+                                  context
+                                      .read<LocalizationCubit>()
+                                      .selectLanguage(
+                                          "Arabic"); // toggle selection
+                                  Navigator.pop(context);
+                                },
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 16),
+                                    Icon(
+                                      context
+                                              .read<LocalizationCubit>()
+                                              .isSelected("Arabic")
+                                          ? Icons.check_box
+                                          : Icons.check_box_outline_blank,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                      'Arabic',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            child: SizedBox(
+                              height: 60,
+                              width: double.infinity,
+                              child: InkWell(
+                                onTap: () {
+                                  context
+                                      .read<LocalizationCubit>()
+                                      .selectLanguage(
+                                          "English"); // toggle selection
+                                  Navigator.pop(context);
+                                },
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 16),
+                                    Icon(
+                                      context
+                                              .read<LocalizationCubit>()
+                                              .isSelected("English")
+                                          ? Icons.check_box
+                                          : Icons.check_box_outline_blank,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                      'English',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
             },
           )
         ],

@@ -4,12 +4,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LocalizationCubit extends Cubit<LocalizationState> {
   String language;
-  LocalizationCubit({required this.language}) : super(LanguageInitialState());
+  String selectedLanguage;
 
-  Future<void> changeLanguage() async {
-    final String newlanguage = language == "en" ? "ar" : "en";
-    language = newlanguage;
-    LocalizationPreference.saveLanguage(language);
-    emit(ChangeLanguage());
+  LocalizationCubit({required this.language, this.selectedLanguage = "English"})
+      : super(LanguageInitialState());
+
+  void selectLanguage(String lang) {
+    selectedLanguage = lang;
+
+    if (lang == "English") {
+      language = "en";
+      LocalizationPreference.saveLanguage(language);
+      emit(EnglishLanguage());
+    } else if (lang == "Arabic") {
+      language = "ar";
+      LocalizationPreference.saveLanguage(language);
+      emit(ArabicLanguage());
+    }
   }
+
+  bool isSelected(String lang) => selectedLanguage == lang;
 }
