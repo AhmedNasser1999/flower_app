@@ -84,15 +84,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
                     ? SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: LoadingIndicator(
-                        indicatorType: Indicator.lineScalePulseOut,
-                        colors: [AppColors.pink],
-                        strokeWidth: 2,
-                        backgroundColor: Colors.transparent,
-                      ),
-                    )
+                        height: 50,
+                        width: 50,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+                          colors: [AppColors.pink],
+                          strokeWidth: 2,
+                          backgroundColor: Colors.transparent,
+                        ),
+                      )
                     : CustomElevatedButton(
                         text: "Continue",
                         onPressed: cubit.isFormValid

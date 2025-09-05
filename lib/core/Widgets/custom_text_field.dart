@@ -43,7 +43,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   void initState() {
     super.initState();
     isTextObscured = widget.obscureText;
-    _controller = widget.controller ?? TextEditingController(text: widget.initialText);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.initialText);
   }
 
   @override
@@ -82,30 +83,30 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         suffixIcon: widget.obscureText
             ? IconButton(
-          icon: Icon(
-            isTextObscured ? Icons.visibility_off : Icons.visibility,
-            color: AppColors.grey,
-          ),
-          onPressed: () {
-            setState(() {
-              isTextObscured = !isTextObscured;
-            });
-          },
-        )
+                icon: Icon(
+                  isTextObscured ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isTextObscured = !isTextObscured;
+                  });
+                },
+              )
             : null,
         suffix: widget.suffixText != null
             ? GestureDetector(
-          onTap: widget.onPressed ?? () {},
-          child: Text(
-            widget.suffixText!,
-            style: TextStyle(
-              color: AppColors.pink,
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-        )
+                onTap: widget.onPressed ?? () {},
+                child: Text(
+                  widget.suffixText!,
+                  style: TextStyle(
+                    color: AppColors.pink,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              )
             : null,
         border: const OutlineInputBorder(),
         disabledBorder: OutlineInputBorder(

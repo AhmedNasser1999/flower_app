@@ -1,0 +1,42 @@
+name: Flutter Lint Check
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - dev
+      - '**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.3'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Verify formatting
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed . || (echo "Run 'dart format .' locally to fix formatting"; exit 1)
+
+      # Check unused imports only
+      - name: Check unused imports
+        run: |
+          dart analyze --fatal-warnings . \
+          | grep -E "Unused import" \
+          && (echo "Remove unused imports before committing"; exit 1) \
+          || echo "No unused imports found"

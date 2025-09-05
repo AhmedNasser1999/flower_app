@@ -27,8 +27,7 @@ class Routes {
         return MaterialPageRoute(builder: (_) => DashboardScreen());
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ForgetPasswordCubit>(),
             child: const ForgetPasswordScreen(),
           ),
@@ -37,25 +36,22 @@ class Routes {
       case AppRoutes.emailVerification:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<VerifyCodeCubit>(),
             child: EmailVerificationScreen(email: email),
-
           ),
         );
 
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ResetPasswordCubit>(),
             child: ResetPasswordScreen(email: email),
           ),
         );
 
-        default:
+      default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
             body: Center(child: Text('404 - Page Not Found')),

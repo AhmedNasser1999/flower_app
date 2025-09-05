@@ -50,7 +50,7 @@ void main() {
           .thenAnswer((_) async => AuthResponse.success('reset done'));
 
       final result =
-      await resetPasswordUseCase('test@example.com', 'newPass123');
+          await resetPasswordUseCase('test@example.com', 'newPass123');
 
       expect(result.data, 'reset done');
       verify(mockAuthRepo.resetPassword('test@example.com', 'newPass123'))
@@ -62,7 +62,7 @@ void main() {
           .thenAnswer((_) async => AuthResponse.error('reset error'));
 
       final result =
-      await resetPasswordUseCase('test@example.com', 'newPass123');
+          await resetPasswordUseCase('test@example.com', 'newPass123');
 
       expect(result.error, 'reset error');
     });
