@@ -1,3 +1,4 @@
+import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/home/presentation/view/widgets/occison_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
       create: (_) => getIt<HomeCubit>()..initializeHomeData(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
+          backgroundColor: AppColors.white,
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(

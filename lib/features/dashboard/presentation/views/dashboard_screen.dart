@@ -8,9 +8,12 @@ import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/profile/presentation/view/profile_screen.dart';
 import 'package:flower_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/config/di.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
+import '../../../categories/presentation/viewmodel/categories_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});

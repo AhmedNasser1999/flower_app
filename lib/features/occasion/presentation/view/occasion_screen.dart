@@ -93,7 +93,9 @@ class _OccasionScreenState extends State<OccasionScreen>
         ),
       ],
       child: Scaffold(
+        backgroundColor: AppColors.white,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
           elevation: 0,
           scrolledUnderElevation: 0,
           leading: IconButton(
@@ -105,11 +107,11 @@ class _OccasionScreenState extends State<OccasionScreen>
             children: [
               Text(
                 local.occasionsTitle,
-                style: theme.textTheme.headlineMedium,
+                style: TextStyle(fontSize: 24, fontFamily: "Janna", fontWeight: FontWeight.w400),
               ),
               Text(
                 local.occasionsSubTitle,
-                style: theme.textTheme.displayMedium,
+                style: TextStyle(fontSize: 16),
               ),
             ],
           ),

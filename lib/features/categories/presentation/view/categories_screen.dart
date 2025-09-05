@@ -1,3 +1,4 @@
+import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
@@ -27,6 +28,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Column(
         children: [
           const SizedBox(height: 60),

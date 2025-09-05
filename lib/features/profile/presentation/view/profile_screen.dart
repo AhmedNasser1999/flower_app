@@ -24,7 +24,9 @@ class ProfileScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         automaticallyImplyLeading: false,
         centerTitle: false,
         elevation: 0,

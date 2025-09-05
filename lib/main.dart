@@ -1,6 +1,7 @@
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/config/di.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
@@ -8,6 +9,9 @@ import 'core/routes/route_names.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/domain/services/auth_service.dart';
 import 'features/auth/domain/services/guest_service.dart';
+import 'features/localization/data/localization_preference.dart';
+import 'features/localization/localization_controller/localization_cubit.dart';
+import 'features/localization/localization_controller/localization_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
