@@ -29,4 +29,10 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   Future<CartResponse> updateCartItem(String itemId, int quantity) async {
     return await _apiClient.updateCartItem(itemId, {'quantity': quantity});
   }
+
+  @override
+  Future<CartResponse> clearCart() async {
+    return await _apiClient.clearCart();
+  }
+
 }

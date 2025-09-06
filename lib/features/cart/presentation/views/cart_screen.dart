@@ -43,18 +43,41 @@ class _CartScreenState extends State<CartScreen> {
         appBar: AppBar(
           title: !widget.isFromNavBar
               ? const Text("Cart")
-              : Padding(
-                  padding: EdgeInsetsDirectional.only(start: 18),
-                  child: const Text("Cart")),
+              : const Padding(
+            padding: EdgeInsetsDirectional.only(start: 18),
+            child: Text("Cart"),
+          ),
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
           leading: !widget.isFromNavBar
               ? IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new_sharp),
-                  onPressed: () => Navigator.pop(context),
-                )
+            icon: const Icon(Icons.arrow_back_ios_new_sharp),
+            onPressed: () => Navigator.pop(context),
+          )
               : null,
+          actions: [
+            BlocBuilder<CartCubit, CartState>(
+              builder: (context, state) {
+                if (state is CartLoaded &&
+                    state.cartResponse.cart.cartItems.isNotEmpty) {
+                  return TextButton(
+                    onPressed: () {
+                      _showClearCartDialog(context);
+                    },
+                    child: const Text(
+                      "Clear",
+                      style: TextStyle(
+                        color: AppColors.pink,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          ],
         ),
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
@@ -96,27 +119,27 @@ class _CartScreenState extends State<CartScreen> {
             child: cart.cartItems.isEmpty
                 ? _buildEmptyCart(context)
                 : ListView.builder(
-                    itemCount: cart.cartItems.length,
-                    itemBuilder: (context, index) {
-                      final item = cart.cartItems[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: ProductCartWidget(
-                          cartItem: item,
-                          onRemove: () => context
-                              .read<CartCubit>()
-                              .removeFromCart(item.product.id),
-                          onUpdateQuantity: (quantity) {
-                            if (quantity > 0) {
-                              context
-                                  .read<CartCubit>()
-                                  .updateCartItem(item.product.id, quantity);
-                            }
-                          },
-                        ),
-                      );
+              itemCount: cart.cartItems.length,
+              itemBuilder: (context, index) {
+                final item = cart.cartItems[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: ProductCartWidget(
+                    cartItem: item,
+                    onRemove: () => context
+                        .read<CartCubit>()
+                        .removeFromCart(item.product.id),
+                    onUpdateQuantity: (quantity) {
+                      if (quantity > 0) {
+                        context
+                            .read<CartCubit>()
+                            .updateCartItem(item.product.id, quantity);
+                      }
                     },
                   ),
+                );
+              },
+            ),
           ),
           if (cart.cartItems.isNotEmpty)
             _buildCheckoutSection(local, subtotal, total),
@@ -267,5 +290,31 @@ class _CartScreenState extends State<CartScreen> {
         log('Proceeding to checkout with ${cart.cartItems.length} items');
       }
     }
+  }
+
+  void _showClearCartDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Clear Cart"),
+        content: const Text("Are you sure you want to clear all items?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(ctx);
+              context.read<CartCubit>().clearCart(context);
+            },
+            child: const Text(
+              "Clear",
+              style: TextStyle(color: AppColors.pink),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

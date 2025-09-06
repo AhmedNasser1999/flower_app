@@ -20,4 +20,5 @@ class AppConstants {
   static const String getCart = "cart";
   static const String removeFromCart = "cart";
   static const String updateCartItem = "cart";
+  static const String deleteUserCart = "cart";
 }

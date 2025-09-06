@@ -31,4 +31,9 @@ abstract class CartApiClient {
     @Path('id') String itemId,
     @Body() Map<String, dynamic> data,
   );
+
+  @DELETE(AppConstants.deleteUserCart)
+  @Extra({'auth': true})
+  Future<CartResponse> clearCart();
+
 }

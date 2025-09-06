@@ -51,6 +51,7 @@ import '../../features/cart/data/repo_impl/cart_repo_impl.dart' as _i966;
 import '../../features/cart/domain/repositories/cart_repository.dart' as _i322;
 import '../../features/cart/domain/use_cases/add_to_cart_use_case.dart'
     as _i252;
+import '../../features/cart/domain/use_cases/clear_cart_use_case.dart' as _i493;
 import '../../features/cart/domain/use_cases/get_cart_use_case.dart' as _i176;
 import '../../features/cart/domain/use_cases/remove_from_cart_use_case.dart'
     as _i30;
@@ -195,6 +196,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i30.RemoveFromCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i147.UpdateCartItemUseCase>(
         () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i493.ClearCartUseCase>(
+        () => _i493.ClearCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
@@ -212,12 +215,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i894.ProfileRepository>(() =>
         _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
-    gh.factory<_i818.CartCubit>(() => _i818.CartCubit(
-          gh<_i252.AddToCartUseCase>(),
-          gh<_i176.GetCartUseCase>(),
-          gh<_i30.RemoveFromCartUseCase>(),
-          gh<_i147.UpdateCartItemUseCase>(),
-        ));
     gh.factory<_i594.CategoriesRepo>(() =>
         _i738.CategoriesRepoImpl(gh<_i904.GetCategoriesRemoteDataSource>()));
     gh.factory<_i691.EditProfileDataUseCase>(
@@ -242,6 +239,13 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
     gh.factory<_i971.UploadPhotoUseCase>(
         () => _i971.UploadPhotoUseCase(gh<_i894.ProfileRepository>()));
+    gh.factory<_i818.CartCubit>(() => _i818.CartCubit(
+          gh<_i252.AddToCartUseCase>(),
+          gh<_i176.GetCartUseCase>(),
+          gh<_i30.RemoveFromCartUseCase>(),
+          gh<_i147.UpdateCartItemUseCase>(),
+          gh<_i493.ClearCartUseCase>(),
+        ));
     gh.factory<_i71.LogoutViewModel>(
         () => _i71.LogoutViewModel(gh<_i8.LogoutUseCase>()));
     gh.factory<_i72.MostSellingProductsViewmodel>(() =>
