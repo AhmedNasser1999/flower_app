@@ -87,8 +87,10 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    final updated = await Navigator.pushNamed(context, AppRoutes.editProfile,arguments: profile);
-                    if(updated==true){
+                    final updated = await Navigator.pushNamed(
+                        context, AppRoutes.editProfile,
+                        arguments: profile);
+                    if (updated == true) {
                       context.read<ProfileViewModel>().getProfile();
                     }
                   },
@@ -182,6 +184,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Card(
                                   child: SizedBox(
+
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(

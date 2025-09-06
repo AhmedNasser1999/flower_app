@@ -8,12 +8,15 @@ import 'package:flower_app/features/most_selling_products/presentation/viewmodel
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
 import '../../../../../core/routes/route_names.dart';
+import '../../../../cart/presentation/view_model/cart_cubit.dart';
 
 class ProductsGridWidget extends StatelessWidget {
   const ProductsGridWidget({super.key});
 
   int calculateDiscountPercentage(int originalPrice, int discountedPrice) {
-    if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
+    if (originalPrice <= 0 ||
+        discountedPrice < 0 ||
+        discountedPrice > originalPrice) {
       return 0;
     }
     double discount = ((originalPrice - discountedPrice) / originalPrice) * 100;
@@ -59,6 +62,7 @@ class ProductsGridWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = products[index];
               return ProductCard(
+                productId: product.id,
                 productImg: product.imgCover,
                 productPrice: product.price,
                 productPriceDiscount: product.priceAfterDiscount,
@@ -67,8 +71,9 @@ class ProductsGridWidget extends StatelessWidget {
                   product.priceAfterDiscount,
                 ),
                 productTitle: product.title,
-                onTap: (){
-                  Navigator.pushNamed(context, AppRoutes.productDetails, arguments: product);
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.productDetails,
+                      arguments: product);
                 },
               );
             },
