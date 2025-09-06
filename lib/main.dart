@@ -2,16 +2,16 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/config/di.dart';
+
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
-import 'core/theme/app_theme.dart';
 import 'features/auth/domain/services/auth_service.dart';
 import 'features/auth/domain/services/guest_service.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
+import 'features/cart/presentation/view_model/cart_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,17 +21,22 @@ void main() async {
 
   final initialRoute = await _getInitialRoute();
 
-  runApp(MultiBlocProvider(
-    providers: [
-      BlocProvider<LocalizationCubit>(
-        create: (BuildContext context) =>
-            LocalizationCubit(language: languageValue),
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<LocalizationCubit>(
+          create: (BuildContext context) =>
+              LocalizationCubit(language: languageValue),
+        ),
+        BlocProvider<CartCubit>(
+          create: (_) => getIt<CartCubit>(),
+        ),
+      ],
+      child: MyApp(
+        initialRoute: initialRoute,
       ),
-    ],
-    child: MyApp(
-      initialRoute: initialRoute,
     ),
-  ));
+  );
 }
 
 Future<String> _getInitialRoute() async {
@@ -40,11 +45,9 @@ Future<String> _getInitialRoute() async {
 
   if (isLoggedIn) {
     return AppRoutes.dashboard;
-  }
-  else if (isGuest) {
+  } else if (isGuest) {
     return AppRoutes.dashboard;
-  }
-  else {
+  } else {
     return AppRoutes.login;
   }
 }
@@ -66,7 +69,9 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: Routes.onGenerateRoute,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: cubit.language == "en" ? const Locale("en") : const Locale("ar"),
+          locale: cubit.language == "en"
+              ? const Locale("en")
+              : const Locale("ar"),
         );
       },
     );

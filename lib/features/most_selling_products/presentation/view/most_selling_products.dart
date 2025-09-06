@@ -86,8 +86,12 @@ class MostSellingProducts extends StatelessWidget {
                               100)
                               .round(),
                           productTitle: product.title,
-                          onTap: (){
-                            Navigator.pushNamed(context, AppRoutes.productDetails, arguments: product);
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.productDetails,
+                              arguments: product,
+                            );
                           },
                         );
                       },

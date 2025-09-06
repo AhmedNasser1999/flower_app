@@ -72,8 +72,11 @@ class ProductsGridWidget extends StatelessWidget {
                 ),
                 productTitle: product.title,
                 onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.productDetails,
-                      arguments: product);
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.productDetails,
+                    arguments: product,
+                  );
                 },
               );
             },
