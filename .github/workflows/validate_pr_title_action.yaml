@@ -1,0 +1,41 @@
+name: PR Title and Branch Validation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR Title
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          ALLOWED_TYPES="fix|release|feat|hotfix|build|test"
+          TICKET_PATTERN="[A-Z]+-[0-9]+"
+          PR_TITLE_REGEX="^(${ALLOWED_TYPES})(\\(\\S+\\))?: (${TICKET_PATTERN})-.+$"
+
+          if [[ ! "$PR_TITLE" =~ $PR_TITLE_REGEX ]]; then
+            echo "::error::PR title does not match the required format 'type(scope): {TicketNum}-task name'."
+            echo "Allowed types: $ALLOWED_TYPES"
+            echo "Ticket pattern: $TICKET_PATTERN"
+            exit 1
+          else
+            echo "PR title is valid."
+          fi
+
+      - name: Validate Branch Name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          ALLOWED_TYPES="feature|fix|release|hotfix|build|test"
+          TICKET_PATTERN="[A-Z]+-[0-9]+"
+          BRANCH_REGEX="^(${ALLOWED_TYPES})\/(${TICKET_PATTERN})-.+$"
+
+          if [[ ! "$BRANCH_NAME" =~ $BRANCH_REGEX ]]; then
+            echo "::error::Branch name does not match the required format 'type/{TicketNum}-task-name'."
+            echo "Allowed types: $ALLOWED_TYPES"
+            echo "Ticket pattern: $TICKET_PATTERN"
+            exit 1
+          else
+            echo "Branch name is valid."
+          fi
