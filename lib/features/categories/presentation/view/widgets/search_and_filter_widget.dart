@@ -42,17 +42,25 @@ class SearchAndFilterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
+
         GestureDetector(
           onTap: () {
+            final viewmodel = context.read<MostSellingProductsViewmodel>();
             showModalBottomSheet(
-                backgroundColor: AppColors.white,
-                context: context,
-                shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(37))),
-                builder: (context) {
-                  return const FilterBottomSheet();
-                });
+              backgroundColor: AppColors.white,
+              context: context,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(37)),
+              ),
+              builder: (bottomSheetContext) {
+                return BlocProvider.value(
+                  value: viewmodel,
+                  child: FilterBottomSheet(
+                    categoryId: categoryId,
+                  ),
+                );
+              },
+            );
           },
           child: Container(
             width: 64,
