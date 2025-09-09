@@ -34,10 +34,20 @@ class MockProductRepo extends _i1.Mock implements _i2.ProductRepo {
   }
 
   @override
-  _i3.Future<List<_i4.ProductsEntity>> getAllProducts() => (super.noSuchMethod(
+  _i3.Future<List<_i4.ProductsEntity>> getAllProducts({
+    String? sort,
+    String? search,
+    String? category,
+  }) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
+          {
+            #sort: sort,
+            #search: search,
+            #category: category,
+          },
         ),
         returnValue:
             _i3.Future<List<_i4.ProductsEntity>>.value(<_i4.ProductsEntity>[]),

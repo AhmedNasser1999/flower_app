@@ -30,28 +30,29 @@ class SearchAndFilterWidget extends StatelessWidget {
             validator: (_) => null,
             onChanged: (value) {
               if (currentTab == "All") {
-                context.read<MostSellingProductsViewmodel>().filterProducts(value);
+                context
+                    .read<MostSellingProductsViewmodel>()
+                    .getProduct(search: value);
               } else {
-                if (categoryId != null) {
-                  context.read<MostSellingProductsViewmodel>().filterByCategoryAndSearch(categoryId!, value);
-                }
+                context
+                    .read<MostSellingProductsViewmodel>()
+                    .getProduct(search: value, category: categoryId);
               }
             },
           ),
         ),
         const SizedBox(width: 8),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             showModalBottomSheet(
-              backgroundColor: AppColors.white,
+                backgroundColor: AppColors.white,
                 context: context,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(37))
-                ),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(37))),
                 builder: (context) {
-              return const FilterBottomSheet();
-                }
-            );
+                  return const FilterBottomSheet();
+                });
           },
           child: Container(
             width: 64,

@@ -27,13 +27,13 @@ class CategoriesTabBarWidget extends StatelessWidget {
             tabs: tabs,
             onTabSelected: (selectedTab) {
               if (selectedTab == "All") {
-                context.read<MostSellingProductsViewmodel>().getMostSellingProducts();
+                context.read<MostSellingProductsViewmodel>().getProduct();
                 onTabChanged(selectedTab, null);
               } else {
                 final selectedCategory = categories.firstWhere(
                       (c) => c.name == selectedTab,
                 );
-                context.read<MostSellingProductsViewmodel>().filterByCategory(selectedCategory.Id);
+                context.read<MostSellingProductsViewmodel>().getProduct(category: selectedCategory.Id);
                 onTabChanged(selectedTab, selectedCategory.Id);
               }
             },

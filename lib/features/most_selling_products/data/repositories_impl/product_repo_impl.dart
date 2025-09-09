@@ -12,9 +12,17 @@ class ProductRepoImpl implements ProductRepo {
   ProductRepoImpl(this._productRemoteDataSource);
 
   @override
-  Future<List<ProductsEntity>> getAllProducts() async {
+  Future<List<ProductsEntity>> getAllProducts({
+    String? sort,
+    String? search,
+    String? category,
+}) async {
     final List<Products> models =
-        await _productRemoteDataSource.getAllProduct();
+        await _productRemoteDataSource.getAllProduct(
+          sort: sort,
+          search: search,
+          category: category,
+        );
 
     return models
         .map((models) => ProductsEntity(

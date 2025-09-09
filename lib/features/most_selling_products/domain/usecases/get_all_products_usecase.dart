@@ -9,7 +9,17 @@ class GetAllProductsUseCase{
 
   GetAllProductsUseCase(this._productRepo);
 
-  Future<List<ProductsEntity>> call() async {
-    return await _productRepo.getAllProducts();
+  Future<List<ProductsEntity>> call(
+  {
+    String? sort,
+    String? search,
+    String? category,
+}
+      ) async {
+    return await _productRepo.getAllProducts(
+      sort: sort,
+      search: search,
+      category: category,
+    );
   }
 }
