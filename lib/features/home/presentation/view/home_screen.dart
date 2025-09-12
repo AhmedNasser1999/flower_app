@@ -6,7 +6,10 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/Widgets/section_header.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 
+import '../../../address/presentation/views/map_view.dart';
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_state.dart';
 import 'widgets/app_logo.dart';
@@ -14,8 +17,68 @@ import 'widgets/order_info.dart';
 import 'widgets/categories_section.dart';
 import 'widgets/products_section.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  LocationPermissionStatus permissionStatus = LocationPermissionStatus.checking;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLocationPermission();
+    _requestLocationPermission();
+  }
+
+  Future<void> _checkLocationPermission() async {
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        setState(
+            () => permissionStatus = LocationPermissionStatus.serviceDisabled);
+        return;
+      }
+
+      final geoPerm = await Geolocator.checkPermission();
+      if (geoPerm == LocationPermission.always ||
+          geoPerm == LocationPermission.whileInUse) {
+        setState(() => permissionStatus = LocationPermissionStatus.granted);
+        // await _getCurrentLocation();
+      } else if (geoPerm == LocationPermission.denied) {
+        setState(() => permissionStatus = LocationPermissionStatus.denied);
+      } else if (geoPerm == LocationPermission.deniedForever) {
+        setState(
+            () => permissionStatus = LocationPermissionStatus.deniedForever);
+      }
+    } catch (e, st) {
+      debugPrint('Error checking permission: $e\n$st');
+      setState(() => permissionStatus = LocationPermissionStatus.error);
+    }
+  }
+
+  Future<void> _requestLocationPermission() async {
+    try {
+      LocationPermission gp = await Geolocator.requestPermission();
+      if (gp == LocationPermission.always ||
+          gp == LocationPermission.whileInUse) {
+        setState(() => permissionStatus = LocationPermissionStatus.granted);
+        // await _getCurrentLocation();
+      } else if (gp == LocationPermission.deniedForever) {
+        setState(
+            () => permissionStatus = LocationPermissionStatus.deniedForever);
+        await openAppSettings();
+      } else {
+        setState(() => permissionStatus = LocationPermissionStatus.denied);
+      }
+    } catch (e) {
+      debugPrint('Error requesting permission: $e');
+      setState(() => permissionStatus = LocationPermissionStatus.error);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +94,13 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const AppLogo(),
                   const SizedBox(height: 10.0),
-                  const OrderInfo(),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                        context, AppRoutes.savedAddressScreen),
+                    child: const OrderInfo(
+                      address: 'Deliver to 2XVP+XC - Sheikh Zayed',
+                    ),
+                  ),
                   const SizedBox(height: 10.0),
                   SectionHeader(
                     title: 'Categories',
@@ -45,7 +114,8 @@ class HomeScreen extends StatelessWidget {
                   SectionHeader(
                     title: 'Best Seller',
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
+                      Navigator.pushNamed(
+                          context, AppRoutes.mostSellingProducts);
                     },
                   ),
                   ProductsSection(state: state),

@@ -6,12 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
+import 'features/address/presentation/view_model/address_cubit.dart';
 import 'features/auth/domain/services/auth_service.dart';
 import 'features/auth/domain/services/guest_service.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
 import 'features/cart/presentation/view_model/cart_cubit.dart';
+import 'features/profile/presentation/viewmodel/profile_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +26,18 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider<ProfileViewModel>(
+          create: (_) => getIt<ProfileViewModel>(),
+        ),
         BlocProvider<LocalizationCubit>(
           create: (BuildContext context) =>
               LocalizationCubit(language: languageValue),
         ),
         BlocProvider<CartCubit>(
           create: (_) => getIt<CartCubit>(),
+        ),
+        BlocProvider<AddressCubit>(
+          create: (_) => getIt<AddressCubit>(),
         ),
       ],
       child: MyApp(
@@ -69,9 +77,8 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: Routes.onGenerateRoute,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: cubit.language == "en"
-              ? const Locale("en")
-              : const Locale("ar"),
+          locale:
+              cubit.language == "en" ? const Locale("en") : const Locale("ar"),
         );
       },
     );

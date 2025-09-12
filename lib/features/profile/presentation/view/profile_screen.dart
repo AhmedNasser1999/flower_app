@@ -101,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
                         radius: 50,
                         backgroundImage: NetworkImage(profile.photo),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       Text("${profile.firstName} ${profile.lastName}",
                           style: theme.textTheme.bodyLarge),
                       const SizedBox(height: 8),
@@ -132,7 +132,8 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.savedAddress,
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(
+                      context, AppRoutes.savedAddressScreen),
                 ),
 
                 const SizedBox(height: 2),
@@ -184,7 +185,6 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Card(
                                   child: SizedBox(
-
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(
@@ -318,7 +318,7 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                const SizedBox(height: 16),
+                // const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );

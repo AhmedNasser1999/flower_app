@@ -9,6 +9,7 @@ import 'package:flower_app/features/cart/presentation/widgets/product_card_widge
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/cart_model.dart';
 import '../view_model/cart_cubit.dart';
@@ -44,17 +45,17 @@ class _CartScreenState extends State<CartScreen> {
           title: !widget.isFromNavBar
               ? const Text("Cart")
               : const Padding(
-            padding: EdgeInsetsDirectional.only(start: 18),
-            child: Text("Cart"),
-          ),
+                  padding: EdgeInsetsDirectional.only(start: 18),
+                  child: Text("Cart"),
+                ),
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
           leading: !widget.isFromNavBar
               ? IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_sharp),
-            onPressed: () => Navigator.pop(context),
-          )
+                  icon: const Icon(Icons.arrow_back_ios_new_sharp),
+                  onPressed: () => Navigator.pop(context),
+                )
               : null,
           actions: [
             BlocBuilder<CartCubit, CartState>(
@@ -119,27 +120,27 @@ class _CartScreenState extends State<CartScreen> {
             child: cart.cartItems.isEmpty
                 ? _buildEmptyCart(context)
                 : ListView.builder(
-              itemCount: cart.cartItems.length,
-              itemBuilder: (context, index) {
-                final item = cart.cartItems[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: ProductCartWidget(
-                    cartItem: item,
-                    onRemove: () => context
-                        .read<CartCubit>()
-                        .removeFromCart(item.product.id),
-                    onUpdateQuantity: (quantity) {
-                      if (quantity > 0) {
-                        context
-                            .read<CartCubit>()
-                            .updateCartItem(item.product.id, quantity);
-                      }
+                    itemCount: cart.cartItems.length,
+                    itemBuilder: (context, index) {
+                      final item = cart.cartItems[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: ProductCartWidget(
+                          cartItem: item,
+                          onRemove: () => context
+                              .read<CartCubit>()
+                              .removeFromCart(item.product.id),
+                          onUpdateQuantity: (quantity) {
+                            if (quantity > 0) {
+                              context
+                                  .read<CartCubit>()
+                                  .updateCartItem(item.product.id, quantity);
+                            }
+                          },
+                        ),
+                      );
                     },
                   ),
-                );
-              },
-            ),
           ),
           if (cart.cartItems.isNotEmpty)
             _buildCheckoutSection(local, subtotal, total),
@@ -164,7 +165,9 @@ class _CartScreenState extends State<CartScreen> {
         ),
         const SizedBox(width: 8),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
+          },
           child: SvgPicture.asset(AppIcons.arrowDownIcon),
         ),
       ],
@@ -239,7 +242,8 @@ class _CartScreenState extends State<CartScreen> {
           const SizedBox(height: 42),
           CustomElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.dashboard, (route) => false);
             },
             text: local?.continueShopping ?? "Continue Shopping",
             color: AppColors.pink,

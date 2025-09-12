@@ -1,5 +1,7 @@
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/address/presentation/views/add_address_screen.dart';
+import 'package:flower_app/features/address/presentation/views/saved_address_screen.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
@@ -88,8 +90,6 @@ class Routes {
           ),
         );
 
-
-
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
         return MaterialPageRoute(
@@ -103,14 +103,14 @@ class Routes {
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => getIt<CartCubit>(),
-              child: CartScreen(isFromNavBar: isFromNavBar),
-
+                  child: CartScreen(isFromNavBar: isFromNavBar),
                 ));
 
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            create: (_) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
             child: MostSellingProducts(),
           ),
         );
@@ -132,30 +132,35 @@ class Routes {
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) =>
-                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+                create: (context) => getIt<MostSellingProductsViewmodel>()
+                  ..getMostSellingProducts(),
               ),
               BlocProvider(
                 create: (context) =>
-                getIt<CategoriesCubit>()..getAllCategories(),
+                    getIt<CategoriesCubit>()..getAllCategories(),
               ),
             ],
             child: const CategoriesScreen(),
           ),
         );
 
-
-
       case AppRoutes.termsAndConditions:
-        return MaterialPageRoute(builder: (_) =>  TermsAndConditions());
+        return MaterialPageRoute(builder: (_) => TermsAndConditions());
 
       case AppRoutes.aboutUs:
-        return MaterialPageRoute(builder: (_) =>  AboutUs());
+        return MaterialPageRoute(builder: (_) => AboutUs());
 
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
+        return MaterialPageRoute(
+            builder: (_) => EditProfileScreen(
+                  user: user,
+                ));
 
+      case AppRoutes.addressScreen:
+        return MaterialPageRoute(builder: (_) => AddAddressScreen());
+      case AppRoutes.savedAddressScreen:
+        return MaterialPageRoute(builder: (_) => SavedAddressesScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
