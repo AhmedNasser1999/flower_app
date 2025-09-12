@@ -89,6 +89,10 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   }
   @override
   Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
-    return _authApiClient.signUp(registerRequest);
+    try {
+      return _authApiClient.signUp(registerRequest);
+    } catch (e) {
+      throw ("Error: ${e.toString()}");
+    }
   }
 }
