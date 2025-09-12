@@ -36,6 +36,11 @@
   "newPasswordLabel": "New Password",
   "newPasswordHint": "Enter new password",
   "wrongPasswordErrorMsg": "Wrong password, Try Again",
+  "addToCartBtn": "Add to cart",
+  "mostSellingTitle": "Best Seller",
+  "mostSellingSubTitle": "Bloom with our exquisite best sellers",
+  "explore": "Explore"
+  "wrongPasswordErrorMsg": "Wrong password, Try Again",
   "notificationCount": "3",
   "myOrders": "My orders",
   "savedAddress": "Saved address",

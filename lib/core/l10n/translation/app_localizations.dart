@@ -320,65 +320,29 @@ abstract class AppLocalizations {
   /// **'Wrong password, Try Again'**
   String get wrongPasswordErrorMsg;
 
-  /// No description provided for @notificationCount.
+  /// No description provided for @addToCartBtn.
   ///
   /// In en, this message translates to:
-  /// **'3'**
-  String get notificationCount;
+  /// **'Add to cart'**
+  String get addToCartBtn;
 
-  /// No description provided for @myOrders.
+  /// No description provided for @mostSellingTitle.
   ///
   /// In en, this message translates to:
-  /// **'My orders'**
-  String get myOrders;
+  /// **'Best Seller'**
+  String get mostSellingTitle;
 
-  /// No description provided for @savedAddress.
+  /// No description provided for @mostSellingSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Saved address'**
-  String get savedAddress;
+  /// **'Bloom with our exquisite best sellers'**
+  String get mostSellingSubTitle;
 
-  /// No description provided for @language.
+  /// No description provided for @explore.
   ///
   /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
-
-  /// No description provided for @languageChanged.
-  ///
-  /// In en, this message translates to:
-  /// **'English'**
-  String get languageChanged;
-
-  /// No description provided for @aboutUs.
-  ///
-  /// In en, this message translates to:
-  /// **'About us'**
-  String get aboutUs;
-
-  /// No description provided for @notification.
-  ///
-  /// In en, this message translates to:
-  /// **'Notification'**
-  String get notification;
-
-  /// No description provided for @termsConditions.
-  ///
-  /// In en, this message translates to:
-  /// **'Terms & conditions'**
-  String get termsConditions;
-
-  /// No description provided for @error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error:'**
-  String get error;
-
-  /// No description provided for @versionInfo.
-  ///
-  /// In en, this message translates to:
-  /// **'v 6.3.0 - (446)'**
-  String get versionInfo;
+  /// **'Explore'**
+  String get explore;
 }
 
 class _AppLocalizationsDelegate

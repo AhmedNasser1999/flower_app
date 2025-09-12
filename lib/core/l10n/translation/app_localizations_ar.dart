@@ -124,32 +124,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
-  String get notificationCount => '٣';
+  String get addToCartBtn => 'أضف إلى السلة';
 
   @override
-  String get myOrders => 'طلباتي';
+  String get mostSellingTitle => 'الأكثر مبيعًا';
 
   @override
-  String get savedAddress => 'العناوين المحفوظة';
+  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
 
   @override
-  String get language => 'اللغة';
-
-  @override
-  String get languageChanged => 'العربيه';
-
-  @override
-  String get aboutUs => 'معلومات عنا';
-
-  @override
-  String get notification => 'أشعارات';
-
-  @override
-  String get termsConditions => 'الشروط والأحكام';
-
-  @override
-  String get error => 'خطأ:';
-
-  @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+  String get explore => 'استكشاف';
 }

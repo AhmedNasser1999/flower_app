@@ -124,32 +124,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
 
   @override
-  String get notificationCount => '3';
+  String get addToCartBtn => 'Add to cart';
 
   @override
-  String get myOrders => 'My orders';
+  String get mostSellingTitle => 'Best Seller';
 
   @override
-  String get savedAddress => 'Saved address';
+  String get mostSellingSubTitle => 'Bloom with our exquisite best sellers';
 
   @override
-  String get language => 'Language';
-
-  @override
-  String get languageChanged => 'English';
-
-  @override
-  String get aboutUs => 'About us';
-
-  @override
-  String get notification => 'Notification';
-
-  @override
-  String get termsConditions => 'Terms & conditions';
-
-  @override
-  String get error => 'Error:';
-
-  @override
-  String get versionInfo => 'v 6.3.0 - (446)';
+  String get explore => 'Explore';
 }
