@@ -20,7 +20,7 @@ import '../../features/auth/data/datasource/auth_remote_datasource.dart'
 import '../../features/auth/data/repositories_implementation/auth_repo_impl.dart'
     as _i303;
 import '../../features/auth/domain/repositories/Auth_repo.dart' as _i669;
-import '../../features/auth/domain/usecase/signup_usecase/signup_usecase.dart'
+import '../../features/auth/domain/usecases/signup_usecase.dart'
     as _i195;
 import '../../features/auth/domain/usecases/forget_password_usecase.dart'
     as _i948;
@@ -37,20 +37,6 @@ import '../../features/auth/forget_password/presentation/viewmodel/verify_code_v
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart'
     as _i1063;
 import '../../features/auth/signup/cubit/signup_cubit.dart' as _i387;
-import '../../features/most_selling_products/api/client/product_api_client.dart'
-    as _i67;
-import '../../features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart'
-    as _i313;
-import '../../features/most_selling_products/data/datasource/product_remote_datasource.dart'
-    as _i955;
-import '../../features/most_selling_products/data/repositories_impl/product_repo_impl.dart'
-    as _i680;
-import '../../features/most_selling_products/domain/repositories/product_repo.dart'
-    as _i1026;
-import '../../features/most_selling_products/domain/usecases/get_all_products_usecase.dart'
-    as _i144;
-import '../../features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart'
-    as _i72;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -75,18 +61,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
-    gh.factory<_i67.ProductApiClient>(() => _i67.ProductApiClient(
-          gh<_i361.Dio>(),
-          baseUrl: gh<String>(instanceName: 'baseurl'),
-        ));
     gh.lazySingleton<_i175.AuthRemoteDatasource>(
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
     gh.factory<_i341.ResetPasswordCubit>(
         () => _i341.ResetPasswordCubit(gh<_i213.AuthApiClient>()));
     gh.factory<_i669.AuthRepo>(
         () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
-    gh.lazySingleton<_i955.ProductRemoteDataSource>(
-        () => _i313.ProductRemoteDataSourceImpl(gh<_i67.ProductApiClient>()));
     gh.factory<_i1037.LoginUseCase>(
         () => _i1037.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i948.ForgetPasswordUseCase>(
@@ -95,8 +75,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i474.ResetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i294.VerifyCodeUseCase>(
         () => _i294.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
-    gh.lazySingleton<_i1026.ProductRepo>(
-        () => _i680.ProductRepoImpl(gh<_i955.ProductRemoteDataSource>()));
     gh.factory<_i164.ForgetPasswordCubit>(
         () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
     gh.factory<_i195.SignupUsecase>(
@@ -107,10 +85,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1063.LoginViewModel>(
         () => _i1063.LoginViewModel(gh<_i1037.LoginUseCase>()));
-    gh.factory<_i144.GetAllProductsUseCase>(
-        () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
-    gh.factory<_i72.MostSellingProductsViewmodel>(() =>
-        _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i195.SignupUsecase>()));
     return this;
