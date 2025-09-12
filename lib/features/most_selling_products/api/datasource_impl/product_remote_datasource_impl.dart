@@ -7,13 +7,17 @@ import '../../data/datasource/product_remote_datasource.dart';
 @LazySingleton(as: ProductRemoteDataSource)
 class ProductRemoteDataSourceImpl implements ProductRemoteDataSource{
 
-  final ProductApiClient productApiClient;
+  final ProductApiClient _productApiClient;
 
-  ProductRemoteDataSourceImpl(this.productApiClient);
+  ProductRemoteDataSourceImpl(this._productApiClient);
 
   @override
   Future<List<Products>> getAllProduct() async{
-    final response = await productApiClient.getAllProducts();
-    return response.products;
+    try {
+      final response = await _productApiClient.getAllProducts();
+      return response.products;
+    } catch(e){
+      throw Exception("failed to fetch products: $e");
+    }
   }
 }
