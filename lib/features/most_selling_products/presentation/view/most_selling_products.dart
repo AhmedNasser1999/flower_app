@@ -7,6 +7,7 @@ import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../viewmodel/most_selling_product_states.dart';
 import '../viewmodel/most_selling_products_viewmodel.dart';
@@ -80,6 +81,13 @@ class MostSellingProducts extends StatelessWidget {
                               100)
                               .round(),
                           productTitle: product.title,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.productDetails,
+                              arguments: product,
+                            );
+                          },
                         );
                       },
                     ),

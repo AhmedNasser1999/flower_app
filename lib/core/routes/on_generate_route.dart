@@ -1,4 +1,5 @@
 import 'package:flower_app/core/config/di.dart';
+import 'package:flower_app/core/Widgets/product_details.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
@@ -15,6 +16,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/most_selling_products/domain/entity/products_entity.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -70,6 +72,11 @@ class Routes {
             child: MostSellingProducts(),
           ),
         );
+
+      case AppRoutes.productDetails:
+        final product = settings.arguments as ProductsEntity;
+        return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
+
 
       default:
         return MaterialPageRoute(
