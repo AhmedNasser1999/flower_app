@@ -33,6 +33,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
+
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),

@@ -36,6 +36,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),

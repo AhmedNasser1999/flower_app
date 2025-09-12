@@ -319,6 +319,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wrong password, Try Again'**
   String get wrongPasswordErrorMsg;
+
+  /// No description provided for @addToCartBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCartBtn;
+
+  /// No description provided for @mostSellingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Seller'**
+  String get mostSellingTitle;
+
+  /// No description provided for @mostSellingSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get mostSellingSubTitle;
+
+  /// No description provided for @explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get explore;
 }
 
 class _AppLocalizationsDelegate

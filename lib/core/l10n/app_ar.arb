@@ -35,5 +35,9 @@
   "confirmPasswordLabel": "تأكيد كلمة المرور",
   "newPasswordLabel": "كلمة مرور جديدة",
   "newPasswordHint": "أدخل كلمة المرور الجديدة",
-  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى"
+  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
+  "addToCartBtn": "أضف إلى السلة",
+  "mostSellingTitle": "الأكثر مبيعًا",
+  "mostSellingSubTitle": "ازدهر مع منتجاتنا الأكثر مبيعًا",
+  "explore": "استكشاف"
 }
