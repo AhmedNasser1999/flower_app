@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/contants/secure_storage.dart';
 
 class GuestService {
@@ -10,6 +12,7 @@ class GuestService {
 
     await SecureStorage.write(key: guestIdKey, value: guestId);
     await SecureStorage.write(key: guestSessionKey, value: sessionToken);
+    log('====> Guest session started with guest ID: $guestId and session token: $sessionToken');
   }
 
   static Future<bool> isGuest() async {
@@ -24,5 +27,6 @@ class GuestService {
   static Future<void> endGuestSession() async {
     await SecureStorage.delete(guestIdKey);
     await SecureStorage.delete(guestSessionKey);
+    log('======> Guest session ended');
   }
 }

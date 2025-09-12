@@ -34,7 +34,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg =>
+      'must be at least 6 characters and have M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -71,4 +72,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cart => 'Cart';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
+
+  @override
+  String get emailVerificationScreen => 'Email verification';
+
+  @override
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter your code that was sent to your\nemail address';
+
+  @override
+  String get codeReceiveMsgError => 'Didn\'t receive code?';
+
+  @override
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated to\nyour account';
+
+  @override
+  String get forgetPassword => 'Forget Password';
+
+  @override
+  String get validationEmailErrorMessage => 'This Email is not valid';
+
+  @override
+  String get requiredEmailErrorMessage => 'Email is required';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get newPasswordLabel => 'New Password';
+
+  @override
+  String get newPasswordHint => 'Enter new password';
+
+  @override
+  String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
+
+  @override
+  String get addToCartBtn => 'Add to cart';
+
+  @override
+  String get mostSellingTitle => 'Best Seller';
+
+  @override
+  String get mostSellingSubTitle => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get explore => 'Explore';
 }
