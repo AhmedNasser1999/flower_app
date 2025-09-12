@@ -724,6 +724,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'EGP'**
   String get egp;
+
+  /// No description provided for @myOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get myOrder;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completed;
+
+  /// No description provided for @trackOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Order'**
+  String get trackOrder;
+
+  /// No description provided for @recorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorder'**
+  String get recorder;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -322,4 +322,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get myOrder => 'My orders';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get trackOrder => 'Track Order';
+
+  @override
+  String get recorder => 'Recorder';
 }

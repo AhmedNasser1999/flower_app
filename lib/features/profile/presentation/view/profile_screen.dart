@@ -122,7 +122,9 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.myOrders,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.orders);
+                  },
                 ),
 
                 MenuItemWidget(

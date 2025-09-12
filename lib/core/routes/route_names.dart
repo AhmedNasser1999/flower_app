@@ -15,7 +15,6 @@ abstract class AppRoutes {
   static const String editProfile="/editProfile";
   static const String changePasswordScreen="/changePasswordScreen";
   static const String logoutWidget="/logoutWidget";
-
-
   static const String cart="/cart";
+  static const String orders="/orders";
 }

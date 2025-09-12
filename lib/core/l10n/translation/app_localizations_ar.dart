@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تظبيق متجر الزهور الالكتروني';
+  String get appName => 'تطبيق متجر الزهور الالكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -36,7 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg => 'يجب أن تكون كلمة المرور على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -57,13 +57,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الاعدادات';
+  String get settings => 'الإعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -81,31 +81,31 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get currentPassword => 'Current Password';
+  String get currentPassword => 'كلمة المرور الحالية';
 
   @override
-  String get newPassword => 'New Password';
+  String get newPassword => 'كلمة مرور جديدة';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => 'تأكيد كلمة المرور';
 
   @override
-  String get invalidPasswordMsg => 'invalid password';
+  String get invalidPasswordMsg => 'كلمة المرور غير صالحة';
 
   @override
-  String get passwordErrorMatchingMsg => 'Password unmatching!';
+  String get passwordErrorMatchingMsg => 'كلمات المرور غير متطابقة!';
 
   @override
-  String get updateText => 'Update';
+  String get updateText => 'تحديث';
 
   @override
-  String get logoutAlertMsg => 'LOGOUT';
+  String get logoutAlertMsg => 'تسجيل الخروج';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'إلغاء';
 
   @override
-  String get logoutConfirmTextCenter => 'Confirm logout!!';
+  String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!!';
 
   @override
   String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
@@ -147,7 +147,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
-  String get deliverTo => 'توصيل إلي';
+  String get deliverTo => 'توصيل إلى';
 
   @override
   String get subTotal => 'المجموع الفرعي';
@@ -177,10 +177,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateQuantity => 'تحديث الكمية';
 
   @override
-  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
+  String get itemAddedToCart => 'تمت إضافة المنتج إلى السلة';
 
   @override
-  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+  String get itemRemovedFromCart => 'تمت إزالة المنتج من السلة';
 
   @override
   String get quantityUpdated => 'تم تحديث الكمية';
@@ -216,7 +216,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cartSummary => 'ملخص السلة';
 
   @override
-  String get applyCoupon => 'تطبيق كوبون';
+  String get applyCoupon => 'تطبيق الكوبون';
 
   @override
   String get couponCode => 'كود الكوبون';
@@ -231,7 +231,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureCheckout => 'دفع آمن';
 
   @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يومًا';
 
   @override
   String get orderSummary => 'ملخص الطلب';
@@ -276,13 +276,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language => 'اللغة';
 
   @override
-  String get languageChanged => 'العربيه';
+  String get languageChanged => 'العربية';
 
   @override
   String get aboutUs => 'معلومات عنا';
 
   @override
-  String get notification => 'أشعارات';
+  String get notification => 'الإشعارات';
 
   @override
   String get termsConditions => 'الشروط والأحكام';
@@ -321,5 +321,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 
   @override
-  String get egp => 'جنيهاً';
+  String get egp => 'جنيه';
+
+  @override
+  String get myOrder => 'طلباتي';
+
+  @override
+  String get active => 'نشط';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get trackOrder => 'تتبع الطلب';
+
+  @override
+  String get recorder => 'إعادة الطلب';
 }
