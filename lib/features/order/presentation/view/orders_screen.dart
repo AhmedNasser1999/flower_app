@@ -52,8 +52,8 @@ class OrdersScreen extends StatelessWidget {
           if (state is OrdersLoadingState) {
             return Center(
               child: SizedBox(
-                height: 40,
-                width: 70,
+                height: 80,
+                width: 80,
                 child: LoadingIndicator(
                   indicatorType: Indicator.lineScalePulseOut,
                   colors: [AppColors.pink],
