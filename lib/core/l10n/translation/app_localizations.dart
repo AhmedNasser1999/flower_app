@@ -337,6 +337,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Bloom with our exquisite best sellers'**
   String get mostSellingSubTitle;
+
+  /// No description provided for @explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get explore;
 }
 
 class _AppLocalizationsDelegate

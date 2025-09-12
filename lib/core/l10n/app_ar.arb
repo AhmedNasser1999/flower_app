@@ -38,5 +38,6 @@
   "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
   "addToCartBtn": "أضف إلى السلة",
   "mostSellingTitle": "الأكثر مبيعًا",
-  "mostSellingSubTitle": "ازدهر مع منتجاتنا الأكثر مبيعًا"
+  "mostSellingSubTitle": "ازدهر مع منتجاتنا الأكثر مبيعًا",
+  "explore": "استكشاف"
 }

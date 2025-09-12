@@ -131,4 +131,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+
+  @override
+  String get explore => 'استكشاف';
 }
