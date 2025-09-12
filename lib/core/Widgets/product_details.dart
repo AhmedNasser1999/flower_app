@@ -1,10 +1,15 @@
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
+import 'package:flower_app/core/Widgets/custom_Elevated_Button.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
+import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../routes/route_names.dart';
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+  final ProductsEntity product;
+
+  const ProductDetails({super.key, required this.product});
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
@@ -12,11 +17,6 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   final PageController pageViewController = PageController();
-  final List<String> productImages = [
-    "https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1711889864981-7abc5e7de788?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1590967136387-0a3d2837ec33?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   width: double.infinity,
                   child: PageView.builder(
                     controller: pageViewController,
-                    itemCount: productImages.length,
+                    itemCount: widget.product.images.length,
                     itemBuilder: (context, index) {
                       return Image.network(
-                        productImages[index].trim(),
+                        widget.product.images[index].trim(),
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return const Center(
@@ -60,7 +60,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: SmoothPageIndicator(
                     controller: pageViewController,
-                    count: productImages.length,
+                    count: widget.product.images.length,
                     effect: ScrollingDotsEffect(
                       dotColor: AppColors.white,
                       activeDotColor: AppColors.pink,
@@ -78,16 +78,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        'EGP 1500',
-                        style: TextStyle(
+                        "EGP ${widget.product.price}",
+                        style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Spacer(),
-                      Text(
+                      const Spacer(),
+                      const Text(
                         'Status: In Stock',
                         style: TextStyle(
                           fontSize: 18,
@@ -106,8 +106,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    "15 Pink Rose Bouquet",
+                  Text(
+                    widget.product.title,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   Text(
-                    "Lorem ipsum dolor sit amet consectetur. Id sit morbi ornare morbi duis rhoncus orci massa.",
+                    widget.product.description,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
@@ -156,10 +156,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   const SizedBox(height: 20),
                   CustomElevatedButton(
-                    onPressed: () {}, 
-                     color: AppColors.pink,
-                     text: 'Add to cart',
-                     ),
+                    onPressed: () {},
+                    color: AppColors.pink,
+                    text: 'Add to cart',
+                  ),
                 ],
               ),
             ),
