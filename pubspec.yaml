@@ -15,7 +15,7 @@ dependencies:
   injectable: ^2.5.1
   get_it: ^8.2.0
   retrofit:
-  logger: 
+  logger: ^2.6.1
   json_annotation: ^4.9.0
   dio: ^5.9.0
   flutter_bloc: ^9.1.1
@@ -32,6 +32,7 @@ dependencies:
   intl: any
   flutter_svg: ^2.2.0
   loading_indicator: ^3.1.1
+  mockito: ^5.4.5
 
 dev_dependencies:
   build_runner: ^2.4.13
@@ -49,7 +50,7 @@ flutter:
 
   assets:
     - assets/icons/
-  # - assets/images/
+    - assets/images/
 
   fonts:
     - family: Inter
