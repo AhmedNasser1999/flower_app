@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تظبيق متجر الزهور الالكتروني';
+  String get appName => 'تطبيق تجارة الزهور';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -36,16 +36,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
 
   @override
-  String get forgetPasswordTextButton => 'هل نسيت كلمة المرور؟';
+  String get forgetPasswordTextButton => 'نسيت كلمة المرور؟';
 
   @override
-  String get continueAsGuestButton => 'المتابعة كضيف';
+  String get continueAsGuestButton => 'المتابعة كزائر';
 
   @override
   String get dontHaveAnAccount => 'ليس لديك حساب؟';
@@ -57,19 +58,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الاعدادات';
+  String get settings => 'الإعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
 
   @override
-  String get categories => 'التصنيفات';
+  String get categories => 'الفئات';
 
   @override
   String get cart => 'عربة التسوق';
@@ -81,46 +82,49 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get currentPassword => 'Current Password';
+  String get currentPassword => 'كلمة المرور الحالية';
 
   @override
-  String get newPassword => 'New Password';
+  String get newPassword => 'كلمة المرور الجديدة';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => 'تأكيد كلمة المرور';
 
   @override
-  String get invalidPasswordMsg => 'invalid password';
+  String get invalidPasswordMsg => 'كلمة المرور غير صالحة';
 
   @override
-  String get passwordErrorMatchingMsg => 'Password unmatching!';
+  String get passwordErrorMatchingMsg => 'كلمة المرور غير متطابقة!';
 
   @override
-  String get updateText => 'Update';
+  String get updateText => 'تحديث';
 
   @override
-  String get logoutAlertMsg => 'LOGOUT';
+  String get logoutAlertMsg => 'تسجيل الخروج';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'إلغاء';
 
   @override
-  String get logoutConfirmTextCenter => 'Confirm logout!!';
+  String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!!';
 
   @override
-  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg =>
+      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg =>
+      'من فضلك أدخل الرمز الذي تم إرساله إلى\nبريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText =>
+      'من فضلك أدخل البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -138,16 +142,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordLabel => 'تأكيد كلمة المرور';
 
   @override
-  String get newPasswordLabel => 'كلمة مرور جديدة';
+  String get newPasswordLabel => 'كلمة المرور الجديدة';
 
   @override
-  String get newPasswordHint => 'أدخل كلمة المرور الجديدة';
+  String get newPasswordHint => 'أدخل كلمة مرور جديدة';
 
   @override
-  String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
+  String get wrongPasswordErrorMsg => 'كلمة مرور خاطئة، حاول مرة أخرى';
 
   @override
-  String get deliverTo => 'توصيل إلي';
+  String get deliverTo => 'التوصيل إلى';
 
   @override
   String get subTotal => 'المجموع الفرعي';
@@ -156,10 +160,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deliveryFee => 'رسوم التوصيل';
 
   @override
-  String get total => 'المبلغ الإجمالي';
+  String get total => 'الإجمالي';
 
   @override
-  String get checkout => 'الدفع';
+  String get checkout => 'إتمام الشراء';
 
   @override
   String get yourCartIsEmpty => 'سلة التسوق فارغة';
@@ -168,7 +172,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addItemsToGetStarted => 'أضف منتجات للبدء';
 
   @override
-  String get continueShopping => 'مواصلة التسوق';
+  String get continueShopping => 'متابعة التسوق';
 
   @override
   String get removeItem => 'إزالة المنتج';
@@ -177,10 +181,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateQuantity => 'تحديث الكمية';
 
   @override
-  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
+  String get itemAddedToCart => 'تمت إضافة المنتج إلى السلة';
 
   @override
-  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+  String get itemRemovedFromCart => 'تمت إزالة المنتج من السلة';
 
   @override
   String get quantityUpdated => 'تم تحديث الكمية';
@@ -189,10 +193,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cartLoading => 'جاري تحميل السلة...';
 
   @override
-  String get cartError => 'خطأ في تحميل السلة';
+  String get cartError => 'حدث خطأ أثناء تحميل السلة';
 
   @override
-  String get proceedToCheckout => 'المتابعة إلى الدفع';
+  String get proceedToCheckout => 'المتابعة لإتمام الشراء';
 
   @override
   String get cartItems => 'عناصر السلة';
@@ -204,10 +208,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quantity => 'الكمية';
 
   @override
-  String get shoppingCart => 'سلة التسوق';
+  String get shoppingCart => 'عربة التسوق';
 
   @override
-  String get emptyCartMessage => 'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
+  String get emptyCartMessage =>
+      'سلة التسوق فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
 
   @override
   String get viewProducts => 'عرض المنتجات';
@@ -216,10 +221,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cartSummary => 'ملخص السلة';
 
   @override
-  String get applyCoupon => 'تطبيق كوبون';
+  String get applyCoupon => 'تطبيق الكوبون';
 
   @override
-  String get couponCode => 'كود الكوبون';
+  String get couponCode => 'رمز الكوبون';
 
   @override
   String get apply => 'تطبيق';
@@ -231,7 +236,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureCheckout => 'دفع آمن';
 
   @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال لمدة 30 يومًا';
 
   @override
   String get orderSummary => 'ملخص الطلب';
@@ -246,7 +251,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get discount => 'الخصم';
 
   @override
-  String get placeOrder => 'تقديم الطلب';
+  String get placeOrder => 'تأكيد الطلب';
 
   @override
   String get addToCartBtn => 'أضف إلى السلة';
@@ -255,13 +260,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get mostSellingTitle => 'الأكثر مبيعًا';
 
   @override
-  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+  String get mostSellingSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
 
   @override
   String get occasionsTitle => 'المناسبات';
 
   @override
-  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+  String get occasionsSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
 
   @override
   String get notificationCount => '٣';
@@ -276,22 +281,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language => 'اللغة';
 
   @override
-  String get languageChanged => 'العربيه';
+  String get languageChanged => 'العربية';
 
   @override
-  String get aboutUs => 'معلومات عنا';
+  String get aboutUs => 'من نحن';
 
   @override
-  String get notification => 'أشعارات';
+  String get notification => 'الإشعارات';
 
   @override
   String get termsConditions => 'الشروط والأحكام';
 
   @override
   String get error => 'خطأ:';
-
-  @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
 
   @override
   String get profileTitle => 'تعديل الملف الشخصي';
@@ -321,5 +323,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
 
   @override
-  String get egp => 'جنيهاً';
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get notificationDelete => 'تم حذف الإشعار';
 }

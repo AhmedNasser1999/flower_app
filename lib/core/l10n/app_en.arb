@@ -50,7 +50,6 @@
   "deliveryFee": "Delivery Fee",
   "total": "Total",
   "checkout": "Checkout",
-
   "yourCartIsEmpty": "Your cart is empty",
   "addItemsToGetStarted": "Add items to get started",
   "continueShopping": "Continue Shopping",
@@ -94,7 +93,6 @@
   "notification": "Notification",
   "termsConditions": "Terms & conditions",
   "error": "Error:",
-  "versionInfo": "v 6.3.0 - (446)",
   "profileTitle": "Edit Profile",
   "usernameLabel": "User name",
   "firstNameLabel": "First name",
@@ -105,5 +103,6 @@
   "errorText": "Error",
   "profileUpdatedSuccessMsg":"Profile changed successfully!",
   "versionInfo": "v 6.3.0 - (446)",
-  "egp": "EGP"
+  "egp": "EGP",
+  "notificationDelete": "Notification deleted"
 }

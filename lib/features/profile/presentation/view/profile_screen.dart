@@ -41,8 +41,14 @@ class ProfileScreen extends StatelessWidget {
               IconButton(
                 iconSize: 32,
                 icon:
-                    const Icon(Icons.notifications_none, color: AppColors.grey),
-                onPressed: () {},
+                SvgPicture.asset(
+                  AppIcons.notificationsIcon,
+                  width: 30,
+                  height: 30,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                },
               ),
               Positioned(
                 right: 8,

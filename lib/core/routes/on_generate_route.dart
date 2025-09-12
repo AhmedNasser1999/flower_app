@@ -7,9 +7,9 @@ import 'package:flower_app/features/dashboard/presentation/views/dashboard_scree
 import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import 'package:flower_app/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
@@ -155,6 +155,9 @@ class Routes {
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
         return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
+
+      case AppRoutes.notification:
+        return MaterialPageRoute(builder: (_) => NotificationsScreen());
 
       default:
         return MaterialPageRoute(
