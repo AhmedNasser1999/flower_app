@@ -2,6 +2,9 @@
 import 'package:flower_app/core/contants/app_constants.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
+import 'package:flower_app/core/contants/app_constants.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -33,4 +36,6 @@ abstract class AuthApiClient {
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
 
 
+  @POST(AppConstants.signup)
+  Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);
 }

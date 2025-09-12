@@ -2,8 +2,6 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
-import 'package:flower_app/features/auth/login/presentation/viewmodel/login_states.dart';
-import 'package:flower_app/features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +12,8 @@ import '../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/extensions/validations.dart';
 import '../../../../../core/routes/route_names.dart';
+import '../viewmodel/login_states.dart';
+import '../viewmodel/login_viewmodel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.dashboard,
-              (route) => false,
+                  (route) => false,
             );
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {},
                         child: Image.asset(AppImages.arrowBack)
                             .setHorizontalAndVerticalPadding(
-                                context, 0.05, 0.07),
+                            context, 0.05, 0.07),
                       ),
                       Text(
                         local!.login,
@@ -140,9 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Checkbox(
                           value: viewModel.rememberMe, onChanged: (value) {
-                            setState(() {
-                              viewModel.toggleRememberMe(value ?? false);
-                            });
+                        setState(() {
+                          viewModel.toggleRememberMe(value ?? false);
+                        });
                       }),
                       Text(
                         local.rememberMe,
@@ -207,7 +207,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: const TextStyle(fontSize: 19),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.signUp);
+                        },
                         child: Text(
                           local.signUp,
                           style: const TextStyle(

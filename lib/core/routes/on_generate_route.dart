@@ -9,6 +9,8 @@ import '../../features/auth/forget_password/presentation/viewmodel/verify_code_v
 import '../../features/auth/forget_password/presentation/views/screens/ResetPasswordScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
+import '../../features/auth/signup/cubit/signup_cubit.dart';
+import '../../features/auth/signup/view/signup_screen.dart';
 import '../config/di.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 
@@ -22,7 +24,12 @@ class Routes {
             child: const LoginScreen(),
           ),
         );
-
+      case AppRoutes.signUp:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+              create: (context) => getIt<SignupCubit>(),
+              child: const SignupScreen(),
+            ));
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) => DashboardScreen());
       case AppRoutes.forgetPassword:

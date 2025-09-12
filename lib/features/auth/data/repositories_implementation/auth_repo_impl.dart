@@ -2,9 +2,10 @@ import 'package:injectable/injectable.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart';
-
 import '../models/forget_password_models/forget_password_request.dart';
 import '../models/forget_password_models/reset_password_request_model.dart';
 import '../models/forget_password_models/verify_code_request_model.dart';
@@ -36,6 +37,11 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {
     return await _authRemoteDatasource.login(loginRequest);
+  }
+
+  @override
+  Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
+    return _authRemoteDatasource.signUp(registerRequest);
   }
 
 }

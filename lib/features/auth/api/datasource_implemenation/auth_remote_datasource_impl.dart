@@ -5,6 +5,8 @@ import 'package:flower_app/features/auth/data/models/login_models/login_request_
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart';
 import 'package:flower_app/core/errors/failure.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart';
+import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 import 'package:injectable/injectable.dart';
 import 'dart:convert';
 import '../../data/models/forget_password_models/forget_password_request.dart';
@@ -85,5 +87,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       return AuthResponse.error(e.toString());
     }
   }
-
+  @override
+  Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
+    try {
+      return _authApiClient.signUp(registerRequest);
+    } catch (e) {
+      throw ("Error: ${e.toString()}");
+    }
+  }
 }

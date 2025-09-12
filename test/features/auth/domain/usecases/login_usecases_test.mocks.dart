@@ -3,14 +3,18 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart'
-    as _i6;
+    as _i7;
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart'
-    as _i5;
-import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
+    as _i6;
+import 'package:flower_app/features/auth/data/models/signup_model/signup_request_model.dart'
+    as _i8;
+import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart'
     as _i3;
+import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart'
+    as _i4;
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -40,22 +44,33 @@ class _FakeAuthResponse_0<T> extends _i1.SmartFake
         );
 }
 
+class _FakeRegisterResponse_1 extends _i1.SmartFake
+    implements _i3.RegisterResponse {
+  _FakeRegisterResponse_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
+class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
   MockAuthRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.AuthResponse<String>> forgetPassword(String? email) =>
+  _i5.Future<_i2.AuthResponse<String>> forgetPassword(String? email) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
             _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
@@ -63,16 +78,16 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             [email],
           ),
         )),
-      ) as _i4.Future<_i2.AuthResponse<String>>);
+      ) as _i5.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i4.Future<_i2.AuthResponse<String>> verifyCode(String? code) =>
+  _i5.Future<_i2.AuthResponse<String>> verifyCode(String? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyCode,
           [code],
         ),
-        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
             _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
@@ -80,10 +95,10 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             [code],
           ),
         )),
-      ) as _i4.Future<_i2.AuthResponse<String>>);
+      ) as _i5.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i4.Future<_i2.AuthResponse<String>> resetPassword(
+  _i5.Future<_i2.AuthResponse<String>> resetPassword(
     String? email,
     String? newPassword,
   ) =>
@@ -95,7 +110,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             newPassword,
           ],
         ),
-        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
             _FakeAuthResponse_0<String>(
           this,
           Invocation.method(
@@ -106,23 +121,41 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             ],
           ),
         )),
-      ) as _i4.Future<_i2.AuthResponse<String>>);
+      ) as _i5.Future<_i2.AuthResponse<String>>);
 
   @override
-  _i4.Future<_i2.AuthResponse<_i5.LoginResponse>> login(
-          _i6.LoginRequest? loginRequest) =>
+  _i5.Future<_i2.AuthResponse<_i6.LoginResponse>> login(
+          _i7.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [loginRequest],
         ),
-        returnValue: _i4.Future<_i2.AuthResponse<_i5.LoginResponse>>.value(
-            _FakeAuthResponse_0<_i5.LoginResponse>(
+        returnValue: _i5.Future<_i2.AuthResponse<_i6.LoginResponse>>.value(
+            _FakeAuthResponse_0<_i6.LoginResponse>(
           this,
           Invocation.method(
             #login,
             [loginRequest],
           ),
         )),
-      ) as _i4.Future<_i2.AuthResponse<_i5.LoginResponse>>);
+      ) as _i5.Future<_i2.AuthResponse<_i6.LoginResponse>>);
+
+  @override
+  _i5.Future<_i3.RegisterResponse> signUp(
+          _i8.RegisterRequest? registerRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signUp,
+          [registerRequest],
+        ),
+        returnValue:
+            _i5.Future<_i3.RegisterResponse>.value(_FakeRegisterResponse_1(
+          this,
+          Invocation.method(
+            #signUp,
+            [registerRequest],
+          ),
+        )),
+      ) as _i5.Future<_i3.RegisterResponse>);
 }
