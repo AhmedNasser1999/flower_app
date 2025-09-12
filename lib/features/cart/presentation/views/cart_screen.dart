@@ -36,16 +36,17 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () async => !widget.isFromNavBar,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: !widget.isFromNavBar
-              ? const Text("Cart")
-              : const Padding(
+              ? Text(local.cart)
+              :  Padding(
             padding: EdgeInsetsDirectional.only(start: 18),
-            child: Text("Cart"),
+            child: Text(local.cart),
           ),
           backgroundColor: Colors.white,
           centerTitle: false,

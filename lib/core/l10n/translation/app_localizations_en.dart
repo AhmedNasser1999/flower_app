@@ -337,4 +337,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recorder => 'Recorder';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
+  String get explore => 'Explore';
+
+  @override
+  String get bestSeller => 'Best Seller';
+
+  @override
+  String get occasion => 'Occasion';
 }

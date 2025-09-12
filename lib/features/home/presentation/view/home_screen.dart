@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                   const OrderInfo(),
                   const SizedBox(height: 10.0),
                   SectionHeader(
-                    title: 'Categories',
+                    title: local!.categories,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.categoriesScreen);
                     },
@@ -71,14 +71,14 @@ class HomeScreen extends StatelessWidget {
                   CategoriesSection(state: state),
                   const SizedBox(height: 10.0),
                   SectionHeader(
-                    title: 'Best Seller',
+                    title: local.bestSeller,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
                     },
                   ),
                   ProductsSection(state: state),
                   SectionHeader(
-                    title: 'Occasion',
+                    title: local.occasion,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.occasions);
                     },

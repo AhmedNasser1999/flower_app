@@ -77,7 +77,7 @@ class OrderCard extends StatelessWidget {
                   text: buttonText,
                   onPressed: onPressed,
                   textColor: AppColors.white,
-                  height: 46,
+                  height: 50,
                   width: double.infinity, // fills remaining width
                 ),
               ],

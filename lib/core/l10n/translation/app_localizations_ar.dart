@@ -337,4 +337,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recorder => 'إعادة الطلب';
+
+  @override
+  String get clear => 'مسح';
+
+  @override
+  String get explore => 'استكشاف';
+
+  @override
+  String get bestSeller => 'الأكثر مبيعًا';
+
+  @override
+  String get occasion => 'مناسبة';
 }

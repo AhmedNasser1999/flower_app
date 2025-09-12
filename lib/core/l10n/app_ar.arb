@@ -109,5 +109,10 @@
   "active": "نشط",
   "completed": "مكتمل",
   "trackOrder": "تتبع الطلب",
-  "recorder": "إعادة الطلب"
+  "recorder": "إعادة الطلب",
+  "clear": "مسح",
+  "explore": "استكشاف",
+  "bestSeller": "الأكثر مبيعًا",
+  "occasion": "مناسبة"
+
 }

@@ -109,5 +109,9 @@
   "active": "Active",
   "completed": "Completed",
   "trackOrder": "Track Order",
-  "recorder": "Recorder"
+  "recorder": "Recorder",
+  "clear": "Clear",
+  "explore":"Explore",
+  "bestSeller":"Best Seller",
+  "occasion":"Occasion"
 }
