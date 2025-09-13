@@ -404,6 +404,24 @@ abstract class AppLocalizations {
   /// **'v 6.3.0 - (446)'**
   String get versionInfo;
 
+  /// No description provided for @noTermsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No terms found'**
+  String get noTermsFound;
+
+  /// No description provided for @errorLoadingTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading terms'**
+  String get errorLoadingTerms;
+
+  /// No description provided for @noAboutInfoFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No about info found'**
+  String get noAboutInfoFound;
+
   /// No description provided for @profileTitle.
   ///
   /// In en, this message translates to:

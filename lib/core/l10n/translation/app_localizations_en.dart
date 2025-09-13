@@ -166,6 +166,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get versionInfo => 'v 6.3.0 - (446)';
 
   @override
+  String get noTermsFound => 'No terms found';
+
+  @override
+  String get errorLoadingTerms => 'Error loading terms';
+
+  @override
+  String get noAboutInfoFound => 'No about info found';
+
+  @override
   String get profileTitle => 'Edit Profile';
 
   @override

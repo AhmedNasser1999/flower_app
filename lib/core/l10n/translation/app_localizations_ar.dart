@@ -166,6 +166,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
 
   @override
+  String get noTermsFound => 'لم يتم العثور على شروط';
+
+  @override
+  String get errorLoadingTerms => 'خطأ في تحميل الشروط';
+
+  @override
+  String get noAboutInfoFound => 'لم يتم العثور على معلومات حول';
+
+  @override
   String get profileTitle => 'تعديل الملف الشخصي';
 
   @override
