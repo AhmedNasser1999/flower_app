@@ -18,7 +18,8 @@ class LogoutViewModel extends Cubit<LogoutStates> {
 
     try {
       final result = await logoutUseCase();
-      await SecureStorage.delete("token");
+      await SecureStorage.delete("auth_token");
+      await SecureStorage.delete("user_id");
 
       emit(LogoutSuccess(result));
 
