@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
@@ -38,18 +39,27 @@ class ResetPasswordForm extends StatelessWidget {
           ),
           const SizedBox(height: 35),
           state is ResetPasswordLoadingState
-              ? const CircularProgressIndicator()
+              ? SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [AppColors.pink],
+                    strokeWidth: 2,
+                    backgroundColor: Colors.transparent,
+                  ),
+                )
               : CustomElevatedButton(
-            text: local.continueButton,
-            onPressed: cubit.isFormValid
-                ? () {
-              if (formKey.currentState!.validate()) {
-                cubit.resetPassword();
-              }
-            }
-                : null,
-            color: cubit.isFormValid ? AppColors.pink : Colors.grey,
-          ),
+                  text: local.continueButton,
+                  onPressed: cubit.isFormValid
+                      ? () {
+                          if (formKey.currentState!.validate()) {
+                            cubit.resetPassword();
+                          }
+                        }
+                      : null,
+                  color: cubit.isFormValid ? AppColors.pink : Colors.grey,
+                ),
         ],
       ),
     );

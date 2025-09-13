@@ -16,6 +16,7 @@ class TermsAndConditions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)?.localeName ?? 'en';
+    final local = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)?.termsConditions ?? 'Terms and Conditions'),
@@ -26,9 +27,9 @@ class TermsAndConditions extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading terms'));
+            return Center(child: Text(local.errorLoadingTerms));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No terms found'));
+            return Center(child: Text(local.noTermsFound));
           }
           final terms = snapshot.data!;
           return _TermsContent(terms: terms, locale: locale);

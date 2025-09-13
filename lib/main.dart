@@ -1,4 +1,3 @@
-import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'core/config/di.dart';
@@ -9,7 +8,7 @@ import 'core/theme/app_theme.dart';
 import 'features/auth/domain/services/auth_service.dart';
 import 'features/auth/domain/services/guest_service.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   await SecureStorage.initialize();

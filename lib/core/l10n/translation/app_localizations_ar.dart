@@ -124,6 +124,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
+  String get addToCartBtn => 'أضف إلى السلة';
+
+  @override
+  String get mostSellingTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+
+  @override
+  String get explore => 'استكشاف';
+
+  @override
   String get notificationCount => '٣';
 
   @override

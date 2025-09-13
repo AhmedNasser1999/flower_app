@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.dashboard,
-              (route) => false,
+                  (route) => false,
             );
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {},
                         child: Image.asset(AppImages.arrowBack)
                             .setHorizontalAndVerticalPadding(
-                                context, 0.05, 0.07),
+                            context, 0.05, 0.07),
                       ),
                       Text(
                         local!.login,
@@ -140,9 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Checkbox(
                           value: viewModel.rememberMe, onChanged: (value) {
-                            setState(() {
-                              viewModel.toggleRememberMe(value ?? false);
-                            });
+                        setState(() {
+                          viewModel.toggleRememberMe(value ?? false);
+                        });
                       }),
                       Text(
                         local.rememberMe,

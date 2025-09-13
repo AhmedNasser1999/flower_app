@@ -1,6 +1,7 @@
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
@@ -23,7 +24,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if(widget.email != "") {
+    if (widget.email != "") {
       context.read<VerifyCodeCubit>().setEmail(widget.email);
     }
   }
@@ -63,12 +64,13 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                   Text(
+                  Text(
                     local.emailVerificationScreen,
-                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                   const SizedBox(height: 10),
-                   Text(
+                  Text(
                     local.emailVerificationScreenUnderMsg,
                     textAlign: TextAlign.center,
                   ),
@@ -78,33 +80,46 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       Text(
+                      Text(
                         local.codeReceiveMsgError,
                         style: const TextStyle(fontSize: 16),
                       ),
                       TextButton(
-                        onPressed: cubit.isResendEnabled ? () => cubit.resendCode() : null,
+                        onPressed: cubit.isResendEnabled
+                            ? () => cubit.resendCode()
+                            : null,
                         child: Text(
                           cubit.isResendEnabled ? "Resend" : "Resend",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontSize: 17,
-                            color: cubit.isResendEnabled ? Colors.blue : Colors.grey,
+                            color: cubit.isResendEnabled
+                                ? Colors.blue
+                                : Colors.grey,
                           ),
                         ),
                       )
-                            ],
+                    ],
                   ),
                   state is VerifyCodeLoadingStates
-                      ? const CircularProgressIndicator()
+                      ? SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: LoadingIndicator(
+                            indicatorType: Indicator.lineScalePulseOut,
+                            colors: [AppColors.pink],
+                            strokeWidth: 2,
+                            backgroundColor: Colors.transparent,
+                          ),
+                        )
                       : CustomElevatedButton(
-                    text: "Next",
-                    onPressed: cubit.enteredCode.length == 6
-                        ? () {
-                      cubit.verify(context);
-                    }
-                        : null,
-                  ),
+                          text: "Next",
+                          onPressed: cubit.enteredCode.length == 6
+                              ? () {
+                                  cubit.verify(context);
+                                }
+                              : null,
+                        ),
                 ],
               ).setVerticalPadding(context, 0.04),
             ),
