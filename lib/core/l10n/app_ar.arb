@@ -49,5 +49,8 @@
   "notification": "أشعارات",
   "termsConditions": "الشروط والأحكام",
   "error": "خطأ:",
-  "versionInfo": "الإصدار 6.3.0 - (446)"
+  "versionInfo": "الإصدار 6.3.0 - (446)",
+  "noTermsFound": "لم يتم العثور على شروط",
+  "errorLoadingTerms": "خطأ في تحميل الشروط",
+  "noAboutInfoFound": "لم يتم العثور على معلومات حول"
 }

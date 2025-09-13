@@ -49,5 +49,8 @@
   "notification": "Notification",
   "termsConditions": "Terms & conditions",
   "error": "Error:",
-  "versionInfo": "v 6.3.0 - (446)"
+  "versionInfo": "v 6.3.0 - (446)",
+  "noTermsFound": "No terms found",
+  "errorLoadingTerms": "Error loading terms",
+  "noAboutInfoFound": "No about info found"
 }

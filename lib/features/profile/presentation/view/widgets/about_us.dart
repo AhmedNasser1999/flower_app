@@ -16,6 +16,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)?.localeName ?? 'en';
+    final local = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         title: Text(locale.startsWith('ar') ? 'عن تطبيق فلاوري' : 'About Flowery App'),
@@ -28,7 +29,7 @@ class AboutUs extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: \\${snapshot.error}'));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No about info found'));
+            return Center(child: Text(local.noAboutInfoFound));
           }
           final about = snapshot.data!;
           return _AboutContent(about: about, locale: locale);
