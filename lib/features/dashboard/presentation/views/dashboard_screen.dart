@@ -1,0 +1,72 @@
+import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
+import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/auth/domain/services/auth_service.dart';
+import 'package:flower_app/features/auth/domain/services/guest_service.dart';
+import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
+import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_bar_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/config/di.dart';
+import '../../../profile/presentation/view/profile_screen.dart';
+import '../../../profile/presentation/viewmodel/profile_viewmodel.dart';
+
+class DashboardScreen extends StatelessWidget {
+  DashboardScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      Center(child: Text("home")),
+      Center(child: Text("categories")),
+      Center(
+          child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomElevatedButton(
+                      text: "change password",
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.changePasswordScreen);
+                      }),
+                  const SizedBox(height: 20),
+                  CustomElevatedButton(
+                      text: "Logout",
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.login);
+                      }),
+                ],
+              ))),
+      BlocProvider(
+          create: (_) => getIt<ProfileViewModel>()..getProfile(),
+          child: const ProfileScreen()),
+    ];
+
+    return BlocProvider(
+      create: (context) => NavBarCubit()..changeTab(0),
+      child: Builder(
+        builder: (context) {
+          return BlocBuilder<NavBarCubit, NavBarState>(
+            builder: (context, state) {
+              return Scaffold(
+                backgroundColor: Colors.white,
+                body: screens[state.selectedIndex],
+                bottomNavigationBar: SizedBox(
+                  height: 80,
+                  child: CustomBottomNavBarWidget(
+                    currentIndex: state.selectedIndex,
+                    onTap: (index) {
+                      context.read<NavBarCubit>().changeTab(index);
+                    },
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
