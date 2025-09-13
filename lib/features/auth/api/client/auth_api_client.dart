@@ -14,7 +14,6 @@ import '../../data/models/forget_password_models/reset_password_request_model.da
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
 
 
-
 part 'auth_api_client.g.dart';
 
 @injectable
@@ -35,6 +34,7 @@ abstract class AuthApiClient {
 
   @POST(AppConstants.signIn)
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
+
 
   @POST(AppConstants.signup)
   Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);

@@ -147,6 +147,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
+  String get addToCartBtn => 'أضف إلى السلة';
+
+  @override
+  String get mostSellingTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+
+  @override
+  String get explore => 'استكشاف';
+
+  @override
   String get notificationCount => '٣';
 
   @override
@@ -175,6 +187,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get noTermsFound => 'لم يتم العثور على شروط';
+
+  @override
+  String get errorLoadingTerms => 'خطأ في تحميل الشروط';
+
+  @override
+  String get noAboutInfoFound => 'لم يتم العثور على معلومات حول';
 
   @override
   String get profileTitle => 'تعديل الملف الشخصي';

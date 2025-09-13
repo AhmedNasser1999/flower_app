@@ -36,6 +36,10 @@
   "newPasswordLabel": "كلمة مرور جديدة",
   "newPasswordHint": "أدخل كلمة المرور الجديدة",
   "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
+  "addToCartBtn": "أضف إلى السلة",
+  "mostSellingTitle": "الأكثر مبيعًا",
+  "mostSellingSubTitle": "ازدهر مع منتجاتنا الأكثر مبيعًا",
+  "explore": "استكشاف",
   "notificationCount": "٣",
   "myOrders": "طلباتي",
   "savedAddress": "العناوين المحفوظة",
@@ -45,7 +49,6 @@
   "notification": "أشعارات",
   "termsConditions": "الشروط والأحكام",
   "error": "خطأ:",
-  "versionInfo": "الإصدار 6.3.0 - (446)",
   "profileTitle": "تعديل الملف الشخصي",
   "usernameLabel": "اسم المستخدم",
   "firstNameLabel": "الاسم الأول",
@@ -54,5 +57,9 @@
   "phoneNumberLabel": "رقم الهاتف",
   "updateButton": "تحديث",
   "errorText": "خطأ",
-  "profileUpdatedSuccessMsg": "تم تغيير الملف الشخصي بنجاح!"
+  "profileUpdatedSuccessMsg": "تم تغيير الملف الشخصي بنجاح!",
+  "versionInfo": "الإصدار 6.3.0 - (446)",
+  "noTermsFound": "لم يتم العثور على شروط",
+  "errorLoadingTerms": "خطأ في تحميل الشروط",
+  "noAboutInfoFound": "لم يتم العثور على معلومات حول"
 }
