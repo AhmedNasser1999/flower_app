@@ -24,6 +24,7 @@ import 'package:flower_app/features/auth/data/models/signup_model/signup_respons
 import 'package:flower_app/features/auth/domain/responses/auth_response.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i12;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -166,7 +167,7 @@ class MockAuthRemoteDatasource extends _i1.Mock
           #logout,
           [],
         ),
-        returnValue: _i5.Future<String>.value(_i7.dummyValue<String>(
+        returnValue: _i5.Future<String>.value(_i12.dummyValue<String>(
           this,
           Invocation.method(
             #logout,

@@ -47,9 +47,9 @@ void main() {
       final result = await datasource.changePassword(request);
 
       // assert
-      expect(result, isA<ApiSuccessResult<ChangePasswordResponseModel>>());
-      expect((result as ApiSuccessResult).data.message, "Password changed successfully");
-      expect(result..token, "newToken123");
+      expect(result, isA<ChangePasswordResponseModel>());
+      expect((result.message), "Password changed successfully");
+      expect(result.token, "newToken123");
       verify(mockProfileApiClient.changePassword(request)).called(1);
     });
 

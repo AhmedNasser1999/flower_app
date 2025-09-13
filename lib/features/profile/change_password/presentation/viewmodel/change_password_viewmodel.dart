@@ -1,9 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:flutter/cupertino.dart';
-
-
-import '../../../../../core/contants/secure_storage.dart';
+import '../../../../auth/domain/services/auth_service.dart';
 import '../../../data/models/change_password_request_model.dart';
 import '../../../data/models/change_password_response_model.dart';
 import '../../../domain/usecases/change_password_usecase.dart';
@@ -35,7 +33,7 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordStates> {
       await _changePasswordUseCases(request);
 
       if (result.token.isNotEmpty) {
-        await SecureStorage.write(key: 'token', value: result.token);
+        await AuthService.saveAuthToken(result.token?? "");
 
 
         currentPasswordController.clear();

@@ -31,8 +31,12 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
 
   @override
   Future<ChangePasswordResponseModel> changePassword(ChangePasswordRequestModel changePasswordRequestModel) async {
-    final response = await _profileApiClient.changePassword(changePasswordRequestModel);
-    return response;
+    try{
+      final response = await _profileApiClient.changePassword(changePasswordRequestModel);
+      return response;
+    } catch (e){
+      throw ("Unexpected error: $e");
+    }
   }
 
 

@@ -1,4 +1,3 @@
-import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/domain/services/auth_service.dart';
 import 'package:flower_app/features/auth/domain/usecases/login_usecase/login_usecases.dart';
@@ -30,9 +29,8 @@ class LoginViewModel extends Cubit<LoginStates> {
     try{
       final request = LoginRequest(email: email , password: password);
       final response = await _loginUseCase(request);
-
+      await AuthService.saveAuthToken(response.data?.token?? "");
       if(rememberMe) {
-        await AuthService.saveAuthToken(response.data?.token?? "");
         await AuthService.saveUserId(response.data!.user!.Id.toString());
       }
 

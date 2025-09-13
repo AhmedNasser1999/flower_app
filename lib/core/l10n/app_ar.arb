@@ -61,5 +61,14 @@
   "versionInfo": "الإصدار 6.3.0 - (446)",
   "noTermsFound": "لم يتم العثور على شروط",
   "errorLoadingTerms": "خطأ في تحميل الشروط",
-  "noAboutInfoFound": "لم يتم العثور على معلومات حول"
+  "noAboutInfoFound": "لم يتم العثور على معلومات حول",
+  "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "invalidPasswordMsg": "كلمة مرور غير صالحة",
+  "passwordErrorMatchingMsg": "كلمة المرور غير متطابقة!",
+  "updateText": "تحديث",
+  "logoutAlertMsg": "تسجيل الخروج",
+  "cancel": "إلغاء",
+  "logoutConfirmTextCenter": "تأكيد تسجيل الخروج!!"
 }
