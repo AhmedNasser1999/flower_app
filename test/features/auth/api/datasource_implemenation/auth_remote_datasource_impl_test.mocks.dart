@@ -151,4 +151,19 @@ class MockAuthApiClient extends _i1.Mock implements _i4.AuthApiClient {
           ),
         )),
       ) as _i5.Future<_i3.RegisterResponse>);
+
+  @override
+  _i5.Future<String> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i5.Future<String>.value(_i7.dummyValue<String>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i5.Future<String>);
 }

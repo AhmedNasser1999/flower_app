@@ -3,22 +3,26 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
-import 'dart:io' as _i10;
+import 'dart:async' as _i4;
+import 'dart:io' as _i12;
 
-import 'package:flower_app/core/errors/api_result.dart' as _i4;
+import 'package:flower_app/core/errors/api_result.dart' as _i5;
 import 'package:flower_app/features/profile/data/datasource/profile_remote_datasource.dart'
+    as _i3;
+import 'package:flower_app/features/profile/data/models/change_password_request_model.dart'
+    as _i8;
+import 'package:flower_app/features/profile/data/models/change_password_response_model.dart'
     as _i2;
 import 'package:flower_app/features/profile/data/models/edit_profile_request_model.dart'
-    as _i8;
+    as _i10;
 import 'package:flower_app/features/profile/data/models/edit_profile_response_model.dart'
-    as _i7;
-import 'package:flower_app/features/profile/data/models/profile_response.dart'
-    as _i5;
-import 'package:flower_app/features/profile/data/models/upload_photo_response.dart'
     as _i9;
+import 'package:flower_app/features/profile/data/models/profile_response.dart'
+    as _i6;
+import 'package:flower_app/features/profile/data/models/upload_photo_response.dart'
+    as _i11;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
+import 'package:mockito/src/dummies.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,66 +38,95 @@ import 'package:mockito/src/dummies.dart' as _i6;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeChangePasswordResponseModel_0 extends _i1.SmartFake
+    implements _i2.ChangePasswordResponseModel {
+  _FakeChangePasswordResponseModel_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ProfileRemoteDatasource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockProfileRemoteDatasource extends _i1.Mock
-    implements _i2.ProfileRemoteDatasource {
+    implements _i3.ProfileRemoteDatasource {
   MockProfileRemoteDatasource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.ProfileResponse>> getProfile() =>
+  _i4.Future<_i5.ApiResult<_i6.ProfileResponse>> getProfile() =>
       (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i5.ProfileResponse>>.value(
-            _i6.dummyValue<_i4.ApiResult<_i5.ProfileResponse>>(
+        returnValue: _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>.value(
+            _i7.dummyValue<_i5.ApiResult<_i6.ProfileResponse>>(
           this,
           Invocation.method(
             #getProfile,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i5.ProfileResponse>>);
+      ) as _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>> editProfile(
-          _i8.EditProfileRequestModel? model) =>
+  _i4.Future<_i2.ChangePasswordResponseModel> changePassword(
+          _i8.ChangePasswordRequestModel? changePasswordRequestModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [changePasswordRequestModel],
+        ),
+        returnValue: _i4.Future<_i2.ChangePasswordResponseModel>.value(
+            _FakeChangePasswordResponseModel_0(
+          this,
+          Invocation.method(
+            #changePassword,
+            [changePasswordRequestModel],
+          ),
+        )),
+      ) as _i4.Future<_i2.ChangePasswordResponseModel>);
+
+  @override
+  _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>> editProfile(
+          _i10.EditProfileRequestModel? model) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [model],
         ),
         returnValue:
-            _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>>.value(
-                _i6.dummyValue<_i4.ApiResult<_i7.EditProfileResponseModel>>(
+            _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>.value(
+                _i7.dummyValue<_i5.ApiResult<_i9.EditProfileResponseModel>>(
           this,
           Invocation.method(
             #editProfile,
             [model],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>>);
+      ) as _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>> uploadPhoto(
-          _i10.File? photo) =>
+  _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>> uploadPhoto(
+          _i12.File? photo) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadPhoto,
           [photo],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>>.value(
-            _i6.dummyValue<_i4.ApiResult<_i9.UploadPhotoResponse>>(
+        returnValue: _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>.value(
+            _i7.dummyValue<_i5.ApiResult<_i11.UploadPhotoResponse>>(
           this,
           Invocation.method(
             #uploadPhoto,
             [photo],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>>);
+      ) as _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>);
 }

@@ -82,6 +82,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get invalidPasswordMsg => 'invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Password unmatching!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get logoutAlertMsg => 'LOGOUT';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logoutConfirmTextCenter => 'Confirm logout!!';
+
+  @override
   String get resetPasswordUnderMsg =>
       'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
 

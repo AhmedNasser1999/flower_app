@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flower_app/core/errors/api_result.dart';
+import 'package:flower_app/features/profile/data/models/change_password_request_model.dart';
+
 import '../../domain/entity/user_entity.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../datasource/profile_remote_datasource.dart';
@@ -7,6 +9,8 @@ import 'package:injectable/injectable.dart';
 import '../models/edit_profile_request_model.dart';
 import '../models/edit_profile_response_model.dart';
 import '../models/upload_photo_response.dart';
+
+import '../models/change_password_response_model.dart';
 
 @LazySingleton(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
@@ -31,6 +35,11 @@ class ProfileRepositoryImpl implements ProfileRepository {
         )),
       ApiErrorResult(:final errorMessage) => ApiErrorResult(errorMessage),
     };
+  }
+
+  @override
+  Future<ChangePasswordResponseModel> changePassword(ChangePasswordRequestModel changePasswordRequestModel) {
+    return _remoteDatasource.changePassword(changePasswordRequestModel);
   }
 
   @override

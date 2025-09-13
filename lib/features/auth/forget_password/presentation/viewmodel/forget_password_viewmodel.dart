@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../domain/usecases/forget_password_usecase.dart';
+import '../../../domain/usecases/forget_password_usecase/forget_password_usecase.dart';
 import 'states/forget_password_states.dart';
 import '../../../../../core/extensions/validations.dart';
 

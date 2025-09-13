@@ -242,6 +242,60 @@ abstract class AppLocalizations {
   /// **'Reset Password'**
   String get resetPassword;
 
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @invalidPasswordMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'invalid password'**
+  String get invalidPasswordMsg;
+
+  /// No description provided for @passwordErrorMatchingMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password unmatching!'**
+  String get passwordErrorMatchingMsg;
+
+  /// No description provided for @updateText.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateText;
+
+  /// No description provided for @logoutAlertMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'LOGOUT'**
+  String get logoutAlertMsg;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logoutConfirmTextCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm logout!!'**
+  String get logoutConfirmTextCenter;
+
   /// No description provided for @resetPasswordUnderMsg.
   ///
   /// In en, this message translates to:

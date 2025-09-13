@@ -11,4 +11,5 @@ abstract class AuthRepo {
   Future<AuthResponse<String>> resetPassword(String email, String newPassword);
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
   Future<RegisterResponse> signUp(@Body() RegisterRequest registerRequest);
+  Future<String> logout();
 }

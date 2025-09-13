@@ -3,19 +3,23 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
-import 'dart:io' as _i8;
+import 'dart:async' as _i7;
+import 'dart:io' as _i10;
 
 import 'package:flower_app/features/profile/api/client/profile_api_client.dart'
-    as _i5;
-import 'package:flower_app/features/profile/data/models/edit_profile_request_model.dart'
-    as _i7;
-import 'package:flower_app/features/profile/data/models/edit_profile_response_model.dart'
+    as _i6;
+import 'package:flower_app/features/profile/data/models/change_password_request_model.dart'
+    as _i8;
+import 'package:flower_app/features/profile/data/models/change_password_response_model.dart'
     as _i3;
+import 'package:flower_app/features/profile/data/models/edit_profile_request_model.dart'
+    as _i9;
+import 'package:flower_app/features/profile/data/models/edit_profile_response_model.dart'
+    as _i4;
 import 'package:flower_app/features/profile/data/models/profile_response.dart'
     as _i2;
 import 'package:flower_app/features/profile/data/models/upload_photo_response.dart'
-    as _i4;
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -43,9 +47,9 @@ class _FakeProfileResponse_0 extends _i1.SmartFake
         );
 }
 
-class _FakeEditProfileResponseModel_1 extends _i1.SmartFake
-    implements _i3.EditProfileResponseModel {
-  _FakeEditProfileResponseModel_1(
+class _FakeChangePasswordResponseModel_1 extends _i1.SmartFake
+    implements _i3.ChangePasswordResponseModel {
+  _FakeChangePasswordResponseModel_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -54,9 +58,20 @@ class _FakeEditProfileResponseModel_1 extends _i1.SmartFake
         );
 }
 
-class _FakeUploadPhotoResponse_2 extends _i1.SmartFake
-    implements _i4.UploadPhotoResponse {
-  _FakeUploadPhotoResponse_2(
+class _FakeEditProfileResponseModel_2 extends _i1.SmartFake
+    implements _i4.EditProfileResponseModel {
+  _FakeEditProfileResponseModel_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUploadPhotoResponse_3 extends _i1.SmartFake
+    implements _i5.UploadPhotoResponse {
+  _FakeUploadPhotoResponse_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -68,59 +83,77 @@ class _FakeUploadPhotoResponse_2 extends _i1.SmartFake
 /// A class which mocks [ProfileApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProfileApiClient extends _i1.Mock implements _i5.ProfileApiClient {
+class MockProfileApiClient extends _i1.Mock implements _i6.ProfileApiClient {
   MockProfileApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.ProfileResponse> getProfile() => (super.noSuchMethod(
+  _i7.Future<_i2.ProfileResponse> getProfile() => (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [],
         ),
         returnValue:
-            _i6.Future<_i2.ProfileResponse>.value(_FakeProfileResponse_0(
+            _i7.Future<_i2.ProfileResponse>.value(_FakeProfileResponse_0(
           this,
           Invocation.method(
             #getProfile,
             [],
           ),
         )),
-      ) as _i6.Future<_i2.ProfileResponse>);
+      ) as _i7.Future<_i2.ProfileResponse>);
 
   @override
-  _i6.Future<_i3.EditProfileResponseModel> editProfile(
-          _i7.EditProfileRequestModel? model) =>
+  _i7.Future<_i3.ChangePasswordResponseModel> changePassword(
+          _i8.ChangePasswordRequestModel? changePasswordRequestModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [changePasswordRequestModel],
+        ),
+        returnValue: _i7.Future<_i3.ChangePasswordResponseModel>.value(
+            _FakeChangePasswordResponseModel_1(
+          this,
+          Invocation.method(
+            #changePassword,
+            [changePasswordRequestModel],
+          ),
+        )),
+      ) as _i7.Future<_i3.ChangePasswordResponseModel>);
+
+  @override
+  _i7.Future<_i4.EditProfileResponseModel> editProfile(
+          _i9.EditProfileRequestModel? model) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [model],
         ),
-        returnValue: _i6.Future<_i3.EditProfileResponseModel>.value(
-            _FakeEditProfileResponseModel_1(
+        returnValue: _i7.Future<_i4.EditProfileResponseModel>.value(
+            _FakeEditProfileResponseModel_2(
           this,
           Invocation.method(
             #editProfile,
             [model],
           ),
         )),
-      ) as _i6.Future<_i3.EditProfileResponseModel>);
+      ) as _i7.Future<_i4.EditProfileResponseModel>);
 
   @override
-  _i6.Future<_i4.UploadPhotoResponse> uploadPhoto(_i8.File? photo) =>
+  _i7.Future<_i5.UploadPhotoResponse> uploadPhoto(_i10.File? photo) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadPhoto,
           [photo],
         ),
-        returnValue: _i6.Future<_i4.UploadPhotoResponse>.value(
-            _FakeUploadPhotoResponse_2(
+        returnValue: _i7.Future<_i5.UploadPhotoResponse>.value(
+            _FakeUploadPhotoResponse_3(
           this,
           Invocation.method(
             #uploadPhoto,
             [photo],
           ),
         )),
-      ) as _i6.Future<_i4.UploadPhotoResponse>);
+      ) as _i7.Future<_i5.UploadPhotoResponse>);
 }

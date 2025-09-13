@@ -82,6 +82,33 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
+  String get currentPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get invalidPasswordMsg => 'كلمة مرور غير صالحة';
+
+  @override
+  String get passwordErrorMatchingMsg => 'كلمة المرور غير متطابقة!';
+
+  @override
+  String get updateText => 'تحديث';
+
+  @override
+  String get logoutAlertMsg => 'تسجيل الخروج';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!!';
+
+  @override
   String get resetPasswordUnderMsg =>
       'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -185,7 +186,9 @@ class EditProfileScreen extends StatelessWidget {
                     readonly: true,
                     initialText: "******",
                     suffixText: local.passwordChangeText,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
+                    },
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.004),
                   const SizedBox(height: 10),
                   Row(

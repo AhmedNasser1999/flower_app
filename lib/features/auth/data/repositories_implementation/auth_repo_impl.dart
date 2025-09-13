@@ -44,4 +44,8 @@ class AuthRepoImpl implements AuthRepo {
     return _authRemoteDatasource.signUp(registerRequest);
   }
 
+  @override
+  Future<String> logout() {
+    return _authRemoteDatasource.logout();
+  }
 }
