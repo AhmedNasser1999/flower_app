@@ -50,6 +50,19 @@ import '../../features/most_selling_products/domain/usecases/get_all_products_us
     as _i144;
 import '../../features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart'
     as _i72;
+import '../../features/profile/api/client/profile_api_client.dart' as _i418;
+import '../../features/profile/api/datasource_impl/profile_remote_datasource_impl.dart'
+    as _i121;
+import '../../features/profile/data/datasource/profile_remote_datasource.dart'
+    as _i1031;
+import '../../features/profile/data/repositories_impl/profile_repository_impl.dart'
+    as _i357;
+import '../../features/profile/domain/repositories/profile_repository.dart'
+    as _i894;
+import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
+    as _i68;
+import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
+    as _i351;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -78,6 +91,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
+    gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.lazySingleton<_i175.AuthRemoteDatasource>(
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
     gh.factory<_i341.ResetPasswordCubit>(
@@ -86,6 +103,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
     gh.lazySingleton<_i955.ProductRemoteDataSource>(
         () => _i313.ProductRemoteDataSourceImpl(gh<_i67.ProductApiClient>()));
+    gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
+        _i121.ProfileRemoteDatasourceImpl(
+            apiClient: gh<_i418.ProfileApiClient>()));
     gh.factory<_i1037.LoginUseCase>(
         () => _i1037.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i57.SignupUsecase>(
@@ -100,6 +120,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i680.ProductRepoImpl(gh<_i955.ProductRemoteDataSource>()));
     gh.factory<_i164.ForgetPasswordCubit>(
         () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
+    gh.lazySingleton<_i894.ProfileRepository>(() =>
+        _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
           gh<_i294.VerifyCodeUseCase>(),
           gh<_i948.ForgetPasswordUseCase>(),
@@ -112,6 +134,10 @@ extension GetItInjectableX on _i174.GetIt {
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i57.SignupUsecase>()));
+    gh.factory<_i68.GetProfileDataUseCase>(
+        () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.factory<_i351.ProfileViewModel>(
+        () => _i351.ProfileViewModel(gh<_i68.GetProfileDataUseCase>()));
     return this;
   }
 }

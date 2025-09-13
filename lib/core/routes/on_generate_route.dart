@@ -6,7 +6,9 @@ import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
@@ -17,6 +19,8 @@ import '../../features/auth/forget_password/presentation/views/screens/forgertPa
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
+import '../../features/profile/presentation/view/edit_profile_screen.dart';
+import '../../features/profile/presentation/view/widgets/about_us.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -53,6 +57,7 @@ class Routes {
           builder: (context) => BlocProvider(
             create: (_) => getIt<VerifyCodeCubit>(),
             child: EmailVerificationScreen(email: email),
+
           ),
         );
 
@@ -77,6 +82,15 @@ class Routes {
         final product = settings.arguments as ProductsEntity;
         return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
 
+
+      case AppRoutes.termsAndConditions:
+        return MaterialPageRoute(builder: (_) =>  TermsAndConditions());
+
+      case AppRoutes.aboutUs:
+        return MaterialPageRoute(builder: (_) =>  AboutUs());
+
+      case AppRoutes.editProfile:
+        return MaterialPageRoute(builder: (_) =>  EditProfileScreen());
 
       default:
         return MaterialPageRoute(

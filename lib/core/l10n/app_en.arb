@@ -39,5 +39,18 @@
   "addToCartBtn": "Add to cart",
   "mostSellingTitle": "Best Seller",
   "mostSellingSubTitle": "Bloom with our exquisite best sellers",
-  "explore": "Explore"
+  "explore": "Explore",
+  "notificationCount": "3",
+  "myOrders": "My orders",
+  "savedAddress": "Saved address",
+  "language": "Language",
+  "languageChanged": "English",
+  "aboutUs": "About us",
+  "notification": "Notification",
+  "termsConditions": "Terms & conditions",
+  "error": "Error:",
+  "versionInfo": "v 6.3.0 - (446)",
+  "noTermsFound": "No terms found",
+  "errorLoadingTerms": "Error loading terms",
+  "noAboutInfoFound": "No about info found"
 }

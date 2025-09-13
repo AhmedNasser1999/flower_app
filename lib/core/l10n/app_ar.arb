@@ -39,5 +39,18 @@
   "addToCartBtn": "أضف إلى السلة",
   "mostSellingTitle": "الأكثر مبيعًا",
   "mostSellingSubTitle": "ازدهر مع منتجاتنا الأكثر مبيعًا",
-  "explore": "استكشاف"
+  "explore": "استكشاف",
+  "notificationCount": "٣",
+  "myOrders": "طلباتي",
+  "savedAddress": "العناوين المحفوظة",
+  "language": "اللغة",
+  "languageChanged": "العربيه",
+  "aboutUs": "معلومات عنا",
+  "notification": "أشعارات",
+  "termsConditions": "الشروط والأحكام",
+  "error": "خطأ:",
+  "versionInfo": "الإصدار 6.3.0 - (446)",
+  "noTermsFound": "لم يتم العثور على شروط",
+  "errorLoadingTerms": "خطأ في تحميل الشروط",
+  "noAboutInfoFound": "لم يتم العثور على معلومات حول"
 }
