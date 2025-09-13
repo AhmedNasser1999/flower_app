@@ -80,8 +80,11 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(context, AppRoutes.editProfile);
+                  onTap: () async {
+                    final updated = await Navigator.pushNamed(context, AppRoutes.editProfile,arguments: profile);
+                    if(updated==true){
+                      context.read<ProfileViewModel>().getProfile();
+                    }
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

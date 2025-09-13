@@ -52,5 +52,14 @@
   "versionInfo": "v 6.3.0 - (446)",
   "noTermsFound": "No terms found",
   "errorLoadingTerms": "Error loading terms",
-  "noAboutInfoFound": "No about info found"
+  "noAboutInfoFound": "No about info found",
+  "profileTitle": "Edit Profile",
+  "usernameLabel": "User name",
+  "firstNameLabel": "First name",
+  "lastNameLabel": "Last Name",
+  "passwordChangeText": "Change",
+  "phoneNumberLabel": "Phone Number",
+  "updateButton": "Update",
+  "errorText": "Error",
+  "profileUpdatedSuccessMsg":"Profile changed successfully!"
 }

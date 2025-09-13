@@ -110,7 +110,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     color: AppColors.pink,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
-                    decoration: TextDecoration.underline,
                   ),
                 ),
               )

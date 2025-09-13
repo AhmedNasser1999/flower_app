@@ -8,7 +8,6 @@ import 'package:flower_app/features/most_selling_products/presentation/view/most
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
@@ -18,6 +17,7 @@ import '../../features/auth/forget_password/presentation/views/screens/email_ver
 import '../../features/auth/forget_password/presentation/views/screens/forgertPasswordScreen.dart';
 import '../../features/auth/login/presentation/viewmodel/login_viewmodel.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
+import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
@@ -90,7 +90,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) =>  AboutUs());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen());
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
 
       default:
         return MaterialPageRoute(

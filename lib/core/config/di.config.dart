@@ -59,8 +59,12 @@ import '../../features/profile/data/repositories_impl/profile_repository_impl.da
     as _i357;
 import '../../features/profile/domain/repositories/profile_repository.dart'
     as _i894;
+import '../../features/profile/domain/usecases/edit_profile_data_usecase.dart'
+    as _i691;
 import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
     as _i68;
+import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
+    as _i971;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
 import 'dio_module/dio_module.dart' as _i484;
@@ -118,10 +122,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i294.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
     gh.lazySingleton<_i1026.ProductRepo>(
         () => _i680.ProductRepoImpl(gh<_i955.ProductRemoteDataSource>()));
-    gh.factory<_i164.ForgetPasswordCubit>(
-        () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
     gh.lazySingleton<_i894.ProfileRepository>(() =>
         _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
+    gh.factory<_i164.ForgetPasswordCubit>(
+        () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
+    gh.factory<_i691.EditProfileDataUseCase>(
+        () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.factory<_i68.GetProfileDataUseCase>(
+        () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
           gh<_i294.VerifyCodeUseCase>(),
           gh<_i948.ForgetPasswordUseCase>(),
@@ -130,12 +138,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1063.LoginViewModel(gh<_i1037.LoginUseCase>()));
     gh.factory<_i144.GetAllProductsUseCase>(
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
+    gh.factory<_i971.UploadPhotoUseCase>(
+        () => _i971.UploadPhotoUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i72.MostSellingProductsViewmodel>(() =>
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
     gh.factory<_i387.SignupCubit>(
         () => _i387.SignupCubit(signupUsecase: gh<_i57.SignupUsecase>()));
-    gh.factory<_i68.GetProfileDataUseCase>(
-        () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i351.ProfileViewModel>(
         () => _i351.ProfileViewModel(gh<_i68.GetProfileDataUseCase>()));
     return this;

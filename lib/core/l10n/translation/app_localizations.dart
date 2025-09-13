@@ -403,6 +403,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'v 6.3.0 - (446)'**
   String get versionInfo;
+
+  /// No description provided for @noTermsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No terms found'**
+  String get noTermsFound;
+
+  /// No description provided for @errorLoadingTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading terms'**
+  String get errorLoadingTerms;
+
+  /// No description provided for @noAboutInfoFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No about info found'**
+  String get noAboutInfoFound;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get profileTitle;
+
+  /// No description provided for @usernameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User name'**
+  String get usernameLabel;
+
+  /// No description provided for @firstNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get firstNameLabel;
+
+  /// No description provided for @lastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastNameLabel;
+
+  /// No description provided for @passwordChangeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get passwordChangeText;
+
+  /// No description provided for @phoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumberLabel;
+
+  /// No description provided for @updateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateButton;
+
+  /// No description provided for @errorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get errorText;
+
+  /// No description provided for @profileUpdatedSuccessMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile changed successfully!'**
+  String get profileUpdatedSuccessMsg;
 }
 
 class _AppLocalizationsDelegate

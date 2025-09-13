@@ -4,12 +4,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
+import 'dart:io' as _i10;
 
 import 'package:flower_app/core/errors/api_result.dart' as _i4;
 import 'package:flower_app/features/profile/data/datasource/profile_remote_datasource.dart'
     as _i2;
+import 'package:flower_app/features/profile/data/models/edit_profile_request_model.dart'
+    as _i8;
+import 'package:flower_app/features/profile/data/models/edit_profile_response_model.dart'
+    as _i7;
 import 'package:flower_app/features/profile/data/models/profile_response.dart'
     as _i5;
+import 'package:flower_app/features/profile/data/models/upload_photo_response.dart'
+    as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -52,4 +59,41 @@ class MockProfileRemoteDatasource extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.ApiResult<_i5.ProfileResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>> editProfile(
+          _i8.EditProfileRequestModel? model) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [model],
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>>.value(
+                _i6.dummyValue<_i4.ApiResult<_i7.EditProfileResponseModel>>(
+          this,
+          Invocation.method(
+            #editProfile,
+            [model],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i7.EditProfileResponseModel>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>> uploadPhoto(
+          _i10.File? photo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [photo],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>>.value(
+            _i6.dummyValue<_i4.ApiResult<_i9.UploadPhotoResponse>>(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [photo],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i9.UploadPhotoResponse>>);
 }
