@@ -953,6 +953,18 @@ abstract class AppLocalizations {
   /// **'Account created successfully'**
   String get signup_success;
 
+  /// No description provided for @loginRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Required'**
+  String get loginRequiredTitle;
+
+  /// No description provided for @loginRequiredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You need to login to access this feature.'**
+  String get loginRequiredMessage;
+
   /// No description provided for @changeLanguage.
   ///
   /// In en, this message translates to:
