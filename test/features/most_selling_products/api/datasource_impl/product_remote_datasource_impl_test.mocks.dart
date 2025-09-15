@@ -45,17 +45,30 @@ class MockProductApiClient extends _i1.Mock implements _i3.ProductApiClient {
   }
 
   @override
-  _i4.Future<_i2.ProductsResponseModel> getAllProducts() => (super.noSuchMethod(
+  _i4.Future<_i2.ProductsResponseModel> getAllProducts(
+    String? sort,
+    String? search,
+    String? category,
+  ) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
-          [],
+          [
+            sort,
+            search,
+            category,
+          ],
         ),
         returnValue: _i4.Future<_i2.ProductsResponseModel>.value(
             _FakeProductsResponseModel_0(
           this,
           Invocation.method(
             #getAllProducts,
-            [],
+            [
+              sort,
+              search,
+              category,
+            ],
           ),
         )),
       ) as _i4.Future<_i2.ProductsResponseModel>);
