@@ -109,5 +109,6 @@
   "errorText": "Error",
   "profileUpdatedSuccessMsg":"Profile changed successfully!",
   "versionInfo": "v 6.3.0 - (446)",
-  "egp": "EGP"
+  "egp": "EGP",
+  "notificationDelete": "Notification deleted"
 }

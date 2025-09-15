@@ -10,6 +10,7 @@ import 'package:flower_app/features/most_selling_products/presentation/view/most
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import 'package:flower_app/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 
@@ -59,12 +60,11 @@ class Routes {
                 ));
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
+        return MaterialPageRoute(builder: (_) => DashboardScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ForgetPasswordCubit>(),
             child: const ForgetPasswordScreen(),
           ),
@@ -73,11 +73,9 @@ class Routes {
       case AppRoutes.emailVerification:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<VerifyCodeCubit>(),
             child: EmailVerificationScreen(email: email),
-
           ),
         );
       case AppRoutes.changePasswordScreen:
@@ -100,8 +98,7 @@ class Routes {
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
+          builder: (context) => BlocProvider(
             create: (_) => getIt<ResetPasswordCubit>(),
             child: ResetPasswordScreen(email: email),
           ),
@@ -176,6 +173,9 @@ class Routes {
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
         return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
+
+      case AppRoutes.notification:
+        return MaterialPageRoute(builder: (_) => NotificationsScreen());
 
       default:
         return MaterialPageRoute(

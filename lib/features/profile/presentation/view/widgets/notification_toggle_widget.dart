@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../core/routes/route_names.dart';
 
 class NotificationToggleWidget extends StatefulWidget {
   const NotificationToggleWidget({super.key});
@@ -32,7 +33,7 @@ class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
       title: Text(local.notification, style: theme.textTheme.bodyMedium,),
       trailing: const Icon(Icons.arrow_forward_ios, size: 20),
       onTap: () {
-
+        Navigator.pushNamed(context, AppRoutes.notification);
       },
     );
   }
