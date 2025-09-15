@@ -436,4 +436,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signup_success => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get changeLanguage => 'تغير اللغه';
 }

@@ -10,7 +10,7 @@ class AppLogo extends StatelessWidget {
     return SvgPicture.asset(
       AppIcons.logo,
       width: 100,
-      height: 30,
+      height: 32,
     );
   }
 }

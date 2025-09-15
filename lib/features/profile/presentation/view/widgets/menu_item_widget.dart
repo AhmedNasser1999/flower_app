@@ -21,7 +21,7 @@ class MenuItemWidget extends StatelessWidget {
       leading: leading,
       title: Text(
         title,
-        style: theme.textTheme.bodyMedium,
+        style: theme.textTheme.bodyLarge,
       ),
       trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 20),
       onTap: onTap,

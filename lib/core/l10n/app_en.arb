@@ -141,5 +141,6 @@
   "terms_conditions": "Terms & Conditions",
   "signup_button": "Sign up",
   "already_have_account": "Already have an account?",
-  "signup_success": "Account created successfully"
+  "signup_success": "Account created successfully",
+  "changeLanguage": "Change Language"
 }

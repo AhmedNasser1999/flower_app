@@ -141,5 +141,7 @@
   "terms_conditions": "الشروط والأحكام",
   "signup_button": "إنشاء حساب",
   "already_have_account": "هل لديك حساب بالفعل؟",
-  "signup_success": "تم إنشاء الحساب بنجاح"
+  "signup_success": "تم إنشاء الحساب بنجاح",
+  "changeLanguage": "تغير اللغه"
+
 }

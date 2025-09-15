@@ -162,6 +162,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   title: local.language,
                   trailing: Text(
+                    textAlign: TextAlign.left,
                     local.languageChanged,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: AppColors.pink),
@@ -172,104 +173,96 @@ class ProfileScreen extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SizedBox(
+
                           width: double.infinity,
                           height: 300,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
                               spacing: 16.0,
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Text(
-                                  'Change Language',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.pink,
-                                      ),
+                                Align(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: Text(
+                                    textAlign: TextAlign.start,
+                                    local.changeLanguage,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.pink,
+                                        ),
+                                  ),
                                 ),
                                 Card(
+                                  color: AppColors.white,
                                   child: SizedBox(
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context
-                                            .read<LocalizationCubit>()
-                                            .selectLanguage(
-                                              "Arabic",
-                                            );
+                                        context.read<LocalizationCubit>().selectLanguage("Arabic");
                                         Navigator.pop(context);
                                       },
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(width: 16),
-                                          Icon(
-                                            context
-                                                    .read<LocalizationCubit>()
-                                                    .isSelected("Arabic")
-                                                ? Icons.radio_button_checked
-                                                : Icons.radio_button_unchecked,
-                                            color: Colors.pink,
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'Arabic',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Arabic',
+                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Icon(
+                                              context.read<LocalizationCubit>().isSelected("Arabic")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons.radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Card(
+                                  color: AppColors.white,
                                   child: SizedBox(
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context
-                                            .read<LocalizationCubit>()
-                                            .selectLanguage(
-                                              "English",
-                                            );
+                                        context.read<LocalizationCubit>().selectLanguage("English");
                                         Navigator.pop(context);
                                       },
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(width: 16),
-                                          Icon(
-                                            context
-                                                    .read<LocalizationCubit>()
-                                                    .isSelected("English")
-                                                ? Icons.radio_button_checked
-                                                : Icons.radio_button_unchecked,
-                                            color: Colors.pink,
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'English',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'English',
+                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Icon(
+                                              context.read<LocalizationCubit>().isSelected("English")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons.radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
+
                               ],
                             ),
                           ),
