@@ -7,7 +7,8 @@ class NotificationToggleWidget extends StatefulWidget {
   const NotificationToggleWidget({super.key});
 
   @override
-  State<NotificationToggleWidget> createState() => _NotificationToggleWidgetState();
+  State<NotificationToggleWidget> createState() =>
+      _NotificationToggleWidgetState();
 }
 
 class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
@@ -30,7 +31,10 @@ class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Colors.grey.shade400,
       ),
-      title: Text(local.notification, style: theme.textTheme.bodyMedium,),
+      title: Text(
+        local.notification,
+        style: theme.textTheme.bodyMedium,
+      ),
       trailing: const Icon(Icons.arrow_forward_ios, size: 20),
       onTap: () {
         Navigator.pushNamed(context, AppRoutes.notification);

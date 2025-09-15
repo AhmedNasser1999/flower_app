@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
 
 class SearchAndFilterWidget extends StatelessWidget {
   final String currentTab;
@@ -16,12 +17,13 @@ class SearchAndFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
     return Row(
       children: [
         Expanded(
           child: TextFormField(
             decoration: InputDecoration(
-              hintText: "Search",
+              hintText: local.search,
               prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -42,7 +44,6 @@ class SearchAndFilterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-
         GestureDetector(
           onTap: () {
             final viewmodel = context.read<MostSellingProductsViewmodel>();

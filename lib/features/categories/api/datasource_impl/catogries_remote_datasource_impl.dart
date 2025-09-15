@@ -22,4 +22,3 @@ class GetCategoriesRemoteDataSourceImpl
     return await _apiClient.getCategoryById(id);
   }
 }
-

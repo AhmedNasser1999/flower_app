@@ -290,7 +290,7 @@ abstract class AppLocalizations {
   /// No description provided for @logoutConfirmTextCenter.
   ///
   /// In en, this message translates to:
-  /// **'Confirm logout!!'**
+  /// **'Confirm logout!'**
   String get logoutConfirmTextCenter;
 
   /// No description provided for @resetPasswordUnderMsg.
@@ -796,6 +796,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading terms'**
   String get errorLoadingTerms;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @nextButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextButton;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resend;
+
+  /// No description provided for @signup_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signup_title;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get first_name;
+
+  /// No description provided for @first_name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'First name is required'**
+  String get first_name_required;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get last_name;
+
+  /// No description provided for @last_name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name is required'**
+  String get last_name_required;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @enter_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enter_email;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @password_mismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Password does not match'**
+  String get password_mismatch;
+
+  /// No description provided for @phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phone_number;
+
+  /// No description provided for @enter_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter phone number'**
+  String get enter_phone_number;
+
+  /// No description provided for @phone_number_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is required'**
+  String get phone_number_required;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @gender_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender is required'**
+  String get gender_required;
+
+  /// No description provided for @terms_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an account, you agree to our '**
+  String get terms_prefix;
+
+  /// No description provided for @terms_conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get terms_conditions;
+
+  /// No description provided for @signup_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signup_button;
+
+  /// No description provided for @already_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get already_have_account;
+
+  /// No description provided for @signup_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created successfully'**
+  String get signup_success;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

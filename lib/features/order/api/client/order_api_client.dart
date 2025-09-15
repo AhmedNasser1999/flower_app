@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/dio.dart';
@@ -13,7 +12,8 @@ part 'order_api_client.g.dart';
 @RestApi()
 abstract class OrderApiClient {
   @factoryMethod
-  factory OrderApiClient(Dio dio,{@Named("baseurl") String? baseUrl}) = _OrderApiClient;
+  factory OrderApiClient(Dio dio, {@Named("baseurl") String? baseUrl}) =
+      _OrderApiClient;
 
   @GET("orders")
   @Extra({'auth': true})

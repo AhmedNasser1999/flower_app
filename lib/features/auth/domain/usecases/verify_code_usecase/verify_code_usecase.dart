@@ -3,7 +3,7 @@ import '../../repositories/Auth_repo.dart';
 import '../../responses/auth_response.dart';
 
 @injectable
-class VerifyCodeUseCase{
+class VerifyCodeUseCase {
   final AuthRepo _forgetPasswordRepo;
 
   VerifyCodeUseCase(this._forgetPasswordRepo);

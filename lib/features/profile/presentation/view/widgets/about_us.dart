@@ -9,7 +9,8 @@ class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
 
   Future<model.AboutSectionModel> _loadAbout(BuildContext context) async {
-    final jsonString = await rootBundle.loadString('assets/json/Flowery About Section JSON with Expanded Content.json');
+    final jsonString = await rootBundle.loadString(
+        'assets/json/Flowery About Section JSON with Expanded Content.json');
     final jsonMap = json.decode(jsonString);
     return model.AboutSectionModel.fromJson(jsonMap);
   }
@@ -22,7 +23,8 @@ class AboutUs extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         backgroundColor: AppColors.white,
-        title: Text(locale.startsWith('ar') ? 'عن تطبيق فلاوري' : 'About Flowery App'),
+        title: Text(
+            locale.startsWith('ar') ? 'عن تطبيق فلاوري' : 'About Flowery App'),
       ),
       body: FutureBuilder<model.AboutSectionModel>(
         future: _loadAbout(context),
@@ -65,17 +67,27 @@ class _AboutContent extends StatelessWidget {
     final title = section.title != null ? section.title![lang] : null;
     final style = section.style ?? {};
 
-    TextStyle parseTextStyle(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    TextStyle parseTextStyle(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       return TextStyle(
-        fontSize: (s['fontSize'] is int ? s['fontSize'].toDouble() : s['fontSize']?.toDouble()) ?? (isTitle ? 18 : 16),
-        fontWeight: s['fontWeight'] == 'bold' ? FontWeight.bold : FontWeight.normal,
-        color: s['color'] != null ? _parseColor(s['color']) : (isTitle ? const Color(0xFFD21E6A) : const Color(0xFF333333)),
+        fontSize: (s['fontSize'] is int
+                ? s['fontSize'].toDouble()
+                : s['fontSize']?.toDouble()) ??
+            (isTitle ? 18 : 16),
+        fontWeight:
+            s['fontWeight'] == 'bold' ? FontWeight.bold : FontWeight.normal,
+        color: s['color'] != null
+            ? _parseColor(s['color'])
+            : (isTitle ? const Color(0xFFD21E6A) : const Color(0xFF333333)),
       );
     }
 
-    TextAlign parseTextAlign(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    TextAlign parseTextAlign(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       final align = s['textAlign'];
       if (align is Map) {
         return (align[lang] == 'right')
@@ -90,11 +102,15 @@ class _AboutContent extends StatelessWidget {
                 ? TextAlign.center
                 : TextAlign.left;
       }
-      return isTitle ? TextAlign.center : (lang == 'ar' ? TextAlign.right : TextAlign.left);
+      return isTitle
+          ? TextAlign.center
+          : (lang == 'ar' ? TextAlign.right : TextAlign.left);
     }
 
-    Color? parseBackgroundColor(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    Color? parseBackgroundColor(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       if (s['backgroundColor'] != null) {
         return _parseColor(s['backgroundColor']);
       }

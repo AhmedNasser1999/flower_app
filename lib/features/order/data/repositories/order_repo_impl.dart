@@ -23,7 +23,7 @@ class OrderRepoImpl implements OrderRepo {
         orderNumber: order.orderNumber,
         totalPrice: order.totalPrice.toDouble(),
         state: order.state,
-        createdAt: DateTime.parse(order.createdAt) ,
+        createdAt: DateTime.parse(order.createdAt),
         orderItems: order.orderItems.map((item) {
           final product = item.product;
           return OrderItemEntity(

@@ -1,6 +1,5 @@
 import 'package:flower_app/core/Widgets/custom_Elevated_Button.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
-import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +25,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     "Discount": "discount",
   };
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,17 +32,23 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Text("Sort By", style: TextStyle(
-              color: AppColors.pink,
-              fontSize: 21,
-              fontFamily: "Inter",
-              fontWeight: FontWeight.bold
-            ),),
-          ).setHorizontalPadding(context,0.035),
-          const SizedBox(height: 5,),
+            child: Text(
+              "Sort By",
+              style: TextStyle(
+                  color: AppColors.pink,
+                  fontSize: 21,
+                  fontFamily: "Inter",
+                  fontWeight: FontWeight.bold),
+            ),
+          ).setHorizontalPadding(context, 0.035),
+          const SizedBox(
+            height: 5,
+          ),
           ...sortOptions.keys.map((option) {
             return ListTile(
               focusColor: AppColors.pink,
@@ -61,10 +65,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 },
               ),
             );
-          }).toList(),
-
-          const SizedBox(height: 40,),
-
+          }),
+          const SizedBox(
+            height: 40,
+          ),
           CustomElevatedButton(
             text: "Filter",
             onPressed: () {

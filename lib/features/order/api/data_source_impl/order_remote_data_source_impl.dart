@@ -1,4 +1,3 @@
-
 import 'package:flower_app/features/order/data/models/order_response.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,8 +11,7 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
   OrderRemoteDataSourceImpl(this.orderApiClient);
 
   @override
-  Future<OrderResponse> getOrders() async{
+  Future<OrderResponse> getOrders() async {
     return await orderApiClient.getOrders();
   }
-
 }

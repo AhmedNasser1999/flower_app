@@ -11,7 +11,6 @@ import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 
 import 'occasion_api_client_test.mocks.dart';
 
-
 @GenerateMocks([OccasionApiClient])
 void main() {
   late MockOccasionApiClient mockApiClient;
@@ -23,7 +22,8 @@ void main() {
   });
 
   group('getOccasions', () {
-    test('should return OccasionsResponse when API call is successful', () async {
+    test('should return OccasionsResponse when API call is successful',
+        () async {
       // Arrange
       final mockResponse = OccasionsResponse(
         message: "success",
@@ -60,15 +60,14 @@ void main() {
 
     test('should throw Exception when API call fails', () async {
       // Arrange
-      when(mockApiClient.getOccasions())
-          .thenThrow(DioException(
+      when(mockApiClient.getOccasions()).thenThrow(DioException(
         requestOptions: RequestOptions(path: '/occasions'),
         type: DioExceptionType.badResponse,
       ));
 
       // Act & Assert
       expect(
-            () => dataSource.getOccasions(),
+        () => dataSource.getOccasions(),
         throwsA(isA<Exception>()),
       );
       verify(mockApiClient.getOccasions()).called(1);

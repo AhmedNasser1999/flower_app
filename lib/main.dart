@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
-import 'core/theme/app_theme.dart';
 import 'features/auth/domain/services/auth_service.dart';
 import 'features/auth/domain/services/guest_service.dart';
 import 'features/localization/data/localization_preference.dart';
@@ -70,9 +69,8 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: Routes.onGenerateRoute,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: cubit.language == "en"
-              ? const Locale("en")
-              : const Locale("ar"),
+          locale:
+              cubit.language == "en" ? const Locale("en") : const Locale("ar"),
         );
       },
     );

@@ -6,7 +6,6 @@ part 'order_model.g.dart';
 
 @JsonSerializable()
 class OrderModel {
-
   @JsonKey(name: "_id")
   final String id;
   final String orderNumber;
@@ -15,7 +14,8 @@ class OrderModel {
   final String createdAt;
   final List<OrderItemModel> orderItems;
 
-  OrderModel(this.createdAt, {
+  OrderModel(
+    this.createdAt, {
     required this.id,
     required this.orderNumber,
     required this.totalPrice,

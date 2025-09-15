@@ -5,5 +5,5 @@ abstract class ProductRemoteDataSource {
     String? sort,
     String? search,
     String? category,
-});
+  });
 }

@@ -40,8 +40,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: 32,
-                icon:
-                SvgPicture.asset(
+                icon: SvgPicture.asset(
                   AppIcons.notificationsIcon,
                   width: 30,
                   height: 30,
@@ -193,7 +192,6 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Card(
                                   child: SizedBox(
-
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(

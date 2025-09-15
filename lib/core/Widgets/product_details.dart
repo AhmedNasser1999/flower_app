@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../features/cart/presentation/view_model/cart_cubit.dart';
-import '../routes/route_names.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductsEntity product;
@@ -157,16 +156,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  CustomElevatedButton(
-                    onPressed: () {
-                      context.read<CartCubit>().addToCart(
-                          widget.product.Id, 1, context, onSuccess: () {
-                        Navigator.of(context)
-                            .pushNamed(AppRoutes.cart, arguments: false);
-                      });
-                    },
-                    color: AppColors.pink,
-                    text: 'Add to cart',
+                  Center(
+                    child: CustomElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<CartCubit>()
+                            .addToCart(widget.product.Id, 1, context);
+                      },
+                      color: AppColors.pink,
+                      text: 'Add to cart',
+                    ),
                   ),
                 ],
               ),

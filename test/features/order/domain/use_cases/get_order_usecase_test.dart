@@ -8,7 +8,6 @@ import 'package:flower_app/features/order/domain/entities/order_item_entity.dart
 
 import 'get_order_usecase_test.mocks.dart';
 
-
 @GenerateMocks([OrderRepo])
 void main() {
   late MockOrderRepo mockOrderRepo;
@@ -20,7 +19,8 @@ void main() {
   });
 
   group('GetOrdersUseCase', () {
-    test('should return List<OrderEntity> when repo call is successful', () async {
+    test('should return List<OrderEntity> when repo call is successful',
+        () async {
       // arrange
       final fakeOrders = [
         OrderEntity(
@@ -41,8 +41,7 @@ void main() {
         ),
       ];
 
-      when(mockOrderRepo.getOrders())
-          .thenAnswer((_) async => fakeOrders);
+      when(mockOrderRepo.getOrders()).thenAnswer((_) async => fakeOrders);
 
       // act
       final result = await useCase();

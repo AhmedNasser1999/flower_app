@@ -10,8 +10,6 @@ import 'package:flower_app/features/most_selling_products/presentation/view/most
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/order/presentation/view/orders_screen.dart';
 import 'package:flower_app/features/order/presentation/viewmodel/orders_cubit.dart';
-import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
-import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
@@ -36,9 +34,7 @@ import '../../features/cart/presentation/view_model/cart_cubit.dart';
 import '../../features/cart/presentation/views/cart_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
-import '../../features/most_selling_products/domain/entity/products_entity.dart';
 import '../../features/occasion/presentation/view/occasion_screen.dart';
-import '../Widgets/product_details.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -95,8 +91,6 @@ class Routes {
           ),
         );
 
-
-
       case AppRoutes.resetPassword:
         final email = settings.arguments as String;
         return MaterialPageRoute(
@@ -110,14 +104,14 @@ class Routes {
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => getIt<CartCubit>(),
-              child: CartScreen(isFromNavBar: isFromNavBar),
-
+                  child: CartScreen(isFromNavBar: isFromNavBar),
                 ));
 
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            create: (_) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
             child: MostSellingProducts(),
           ),
         );
@@ -139,42 +133,44 @@ class Routes {
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) =>
-                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+                create: (context) => getIt<MostSellingProductsViewmodel>()
+                  ..getMostSellingProducts(),
               ),
               BlocProvider(
                 create: (context) =>
-                getIt<CategoriesCubit>()..getAllCategories(),
+                    getIt<CategoriesCubit>()..getAllCategories(),
               ),
             ],
             child: const CategoriesScreen(),
           ),
         );
 
-
-
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            create: (_) =>
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
             child: MostSellingProducts(),
           ),
         );
 
       case AppRoutes.productDetails:
         final product = settings.arguments as ProductsEntity;
-        return MaterialPageRoute(builder: (_) =>  ProductDetails(product: product));
-
+        return MaterialPageRoute(
+            builder: (_) => ProductDetails(product: product));
 
       case AppRoutes.termsAndConditions:
-        return MaterialPageRoute(builder: (_) =>  TermsAndConditions());
+        return MaterialPageRoute(builder: (_) => TermsAndConditions());
 
       case AppRoutes.aboutUs:
-        return MaterialPageRoute(builder: (_) =>  AboutUs());
+        return MaterialPageRoute(builder: (_) => AboutUs());
 
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
-        return MaterialPageRoute(builder: (_) =>  EditProfileScreen(user: user,));
+        return MaterialPageRoute(
+            builder: (_) => EditProfileScreen(
+                  user: user,
+                ));
 
       case AppRoutes.orders:
         return MaterialPageRoute(

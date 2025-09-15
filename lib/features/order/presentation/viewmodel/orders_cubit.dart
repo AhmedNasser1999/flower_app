@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,20 +9,19 @@ class OrdersCubit extends Cubit<OrdersState> {
   final GetOrdersUseCase _getOrdersUseCase;
   OrdersCubit(this._getOrdersUseCase) : super(OrdersInitialState());
 
-
-  Future<void> getOrder()async{
+  Future<void> getOrder() async {
     emit(OrdersLoadingState());
-    try{
-      final orders =  await _getOrdersUseCase();
+    try {
+      final orders = await _getOrdersUseCase();
 
       final active = orders.where((order) => order.state == 'pending').toList();
-      final completed = orders.where((order) => order.state != 'pending').toList();
-      
-      emit(OrdersSuccessState(activeOrders: active, completedOrders: completed));
+      final completed =
+          orders.where((order) => order.state != 'pending').toList();
 
-    } catch(e) {
+      emit(
+          OrdersSuccessState(activeOrders: active, completedOrders: completed));
+    } catch (e) {
       emit(OrdersErrorState(e.toString()));
     }
   }
-
 }

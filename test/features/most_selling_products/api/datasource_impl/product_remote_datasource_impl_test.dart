@@ -19,9 +19,9 @@ void main() {
     dataSource = ProductRemoteDataSourceImpl(mockProductApiClient);
   });
 
-  group('ProductRemoteDataSource success', () {
-    test('getAllProduct returns list of products on success', () async{
-      //Arrange
+  group('ProductRemoteDataSourceImpl', () {
+    test('getAllProduct returns list of products on success', () async {
+      // Arrange
       final product = Products(
         Id: "123",
         title: "Flower Bouquet",
@@ -39,37 +39,45 @@ void main() {
         isSuperAdmin: false,
         sold: 50,
         rateAvg: 4,
-        rateCount: 10, V: 0,
+        rateCount: 10,
+        V: 0,
       );
 
       final responseModel = ProductsResponseModel(
         message: "Success",
-        metadata: Metadata(currentPage: 1, totalPages: 2, limit: 40, totalItems: 5),
+        metadata: Metadata(
+          currentPage: 1,
+          totalPages: 2,
+          limit: 40,
+          totalItems: 5,
+        ),
         products: [product],
       );
 
-      when(mockProductApiClient.getAllProducts()).thenAnswer((_) async => responseModel);
+      when(mockProductApiClient.getAllProducts(any, any, any))
+          .thenAnswer((_) async => responseModel);
 
-      //Act
+      // Act
       final result = await dataSource.getAllProduct();
 
-      //Assert
+      // Assert
       expect(result, isA<List<Products>>());
       expect(result.length, 1);
       expect(result.first.title, "Flower Bouquet");
-      verify(mockProductApiClient.getAllProducts()).called(1);
+      verify(mockProductApiClient.getAllProducts(any, any, any)).called(1);
     });
 
-    test('getAllProduct throws exception when API fails', (){
-      //Arrange
-      when(mockProductApiClient.getAllProducts()).thenThrow(Exception("API error"));
+    test('getAllProduct throws exception when API fails', () {
+      // Arrange
+      when(mockProductApiClient.getAllProducts(any, any, any))
+          .thenThrow(Exception("API error"));
 
-      //Act
-      final call= dataSource.getAllProduct;
+      // Act
+      call() => dataSource.getAllProduct();
 
-      //Assert
-      expect(()=> call(), throwsA(isA<Exception>()));
-      verify(mockProductApiClient.getAllProducts()).called(1);
+      // Assert
+      expect(call, throwsA(isA<Exception>()));
+      verify(mockProductApiClient.getAllProducts(any, any, any)).called(1);
     });
   });
 }

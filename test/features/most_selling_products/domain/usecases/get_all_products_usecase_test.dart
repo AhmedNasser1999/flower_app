@@ -52,8 +52,7 @@ void main() {
 
     test('should throw exception when repo fails', () async {
       // Arrange
-      when(mockProductRepo.getAllProducts())
-          .thenThrow(Exception("Repo error"));
+      when(mockProductRepo.getAllProducts()).thenThrow(Exception("Repo error"));
 
       // Act
       final call = useCase;

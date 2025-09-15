@@ -6,13 +6,7 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/Widgets/section_header.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/contants/app_icons.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
-import '../../../auth/logout/viewmodel/logout_viewmodel.dart';
-import '../../../auth/logout/views/logout_widget.dart';
-import '../../../profile/presentation/view/widgets/menu_item_widget.dart';
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_state.dart';
 import 'widgets/app_logo.dart';
@@ -36,28 +30,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const AppLogo(),
-                      Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => BlocProvider(
-                              create: (context) => getIt<LogoutViewModel>(),
-                              child: const LogoutDialogWidget(),
-                            ),
-                          );
-                        },
-                        child: SvgPicture.asset(
-                          AppIcons.logoutIcon,
-                          width: 24,
-                          height: 24,
-                        ),
-                      ),
-                    ],
-                  ),
+                  const AppLogo(),
                   const SizedBox(height: 10.0),
                   const OrderInfo(),
                   const SizedBox(height: 10.0),
@@ -73,7 +46,8 @@ class HomeScreen extends StatelessWidget {
                   SectionHeader(
                     title: local.bestSeller,
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.mostSellingProducts);
+                      Navigator.pushNamed(
+                          context, AppRoutes.mostSellingProducts);
                     },
                   ),
                   ProductsSection(state: state),

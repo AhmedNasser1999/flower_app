@@ -1,4 +1,5 @@
-import 'package:flower_app/features/categories/data/datasource/categories_remote_datasource.dart' show GetCategoriesRemoteDataSource;
+import 'package:flower_app/features/categories/data/datasource/categories_remote_datasource.dart'
+    show GetCategoriesRemoteDataSource;
 import 'package:flower_app/features/categories/data/models/categories_response.dart';
 import 'package:flower_app/features/categories/data/models/category_model.dart';
 import 'package:flower_app/features/categories/data/repositories_impl/categories_repo_impl.dart';
@@ -10,21 +11,18 @@ import 'package:mockito/mockito.dart';
 import 'categories_repo_impl_test.mocks.dart';
 
 @GenerateMocks([GetCategoriesRemoteDataSource])
-void main(){
-
+void main() {
   late CategoriesRepoImpl repo;
 
   late GetCategoriesRemoteDataSource remoteDataSource;
 
-  setUp((){
+  setUp(() {
     remoteDataSource = MockGetCategoriesRemoteDataSource();
     repo = CategoriesRepoImpl(remoteDataSource);
-
   });
 
-
-  group("test get categories remote data source", (){
-    test("Success state", ()async{
+  group("test get categories remote data source", () {
+    test("Success state", () async {
       // arrange
       final fakeResponse = CategoriesResponse(
         message: "success",
@@ -40,7 +38,7 @@ void main(){
             name: "flowers",
             slug: "flowers",
             image:
-            "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
+                "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
             createdAt: "2024-11-19T08:06:21.263Z",
             updatedAt: "2024-11-19T08:06:21.263Z",
             isSuperAdmin: true,
@@ -51,7 +49,7 @@ void main(){
             name: "gifts",
             slug: "gifts",
             image:
-            "https://flower.elevateegy.com/uploads/79af9251-8534-4d50-8346-160f30589268-gift.png",
+                "https://flower.elevateegy.com/uploads/79af9251-8534-4d50-8346-160f30589268-gift.png",
             createdAt: "2024-11-19T08:07:11.634Z",
             updatedAt: "2024-11-19T08:07:11.634Z",
             isSuperAdmin: true,
@@ -62,7 +60,6 @@ void main(){
 
       when(remoteDataSource.getAllCategories())
           .thenAnswer((_) async => fakeResponse);
-
 
       //act
 
@@ -75,20 +72,16 @@ void main(){
       verify(remoteDataSource.getAllCategories()).called(1);
     });
 
-    test("Failure state", ()async{
+    test("Failure state", () async {
       //arrange
-      when(remoteDataSource.getAllCategories()).thenThrow(Exception("Something went wrong"));
+      when(remoteDataSource.getAllCategories())
+          .thenThrow(Exception("Something went wrong"));
 
       //act
       Future call() => repo.getAllCategories();
 
       expect(call, throwsA(isA<Exception>()));
       verify(remoteDataSource.getAllCategories()).called(1);
-
     });
-
-
   });
-
 }
-

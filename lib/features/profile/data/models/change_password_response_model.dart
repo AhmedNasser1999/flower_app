@@ -9,7 +9,7 @@ class ChangePasswordResponseModel {
   @JsonKey(name: "token")
   final String token;
 
-  ChangePasswordResponseModel ({
+  ChangePasswordResponseModel({
     this.message,
     required this.token,
   });
@@ -22,5 +22,3 @@ class ChangePasswordResponseModel {
     return _$ChangePasswordResponseModelToJson(this);
   }
 }
-
-

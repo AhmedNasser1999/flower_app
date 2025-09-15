@@ -10,7 +10,6 @@ import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 
 import 'occasion_api_client_test.mocks.dart';
 
-
 @GenerateMocks([OccasionApiClient])
 void main() {
   late MockOccasionApiClient mockOccasionApiClient;
@@ -48,7 +47,8 @@ void main() {
           .thenAnswer((_) async => mockResponse);
 
       // Act
-      final result = await mockOccasionApiClient.getOccasions(page: 1, limit: 10);
+      final result =
+          await mockOccasionApiClient.getOccasions(page: 1, limit: 10);
 
       // Assert
       expect(result, isA<OccasionsResponse>());
@@ -57,7 +57,8 @@ void main() {
       verify(mockOccasionApiClient.getOccasions(page: 1, limit: 10)).called(1);
     });
 
-    test('getOccasions should return OccasionsResponse with empty parameters', () async {
+    test('getOccasions should return OccasionsResponse with empty parameters',
+        () async {
       // Arrange
       final mockResponse = OccasionsResponse(
         message: "success",
@@ -87,21 +88,21 @@ void main() {
 
   group('OccasionApiClient Error Cases', () {
     test('getOccasions should throw DioException when API fails', () async {
-      when(mockOccasionApiClient.getOccasions())
-          .thenThrow(DioException(
+      when(mockOccasionApiClient.getOccasions()).thenThrow(DioException(
         requestOptions: RequestOptions(path: '/occasions'),
         type: DioExceptionType.badResponse,
       ));
 
       expect(
-            () => mockOccasionApiClient.getOccasions(),
+        () => mockOccasionApiClient.getOccasions(),
         throwsA(isA<DioException>()),
       );
 
       verify(mockOccasionApiClient.getOccasions()).called(1);
     });
 
-    test('getOccasions should throw DioException with connection error', () async {
+    test('getOccasions should throw DioException with connection error',
+        () async {
       when(mockOccasionApiClient.getOccasions(page: 2, limit: 20))
           .thenThrow(DioException(
         requestOptions: RequestOptions(path: '/occasions'),
@@ -109,7 +110,7 @@ void main() {
       ));
 
       expect(
-            () => mockOccasionApiClient.getOccasions(page: 2, limit: 20),
+        () => mockOccasionApiClient.getOccasions(page: 2, limit: 20),
         throwsA(isA<DioException>()),
       );
 

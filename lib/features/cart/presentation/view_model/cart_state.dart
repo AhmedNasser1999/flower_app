@@ -1,6 +1,5 @@
 import 'package:flower_app/features/cart/domain/responses/cart_response.dart';
 
-
 abstract class CartState {}
 
 class CartInitial extends CartState {}

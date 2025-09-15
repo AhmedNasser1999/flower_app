@@ -1,4 +1,3 @@
-import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/features/order/presentation/viewmodel/order_states.dart';
 import 'package:flower_app/features/order/presentation/viewmodel/orders_cubit.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +41,7 @@ class OrdersScreen extends StatelessWidget {
             labelColor: AppColors.pink,
             unselectedLabelColor: AppColors.grey,
             indicatorColor: AppColors.pink,
-            tabs:  [
+            tabs: [
               Tab(text: local.active),
               Tab(text: local.completed),
             ],
@@ -70,7 +69,9 @@ class OrdersScreen extends StatelessWidget {
                   itemCount: state.activeOrders.length,
                   itemBuilder: (context, index) {
                     final order = state.activeOrders[index];
-                    final firstItem = order.orderItems.isNotEmpty ? order.orderItems.first : null;
+                    final firstItem = order.orderItems.isNotEmpty
+                        ? order.orderItems.first
+                        : null;
                     return OrderCard(
                       title: firstItem?.title ?? '-',
                       price: 'EGP ${order.totalPrice.toStringAsFixed(0)}',
@@ -85,13 +86,10 @@ class OrdersScreen extends StatelessWidget {
                   itemCount: 1,
                   //itemCount: state.completedOrders.length,
                   itemBuilder: (context, index) {
-
                     return OrderCard(
-                      buttonText: local.recorder,
+                        buttonText: local.recorder,
                         title: "Test with dummy data",
-                        onPressed: (){
-
-                    });
+                        onPressed: () {});
                     // final order = state.completedOrders[index];
                     // final firstItem = order.orderItems.isNotEmpty ? order.orderItems.first : null;
                     // return OrderCard(

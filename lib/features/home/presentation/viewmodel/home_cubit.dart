@@ -3,7 +3,6 @@ import 'package:flower_app/features/most_selling_products/domain/usecases/get_al
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../categories/domain/entity/category_entity.dart';
 import '../../../occasion/domain/usecases/get_occasions_use_case.dart';
 import 'home_state.dart';
 
@@ -44,7 +43,8 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getAllCategories() async {
-    emit(state.copyWith(isCategoriesLoadingArg: true, categoriesErrorArg: null));
+    emit(
+        state.copyWith(isCategoriesLoadingArg: true, categoriesErrorArg: null));
     try {
       final response = await getAllCategoriesUseCase();
       final categories = response.categories ?? [];

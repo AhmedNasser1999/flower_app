@@ -16,16 +16,16 @@ class ProductRepoImpl implements ProductRepo {
     String? sort,
     String? search,
     String? category,
-}) async {
-    final List<Products> models =
-        await _productRemoteDataSource.getAllProduct(
-          sort: sort,
-          search: search,
-          category: category,
-        );
+  }) async {
+    final List<Products> models = await _productRemoteDataSource.getAllProduct(
+      sort: sort,
+      search: search,
+      category: category,
+    );
 
     return models
-        .map((models) => ProductsEntity(
+        .map(
+          (models) => ProductsEntity(
             rateAvg: models.rateAvg,
             rateCount: models.rateCount,
             Id: models.Id,
@@ -40,7 +40,8 @@ class ProductRepoImpl implements ProductRepo {
             sold: models.sold,
             category: models.category,
             occasion: models.occasion,
-    ),
-    ).toList();
+          ),
+        )
+        .toList();
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
@@ -43,9 +42,7 @@ class OrderCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
           const SizedBox(width: 12),
-
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,4 +85,3 @@ class OrderCard extends StatelessWidget {
     );
   }
 }
-

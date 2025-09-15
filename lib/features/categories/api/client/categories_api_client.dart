@@ -14,9 +14,9 @@ part 'categories_api_client.g.dart';
 abstract class CategoryApiClient {
   @factoryMethod
   factory CategoryApiClient(
-      Dio dio, {
-        @Named('baseurl') String? baseUrl,
-      }) = _CategoryApiClient;
+    Dio dio, {
+    @Named('baseurl') String? baseUrl,
+  }) = _CategoryApiClient;
 
   @GET(AppConstants.categories)
   Future<CategoriesResponse> getAllCategories();

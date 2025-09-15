@@ -22,7 +22,8 @@ class DefaultTabBarWidget extends StatelessWidget {
             isScrollable: true,
             labelColor: AppColors.pink,
             unselectedLabelColor: AppColors.grey,
-            labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            labelStyle:
+                const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             unselectedLabelStyle: const TextStyle(fontSize: 15),
             dividerColor: Colors.transparent,
             indicator: const UnderlineTabIndicator(

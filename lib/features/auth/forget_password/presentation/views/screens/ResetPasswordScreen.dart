@@ -61,12 +61,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Text(
+              Text(
                 local.resetPassword,
-                style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                style:
+                    const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
               ),
               const SizedBox(height: 10),
-               Text(
+              Text(
                 local.resetPasswordUnderMsg,
                 textAlign: TextAlign.center,
               ),

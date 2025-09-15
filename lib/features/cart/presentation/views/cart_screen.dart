@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
-import 'package:flower_app/core/contants/app_images.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/cart/presentation/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -45,18 +44,18 @@ class _CartScreenState extends State<CartScreen> {
         appBar: AppBar(
           title: !widget.isFromNavBar
               ? Text(local.cart)
-              :  Padding(
-            padding: EdgeInsetsDirectional.only(start: 18),
-            child: Text(local.cart),
-          ),
+              : Padding(
+                  padding: EdgeInsetsDirectional.only(start: 18),
+                  child: Text(local.cart),
+                ),
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
           leading: !widget.isFromNavBar
               ? IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_sharp),
-            onPressed: () => Navigator.pop(context),
-          )
+                  icon: const Icon(Icons.arrow_back_ios_new_sharp),
+                  onPressed: () => Navigator.pop(context),
+                )
               : null,
           actions: [
             BlocBuilder<CartCubit, CartState>(
@@ -67,7 +66,7 @@ class _CartScreenState extends State<CartScreen> {
                     onPressed: () {
                       _showClearCartDialog(context);
                     },
-                    child:  Text(
+                    child: Text(
                       local.clear,
                       style: TextStyle(
                         color: AppColors.pink,
@@ -132,27 +131,27 @@ class _CartScreenState extends State<CartScreen> {
             child: cart.cartItems.isEmpty
                 ? _buildEmptyCart(context)
                 : ListView.builder(
-              itemCount: cart.cartItems.length,
-              itemBuilder: (context, index) {
-                final item = cart.cartItems[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: ProductCartWidget(
-                    cartItem: item,
-                    onRemove: () => context
-                        .read<CartCubit>()
-                        .removeFromCart(item.product.Id),
-                    onUpdateQuantity: (quantity) {
-                      if (quantity > 0) {
-                        context
-                            .read<CartCubit>()
-                            .updateCartItem(item.product.Id, quantity);
-                      }
+                    itemCount: cart.cartItems.length,
+                    itemBuilder: (context, index) {
+                      final item = cart.cartItems[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: ProductCartWidget(
+                          cartItem: item,
+                          onRemove: () => context
+                              .read<CartCubit>()
+                              .removeFromCart(item.product.Id),
+                          onUpdateQuantity: (quantity) {
+                            if (quantity > 0) {
+                              context
+                                  .read<CartCubit>()
+                                  .updateCartItem(item.product.Id, quantity);
+                            }
+                          },
+                        ),
+                      );
                     },
                   ),
-                );
-              },
-            ),
           ),
           if (cart.cartItems.isNotEmpty)
             _buildCheckoutSection(local, subtotal, total),

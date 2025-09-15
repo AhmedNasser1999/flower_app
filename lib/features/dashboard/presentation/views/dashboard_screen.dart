@@ -20,12 +20,11 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const HomeScreen(),
-
       MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) =>
-            getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
           ),
           BlocProvider(
             create: (context) => getIt<CategoriesCubit>()..getAllCategories(),
@@ -37,7 +36,6 @@ class DashboardScreen extends StatelessWidget {
         create: (_) => getIt<CartCubit>()..getCart(),
         child: const CartScreen(isFromNavBar: true),
       ),
-
       BlocProvider(
         create: (_) => getIt<ProfileViewModel>()..getProfile(),
         child: const ProfileScreen(),

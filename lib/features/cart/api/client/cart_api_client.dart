@@ -35,5 +35,4 @@ abstract class CartApiClient {
   @DELETE(AppConstants.deleteUserCart)
   @Extra({'auth': true})
   Future<CartResponse> clearCart();
-
 }

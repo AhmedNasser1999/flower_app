@@ -38,32 +38,32 @@ class ProductItem extends StatelessWidget {
                 },
               ),
             ),
-          SizedBox(height: 8.0),
-          Expanded(
-            child: Text(
-              name,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+            SizedBox(height: 8.0),
+            Expanded(
+              child: Text(
+                name,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 4.0),
-          isOccasion
-              ? Text('')
-              : Expanded(
-                  child: Text(
-                    '$price LE',
-                    style: TextStyle(
-                      fontSize: 12,
+            SizedBox(height: 4.0),
+            isOccasion
+                ? Text('')
+                : Expanded(
+                    child: Text(
+                      '$price LE',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
-    ),
     );
   }
 }

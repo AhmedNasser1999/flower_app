@@ -105,7 +105,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get logoutConfirmTextCenter => 'Confirm logout!!';
+  String get logoutConfirmTextCenter => 'Confirm logout!';
 
   @override
   String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
@@ -358,4 +358,82 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorLoadingTerms => 'Error loading terms';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get nextButton => 'Next';
+
+  @override
+  String get resend => 'Resend';
+
+  @override
+  String get signup_title => 'Sign up';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get first_name => 'First name';
+
+  @override
+  String get first_name_required => 'First name is required';
+
+  @override
+  String get last_name => 'Last name';
+
+  @override
+  String get last_name_required => 'Last name is required';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get enter_email => 'Enter your email';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get password_mismatch => 'Password does not match';
+
+  @override
+  String get phone_number => 'Phone number';
+
+  @override
+  String get enter_phone_number => 'Enter phone number';
+
+  @override
+  String get phone_number_required => 'Phone number is required';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get gender_required => 'Gender is required';
+
+  @override
+  String get terms_prefix => 'Creating an account, you agree to our ';
+
+  @override
+  String get terms_conditions => 'Terms & Conditions';
+
+  @override
+  String get signup_button => 'Sign up';
+
+  @override
+  String get already_have_account => 'Already have an account?';
+
+  @override
+  String get signup_success => 'Account created successfully';
 }

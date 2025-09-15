@@ -10,6 +10,7 @@ class NavBarCubit extends Cubit<NavBarState> {
       emit(NavBarInitial(index));
     }
   }
+
   void navigateToCategories() {
     emit(NavBarInitial(1));
   }

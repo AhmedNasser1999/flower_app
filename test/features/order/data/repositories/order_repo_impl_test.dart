@@ -94,8 +94,7 @@ void main() {
 
     test('should throw Exception when datasource fails', () async {
       // arrange
-      when(mockRemoteDataSource.getOrders())
-          .thenThrow(Exception("API error"));
+      when(mockRemoteDataSource.getOrders()).thenThrow(Exception("API error"));
 
       // act
       final call = repo.getOrders;

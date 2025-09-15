@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تظبيق متجر الزهور الالكتروني';
+  String get appName => 'تطبيق متجر الزهور الإلكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -57,16 +57,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الاعدادات';
+  String get settings => 'الإعدادات';
 
   @override
-  String get logout => 'تسجيل الخروج';
+  String get logout => 'خروج';
 
   @override
   String get categories => 'التصنيفات';
@@ -105,7 +105,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cancel => 'إلغاء';
 
   @override
-  String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!!';
+  String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!';
 
   @override
   String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
@@ -138,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordLabel => 'تأكيد كلمة المرور';
 
   @override
-  String get newPasswordLabel => 'كلمة مرور جديدة';
+  String get newPasswordLabel => 'كلمة المرور الجديدة';
 
   @override
   String get newPasswordHint => 'أدخل كلمة المرور الجديدة';
@@ -159,13 +159,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language => 'اللغة';
 
   @override
-  String get languageChanged => 'العربيه';
+  String get languageChanged => 'العربية';
 
   @override
   String get aboutUs => 'معلومات عنا';
 
   @override
-  String get notification => 'أشعارات';
+  String get notification => 'إشعارات';
 
   @override
   String get termsConditions => 'الشروط والأحكام';
@@ -213,13 +213,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get occasionsTitle => 'المناسبات';
 
   @override
-  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+  String get occasionsSubTitle => 'احتفل مع أفضل زهورنا مبيعًا';
 
   @override
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
 
   @override
-  String get deliverTo => 'توصيل إلي';
+  String get deliverTo => 'توصيل إلى';
 
   @override
   String get subTotal => 'المجموع الفرعي';
@@ -228,7 +228,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deliveryFee => 'رسوم التوصيل';
 
   @override
-  String get total => 'المبلغ الإجمالي';
+  String get total => 'الإجمالي';
 
   @override
   String get checkout => 'الدفع';
@@ -288,7 +288,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cartSummary => 'ملخص السلة';
 
   @override
-  String get applyCoupon => 'تطبيق كوبون';
+  String get applyCoupon => 'تطبيق الكوبون';
 
   @override
   String get couponCode => 'كود الكوبون';
@@ -303,7 +303,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureCheckout => 'دفع آمن';
 
   @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يومًا';
 
   @override
   String get orderSummary => 'ملخص الطلب';
@@ -348,7 +348,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get occasion => 'مناسبة';
 
   @override
-  String get noAboutInfoFound => 'لم يتم العثور على معلومات حول';
+  String get noAboutInfoFound => 'لم يتم العثور على معلومات';
 
   @override
   String get notificationDelete => 'تم حذف الإشعار';
@@ -358,4 +358,82 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorLoadingTerms => 'خطأ في تحميل الشروط';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get nextButton => 'التالي';
+
+  @override
+  String get resend => 'إعادة إرسال';
+
+  @override
+  String get signup_title => 'إنشاء حساب';
+
+  @override
+  String get loading => 'جارٍ التحميل';
+
+  @override
+  String get first_name => 'الاسم الأول';
+
+  @override
+  String get first_name_required => 'الاسم الأول مطلوب';
+
+  @override
+  String get last_name => 'اسم العائلة';
+
+  @override
+  String get last_name_required => 'اسم العائلة مطلوب';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get enter_email => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get confirm_password => 'تأكيد كلمة المرور';
+
+  @override
+  String get password_mismatch => 'كلمة المرور غير متطابقة';
+
+  @override
+  String get phone_number => 'رقم الهاتف';
+
+  @override
+  String get enter_phone_number => 'أدخل رقم الهاتف';
+
+  @override
+  String get phone_number_required => 'رقم الهاتف مطلوب';
+
+  @override
+  String get gender => 'النوع';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get gender_required => 'اختيار النوع مطلوب';
+
+  @override
+  String get terms_prefix => 'بإنشاء حساب، فإنك توافق على ';
+
+  @override
+  String get terms_conditions => 'الشروط والأحكام';
+
+  @override
+  String get signup_button => 'إنشاء حساب';
+
+  @override
+  String get already_have_account => 'هل لديك حساب بالفعل؟';
+
+  @override
+  String get signup_success => 'تم إنشاء الحساب بنجاح';
 }

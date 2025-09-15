@@ -1,4 +1,3 @@
-
 import 'package:injectable/injectable.dart';
 
 import '../entities/order_entity.dart';
@@ -13,5 +12,4 @@ class GetOrdersUseCase {
   Future<List<OrderEntity>> call() async {
     return _orderRepo.getOrders();
   }
-
 }

@@ -58,7 +58,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       controller: _controller,
       enabled: widget.enabled,
       readOnly: widget.readonly,
@@ -76,13 +75,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.pink, width: 1.5),
+          borderSide: BorderSide(color: AppColors.grey, width: 1.5),
         ),
         labelText: widget.label,
         labelStyle: TextStyle(
           color: AppColors.black,
           fontWeight: FontWeight.w400,
-
         ),
         hintText: widget.hint,
         hintStyle: TextStyle(
@@ -90,29 +88,29 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         suffixIcon: widget.obscureText
             ? IconButton(
-          icon: Icon(
-            isTextObscured ? Icons.visibility_off : Icons.visibility,
-            color: AppColors.grey,
-          ),
-          onPressed: () {
-            setState(() {
-              isTextObscured = !isTextObscured;
-            });
-          },
-        )
+                icon: Icon(
+                  isTextObscured ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isTextObscured = !isTextObscured;
+                  });
+                },
+              )
             : null,
         suffix: widget.suffixText != null
             ? GestureDetector(
-          onTap: widget.onPressed ?? () {},
-          child: Text(
-            widget.suffixText!,
-            style: TextStyle(
-              color: AppColors.pink,
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-            ),
-          ),
-        )
+                onTap: widget.onPressed ?? () {},
+                child: Text(
+                  widget.suffixText!,
+                  style: TextStyle(
+                    color: AppColors.pink,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
+                ),
+              )
             : null,
         border: const OutlineInputBorder(),
         disabledBorder: OutlineInputBorder(
