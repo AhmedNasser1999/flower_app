@@ -59,8 +59,6 @@ class Products {
   @JsonKey(name: "sold", defaultValue: 0)
   final int sold;
 
-  @JsonKey(name: "id", defaultValue: "")
-  final String id;
 
   Products({
     required this.rateAvg,
@@ -81,7 +79,6 @@ class Products {
     required this.V,
     required this.isSuperAdmin,
     required this.sold,
-    required this.id,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) =>

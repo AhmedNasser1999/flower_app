@@ -24,7 +24,6 @@ void main() {
       // Arrange
       final productModel = Products(
         Id: "123",
-        id: "123",
         title: "Flower Bouquet",
         slug: "flower-bouquet",
         description: "A beautiful bouquet",

@@ -141,12 +141,12 @@ class _CartScreenState extends State<CartScreen> {
                     cartItem: item,
                     onRemove: () => context
                         .read<CartCubit>()
-                        .removeFromCart(item.product.id),
+                        .removeFromCart(item.product.Id),
                     onUpdateQuantity: (quantity) {
                       if (quantity > 0) {
                         context
                             .read<CartCubit>()
-                            .updateCartItem(item.product.id, quantity);
+                            .updateCartItem(item.product.Id, quantity);
                       }
                     },
                   ),

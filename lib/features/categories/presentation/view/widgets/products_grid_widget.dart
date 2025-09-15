@@ -62,7 +62,7 @@ class ProductsGridWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = products[index];
               return ProductCard(
-                productId: product.id,
+                productId: product.Id,
                 productImg: product.imgCover,
                 productPrice: product.price,
                 productPriceDiscount: product.priceAfterDiscount,

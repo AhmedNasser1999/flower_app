@@ -160,7 +160,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   CustomElevatedButton(
                     onPressed: () {
                       context.read<CartCubit>().addToCart(
-                          widget.product.id, 1, context, onSuccess: () {
+                          widget.product.Id, 1, context, onSuccess: () {
                         Navigator.of(context)
                             .pushNamed(AppRoutes.cart, arguments: false);
                       });

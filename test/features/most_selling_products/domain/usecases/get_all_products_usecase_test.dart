@@ -22,7 +22,6 @@ void main() {
       // Arrange
       final productEntity = ProductsEntity(
         Id: "123",
-        id: "123",
         title: "Flower Bouquet",
         slug: "flower-bouquet",
         description: "A beautiful bouquet",
