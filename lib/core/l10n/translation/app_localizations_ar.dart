@@ -36,8 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -109,22 +108,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!!';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText =>
-      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -163,6 +159,114 @@ class AppLocalizationsAr extends AppLocalizations {
   String get explore => 'استكشاف';
 
   @override
+  String get deliverTo => 'توصيل إلي';
+
+  @override
+  String get subTotal => 'المجموع الفرعي';
+
+  @override
+  String get deliveryFee => 'رسوم التوصيل';
+
+  @override
+  String get total => 'المبلغ الإجمالي';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get yourCartIsEmpty => 'سلة التسوق فارغة';
+
+  @override
+  String get addItemsToGetStarted => 'أضف منتجات للبدء';
+
+  @override
+  String get continueShopping => 'مواصلة التسوق';
+
+  @override
+  String get removeItem => 'إزالة المنتج';
+
+  @override
+  String get updateQuantity => 'تحديث الكمية';
+
+  @override
+  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
+
+  @override
+  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+
+  @override
+  String get quantityUpdated => 'تم تحديث الكمية';
+
+  @override
+  String get cartLoading => 'جاري تحميل السلة...';
+
+  @override
+  String get cartError => 'خطأ في تحميل السلة';
+
+  @override
+  String get proceedToCheckout => 'المتابعة إلى الدفع';
+
+  @override
+  String get cartItems => 'عناصر السلة';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get quantity => 'الكمية';
+
+  @override
+  String get shoppingCart => 'سلة التسوق';
+
+  @override
+  String get emptyCartMessage => 'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
+
+  @override
+  String get viewProducts => 'عرض المنتجات';
+
+  @override
+  String get cartSummary => 'ملخص السلة';
+
+  @override
+  String get applyCoupon => 'تطبيق كوبون';
+
+  @override
+  String get couponCode => 'كود الكوبون';
+
+  @override
+  String get apply => 'تطبيق';
+
+  @override
+  String get remove => 'إزالة';
+
+  @override
+  String get secureCheckout => 'دفع آمن';
+
+  @override
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+
+  @override
+  String get orderSummary => 'ملخص الطلب';
+
+  @override
+  String get taxes => 'الضرائب';
+
+  @override
+  String get shipping => 'الشحن';
+
+  @override
+  String get discount => 'الخصم';
+
+  @override
+  String get placeOrder => 'تقديم الطلب';
+
+  @override
+  String get occasionsTitle => 'المناسبات';
+
+  @override
+  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+
+  @override
   String get notificationCount => '٣';
 
   @override
@@ -188,9 +292,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get error => 'خطأ:';
-
-  @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
 
   @override
   String get noTermsFound => 'لم يتم العثور على شروط';
@@ -227,4 +328,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
+
+  @override
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get egp => 'جنيهاً';
 }

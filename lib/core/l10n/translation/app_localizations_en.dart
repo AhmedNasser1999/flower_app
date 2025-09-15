@@ -36,8 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -109,22 +108,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!!';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
+  String get resetPasswordUnderMsg => 'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
 
   @override
   String get emailVerificationScreen => 'Email verification';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'Please enter your code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg => 'Please enter your code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText =>
-      'Please enter your email associated to\nyour account';
+  String get forgetPasswordUnderText => 'Please enter your email associated to\nyour account';
 
   @override
   String get forgetPassword => 'Forget Password';
@@ -163,6 +159,114 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explore => 'Explore';
 
   @override
+  String get deliverTo => 'Deliver to';
+
+  @override
+  String get subTotal => 'Sub Total';
+
+  @override
+  String get deliveryFee => 'Delivery Fee';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get yourCartIsEmpty => 'Your cart is empty';
+
+  @override
+  String get addItemsToGetStarted => 'Add items to get started';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
+
+  @override
+  String get removeItem => 'Remove item';
+
+  @override
+  String get updateQuantity => 'Update quantity';
+
+  @override
+  String get itemAddedToCart => 'Item added to cart';
+
+  @override
+  String get itemRemovedFromCart => 'Item removed from cart';
+
+  @override
+  String get quantityUpdated => 'Quantity updated';
+
+  @override
+  String get cartLoading => 'Loading cart...';
+
+  @override
+  String get cartError => 'Error loading cart';
+
+  @override
+  String get proceedToCheckout => 'Proceed to Checkout';
+
+  @override
+  String get cartItems => 'Cart Items';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get shoppingCart => 'Shopping Cart';
+
+  @override
+  String get emptyCartMessage => 'Your shopping cart is empty. Start adding some beautiful flowers!';
+
+  @override
+  String get viewProducts => 'View Products';
+
+  @override
+  String get cartSummary => 'Cart Summary';
+
+  @override
+  String get applyCoupon => 'Apply Coupon';
+
+  @override
+  String get couponCode => 'Coupon Code';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get secureCheckout => 'Secure Checkout';
+
+  @override
+  String get moneyBackGuarantee => '30-Day Money Back Guarantee';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get taxes => 'Taxes';
+
+  @override
+  String get shipping => 'Shipping';
+
+  @override
+  String get discount => 'Discount';
+
+  @override
+  String get placeOrder => 'Place Order';
+
+  @override
+  String get occasionsTitle => 'Occasions';
+
+  @override
+  String get occasionsSubTitle => 'Bloom with our exquisite best sellers';
+
+  @override
   String get notificationCount => '3';
 
   @override
@@ -188,9 +292,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error:';
-
-  @override
-  String get versionInfo => 'v 6.3.0 - (446)';
 
   @override
   String get noTermsFound => 'No terms found';
@@ -227,4 +328,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileUpdatedSuccessMsg => 'Profile changed successfully!';
+
+  @override
+  String get versionInfo => 'v 6.3.0 - (446)';
+
+  @override
+  String get egp => 'EGP';
 }

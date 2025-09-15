@@ -84,9 +84,7 @@
   "shipping": "Shipping",
   "discount": "Discount",
   "placeOrder": "Place Order",
-  "addToCartBtn": "Add to cart",
-  "mostSellingTitle": "Best Seller",
-  "mostSellingSubTitle": "Bloom with our exquisite best sellers",
+
   "occasionsTitle": "Occasions",
   "occasionsSubTitle": "Bloom with our exquisite best sellers",
   "notificationCount": "3",
@@ -98,7 +96,6 @@
   "notification": "Notification",
   "termsConditions": "Terms & conditions",
   "error": "Error:",
-  "versionInfo": "v 6.3.0 - (446)",
   "noTermsFound": "No terms found",
   "errorLoadingTerms": "Error loading terms",
   "noAboutInfoFound": "No about info found",
