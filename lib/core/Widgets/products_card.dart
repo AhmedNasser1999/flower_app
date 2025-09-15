@@ -7,6 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
+import '../../features/auth/domain/services/guest_service.dart';
+import '../../features/dashboard/presentation/widgets/login_dialog.dart';
+
 class ProductCard extends StatelessWidget {
   final String productId;
   final String productTitle;
@@ -131,12 +134,23 @@ class ProductCard extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 6),
                   ),
-                  onPressed: () {
-                    context.read<CartCubit>().addToCart(
-                          productId,
-                          1,
-                          context,
-                        );
+                  onPressed: () async {
+                    final isGuest = await GuestService.isGuest();
+
+                    if (isGuest) {
+                      showDialog(
+                        context: context,
+                        builder: (_) => const LoginRequiredDialog(),
+                      );
+                      return;
+                    }
+                    else {
+                      context.read<CartCubit>().addToCart(
+                        productId,
+                        1,
+                        context,
+                      );
+                    }
                   },
                   icon: SvgPicture.asset(
                     AppIcons.cartIcon,

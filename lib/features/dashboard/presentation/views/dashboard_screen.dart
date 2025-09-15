@@ -43,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
     ];
 
     return BlocProvider(
-      create: (context) => NavBarCubit()..changeTab(0),
+      create: (context) => NavBarCubit()..changeTab(context,0),
       child: Builder(
         builder: (context) {
           return BlocBuilder<NavBarCubit, NavBarState>(
@@ -56,7 +56,7 @@ class DashboardScreen extends StatelessWidget {
                   child: CustomBottomNavBarWidget(
                     currentIndex: state.selectedIndex,
                     onTap: (index) {
-                      context.read<NavBarCubit>().changeTab(index);
+                      context.read<NavBarCubit>().changeTab(context,index);
                     },
                   ),
                 ),

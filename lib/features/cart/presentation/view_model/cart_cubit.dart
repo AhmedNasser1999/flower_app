@@ -25,17 +25,18 @@ class CartCubit extends Cubit<CartState> {
     this._clearCartUseCase,
   ) : super(CartInitial());
 
-  Future<void> addToCart(String productId, int quantity, BuildContext context,
-      {VoidCallback? onSuccess}) async {
+  Future<void> addToCart(String productId, int quantity, BuildContext context,) async {
     emit(CartLoading());
     try {
       final response = await _addToCartUseCase(productId, quantity);
       emit(CartLoaded(response));
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Product added to cart')));
-      onSuccess?.call();
     } catch (e) {
       emit(CartError(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('This item is sold out')),
+      );
     }
   }
 
@@ -46,7 +47,6 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoaded(response));
     } catch (e, s) {
       emit(CartError(e.toString()));
-      print('sttttaaack:::::  $s');
     }
   }
 

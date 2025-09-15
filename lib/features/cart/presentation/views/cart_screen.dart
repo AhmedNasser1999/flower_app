@@ -83,9 +83,7 @@ class _CartScreenState extends State<CartScreen> {
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
             if (state is CartError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
+              print(state.message);
             }
           },
           builder: (context, state) {
@@ -226,12 +224,6 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /*    Image.asset(
-            AppImages.emptyCart,
-            width: 350,
-            height: 350,
-            fit: BoxFit.cover,
-          ),*/
           const SizedBox(height: 20),
           Text(
             local?.yourCartIsEmpty ?? "Your cart is empty",
