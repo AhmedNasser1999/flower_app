@@ -1,3 +1,4 @@
+import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
@@ -56,6 +57,7 @@ class LoginRequiredDialog extends StatelessWidget {
               text: locale.login,
               onPressed: () {
                 Navigator.pop(context);
+                GuestService.endGuestSession();
                 Navigator.pushNamed(context,AppRoutes.login);
               },
             ),
