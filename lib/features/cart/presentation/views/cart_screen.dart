@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
@@ -42,21 +43,15 @@ class _CartScreenState extends State<CartScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: !widget.isFromNavBar
-              ? Text(local.cart)
-              : Padding(
-                  padding: EdgeInsetsDirectional.only(start: 18),
-                  child: Text(local.cart),
-                ),
+          title:Text(local.cart),
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
-          leading: !widget.isFromNavBar
-              ? IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new_sharp),
-                  onPressed: () => Navigator.pop(context),
-                )
-              : null,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+              child: Image.asset("assets/icons/arrow_back_icon.png")),
           actions: [
             BlocBuilder<CartCubit, CartState>(
               builder: (context, state) {
@@ -69,10 +64,11 @@ class _CartScreenState extends State<CartScreen> {
                     child: Text(
                       local.clear,
                       style: TextStyle(
+                        fontSize: 16,
                         color: AppColors.pink,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ).setHorizontalPadding(context,0.02),
                   );
                 }
                 return const SizedBox.shrink();
@@ -163,14 +159,15 @@ class _CartScreenState extends State<CartScreen> {
   Widget _buildAddressSection(AppLocalizations local) {
     return Row(
       children: [
-        SvgPicture.asset(AppIcons.locationMarkerIcon),
+        SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
         const SizedBox(width: 8),
-        Text(local.deliverTo),
+        Text(local.deliverTo, style: TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600) ,),
         const SizedBox(width: 8),
         Flexible(
           child: Text(
-            "Addressssssssssssssssssssssssssssss",
+            "2XVP+XC - Sheikh Zayed.....",
             maxLines: 1,
+            style: TextStyle(fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
           ),
         ),
