@@ -436,4 +436,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signup_success => 'Account created successfully';
+
+  @override
+  String get changeLanguage => 'Change Language';
 }

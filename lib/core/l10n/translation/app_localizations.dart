@@ -952,6 +952,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account created successfully'**
   String get signup_success;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
