@@ -15,7 +15,7 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var local = AppLocalizations.of(context);
+    var local = AppLocalizations.of(context)!;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -30,7 +30,7 @@ class OrdersScreen extends StatelessWidget {
             },
           ),
           title: Text(
-            local!.myOrder,
+            local.myOrders,
             style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w500,

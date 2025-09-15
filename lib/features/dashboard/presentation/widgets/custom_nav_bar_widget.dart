@@ -17,6 +17,7 @@ class CustomBottomNavBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,

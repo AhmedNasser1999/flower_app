@@ -140,7 +140,7 @@ abstract class AppLocalizations {
   /// No description provided for @emailValidationErrorMsg.
   ///
   /// In en, this message translates to:
-  /// **'This Email is not valid'**
+  /// **'This email is not valid'**
   String get emailValidationErrorMsg;
 
   /// No description provided for @passwordRequiredErrorMsg.
@@ -152,7 +152,7 @@ abstract class AppLocalizations {
   /// No description provided for @passwordValidationErrorMsg.
   ///
   /// In en, this message translates to:
-  /// **'Password must be at least 6 characters and include an uppercase letter and a number'**
+  /// **'Password must be at least 6 characters and include M#12m'**
   String get passwordValidationErrorMsg;
 
   /// No description provided for @rememberMe.
@@ -278,7 +278,7 @@ abstract class AppLocalizations {
   /// No description provided for @logoutAlertMsg.
   ///
   /// In en, this message translates to:
-  /// **'LOGOUT'**
+  /// **'Logout'**
   String get logoutAlertMsg;
 
   /// No description provided for @cancel.
@@ -332,7 +332,7 @@ abstract class AppLocalizations {
   /// No description provided for @validationEmailErrorMessage.
   ///
   /// In en, this message translates to:
-  /// **'This Email is not valid'**
+  /// **'This email is not valid'**
   String get validationEmailErrorMessage;
 
   /// No description provided for @requiredEmailErrorMessage.
@@ -368,8 +368,116 @@ abstract class AppLocalizations {
   /// No description provided for @wrongPasswordErrorMsg.
   ///
   /// In en, this message translates to:
-  /// **'Wrong password, Try Again'**
+  /// **'Wrong password, try again'**
   String get wrongPasswordErrorMsg;
+
+  /// No description provided for @notificationCount.
+  ///
+  /// In en, this message translates to:
+  /// **'3'**
+  String get notificationCount;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @savedAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Address'**
+  String get savedAddress;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @languageChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageChanged;
+
+  /// No description provided for @aboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get aboutUs;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @termsConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get termsConditions;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error:'**
+  String get error;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get profileTitle;
+
+  /// No description provided for @usernameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get usernameLabel;
+
+  /// No description provided for @firstNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstNameLabel;
+
+  /// No description provided for @lastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastNameLabel;
+
+  /// No description provided for @passwordChangeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get passwordChangeText;
+
+  /// No description provided for @phoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumberLabel;
+
+  /// No description provided for @updateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateButton;
+
+  /// No description provided for @errorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get errorText;
+
+  /// No description provided for @profileUpdatedSuccessMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully!'**
+  String get profileUpdatedSuccessMsg;
 
   /// No description provided for @addToCartBtn.
   ///
@@ -386,14 +494,26 @@ abstract class AppLocalizations {
   /// No description provided for @mostSellingSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Bloom with our exquisite best sellers'**
+  /// **'Bloom with our best-selling products'**
   String get mostSellingSubTitle;
 
-  /// No description provided for @explore.
+  /// No description provided for @occasionsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Explore'**
-  String get explore;
+  /// **'Occasions'**
+  String get occasionsTitle;
+
+  /// No description provided for @occasionsSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Celebrate with our top-selling flowers'**
+  String get occasionsSubTitle;
+
+  /// No description provided for @versionInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'v 6.3.0 - (446)'**
+  String get versionInfo;
 
   /// No description provided for @deliverTo.
   ///
@@ -599,71 +719,71 @@ abstract class AppLocalizations {
   /// **'Place Order'**
   String get placeOrder;
 
-  /// No description provided for @occasionsTitle.
+  /// No description provided for @egp.
   ///
   /// In en, this message translates to:
-  /// **'Occasions'**
-  String get occasionsTitle;
+  /// **'EGP'**
+  String get egp;
 
-  /// No description provided for @occasionsSubTitle.
+  /// No description provided for @active.
   ///
   /// In en, this message translates to:
-  /// **'Bloom with our exquisite best sellers'**
-  String get occasionsSubTitle;
+  /// **'Active'**
+  String get active;
 
-  /// No description provided for @notificationCount.
+  /// No description provided for @completed.
   ///
   /// In en, this message translates to:
-  /// **'3'**
-  String get notificationCount;
+  /// **'Completed'**
+  String get completed;
 
-  /// No description provided for @myOrders.
+  /// No description provided for @trackOrder.
   ///
   /// In en, this message translates to:
-  /// **'My Orders'**
-  String get myOrders;
+  /// **'Track Order'**
+  String get trackOrder;
 
-  /// No description provided for @savedAddress.
+  /// No description provided for @recorder.
   ///
   /// In en, this message translates to:
-  /// **'Saved Address'**
-  String get savedAddress;
+  /// **'Reorder'**
+  String get recorder;
 
-  /// No description provided for @language.
+  /// No description provided for @clear.
   ///
   /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
+  /// **'Clear'**
+  String get clear;
 
-  /// No description provided for @languageChanged.
+  /// No description provided for @explore.
   ///
   /// In en, this message translates to:
-  /// **'English'**
-  String get languageChanged;
+  /// **'Explore'**
+  String get explore;
 
-  /// No description provided for @aboutUs.
+  /// No description provided for @bestSeller.
   ///
   /// In en, this message translates to:
-  /// **'About Us'**
-  String get aboutUs;
+  /// **'Best Seller'**
+  String get bestSeller;
 
-  /// No description provided for @notification.
+  /// No description provided for @occasion.
   ///
   /// In en, this message translates to:
-  /// **'Notification'**
-  String get notification;
+  /// **'Occasion'**
+  String get occasion;
 
-  /// No description provided for @termsConditions.
+  /// No description provided for @noAboutInfoFound.
   ///
   /// In en, this message translates to:
-  /// **'Terms & Conditions'**
-  String get termsConditions;
+  /// **'No about info found'**
+  String get noAboutInfoFound;
 
-  /// No description provided for @error.
+  /// No description provided for @notificationDelete.
   ///
   /// In en, this message translates to:
-  /// **'Error:'**
-  String get error;
+  /// **'Notification deleted'**
+  String get notificationDelete;
 
   /// No description provided for @noTermsFound.
   ///
@@ -676,84 +796,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading terms'**
   String get errorLoadingTerms;
-
-  /// No description provided for @noAboutInfoFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No about info found'**
-  String get noAboutInfoFound;
-
-  /// No description provided for @profileTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Profile'**
-  String get profileTitle;
-
-  /// No description provided for @usernameLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'User Name'**
-  String get usernameLabel;
-
-  /// No description provided for @firstNameLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'First Name'**
-  String get firstNameLabel;
-
-  /// No description provided for @lastNameLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Last Name'**
-  String get lastNameLabel;
-
-  /// No description provided for @passwordChangeText.
-  ///
-  /// In en, this message translates to:
-  /// **'Change'**
-  String get passwordChangeText;
-
-  /// No description provided for @phoneNumberLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone Number'**
-  String get phoneNumberLabel;
-
-  /// No description provided for @updateButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Update'**
-  String get updateButton;
-
-  /// No description provided for @errorText.
-  ///
-  /// In en, this message translates to:
-  /// **'Error'**
-  String get errorText;
-
-  /// No description provided for @profileUpdatedSuccessMsg.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile updated successfully!'**
-  String get profileUpdatedSuccessMsg;
-
-  /// No description provided for @versionInfo.
-  ///
-  /// In en, this message translates to:
-  /// **'v 6.3.0 - (446)'**
-  String get versionInfo;
-
-  /// No description provided for @egp.
-  ///
-  /// In en, this message translates to:
-  /// **'EGP'**
-  String get egp;
-
-  /// No description provided for @notificationDelete.
-  ///
-  /// In en, this message translates to:
-  /// **'Notification deleted'**
-  String get notificationDelete;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

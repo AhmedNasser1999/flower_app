@@ -133,6 +133,7 @@ class ProductCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 6),
                   ),
                   onPressed: () {
+                    print("ahmed mohamed hassan mourad:$productId");
                     context.read<CartCubit>().addToCart(
                       productId,
                       1,

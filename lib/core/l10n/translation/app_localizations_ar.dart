@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تطبيق متجر الزهور الإلكتروني';
+  String get appName => 'تظبيق متجر الزهور الالكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -36,7 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون كلمة المرور على الأقل 6 أحرف وتحتوي على حرف كبير ورقم واحد';
+  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -57,13 +57,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الإعدادات';
+  String get settings => 'الاعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -138,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordLabel => 'تأكيد كلمة المرور';
 
   @override
-  String get newPasswordLabel => 'كلمة المرور الجديدة';
+  String get newPasswordLabel => 'كلمة مرور جديدة';
 
   @override
   String get newPasswordHint => 'أدخل كلمة المرور الجديدة';
@@ -147,19 +147,79 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
+  String get notificationCount => '٣';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get savedAddress => 'العناوين المحفوظة';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get languageChanged => 'العربيه';
+
+  @override
+  String get aboutUs => 'معلومات عنا';
+
+  @override
+  String get notification => 'أشعارات';
+
+  @override
+  String get termsConditions => 'الشروط والأحكام';
+
+  @override
+  String get error => 'خطأ:';
+
+  @override
+  String get profileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
+
+  @override
+  String get passwordChangeText => 'تغيير';
+
+  @override
+  String get phoneNumberLabel => 'رقم الهاتف';
+
+  @override
+  String get updateButton => 'تحديث';
+
+  @override
+  String get errorText => 'خطأ';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
+
+  @override
   String get addToCartBtn => 'أضف إلى السلة';
 
   @override
   String get mostSellingTitle => 'الأكثر مبيعًا';
 
   @override
-  String get mostSellingSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
+  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
 
   @override
-  String get explore => 'استكشاف';
+  String get occasionsTitle => 'المناسبات';
 
   @override
-  String get deliverTo => 'التوصيل إلى';
+  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+
+  @override
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get deliverTo => 'توصيل إلي';
 
   @override
   String get subTotal => 'المجموع الفرعي';
@@ -189,10 +249,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateQuantity => 'تحديث الكمية';
 
   @override
-  String get itemAddedToCart => 'تمت إضافة المنتج إلى السلة';
+  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
 
   @override
-  String get itemRemovedFromCart => 'تمت إزالة المنتج من السلة';
+  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
 
   @override
   String get quantityUpdated => 'تم تحديث الكمية';
@@ -243,7 +303,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureCheckout => 'دفع آمن';
 
   @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يومًا';
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
 
   @override
   String get orderSummary => 'ملخص الطلب';
@@ -258,83 +318,44 @@ class AppLocalizationsAr extends AppLocalizations {
   String get discount => 'الخصم';
 
   @override
-  String get placeOrder => 'تأكيد الطلب';
+  String get placeOrder => 'تقديم الطلب';
 
   @override
-  String get occasionsTitle => 'المناسبات';
+  String get egp => 'جنيه';
 
   @override
-  String get occasionsSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
+  String get active => 'نشط';
 
   @override
-  String get notificationCount => '٣';
+  String get completed => 'مكتمل';
 
   @override
-  String get myOrders => 'طلباتي';
+  String get trackOrder => 'تتبع الطلب';
 
   @override
-  String get savedAddress => 'العناوين المحفوظة';
+  String get recorder => 'إعادة الطلب';
 
   @override
-  String get language => 'اللغة';
+  String get clear => 'مسح';
 
   @override
-  String get languageChanged => 'العربية';
+  String get explore => 'استكشاف';
 
   @override
-  String get aboutUs => 'من نحن';
+  String get bestSeller => 'الأكثر مبيعًا';
 
   @override
-  String get notification => 'الإشعارات';
+  String get occasion => 'مناسبة';
 
   @override
-  String get termsConditions => 'الشروط والأحكام';
+  String get noAboutInfoFound => 'لم يتم العثور على معلومات حول';
 
   @override
-  String get error => 'خطأ:';
+  String get notificationDelete => 'تم حذف الإشعار';
 
   @override
   String get noTermsFound => 'لم يتم العثور على شروط';
 
   @override
   String get errorLoadingTerms => 'خطأ في تحميل الشروط';
-
-  @override
-  String get noAboutInfoFound => 'لم يتم العثور على معلومات حول';
-
-  @override
-  String get profileTitle => 'تعديل الملف الشخصي';
-
-  @override
-  String get usernameLabel => 'اسم المستخدم';
-
-  @override
-  String get firstNameLabel => 'الاسم الأول';
-
-  @override
-  String get lastNameLabel => 'اسم العائلة';
-
-  @override
-  String get passwordChangeText => 'تغيير';
-
-  @override
-  String get phoneNumberLabel => 'رقم الهاتف';
-
-  @override
-  String get updateButton => 'تحديث';
-
-  @override
-  String get errorText => 'خطأ';
-
-  @override
-  String get profileUpdatedSuccessMsg => 'تم تحديث الملف الشخصي بنجاح!';
-
-  @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
-
-  @override
-  String get egp => 'جنيه';
-
-  @override
-  String get notificationDelete => 'تم حذف الإشعار';
 }

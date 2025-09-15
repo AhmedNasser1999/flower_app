@@ -30,13 +30,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailIsEmptyErrorMessage => 'Email is required';
 
   @override
-  String get emailValidationErrorMsg => 'This Email is not valid';
+  String get emailValidationErrorMsg => 'This email is not valid';
 
   @override
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include an uppercase letter and a number';
+  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -99,7 +99,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get updateText => 'Update';
 
   @override
-  String get logoutAlertMsg => 'LOGOUT';
+  String get logoutAlertMsg => 'Logout';
 
   @override
   String get cancel => 'Cancel';
@@ -126,7 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgetPassword => 'Forgot Password';
 
   @override
-  String get validationEmailErrorMessage => 'This Email is not valid';
+  String get validationEmailErrorMessage => 'This email is not valid';
 
   @override
   String get requiredEmailErrorMessage => 'Email is required';
@@ -144,7 +144,61 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newPasswordHint => 'Enter new password';
 
   @override
-  String get wrongPasswordErrorMsg => 'Wrong password, Try Again';
+  String get wrongPasswordErrorMsg => 'Wrong password, try again';
+
+  @override
+  String get notificationCount => '3';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get savedAddress => 'Saved Address';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageChanged => 'English';
+
+  @override
+  String get aboutUs => 'About Us';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get termsConditions => 'Terms & Conditions';
+
+  @override
+  String get error => 'Error:';
+
+  @override
+  String get profileTitle => 'Edit Profile';
+
+  @override
+  String get usernameLabel => 'User Name';
+
+  @override
+  String get firstNameLabel => 'First Name';
+
+  @override
+  String get lastNameLabel => 'Last Name';
+
+  @override
+  String get passwordChangeText => 'Change';
+
+  @override
+  String get phoneNumberLabel => 'Phone Number';
+
+  @override
+  String get updateButton => 'Update';
+
+  @override
+  String get errorText => 'Error';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
 
   @override
   String get addToCartBtn => 'Add to cart';
@@ -153,10 +207,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mostSellingTitle => 'Best Seller';
 
   @override
-  String get mostSellingSubTitle => 'Bloom with our exquisite best sellers';
+  String get mostSellingSubTitle => 'Bloom with our best-selling products';
 
   @override
-  String get explore => 'Explore';
+  String get occasionsTitle => 'Occasions';
+
+  @override
+  String get occasionsSubTitle => 'Celebrate with our top-selling flowers';
+
+  @override
+  String get versionInfo => 'v 6.3.0 - (446)';
 
   @override
   String get deliverTo => 'Deliver to';
@@ -261,80 +321,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get placeOrder => 'Place Order';
 
   @override
-  String get occasionsTitle => 'Occasions';
+  String get egp => 'EGP';
 
   @override
-  String get occasionsSubTitle => 'Bloom with our exquisite best sellers';
+  String get active => 'Active';
 
   @override
-  String get notificationCount => '3';
+  String get completed => 'Completed';
 
   @override
-  String get myOrders => 'My Orders';
+  String get trackOrder => 'Track Order';
 
   @override
-  String get savedAddress => 'Saved Address';
+  String get recorder => 'Reorder';
 
   @override
-  String get language => 'Language';
+  String get clear => 'Clear';
 
   @override
-  String get languageChanged => 'English';
+  String get explore => 'Explore';
 
   @override
-  String get aboutUs => 'About Us';
+  String get bestSeller => 'Best Seller';
 
   @override
-  String get notification => 'Notification';
+  String get occasion => 'Occasion';
 
   @override
-  String get termsConditions => 'Terms & Conditions';
+  String get noAboutInfoFound => 'No about info found';
 
   @override
-  String get error => 'Error:';
+  String get notificationDelete => 'Notification deleted';
 
   @override
   String get noTermsFound => 'No terms found';
 
   @override
   String get errorLoadingTerms => 'Error loading terms';
-
-  @override
-  String get noAboutInfoFound => 'No about info found';
-
-  @override
-  String get profileTitle => 'Edit Profile';
-
-  @override
-  String get usernameLabel => 'User Name';
-
-  @override
-  String get firstNameLabel => 'First Name';
-
-  @override
-  String get lastNameLabel => 'Last Name';
-
-  @override
-  String get passwordChangeText => 'Change';
-
-  @override
-  String get phoneNumberLabel => 'Phone Number';
-
-  @override
-  String get updateButton => 'Update';
-
-  @override
-  String get errorText => 'Error';
-
-  @override
-  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
-
-  @override
-  String get versionInfo => 'v 6.3.0 - (446)';
-
-  @override
-  String get egp => 'EGP';
-
-  @override
-  String get notificationDelete => 'Notification deleted';
 }
