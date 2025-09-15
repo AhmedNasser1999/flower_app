@@ -37,8 +37,8 @@ class ProductsGridWidget extends StatelessWidget {
         if (state is MostSellingLoadingState) {
           return const Center(
             child: SizedBox(
-              height: 40,
-              width: 40,
+              height: 80,
+              width: 80,
               child: LoadingIndicator(
                 indicatorType: Indicator.lineScalePulseOut,
                 colors: [AppColors.pink],

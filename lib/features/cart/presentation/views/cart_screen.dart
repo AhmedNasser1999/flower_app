@@ -8,6 +8,7 @@ import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/cart/presentation/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/cart_model.dart';
@@ -36,16 +37,17 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () async => !widget.isFromNavBar,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: !widget.isFromNavBar
-              ? const Text("Cart")
-              : const Padding(
+              ? Text(local.cart)
+              :  Padding(
             padding: EdgeInsetsDirectional.only(start: 18),
-            child: Text("Cart"),
+            child: Text(local.cart),
           ),
           backgroundColor: Colors.white,
           centerTitle: false,
@@ -65,8 +67,8 @@ class _CartScreenState extends State<CartScreen> {
                     onPressed: () {
                       _showClearCartDialog(context);
                     },
-                    child: const Text(
-                      "Clear",
+                    child:  Text(
+                      local.clear,
                       style: TextStyle(
                         color: AppColors.pink,
                         fontWeight: FontWeight.bold,
@@ -89,7 +91,18 @@ class _CartScreenState extends State<CartScreen> {
           },
           builder: (context, state) {
             if (state is CartLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return Center(
+                child: SizedBox(
+                  height: 80,
+                  width: 80,
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [AppColors.pink],
+                    strokeWidth: 2,
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              );
             }
 
             if (state is CartLoaded) {

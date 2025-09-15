@@ -102,6 +102,15 @@ import '../../features/occasion/domain/usecases/get_occasions_use_case.dart'
     as _i202;
 import '../../features/occasion/presentation/viewmodel/occasion_view_model.dart'
     as _i473;
+import '../../features/order/api/client/order_api_client.dart' as _i81;
+import '../../features/order/api/data_source_impl/order_remote_data_source_impl.dart'
+    as _i841;
+import '../../features/order/data/data_sources/order_remote_data_source.dart'
+    as _i701;
+import '../../features/order/data/repositories/order_repo_impl.dart' as _i1004;
+import '../../features/order/domain/repositories/order_repo.dart' as _i713;
+import '../../features/order/domain/use_cases/get_orders_usecase.dart' as _i796;
+import '../../features/order/presentation/viewmodel/orders_cubit.dart' as _i561;
 import '../../features/profile/api/client/profile_api_client.dart' as _i418;
 import '../../features/profile/api/datasource_impl/profile_remote_datasource_impl.dart'
     as _i121;
@@ -163,6 +172,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
+    gh.factory<_i81.OrderApiClient>(() => _i81.OrderApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.factory<_i418.ProfileApiClient>(() => _i418.ProfileApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
@@ -171,23 +184,29 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
     gh.lazySingleton<_i1026.CartRemoteDataSource>(
         () => _i948.CartRemoteDataSourceImpl(gh<_i131.CartApiClient>()));
+    gh.lazySingleton<_i701.OrderRemoteDataSource>(
+        () => _i841.OrderRemoteDataSourceImpl(gh<_i81.OrderApiClient>()));
     gh.lazySingleton<_i904.GetCategoriesRemoteDataSource>(() =>
         _i315.GetCategoriesRemoteDataSourceImpl(gh<_i361.CategoryApiClient>()));
     gh.factory<_i341.ResetPasswordCubit>(
         () => _i341.ResetPasswordCubit(gh<_i213.AuthApiClient>()));
+    gh.lazySingleton<_i713.OrderRepo>(
+        () => _i1004.OrderRepoImpl(gh<_i701.OrderRemoteDataSource>()));
     gh.factory<_i669.AuthRepo>(
         () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
-    gh.lazySingleton<_i955.ProductRemoteDataSource>(
-        () => _i313.ProductRemoteDataSourceImpl(gh<_i67.ProductApiClient>()));
     gh.factory<_i168.OccasionRemoteDataSource>(() =>
         _i633.OccasionRemoteDataSourceImpl(gh<_i1040.OccasionApiClient>()));
     gh.factory<_i682.OccasionRepository>(() =>
         _i740.OccasionRepositoryImpl(gh<_i168.OccasionRemoteDataSource>()));
+    gh.lazySingleton<_i955.ProductRemoteDataSource>(
+        () => _i313.ProductRemoteDataSourceImpl(gh<_i67.ProductApiClient>()));
     gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
         _i121.ProfileRemoteDatasourceImpl(
             apiClient: gh<_i418.ProfileApiClient>()));
     gh.lazySingleton<_i322.CartRepository>(
         () => _i966.CartRepositoryImpl(gh<_i1026.CartRemoteDataSource>()));
+    gh.factory<_i796.GetOrdersUseCase>(
+        () => _i796.GetOrdersUseCase(gh<_i713.OrderRepo>()));
     gh.factory<_i252.AddToCartUseCase>(
         () => _i252.AddToCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i176.GetCartUseCase>(
@@ -201,8 +220,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i93.SignupUsecase>(
-        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i682.ForgetPasswordUseCase>(
         () => _i682.ForgetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i309.ResetPasswordUseCase>(
@@ -223,8 +240,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
-    gh.factory<_i387.SignupCubit>(
-        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     gh.lazySingleton<_i550.ChangePasswordUseCases>(
         () => _i550.ChangePasswordUseCases(gh<_i894.ProfileRepository>()));
     gh.factory<_i202.GetOccasionsUseCase>(
@@ -237,6 +252,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
     gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
         () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
+    gh.factory<_i93.SignupUsecase>(
+        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i144.GetAllProductsUseCase>(
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
     gh.factory<_i971.UploadPhotoUseCase>(
@@ -248,6 +265,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i147.UpdateCartItemUseCase>(),
           gh<_i493.ClearCartUseCase>(),
         ));
+    gh.factory<_i561.OrdersCubit>(
+        () => _i561.OrdersCubit(gh<_i796.GetOrdersUseCase>()));
     gh.factory<_i71.LogoutViewModel>(
         () => _i71.LogoutViewModel(gh<_i8.LogoutUseCase>()));
     gh.factory<_i72.MostSellingProductsViewmodel>(() =>
@@ -267,6 +286,8 @@ extension GetItInjectableX on _i174.GetIt {
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
         ));
+    gh.factory<_i387.SignupCubit>(
+        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     return this;
   }
 }

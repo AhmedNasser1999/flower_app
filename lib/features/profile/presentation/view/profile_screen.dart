@@ -128,7 +128,9 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.myOrders,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.orders);
+                  },
                 ),
 
                 MenuItemWidget(
@@ -167,6 +169,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     showModalBottomSheet(
+                      backgroundColor: AppColors.white,
                       context: context,
                       builder: (context) {
                         return SizedBox(

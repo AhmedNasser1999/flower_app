@@ -1,8 +1,3 @@
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
-import 'package:flower_app/core/routes/route_names.dart';
-import 'package:flower_app/core/theme/app_colors.dart';
-import 'package:flower_app/features/auth/domain/services/auth_service.dart';
-import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flower_app/features/cart/presentation/views/cart_screen.dart';
 import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
@@ -17,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/config/di.dart';
 import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
-import '../../../categories/presentation/viewmodel/categories_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});

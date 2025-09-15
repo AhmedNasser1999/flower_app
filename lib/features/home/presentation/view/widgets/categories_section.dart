@@ -19,8 +19,8 @@ class CategoriesSection extends StatelessWidget {
     if (state.isCategoriesLoading) {
       return Center(
         child: SizedBox(
-          height: 150,
-          width: 100,
+          height: 80,
+          width: 80,
           child: LoadingIndicator(
             indicatorType: Indicator.lineScalePulseOut,
             colors: [AppColors.pink],
