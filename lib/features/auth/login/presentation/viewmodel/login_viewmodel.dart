@@ -24,17 +24,17 @@ class LoginViewModel extends Cubit<LoginStates> {
 
   Future<void> login(String email, String password) async {
     emit(LoginLoadingState());
-    try {
-      final request = LoginRequest(email: email, password: password);
-      final response = await _loginUseCase(request);
+    final request = LoginRequest(email: email, password: password);
+    final response = await _loginUseCase(request);
+    if (response.isSuccess){
       await AuthService.saveAuthToken(response.data?.token ?? "");
       if (rememberMe) {
         await AuthService.saveUserId(response.data!.user!.Id.toString());
       }
 
       emit(LoginSuccessState(response.data!));
-    } catch (e) {
-      emit(LoginErrorState(e.toString()));
+    } else {
+      emit(LoginErrorState(response.error?? "unknown error"));
     }
   }
 
