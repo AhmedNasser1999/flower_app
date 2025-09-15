@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   OccasionsSection(state: state),
                 ],
-              ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+              ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
             ),
           ),
         ),

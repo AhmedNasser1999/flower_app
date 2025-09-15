@@ -46,7 +46,7 @@ class ProductItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontFamily: "Inter"
                 ),
               ),
             ),
@@ -55,9 +55,12 @@ class ProductItem extends StatelessWidget {
                 ? Text('')
                 : Expanded(
                     child: Text(
-                      '$price LE',
+                      '$price EGP',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                          fontFamily: "Inter"
+
                       ),
                     ),
                   ),

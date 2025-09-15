@@ -30,19 +30,31 @@ class CategoryWidget extends StatelessWidget {
             ),
             child: (icon.isNotEmpty)
                 ? Image.network(
-                    icon,
-                    width: 18,
-                    height: 22,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                        Icons.broken_image,
-                        size: 22,
-                        color: Colors.grey),
-                  )
+              icon,
+              width: 25,
+              height: 28,
+              errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.broken_image,
+                  size: 26, color: Colors.grey),
+            )
                 : const Icon(Icons.image_not_supported,
-                    size: 22, color: Colors.grey),
+                size: 22, color: Colors.grey),
           ),
         ),
-        Text(title),
+        SizedBox(
+          width: 68.0,
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              fontFamily: "Inter",
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }
