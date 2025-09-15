@@ -18,13 +18,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailLabel => 'Email';
 
   @override
-  String get emailHintText => 'Enter you email';
+  String get emailHintText => 'Enter your email';
 
   @override
-  String get passwordLabel => 'password';
+  String get passwordLabel => 'Password';
 
   @override
-  String get passwordHintText => 'Enter you password';
+  String get passwordHintText => 'Enter your password';
 
   @override
   String get emailIsEmptyErrorMessage => 'Email is required';
@@ -36,13 +36,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'must be at least 6 characters and have M#12m';
+  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include an uppercase letter and a number';
 
   @override
   String get rememberMe => 'Remember me';
 
   @override
-  String get forgetPasswordTextButton => 'Forget password?';
+  String get forgetPasswordTextButton => 'Forgot password?';
 
   @override
   String get continueAsGuestButton => 'Continue as guest';
@@ -90,10 +90,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmPassword => 'Confirm Password';
 
   @override
-  String get invalidPasswordMsg => 'invalid password';
+  String get invalidPasswordMsg => 'Invalid password';
 
   @override
-  String get passwordErrorMatchingMsg => 'Password unmatching!';
+  String get passwordErrorMatchingMsg => 'Passwords do not match!';
 
   @override
   String get updateText => 'Update';
@@ -108,22 +108,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!!';
 
   @override
-  String get resetPasswordUnderMsg => 'Password must not be empty and must contain 6 characters with upper case letter and one number at least';
+  String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
 
   @override
-  String get emailVerificationScreen => 'Email verification';
+  String get emailVerificationScreen => 'Email Verification';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'Please enter your code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg => 'Please enter the code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText => 'Please enter your email associated to\nyour account';
+  String get forgetPasswordUnderText => 'Please enter your email associated with\nyour account';
 
   @override
-  String get forgetPassword => 'Forget Password';
+  String get forgetPassword => 'Forgot Password';
 
   @override
   String get validationEmailErrorMessage => 'This Email is not valid';
@@ -270,10 +270,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationCount => '3';
 
   @override
-  String get myOrders => 'My orders';
+  String get myOrders => 'My Orders';
 
   @override
-  String get savedAddress => 'Saved address';
+  String get savedAddress => 'Saved Address';
 
   @override
   String get language => 'Language';
@@ -282,13 +282,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageChanged => 'English';
 
   @override
-  String get aboutUs => 'About us';
+  String get aboutUs => 'About Us';
 
   @override
   String get notification => 'Notification';
 
   @override
-  String get termsConditions => 'Terms & conditions';
+  String get termsConditions => 'Terms & Conditions';
 
   @override
   String get error => 'Error:';
@@ -306,10 +306,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileTitle => 'Edit Profile';
 
   @override
-  String get usernameLabel => 'User name';
+  String get usernameLabel => 'User Name';
 
   @override
-  String get firstNameLabel => 'First name';
+  String get firstNameLabel => 'First Name';
 
   @override
   String get lastNameLabel => 'Last Name';
@@ -327,11 +327,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorText => 'Error';
 
   @override
-  String get profileUpdatedSuccessMsg => 'Profile changed successfully!';
+  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
 
   @override
   String get versionInfo => 'v 6.3.0 - (446)';
 
   @override
   String get egp => 'EGP';
+
+  @override
+  String get notificationDelete => 'Notification deleted';
 }

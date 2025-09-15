@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تظبيق متجر الزهور الالكتروني';
+  String get appName => 'تطبيق متجر الزهور الإلكتروني';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -36,7 +36,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg => 'يجب أن تكون كلمة المرور على الأقل 6 أحرف وتحتوي على حرف كبير ورقم واحد';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -57,13 +57,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboard => 'لوحة التحكم';
 
   @override
-  String get home => 'الرئيسية';
+  String get home => 'الرئيسية';
 
   @override
   String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'الاعدادات';
+  String get settings => 'الإعدادات';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -90,10 +90,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPassword => 'تأكيد كلمة المرور';
 
   @override
-  String get invalidPasswordMsg => 'كلمة مرور غير صالحة';
+  String get invalidPasswordMsg => 'كلمة المرور غير صالحة';
 
   @override
-  String get passwordErrorMatchingMsg => 'كلمة المرور غير متطابقة!';
+  String get passwordErrorMatchingMsg => 'كلمات المرور غير متطابقة!';
 
   @override
   String get updateText => 'تحديث';
@@ -138,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordLabel => 'تأكيد كلمة المرور';
 
   @override
-  String get newPasswordLabel => 'كلمة مرور جديدة';
+  String get newPasswordLabel => 'كلمة المرور الجديدة';
 
   @override
   String get newPasswordHint => 'أدخل كلمة المرور الجديدة';
@@ -153,13 +153,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get mostSellingTitle => 'الأكثر مبيعًا';
 
   @override
-  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
+  String get mostSellingSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
 
   @override
   String get explore => 'استكشاف';
 
   @override
-  String get deliverTo => 'توصيل إلي';
+  String get deliverTo => 'التوصيل إلى';
 
   @override
   String get subTotal => 'المجموع الفرعي';
@@ -189,10 +189,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateQuantity => 'تحديث الكمية';
 
   @override
-  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
+  String get itemAddedToCart => 'تمت إضافة المنتج إلى السلة';
 
   @override
-  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+  String get itemRemovedFromCart => 'تمت إزالة المنتج من السلة';
 
   @override
   String get quantityUpdated => 'تم تحديث الكمية';
@@ -243,7 +243,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secureCheckout => 'دفع آمن';
 
   @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يوم';
+  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يومًا';
 
   @override
   String get orderSummary => 'ملخص الطلب';
@@ -258,13 +258,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get discount => 'الخصم';
 
   @override
-  String get placeOrder => 'تقديم الطلب';
+  String get placeOrder => 'تأكيد الطلب';
 
   @override
   String get occasionsTitle => 'المناسبات';
 
   @override
-  String get occasionsSubTitle => 'ازدهر مع أفضل مبيعاتنا الرائعة';
+  String get occasionsSubTitle => 'ازدهر مع أكثر منتجاتنا مبيعًا';
 
   @override
   String get notificationCount => '٣';
@@ -279,13 +279,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language => 'اللغة';
 
   @override
-  String get languageChanged => 'العربيه';
+  String get languageChanged => 'العربية';
 
   @override
-  String get aboutUs => 'معلومات عنا';
+  String get aboutUs => 'من نحن';
 
   @override
-  String get notification => 'أشعارات';
+  String get notification => 'الإشعارات';
 
   @override
   String get termsConditions => 'الشروط والأحكام';
@@ -327,11 +327,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorText => 'خطأ';
 
   @override
-  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
+  String get profileUpdatedSuccessMsg => 'تم تحديث الملف الشخصي بنجاح!';
 
   @override
   String get versionInfo => 'الإصدار 6.3.0 - (446)';
 
   @override
-  String get egp => 'جنيهاً';
+  String get egp => 'جنيه';
+
+  @override
+  String get notificationDelete => 'تم حذف الإشعار';
 }

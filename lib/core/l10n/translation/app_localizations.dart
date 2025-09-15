@@ -116,19 +116,19 @@ abstract class AppLocalizations {
   /// No description provided for @emailHintText.
   ///
   /// In en, this message translates to:
-  /// **'Enter you email'**
+  /// **'Enter your email'**
   String get emailHintText;
 
   /// No description provided for @passwordLabel.
   ///
   /// In en, this message translates to:
-  /// **'password'**
+  /// **'Password'**
   String get passwordLabel;
 
   /// No description provided for @passwordHintText.
   ///
   /// In en, this message translates to:
-  /// **'Enter you password'**
+  /// **'Enter your password'**
   String get passwordHintText;
 
   /// No description provided for @emailIsEmptyErrorMessage.
@@ -152,7 +152,7 @@ abstract class AppLocalizations {
   /// No description provided for @passwordValidationErrorMsg.
   ///
   /// In en, this message translates to:
-  /// **'must be at least 6 characters and have M#12m'**
+  /// **'Password must be at least 6 characters and include an uppercase letter and a number'**
   String get passwordValidationErrorMsg;
 
   /// No description provided for @rememberMe.
@@ -164,7 +164,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgetPasswordTextButton.
   ///
   /// In en, this message translates to:
-  /// **'Forget password?'**
+  /// **'Forgot password?'**
   String get forgetPasswordTextButton;
 
   /// No description provided for @continueAsGuestButton.
@@ -260,13 +260,13 @@ abstract class AppLocalizations {
   /// No description provided for @invalidPasswordMsg.
   ///
   /// In en, this message translates to:
-  /// **'invalid password'**
+  /// **'Invalid password'**
   String get invalidPasswordMsg;
 
   /// No description provided for @passwordErrorMatchingMsg.
   ///
   /// In en, this message translates to:
-  /// **'Password unmatching!'**
+  /// **'Passwords do not match!'**
   String get passwordErrorMatchingMsg;
 
   /// No description provided for @updateText.
@@ -296,19 +296,19 @@ abstract class AppLocalizations {
   /// No description provided for @resetPasswordUnderMsg.
   ///
   /// In en, this message translates to:
-  /// **'Password must not be empty and must contain 6 characters with upper case letter and one number at least'**
+  /// **'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number'**
   String get resetPasswordUnderMsg;
 
   /// No description provided for @emailVerificationScreen.
   ///
   /// In en, this message translates to:
-  /// **'Email verification'**
+  /// **'Email Verification'**
   String get emailVerificationScreen;
 
   /// No description provided for @emailVerificationScreenUnderMsg.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your code that was sent to your\nemail address'**
+  /// **'Please enter the code that was sent to your\nemail address'**
   String get emailVerificationScreenUnderMsg;
 
   /// No description provided for @codeReceiveMsgError.
@@ -320,13 +320,13 @@ abstract class AppLocalizations {
   /// No description provided for @forgetPasswordUnderText.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your email associated to\nyour account'**
+  /// **'Please enter your email associated with\nyour account'**
   String get forgetPasswordUnderText;
 
   /// No description provided for @forgetPassword.
   ///
   /// In en, this message translates to:
-  /// **'Forget Password'**
+  /// **'Forgot Password'**
   String get forgetPassword;
 
   /// No description provided for @validationEmailErrorMessage.
@@ -620,13 +620,13 @@ abstract class AppLocalizations {
   /// No description provided for @myOrders.
   ///
   /// In en, this message translates to:
-  /// **'My orders'**
+  /// **'My Orders'**
   String get myOrders;
 
   /// No description provided for @savedAddress.
   ///
   /// In en, this message translates to:
-  /// **'Saved address'**
+  /// **'Saved Address'**
   String get savedAddress;
 
   /// No description provided for @language.
@@ -644,7 +644,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutUs.
   ///
   /// In en, this message translates to:
-  /// **'About us'**
+  /// **'About Us'**
   String get aboutUs;
 
   /// No description provided for @notification.
@@ -656,7 +656,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsConditions.
   ///
   /// In en, this message translates to:
-  /// **'Terms & conditions'**
+  /// **'Terms & Conditions'**
   String get termsConditions;
 
   /// No description provided for @error.
@@ -692,13 +692,13 @@ abstract class AppLocalizations {
   /// No description provided for @usernameLabel.
   ///
   /// In en, this message translates to:
-  /// **'User name'**
+  /// **'User Name'**
   String get usernameLabel;
 
   /// No description provided for @firstNameLabel.
   ///
   /// In en, this message translates to:
-  /// **'First name'**
+  /// **'First Name'**
   String get firstNameLabel;
 
   /// No description provided for @lastNameLabel.
@@ -734,7 +734,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileUpdatedSuccessMsg.
   ///
   /// In en, this message translates to:
-  /// **'Profile changed successfully!'**
+  /// **'Profile updated successfully!'**
   String get profileUpdatedSuccessMsg;
 
   /// No description provided for @versionInfo.
@@ -748,6 +748,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'EGP'**
   String get egp;
+
+  /// No description provided for @notificationDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification deleted'**
+  String get notificationDelete;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
