@@ -47,11 +47,6 @@ class _CartScreenState extends State<CartScreen> {
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-              child: Image.asset("assets/icons/arrow_back_icon.png")),
           actions: [
             BlocBuilder<CartCubit, CartState>(
               builder: (context, state) {
