@@ -7,7 +7,7 @@ class ForgetPasswordRequestModel {
   @JsonKey(name: "email")
   final String email;
 
-  ForgetPasswordRequestModel ({
+  ForgetPasswordRequestModel({
     required this.email,
   });
 
@@ -19,5 +19,3 @@ class ForgetPasswordRequestModel {
     return _$ForgetPasswordRequestModelToJson(this);
   }
 }
-
-

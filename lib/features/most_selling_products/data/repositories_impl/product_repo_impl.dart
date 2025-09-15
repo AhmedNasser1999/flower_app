@@ -12,12 +12,20 @@ class ProductRepoImpl implements ProductRepo {
   ProductRepoImpl(this._productRemoteDataSource);
 
   @override
-  Future<List<ProductsEntity>> getAllProducts() async {
-    final List<Products> models =
-        await _productRemoteDataSource.getAllProduct();
+  Future<List<ProductsEntity>> getAllProducts({
+    String? sort,
+    String? search,
+    String? category,
+  }) async {
+    final List<Products> models = await _productRemoteDataSource.getAllProduct(
+      sort: sort,
+      search: search,
+      category: category,
+    );
 
     return models
-        .map((models) => ProductsEntity(
+        .map(
+          (models) => ProductsEntity(
             rateAvg: models.rateAvg,
             rateCount: models.rateCount,
             Id: models.Id,
@@ -30,10 +38,10 @@ class ProductRepoImpl implements ProductRepo {
             priceAfterDiscount: models.priceAfterDiscount,
             quantity: models.quantity,
             sold: models.sold,
-            id: models.id,
             category: models.category,
             occasion: models.occasion,
-    ),
-    ).toList();
+          ),
+        )
+        .toList();
   }
 }

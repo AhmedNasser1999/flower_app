@@ -15,10 +15,11 @@ import '../client/profile_api_client.dart';
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   final ProfileApiClient _profileApiClient;
 
-  ProfileRemoteDatasourceImpl({required ProfileApiClient apiClient}) : _profileApiClient = apiClient;
+  ProfileRemoteDatasourceImpl({required ProfileApiClient apiClient})
+      : _profileApiClient = apiClient;
 
   @override
-  Future<ApiResult<ProfileResponse>> getProfile() async{
+  Future<ApiResult<ProfileResponse>> getProfile() async {
     try {
       final response = await _profileApiClient.getProfile();
       return ApiSuccessResult(response);
@@ -30,18 +31,20 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   }
 
   @override
-  Future<ChangePasswordResponseModel> changePassword(ChangePasswordRequestModel changePasswordRequestModel) async {
-    try{
-      final response = await _profileApiClient.changePassword(changePasswordRequestModel);
+  Future<ChangePasswordResponseModel> changePassword(
+      ChangePasswordRequestModel changePasswordRequestModel) async {
+    try {
+      final response =
+          await _profileApiClient.changePassword(changePasswordRequestModel);
       return response;
-    } catch (e){
-      throw ("Unexpected error: $e");
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
     }
   }
 
-
   @override
-  Future<ApiResult<EditProfileResponseModel>> editProfile(EditProfileRequestModel model)async {
+  Future<ApiResult<EditProfileResponseModel>> editProfile(
+      EditProfileRequestModel model) async {
     try {
       final response = await _profileApiClient.editProfile(model);
       return ApiSuccessResult(response);
@@ -59,5 +62,4 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
       return ApiErrorResult(e.toString());
     }
   }
-
 }

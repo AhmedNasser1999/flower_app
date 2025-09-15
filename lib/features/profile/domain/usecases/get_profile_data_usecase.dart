@@ -10,9 +10,8 @@ class GetProfileDataUseCase {
 
   GetProfileDataUseCase(this._profileRepo);
 
-  Future<ApiResult<UserEntity>> call() async{
+  Future<ApiResult<UserEntity>> call() async {
     ApiResult<UserEntity> user = await _profileRepo.getProfile();
     return user;
   }
-
 }

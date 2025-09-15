@@ -8,8 +8,7 @@ import 'states/reset_code_states.dart';
 
 @injectable
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
-  ResetPasswordCubit(this._apiClient)
-    : super(ResetPasswordInitialState());
+  ResetPasswordCubit(this._apiClient) : super(ResetPasswordInitialState());
 
   final AuthApiClient _apiClient;
 

@@ -26,6 +26,7 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
         }
       }).toList();
 
+      _allProducts = validProducts;
       emit(MostSellingSuccessState(validProducts));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
@@ -33,7 +34,9 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
   }
 
   int _calculateDiscountPercentage(int originalPrice, int discountedPrice) {
-    if (originalPrice <= 0 || discountedPrice < 0 || discountedPrice > originalPrice) {
+    if (originalPrice <= 0 ||
+        discountedPrice < 0 ||
+        discountedPrice > originalPrice) {
       throw ArgumentError("Invalid price values");
     }
 
@@ -41,32 +44,59 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
     return discount.round();
   }
 
-  void filterProducts(String query) {
-    if (query.isEmpty) {
-      emit(MostSellingSuccessState(_allProducts));
-    } else {
-      final filtered = _allProducts
-          .where((product) =>
-          product.title.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-      emit(MostSellingSuccessState(filtered));
+  Future<void> getProduct({
+    String? sort,
+    String? search,
+    String? category,
+  }) async {
+    emit(MostSellingLoadingState());
+
+    try {
+      final product = await _allProductsUseCase.call(
+          sort: sort, search: search, category: category);
+      _allProducts = product;
+      emit(MostSellingSuccessState(product));
+    } catch (e) {
+      emit(MostSellingProductsErrorState(e.toString()));
     }
+
+    // void filterProducts(String query) {
+    //   if (query.isEmpty) {
+    //     emit(MostSellingSuccessState(_allProducts));
+    //   } else {
+    //     final filtered = _allProducts
+    //         .where((product) =>
+    //         product.title.toLowerCase().contains(query.toLowerCase()))
+    //         .toList();
+    //     emit(MostSellingSuccessState(filtered));
+    //   }
+    // }
+
+    // void filterByCategory(String? categoryId) {
+    //   if (categoryId == null || categoryId.isEmpty) {
+    //     emit(MostSellingSuccessState(_allProducts));
+    //   } else {
+    //     final filtered = _allProducts
+    //         .where((product) => product.category == categoryId)
+    //         .toList();
+    //     emit(MostSellingSuccessState(filtered));
+    //   }
   }
 
-  void filterByCategory(String? categoryId) {
-    if (categoryId == null || categoryId.isEmpty) {
+  void filterByOccasion(String? occasionId) {
+    if (occasionId == null || occasionId.isEmpty) {
       emit(MostSellingSuccessState(_allProducts));
     } else {
       final filtered = _allProducts
-          .where((product) => product.category == categoryId)
+          .where((product) => product.occasion == occasionId)
           .toList();
       emit(MostSellingSuccessState(filtered));
     }
   }
-  void filterByCategoryAndSearch(String categoryId, String query) {
-    final filtered = _allProducts
-        .where((p) => p.category == categoryId && p.title.toLowerCase().contains(query.toLowerCase()))
-        .toList();
-    emit(MostSellingSuccessState(filtered));
-  }
+  // void filterByCategoryAndSearch(String categoryId, String query) {
+  //   final filtered = _allProducts
+  //       .where((p) => p.category == categoryId && p.title.toLowerCase().contains(query.toLowerCase()))
+  //       .toList();
+  //   emit(MostSellingSuccessState(filtered));
+  // }
 }

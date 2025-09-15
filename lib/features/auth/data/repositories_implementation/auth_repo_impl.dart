@@ -29,8 +29,10 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<AuthResponse<String>> resetPassword(String email, String newPassword) async {
-    final model = ResetPasswordRequestModel(email: email, newPassword: newPassword);
+  Future<AuthResponse<String>> resetPassword(
+      String email, String newPassword) async {
+    final model =
+        ResetPasswordRequestModel(email: email, newPassword: newPassword);
     return await _authRemoteDatasource.resetPassword(model);
   }
 

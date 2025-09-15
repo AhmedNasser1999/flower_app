@@ -2,7 +2,7 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../../core/routes/route_names.dart';
@@ -34,7 +34,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
-
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
@@ -89,7 +88,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             ? () => cubit.resendCode()
                             : null,
                         child: Text(
-                          cubit.isResendEnabled ? "Resend" : "Resend",
+                          cubit.isResendEnabled ? local.resend : local.resend,
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontSize: 17,
@@ -113,7 +112,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           ),
                         )
                       : CustomElevatedButton(
-                          text: "Next",
+                          text: local.nextButton,
                           onPressed: cubit.enteredCode.length == 6
                               ? () {
                                   cubit.verify(context);

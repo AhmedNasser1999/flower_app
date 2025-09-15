@@ -20,7 +20,9 @@ class MostSellingProducts extends StatelessWidget {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+        backgroundColor: AppColors.white,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -32,11 +34,11 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: theme.textTheme.headlineMedium,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: theme.textTheme.displayMedium,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
@@ -45,7 +47,8 @@ class MostSellingProducts extends StatelessWidget {
             BlocBuilder<MostSellingProductsViewmodel, MostSellingProductStates>(
           builder: (context, state) {
             if (state is MostSellingLoadingState) {
-              return Center(child: SizedBox(
+              return Center(
+                  child: SizedBox(
                 height: 50,
                 width: 50,
                 child: LoadingIndicator(
@@ -65,7 +68,8 @@ class MostSellingProducts extends StatelessWidget {
                   Expanded(
                     child: GridView.builder(
                       itemCount: products.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: 0.7,
                       ),
@@ -73,13 +77,15 @@ class MostSellingProducts extends StatelessWidget {
                         final product = products[index];
 
                         return ProductCard(
+                          productId: product.Id,
                           productImg: product.imgCover,
                           productPrice: product.price,
                           productPriceDiscount: product.priceAfterDiscount,
-                          priceDiscount: ((product.price - product.priceAfterDiscount) /
-                              product.price *
-                              100)
-                              .round(),
+                          priceDiscount:
+                              ((product.price - product.priceAfterDiscount) /
+                                      product.price *
+                                      100)
+                                  .round(),
                           productTitle: product.title,
                           onTap: () {
                             Navigator.pushNamed(
@@ -94,8 +100,7 @@ class MostSellingProducts extends StatelessWidget {
                   )
                 ],
               ).setHorizontalAndVerticalPadding(context, 0.05, 0.02);
-            }
-            else if (state is MostSellingProductsErrorState) {
+            } else if (state is MostSellingProductsErrorState) {
               return Center(child: Text("Error: ${state.message}"));
             } else {
               return const SizedBox.shrink();
@@ -104,4 +109,3 @@ class MostSellingProducts extends StatelessWidget {
         ));
   }
 }
-

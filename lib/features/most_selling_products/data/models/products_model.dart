@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'products_model.g.dart';
 
-
 @JsonSerializable()
 class Products {
   @JsonKey(name: "rateAvg", defaultValue: 0)
@@ -59,9 +58,6 @@ class Products {
   @JsonKey(name: "sold", defaultValue: 0)
   final int sold;
 
-  @JsonKey(name: "id", defaultValue: "")
-  final String id;
-
   Products({
     required this.rateAvg,
     required this.rateCount,
@@ -81,7 +77,6 @@ class Products {
     required this.V,
     required this.isSuperAdmin,
     required this.sold,
-    required this.id,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) =>
@@ -89,4 +84,3 @@ class Products {
 
   Map<String, dynamic> toJson() => _$ProductsToJson(this);
 }
-

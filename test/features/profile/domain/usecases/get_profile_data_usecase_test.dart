@@ -36,7 +36,8 @@ void main() {
   });
 
   group('GetProfileDataUseCase', () {
-    test('should return ApiSuccessResult<UserEntity> when repository succeeds', () async {
+    test('should return ApiSuccessResult<UserEntity> when repository succeeds',
+        () async {
       // arrange
       final fakeUser = UserEntity(
         id: "123",

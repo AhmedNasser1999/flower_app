@@ -9,7 +9,7 @@ class ChangePasswordRequestModel {
   @JsonKey(name: "newPassword")
   final String? newPassword;
 
-  ChangePasswordRequestModel ({
+  ChangePasswordRequestModel({
     this.password,
     this.newPassword,
   });
@@ -22,5 +22,3 @@ class ChangePasswordRequestModel {
     return _$ChangePasswordRequestModelToJson(this);
   }
 }
-
-

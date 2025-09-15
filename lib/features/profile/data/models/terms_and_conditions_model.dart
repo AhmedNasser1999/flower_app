@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class TermsAndConditions {
   final List<TermsSection> termsAndConditions;
 
@@ -30,9 +28,15 @@ class TermsSection {
   factory TermsSection.fromJson(Map<String, dynamic> json) {
     return TermsSection(
       section: json['section'] ?? '',
-      content: json['content'] != null ? Map<String, dynamic>.from(json['content']) : null,
-      title: json['title'] != null ? Map<String, dynamic>.from(json['title']) : null,
-      style: json['style'] != null ? Map<String, dynamic>.from(json['style']) : null,
+      content: json['content'] != null
+          ? Map<String, dynamic>.from(json['content'])
+          : null,
+      title: json['title'] != null
+          ? Map<String, dynamic>.from(json['title'])
+          : null,
+      style: json['style'] != null
+          ? Map<String, dynamic>.from(json['style'])
+          : null,
     );
   }
 }

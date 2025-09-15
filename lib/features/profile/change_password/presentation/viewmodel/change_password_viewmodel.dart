@@ -15,10 +15,10 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordStates> {
       : super(ChangePasswordInitial());
 
   final TextEditingController currentPasswordController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-  TextEditingController();
+      TextEditingController();
 
   Future<void> changePassword() async {
     emit(ChangePasswordLoading());
@@ -30,17 +30,17 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordStates> {
 
     try {
       final ChangePasswordResponseModel result =
-      await _changePasswordUseCases(request);
+          await _changePasswordUseCases(request);
 
       if (result.token.isNotEmpty) {
-        await AuthService.saveAuthToken(result.token?? "");
-
+        await AuthService.saveAuthToken(result.token ?? "");
 
         currentPasswordController.clear();
         newPasswordController.clear();
         confirmPasswordController.clear();
 
-        emit(ChangePasswordSuccess(result.message ?? "Password updated successfully"));
+        emit(ChangePasswordSuccess(
+            result.message ?? "Password updated successfully"));
       } else {
         emit(ChangePasswordError("No token received from server"));
       }

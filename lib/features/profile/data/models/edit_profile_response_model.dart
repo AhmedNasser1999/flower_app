@@ -10,7 +10,7 @@ class EditProfileResponseModel {
   @JsonKey(name: "user")
   final User user;
 
-  EditProfileResponseModel ({
+  EditProfileResponseModel({
     required this.message,
     required this.user,
   });
@@ -23,5 +23,3 @@ class EditProfileResponseModel {
     return _$EditProfileResponseModelToJson(this);
   }
 }
-
-

@@ -14,7 +14,7 @@ class ProductsResponseModel {
   @JsonKey(name: "products")
   final List<Products> products;
 
-  ProductsResponseModel ({
+  ProductsResponseModel({
     required this.message,
     required this.metadata,
     required this.products,
@@ -28,5 +28,3 @@ class ProductsResponseModel {
     return _$ProductsResponseModelToJson(this);
   }
 }
-
-

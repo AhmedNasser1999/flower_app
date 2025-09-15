@@ -13,7 +13,7 @@ class Metadata {
   @JsonKey(name: "totalItems")
   final int totalItems;
 
-  Metadata ({
+  Metadata({
     required this.currentPage,
     required this.totalPages,
     required this.limit,

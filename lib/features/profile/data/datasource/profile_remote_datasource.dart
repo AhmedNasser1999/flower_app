@@ -10,7 +10,9 @@ import '../models/upload_photo_response.dart';
 
 abstract class ProfileRemoteDatasource {
   Future<ApiResult<ProfileResponse>> getProfile();
-  Future<ChangePasswordResponseModel> changePassword(ChangePasswordRequestModel changePasswordRequestModel);
-  Future<ApiResult<EditProfileResponseModel>>  editProfile(EditProfileRequestModel model);
+  Future<ChangePasswordResponseModel> changePassword(
+      ChangePasswordRequestModel changePasswordRequestModel);
+  Future<ApiResult<EditProfileResponseModel>> editProfile(
+      EditProfileRequestModel model);
   Future<ApiResult<UploadPhotoResponse>> uploadPhoto(File photo);
 }
