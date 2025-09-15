@@ -8,12 +8,12 @@ class CustomMessageWidget extends StatefulWidget {
   final Duration duration;
 
   const CustomMessageWidget({
-    Key? key,
+    super.key,
     required this.message,
     required this.type,
     required this.entry,
     this.duration = const Duration(seconds: 3),
-  }) : super(key: key);
+  });
 
   @override
   State<CustomMessageWidget> createState() => _CustomMessageWidgetState();

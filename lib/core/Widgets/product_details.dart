@@ -4,6 +4,8 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../features/cart/presentation/view_model/cart_cubit.dart';
 import '../routes/route_names.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -156,7 +158,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   const SizedBox(height: 20),
                   CustomElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CartCubit>().addToCart(
+                          widget.product.id, 1, context, onSuccess: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.cart, arguments: false);
+                      });
+                    },
                     color: AppColors.pink,
                     text: 'Add to cart',
                   ),

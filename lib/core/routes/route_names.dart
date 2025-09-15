@@ -6,7 +6,10 @@ abstract class AppRoutes {
   static const String resetPassword="/ResetPasswordScreen";
   static const String dashboard="/dashboard";
   static const String mostSellingProducts="/mostSellingProducts";
+  static const String occasions = "/occasions";
   static const String productDetails="/productDetails";
+  static const String homeScreen="/homeScreen";
+  static const String categoriesScreen="/categoriesScreen";
   static const String aboutUs="/aboutUs";
   static const String termsAndConditions="/termsAndConditions";
   static const String editProfile="/editProfile";
@@ -14,4 +17,5 @@ abstract class AppRoutes {
   static const String logoutWidget="/logoutWidget";
 
 
+  static const String cart="/cart";
 }

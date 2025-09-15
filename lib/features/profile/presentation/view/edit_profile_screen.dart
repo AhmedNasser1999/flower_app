@@ -37,7 +37,9 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context, true);

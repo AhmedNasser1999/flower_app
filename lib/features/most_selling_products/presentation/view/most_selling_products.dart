@@ -9,6 +9,7 @@ import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../viewmodel/most_selling_product_states.dart';
 import '../viewmodel/most_selling_products_viewmodel.dart';
 
@@ -20,7 +21,10 @@ class MostSellingProducts extends StatelessWidget {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
+
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -32,11 +36,11 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: theme.textTheme.headlineMedium,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: theme.textTheme.displayMedium,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
@@ -73,6 +77,7 @@ class MostSellingProducts extends StatelessWidget {
                         final product = products[index];
 
                         return ProductCard(
+                          productId: product.id,
                           productImg: product.imgCover,
                           productPrice: product.price,
                           productPriceDiscount: product.priceAfterDiscount,

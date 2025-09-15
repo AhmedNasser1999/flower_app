@@ -1,3 +1,4 @@
+import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
@@ -18,7 +19,9 @@ class AboutUs extends StatelessWidget {
     final locale = AppLocalizations.of(context)?.localeName ?? 'en';
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         title: Text(locale.startsWith('ar') ? 'عن تطبيق فلاوري' : 'About Flowery App'),
       ),
       body: FutureBuilder<model.AboutSectionModel>(

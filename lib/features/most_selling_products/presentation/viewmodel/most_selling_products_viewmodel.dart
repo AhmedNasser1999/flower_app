@@ -26,6 +26,7 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
         }
       }).toList();
 
+      _allProducts = validProducts;
       emit(MostSellingSuccessState(validProducts));
     } catch (e) {
       emit(MostSellingProductsErrorState(e.toString()));
@@ -59,6 +60,16 @@ class MostSellingProductsViewmodel extends Cubit<MostSellingProductStates> {
     } else {
       final filtered = _allProducts
           .where((product) => product.category == categoryId)
+          .toList();
+      emit(MostSellingSuccessState(filtered));
+    }
+  }
+  void filterByOccasion(String? occasionId) {
+    if (occasionId == null || occasionId.isEmpty) {
+      emit(MostSellingSuccessState(_allProducts));
+    } else {
+      final filtered = _allProducts
+          .where((product) => product.occasion == occasionId)
           .toList();
       emit(MostSellingSuccessState(filtered));
     }
