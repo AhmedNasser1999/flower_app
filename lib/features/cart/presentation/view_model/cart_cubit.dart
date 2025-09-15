@@ -61,7 +61,6 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<void> updateCartItem(String itemId, int quantity) async {
-    emit(CartLoading());
     try {
       final response = await _updateCartItemUseCase(itemId, quantity);
       emit(CartLoaded(response));
