@@ -438,5 +438,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signup_success => 'Account created successfully';
 
   @override
+  String get loginRequiredTitle => 'Login Required';
+
+  @override
+  String get loginRequiredMessage => 'You need to login to access this feature.';
+
+  @override
   String get changeLanguage => 'Change Language';
 }

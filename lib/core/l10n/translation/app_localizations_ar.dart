@@ -438,5 +438,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signup_success => 'تم إنشاء الحساب بنجاح';
 
   @override
+  String get loginRequiredTitle => 'تسجيل الدخول مطلوب';
+
+  @override
+  String get loginRequiredMessage => 'يجب تسجيل الدخول للوصول إلى هذه الميزة.';
+
+  @override
   String get changeLanguage => 'تغير اللغه';
 }

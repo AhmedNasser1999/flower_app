@@ -142,5 +142,7 @@
   "signup_button": "Sign up",
   "already_have_account": "Already have an account?",
   "signup_success": "Account created successfully",
+  "loginRequiredTitle": "Login Required",
+  "loginRequiredMessage": "You need to login to access this feature.",
   "changeLanguage": "Change Language"
 }

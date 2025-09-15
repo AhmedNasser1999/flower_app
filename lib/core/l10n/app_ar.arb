@@ -142,6 +142,7 @@
   "signup_button": "إنشاء حساب",
   "already_have_account": "هل لديك حساب بالفعل؟",
   "signup_success": "تم إنشاء الحساب بنجاح",
+  "loginRequiredTitle": "تسجيل الدخول مطلوب",
+  "loginRequiredMessage": "يجب تسجيل الدخول للوصول إلى هذه الميزة.",
   "changeLanguage": "تغير اللغه"
-
 }
