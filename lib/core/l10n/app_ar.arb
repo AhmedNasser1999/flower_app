@@ -144,4 +144,5 @@
   "signup_success": "تم إنشاء الحساب بنجاح",
   "loginRequiredTitle": "تسجيل الدخول مطلوب",
   "loginRequiredMessage": "يجب تسجيل الدخول للوصول إلى هذه الميزة."
+  "changeLanguage": "تغير اللغه"
 }
