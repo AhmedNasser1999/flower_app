@@ -106,9 +106,10 @@ class ProductCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          "EGP $productPrice",
+                          "EGP$productPrice",
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: Colors.grey,
+                            fontSize: 11,
                             decoration: TextDecoration.lineThrough,
                           ),
                         ),
@@ -117,6 +118,7 @@ class ProductCard extends StatelessWidget {
                           "$priceDiscount%",
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: Colors.green,
+                            fontSize: 11,
                           ),
                         ),
                       ],
@@ -143,13 +145,12 @@ class ProductCard extends StatelessWidget {
                         builder: (_) => const LoginRequiredDialog(),
                       );
                       return;
-                    }
-                    else {
+                    } else {
                       context.read<CartCubit>().addToCart(
-                        productId,
-                        1,
-                        context,
-                      );
+                            productId,
+                            1,
+                            context,
+                          );
                     }
                   },
                   icon: SvgPicture.asset(

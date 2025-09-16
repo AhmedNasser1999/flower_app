@@ -106,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                         radius: 50,
                         backgroundImage: NetworkImage(profile.photo),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       Text("${profile.firstName} ${profile.lastName}",
                           style: theme.textTheme.bodyLarge),
                       const SizedBox(height: 8),
@@ -118,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 8),
+                // const SizedBox(height: 4),
 
                 MenuItemWidget(
                   leading: SvgPicture.asset(
@@ -139,7 +139,8 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.savedAddress,
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(
+                      context, AppRoutes.savedAddressScreen),
                 ),
 
                 const SizedBox(height: 2),
@@ -173,7 +174,6 @@ class ProfileScreen extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SizedBox(
-
                           width: double.infinity,
                           height: 300,
                           child: Padding(
@@ -203,24 +203,34 @@ class ProfileScreen extends StatelessWidget {
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context.read<LocalizationCubit>().selectLanguage("Arabic");
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("Arabic");
                                         Navigator.pop(context);
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               'Arabic',
-                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                             Icon(
-                                              context.read<LocalizationCubit>().isSelected("Arabic")
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("Arabic")
                                                   ? Icons.radio_button_checked
-                                                  : Icons.radio_button_unchecked,
+                                                  : Icons
+                                                      .radio_button_unchecked,
                                               color: Colors.pink,
                                             ),
                                           ],
@@ -236,24 +246,34 @@ class ProfileScreen extends StatelessWidget {
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context.read<LocalizationCubit>().selectLanguage("English");
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("English");
                                         Navigator.pop(context);
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               'English',
-                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                             Icon(
-                                              context.read<LocalizationCubit>().isSelected("English")
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("English")
                                                   ? Icons.radio_button_checked
-                                                  : Icons.radio_button_unchecked,
+                                                  : Icons
+                                                      .radio_button_unchecked,
                                               color: Colors.pink,
                                             ),
                                           ],
@@ -262,7 +282,6 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
@@ -318,7 +337,7 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                const SizedBox(height: 16),
+                // const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );

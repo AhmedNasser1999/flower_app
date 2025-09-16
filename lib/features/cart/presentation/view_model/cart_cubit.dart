@@ -25,7 +25,11 @@ class CartCubit extends Cubit<CartState> {
     this._clearCartUseCase,
   ) : super(CartInitial());
 
-  Future<void> addToCart(String productId, int quantity, BuildContext context,) async {
+  Future<void> addToCart(
+    String productId,
+    int quantity,
+    BuildContext context,
+  ) async {
     emit(CartLoading());
     try {
       final response = await _addToCartUseCase(productId, quantity);
@@ -45,7 +49,7 @@ class CartCubit extends Cubit<CartState> {
     try {
       final response = await _getCartUseCase();
       emit(CartLoaded(response));
-    } catch (e, s) {
+    } catch (e) {
       emit(CartError(e.toString()));
     }
   }
