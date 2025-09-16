@@ -34,5 +34,4 @@ class CartRepositoryImpl implements CartRepository {
   Future<CartResponse> clearCart() async {
     return await _remoteDataSource.clearCart();
   }
-
 }

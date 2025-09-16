@@ -11,7 +11,7 @@ class LoginResponse {
   @JsonKey(name: "token")
   final String? token;
 
-  LoginResponse ({
+  LoginResponse({
     this.message,
     this.user,
     this.token,
@@ -51,7 +51,7 @@ class User {
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  User ({
+  User({
     this.Id,
     this.firstName,
     this.lastName,
@@ -73,6 +73,3 @@ class User {
     return _$UserToJson(this);
   }
 }
-
-
-

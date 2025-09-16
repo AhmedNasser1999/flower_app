@@ -40,9 +40,14 @@ class ProfileScreen extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: 32,
-                icon:
-                    const Icon(Icons.notifications_none, color: AppColors.grey),
-                onPressed: () {},
+                icon: SvgPicture.asset(
+                  AppIcons.notificationsIcon,
+                  width: 30,
+                  height: 30,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                },
               ),
               Positioned(
                 right: 8,
@@ -122,7 +127,9 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.myOrders,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.orders);
+                  },
                 ),
 
                 MenuItemWidget(
@@ -156,109 +163,102 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   title: local.language,
                   trailing: Text(
+                    textAlign: TextAlign.left,
                     local.languageChanged,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: AppColors.pink),
                   ),
                   onTap: () {
                     showModalBottomSheet(
+                      backgroundColor: AppColors.white,
                       context: context,
                       builder: (context) {
                         return SizedBox(
+
                           width: double.infinity,
                           height: 300,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
                               spacing: 16.0,
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Text(
-                                  'Change Language',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.pink,
-                                      ),
+                                Align(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: Text(
+                                    textAlign: TextAlign.start,
+                                    local.changeLanguage,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.pink,
+                                        ),
+                                  ),
                                 ),
                                 Card(
+                                  color: AppColors.white,
                                   child: SizedBox(
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context
-                                            .read<LocalizationCubit>()
-                                            .selectLanguage(
-                                              "Arabic",
-                                            );
+                                        context.read<LocalizationCubit>().selectLanguage("Arabic");
                                         Navigator.pop(context);
                                       },
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(width: 16),
-                                          Icon(
-                                            context
-                                                    .read<LocalizationCubit>()
-                                                    .isSelected("Arabic")
-                                                ? Icons.radio_button_checked
-                                                : Icons.radio_button_unchecked,
-                                            color: Colors.pink,
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'Arabic',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Arabic',
+                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Icon(
+                                              context.read<LocalizationCubit>().isSelected("Arabic")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons.radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Card(
+                                  color: AppColors.white,
                                   child: SizedBox(
                                     height: 60,
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context
-                                            .read<LocalizationCubit>()
-                                            .selectLanguage(
-                                              "English",
-                                            );
+                                        context.read<LocalizationCubit>().selectLanguage("English");
                                         Navigator.pop(context);
                                       },
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(width: 16),
-                                          Icon(
-                                            context
-                                                    .read<LocalizationCubit>()
-                                                    .isSelected("English")
-                                                ? Icons.radio_button_checked
-                                                : Icons.radio_button_unchecked,
-                                            color: Colors.pink,
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'English',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'English',
+                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Icon(
+                                              context.read<LocalizationCubit>().isSelected("English")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons.radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -318,7 +318,7 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                // const SizedBox(height: 16),
+                const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );

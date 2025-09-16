@@ -19,7 +19,9 @@ void main() {
   });
 
   group('ChangePasswordUseCases', () {
-    test('should return ChangePasswordResponseModel when repository call is successful', () async {
+    test(
+        'should return ChangePasswordResponseModel when repository call is successful',
+        () async {
       // Arrange
       final request = ChangePasswordRequestModel(
         password: "old123",
@@ -55,7 +57,7 @@ void main() {
 
       // Assert
       expect(
-            () => changePasswordUseCases(request),
+        () => changePasswordUseCases(request),
         throwsA(isA<Exception>()),
       );
 

@@ -8,7 +8,6 @@ import 'package:flower_app/features/most_selling_products/presentation/viewmodel
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
 import '../../../../../core/routes/route_names.dart';
-import '../../../../cart/presentation/view_model/cart_cubit.dart';
 
 class ProductsGridWidget extends StatelessWidget {
   const ProductsGridWidget({super.key});
@@ -37,8 +36,8 @@ class ProductsGridWidget extends StatelessWidget {
         if (state is MostSellingLoadingState) {
           return const Center(
             child: SizedBox(
-              height: 40,
-              width: 40,
+              height: 80,
+              width: 80,
               child: LoadingIndicator(
                 indicatorType: Indicator.lineScalePulseOut,
                 colors: [AppColors.pink],
@@ -62,7 +61,7 @@ class ProductsGridWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = products[index];
               return ProductCard(
-                productId: product.id,
+                productId: product.Id,
                 productImg: product.imgCover,
                 productPrice: product.price,
                 productPriceDiscount: product.priceAfterDiscount,

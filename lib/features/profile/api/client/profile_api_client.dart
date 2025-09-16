@@ -22,14 +22,16 @@ abstract class ProfileApiClient {
   @GET(AppConstants.profile)
   @Extra({'auth': true})
   Future<ProfileResponse> getProfile();
-  
+
   @PATCH(AppConstants.changePassword)
   @Extra({'auth': true})
-  Future<ChangePasswordResponseModel> changePassword(@Body() ChangePasswordRequestModel changePasswordRequestModel);
+  Future<ChangePasswordResponseModel> changePassword(
+      @Body() ChangePasswordRequestModel changePasswordRequestModel);
 
   @PUT(AppConstants.editProfile)
   @Extra({'auth': true})
-  Future<EditProfileResponseModel> editProfile(@Body() EditProfileRequestModel model);
+  Future<EditProfileResponseModel> editProfile(
+      @Body() EditProfileRequestModel model);
 
   @PUT(AppConstants.uploadPhoto)
   @MultiPart()

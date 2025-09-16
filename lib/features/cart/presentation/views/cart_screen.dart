@@ -1,14 +1,14 @@
 import 'dart:developer';
 
+import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
-import 'package:flower_app/core/contants/app_images.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/cart/presentation/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/cart_model.dart';
@@ -37,16 +37,17 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () async => !widget.isFromNavBar,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: !widget.isFromNavBar
-              ? const Text("Cart")
+              ? const Text(local.cart)
               : const Padding(
                   padding: EdgeInsetsDirectional.only(start: 18),
-                  child: Text("Cart"),
+                  child: Text(local.cart),
                 ),
           backgroundColor: Colors.white,
           centerTitle: false,
@@ -66,13 +67,14 @@ class _CartScreenState extends State<CartScreen> {
                     onPressed: () {
                       _showClearCartDialog(context);
                     },
-                    child: const Text(
-                      "Clear",
+                    child: Text(
+                      local.clear,
                       style: TextStyle(
+                        fontSize: 16,
                         color: AppColors.pink,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ).setHorizontalPadding(context,0.02),
                   );
                 }
                 return const SizedBox.shrink();
@@ -83,14 +85,23 @@ class _CartScreenState extends State<CartScreen> {
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
             if (state is CartError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
+              print(state.message);
             }
           },
           builder: (context, state) {
             if (state is CartLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return Center(
+                child: SizedBox(
+                  height: 80,
+                  width: 80,
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [AppColors.pink],
+                    strokeWidth: 2,
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              );
             }
 
             if (state is CartLoaded) {
@@ -129,12 +140,12 @@ class _CartScreenState extends State<CartScreen> {
                           cartItem: item,
                           onRemove: () => context
                               .read<CartCubit>()
-                              .removeFromCart(item.product.id),
+                              .removeFromCart(item.product.Id),
                           onUpdateQuantity: (quantity) {
                             if (quantity > 0) {
                               context
                                   .read<CartCubit>()
-                                  .updateCartItem(item.product.id, quantity);
+                                  .updateCartItem(item.product.Id, quantity);
                             }
                           },
                         ),
@@ -152,14 +163,15 @@ class _CartScreenState extends State<CartScreen> {
   Widget _buildAddressSection(AppLocalizations local) {
     return Row(
       children: [
-        SvgPicture.asset(AppIcons.locationMarkerIcon),
+        SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
         const SizedBox(width: 8),
-        Text(local.deliverTo),
+        Text(local.deliverTo, style: TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600) ,),
         const SizedBox(width: 8),
         Flexible(
           child: Text(
-            "Addressssssssssssssssssssssssssssss",
+            "2XVP+XC - Sheikh Zayed.....",
             maxLines: 1,
+            style: TextStyle(fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -217,12 +229,6 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /*    Image.asset(
-            AppImages.emptyCart,
-            width: 350,
-            height: 350,
-            fit: BoxFit.cover,
-          ),*/
           const SizedBox(height: 20),
           Text(
             local?.yourCartIsEmpty ?? "Your cart is empty",

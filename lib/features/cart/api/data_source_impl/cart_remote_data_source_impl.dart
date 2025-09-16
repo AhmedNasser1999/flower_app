@@ -34,5 +34,4 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   Future<CartResponse> clearCart() async {
     return await _apiClient.clearCart();
   }
-
 }

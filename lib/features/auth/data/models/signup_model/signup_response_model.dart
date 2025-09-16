@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'signup_response_model.g.dart';
+
 @JsonSerializable()
 class RegisterResponse {
   @JsonKey(name: "message")

@@ -1,20 +1,16 @@
-import 'package:flower_app/core/Widgets/products_card.dart';
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
-import 'package:flower_app/features/categories/presentation/view/widgets/categories_tab_bar_widget.dart';
 import 'package:flower_app/features/categories/presentation/view/widgets/products_grid_widget.dart';
 import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_product_states.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
-import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
 import 'package:flower_app/features/occasion/presentation/viewmodel/occasion_states.dart';
 import 'package:flower_app/features/occasion/presentation/viewmodel/occasion_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
 
 class OccasionScreen extends StatefulWidget {
   const OccasionScreen({super.key});
@@ -107,7 +103,10 @@ class _OccasionScreenState extends State<OccasionScreen>
             children: [
               Text(
                 local.occasionsTitle,
-                style: TextStyle(fontSize: 24, fontFamily: "Janna", fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: "Janna",
+                    fontWeight: FontWeight.w400),
               ),
               Text(
                 local.occasionsSubTitle,

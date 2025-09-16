@@ -79,7 +79,6 @@ void main() {
         V: 0,
         isSuperAdmin: false,
         sold: 200,
-        id: "p1",
       );
 
       final model = ProductsResponseModel(

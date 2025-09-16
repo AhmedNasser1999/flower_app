@@ -2,6 +2,7 @@ import 'package:flower_app/core/contants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class CustomBottomNavBarWidget extends StatelessWidget {
@@ -16,6 +17,7 @@ class CustomBottomNavBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -25,16 +27,17 @@ class CustomBottomNavBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
+              child: _buildNavBarItem(
+                  AppIcons.homeIcon, local.explore, 0, context)),
+          Expanded(
+              child: _buildNavBarItem(
+                  AppIcons.categoriesIcon, local.categories, 1, context)),
+          Expanded(
               child:
-                  _buildNavBarItem(AppIcons.homeIcon, 'Explore', 0, context)),
+                  _buildNavBarItem(AppIcons.cartIcon, local.cart, 2, context)),
           Expanded(
               child: _buildNavBarItem(
-                  AppIcons.categoriesIcon, 'Categories', 1, context)),
-          Expanded(
-              child: _buildNavBarItem(AppIcons.cartIcon, 'Cart', 2, context)),
-          Expanded(
-              child: _buildNavBarItem(
-                  AppIcons.profileIcon, 'Profile', 3, context)),
+                  AppIcons.profileIcon, local.profile, 3, context)),
         ],
       ),
     );

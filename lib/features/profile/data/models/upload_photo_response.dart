@@ -7,7 +7,7 @@ class UploadPhotoResponse {
   @JsonKey(name: "message")
   final String message;
 
-  UploadPhotoResponse ({
+  UploadPhotoResponse({
     required this.message,
   });
 
@@ -19,5 +19,3 @@ class UploadPhotoResponse {
     return _$UploadPhotoResponseToJson(this);
   }
 }
-
-

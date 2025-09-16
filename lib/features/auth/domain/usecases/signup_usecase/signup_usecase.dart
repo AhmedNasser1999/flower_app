@@ -6,10 +6,10 @@ import 'package:retrofit/retrofit.dart';
 
 @injectable
 class SignupUsecase {
-  final AuthRepo authRepo;
+  final AuthRepo _authRepo;
   @factoryMethod
-  SignupUsecase(this.authRepo);
+  SignupUsecase(this._authRepo);
 
   Future<RegisterResponse> invoke(@Body() RegisterRequest registerRequest) =>
-      authRepo.signUp(registerRequest);
+      _authRepo.signUp(registerRequest);
 }

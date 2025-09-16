@@ -17,8 +17,8 @@ class OccasionsSection extends StatelessWidget {
     if (state.isOccasionsLoading) {
       return const Center(
         child: SizedBox(
-          height: 150,
-          width: 100,
+          height: 80,
+          width: 80,
           child: LoadingIndicator(
             indicatorType: Indicator.lineScalePulseOut,
             colors: [AppColors.pink],

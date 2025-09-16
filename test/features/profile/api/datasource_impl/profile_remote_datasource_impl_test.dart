@@ -28,7 +28,9 @@ void main() {
   });
 
   group('ProfileRemoteDatasourceImpl - changePassword', () {
-    test('should return ChangePasswordResponseModel when API call is successful', () async {
+    test(
+        'should return ChangePasswordResponseModel when API call is successful',
+        () async {
       // arrange
       final request = ChangePasswordRequestModel(
         password: "old123",
@@ -47,9 +49,9 @@ void main() {
       final result = await datasource.changePassword(request);
 
       // assert
-      expect(result, isA<ApiSuccessResult<ChangePasswordResponseModel>>());
-      expect((result as ApiSuccessResult).data.message, "Password changed successfully");
-      expect(result..token, "newToken123");
+      expect(result, isA<ChangePasswordResponseModel>());
+      expect((result.message), "Password changed successfully");
+      expect(result.token, "newToken123");
       verify(mockProfileApiClient.changePassword(request)).called(1);
     });
 
@@ -66,7 +68,12 @@ void main() {
         ),
       );
 
-      expect(() => datasource.changePassword(request), throwsA(isA<DioException>()));
+      // Act & Assert
+      await expectLater(
+        datasource.changePassword(request),
+        throwsA(isA<Exception>()),
+      );
+
       verify(mockProfileApiClient.changePassword(request)).called(1);
     });
   });
@@ -93,18 +100,22 @@ void main() {
         user: fakeUser,
       );
 
-      when(mockProfileApiClient.getProfile()).thenAnswer((_) async => fakeResponse);
+      when(mockProfileApiClient.getProfile())
+          .thenAnswer((_) async => fakeResponse);
 
       // act
       final result = await datasource.getProfile();
 
       // assert
       expect(result, isA<ApiSuccessResult<ProfileResponse>>());
-      expect((result as ApiSuccessResult).data.message, "Profile fetched successfully");
+      expect((result as ApiSuccessResult).data.message,
+          "Profile fetched successfully");
       verify(mockProfileApiClient.getProfile()).called(1);
     });
 
-    test('should return ApiErrorResult with server message when DioException thrown', () async {
+    test(
+        'should return ApiErrorResult with server message when DioException thrown',
+        () async {
       final dioError = DioException(
         requestOptions: RequestOptions(path: '/profile'),
         response: Response(
@@ -125,8 +136,11 @@ void main() {
       expect((result as ApiErrorResult).errorMessage, 'Unauthorized');
     });
 
-    test('should return ApiErrorResult with "Unexpected error" on generic exception', () async {
-      when(mockProfileApiClient.getProfile()).thenThrow(Exception('Something went wrong'));
+    test(
+        'should return ApiErrorResult with "Unexpected error" on generic exception',
+        () async {
+      when(mockProfileApiClient.getProfile())
+          .thenThrow(Exception('Something went wrong'));
 
       // act
       final result = await datasource.getProfile();
@@ -160,7 +174,7 @@ void main() {
     );
 
     final fakeResponse =
-    EditProfileResponseModel(message: "Profile updated", user: fakeUser);
+        EditProfileResponseModel(message: "Profile updated", user: fakeUser);
 
     test('should return ApiSuccessResult when API call succeeds', () async {
       when(mockProfileApiClient.editProfile(fakeRequest))
@@ -184,7 +198,8 @@ void main() {
 
       // assert
       expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage, contains("Failed to update"));
+      expect((result as ApiErrorResult).errorMessage,
+          contains("Failed to update"));
     });
   });
 
@@ -214,7 +229,8 @@ void main() {
 
       // assert
       expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage, contains("Upload failed"));
+      expect(
+          (result as ApiErrorResult).errorMessage, contains("Upload failed"));
     });
   });
 }

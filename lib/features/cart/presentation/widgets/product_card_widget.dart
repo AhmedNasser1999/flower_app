@@ -37,7 +37,7 @@ class ProductCartWidget extends StatelessWidget {
               product.imgCover,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) =>
-              const Icon(Icons.error_outline),
+                  const Icon(Icons.error_outline),
             ),
           ),
           const SizedBox(width: 16),
@@ -82,7 +82,8 @@ class ProductCartWidget extends StatelessWidget {
                         const SizedBox(height: 4),
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.only(end: 32.0),
+                            padding:
+                                const EdgeInsetsDirectional.only(end: 32.0),
                             child: Text(
                               product.description,
                               maxLines: 2,
@@ -123,9 +124,7 @@ class ProductCartWidget extends StatelessWidget {
                           Text(
                             cartItem.quantity.toString(),
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16
-                            ),
+                                fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           IconButton(
                             onPressed: () {

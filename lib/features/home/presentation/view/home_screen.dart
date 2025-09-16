@@ -6,9 +6,9 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/Widgets/section_header.dart';
+import '../../../../core/l10n/translation/app_localizations.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import '../../../address/presentation/views/map_view.dart';
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_state.dart';
@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context);
     return BlocProvider(
       create: (_) => getIt<HomeCubit>()..initializeHomeData(),
       child: BlocBuilder<HomeCubit, HomeState>(
@@ -103,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   SectionHeader(
-                    title: 'Categories',
+                    title: local!.categories,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.categoriesScreen);
                     },
@@ -112,22 +113,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   CategoriesSection(state: state),
                   const SizedBox(height: 10.0),
                   SectionHeader(
-                    title: 'Best Seller',
+                    title: local.bestSeller,
                     onPressed: () {
                       Navigator.pushNamed(
                           context, AppRoutes.mostSellingProducts);
                     },
                   ),
+                  const SizedBox(height: 10.0),
                   ProductsSection(state: state),
+                  const SizedBox(height: 7.0),
                   SectionHeader(
-                    title: 'Occasion',
+                    title: local.occasion,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.occasions);
                     },
                   ),
+                  const SizedBox(height: 5.0),
                   OccasionsSection(state: state),
                 ],
-              ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+              ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
             ),
           ),
         ),

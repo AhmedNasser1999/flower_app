@@ -12,12 +12,10 @@ class LoginViewModel extends Cubit<LoginStates> {
 
   LoginViewModel(this._loginUseCase) : super(LoginInitialStates());
 
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool rememberMe = false;
-
 
   void toggleRememberMe(bool value) {
     rememberMe = value;
@@ -26,20 +24,17 @@ class LoginViewModel extends Cubit<LoginStates> {
 
   Future<void> login(String email, String password) async {
     emit(LoginLoadingState());
-    try{
-      final request = LoginRequest(email: email , password: password);
-      final response = await _loginUseCase(request);
-
-      if(rememberMe) {
-        await AuthService.saveAuthToken(response.token?? "");
-        await AuthService.saveUserId(response.user!.Id.toString());
+    final request = LoginRequest(email: email, password: password);
+    final response = await _loginUseCase(request);
+    if (response.isSuccess){
+      await AuthService.saveAuthToken(response.data?.token ?? "");
+      if (rememberMe) {
+        await AuthService.saveUserId(response.data!.user!.Id.toString());
       }
 
-      print(response);
-      emit(LoginSuccessState(response));
-
-    }catch(e){
-      emit(LoginErrorState(e.toString()));
+      emit(LoginSuccessState(response.data!));
+    } else {
+      emit(LoginErrorState(response.error?? "unknown error"));
     }
   }
 
@@ -49,8 +44,4 @@ class LoginViewModel extends Cubit<LoginStates> {
     passwordController.dispose();
     return super.close();
   }
-
-
-
-
 }

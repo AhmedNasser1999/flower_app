@@ -2,11 +2,13 @@ import 'package:flower_app/core/contants/app_icons.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/cart/presentation/view_model/cart_cubit.dart';
-import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+
+import '../../features/auth/domain/services/guest_service.dart';
+import '../../features/dashboard/presentation/widgets/login_dialog.dart';
 
 class ProductCard extends StatelessWidget {
   final String productId;
@@ -93,32 +95,32 @@ class ProductCard extends StatelessWidget {
               // Price
               productPriceDiscount == 0
                   ? Text(
-                "EGP $productPrice",
-                style: theme.textTheme.bodyMedium,
-              )
+                      "EGP $productPrice",
+                      style: theme.textTheme.bodyMedium,
+                    )
                   : Row(
-                children: [
-                  Text(
-                    "EGP $productPriceDiscount",
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                  const SizedBox(width: 2),
-                  Text(
-                    "EGP $productPrice",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey,
-                      decoration: TextDecoration.lineThrough,
+                      children: [
+                        Text(
+                          "EGP $productPriceDiscount",
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        const SizedBox(width: 2),
+                        Text(
+                          "EGP $productPrice",
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                        const SizedBox(width: 2),
+                        Text(
+                          "$priceDiscount%",
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 2),
-                  Text(
-                    "$priceDiscount%",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 10),
 
               // Add to Cart Button
@@ -132,18 +134,23 @@ class ProductCard extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 6),
                   ),
-                  onPressed: () {
-                    context.read<CartCubit>().addToCart(
-                      productId,
-                      1,
-                      context,
-                      onSuccess: () {
-                        Navigator.of(context).pushNamed(
-                          AppRoutes.cart,
-                          arguments: false,
-                        );
-                      },
-                    );
+                  onPressed: () async {
+                    final isGuest = await GuestService.isGuest();
+
+                    if (isGuest) {
+                      showDialog(
+                        context: context,
+                        builder: (_) => const LoginRequiredDialog(),
+                      );
+                      return;
+                    }
+                    else {
+                      context.read<CartCubit>().addToCart(
+                        productId,
+                        1,
+                        context,
+                      );
+                    }
                   },
                   icon: SvgPicture.asset(
                     AppIcons.cartIcon,
@@ -162,7 +169,6 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
               ),
-
             ],
           ),
         ),

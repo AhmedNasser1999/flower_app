@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/theme/app_colors.dart';
 
 class OrderInfo extends StatelessWidget {
   const OrderInfo({super.key, required this.address});
@@ -20,6 +21,7 @@ class OrderInfo extends StatelessWidget {
         Icon(
           Icons.keyboard_arrow_down_outlined,
           size: 35,
+          color: AppColors.pink,
         )
       ],
     );
