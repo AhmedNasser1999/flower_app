@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
+import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -239,8 +240,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i93.SignupUsecase>(
-        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i682.ForgetPasswordUseCase>(
         () => _i682.ForgetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i309.ResetPasswordUseCase>(
@@ -263,8 +262,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
-    gh.factory<_i387.SignupCubit>(
-        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     gh.lazySingleton<_i550.ChangePasswordUseCases>(
         () => _i550.ChangePasswordUseCases(gh<_i894.ProfileRepository>()));
     gh.factory<_i202.GetOccasionsUseCase>(
@@ -277,6 +274,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
     gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
         () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
+    gh.factory<_i93.SignupUsecase>(
+        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i1005.AddAddressUseCase>(() =>
         _i1005.AddAddressUseCase(repository: gh<_i463.AddressRepository>()));
     gh.factory<_i1005.GetAddressesUseCase>(() =>
@@ -322,6 +321,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i820.CategoriesCubit>(() => _i820.CategoriesCubit(
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
+        ));
+    gh.factory<_i387.SignupCubit>(() => _i387.SignupCubit(
+          signupUsecase: gh<_i93.SignupUsecase>(),
+          signUpFormKey: gh<_i409.GlobalKey<_i409.FormState>>(),
         ));
     return this;
   }
