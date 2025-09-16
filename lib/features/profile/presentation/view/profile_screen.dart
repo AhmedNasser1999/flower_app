@@ -118,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 8),
+                // const SizedBox(height: 4),
 
                 MenuItemWidget(
                   leading: SvgPicture.asset(
@@ -139,7 +139,8 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.savedAddress,
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(
+                      context, AppRoutes.savedAddressScreen),
                 ),
 
                 const SizedBox(height: 2),
@@ -262,7 +263,6 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),

@@ -1,6 +1,8 @@
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/Widgets/product_details.dart';
 import 'package:flower_app/core/routes/route_names.dart';
+import 'package:flower_app/features/address/presentation/views/add_address_screen.dart';
+import 'package:flower_app/features/address/presentation/views/saved_address_screen.dart';
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
@@ -154,11 +156,6 @@ class Routes {
           ),
         );
 
-      case AppRoutes.productDetails:
-        final product = settings.arguments as ProductsEntity;
-        return MaterialPageRoute(
-            builder: (_) => ProductDetails(product: product));
-
       case AppRoutes.termsAndConditions:
         return MaterialPageRoute(builder: (_) => TermsAndConditions());
 
@@ -183,6 +180,10 @@ class Routes {
       case AppRoutes.notification:
         return MaterialPageRoute(builder: (_) => NotificationsScreen());
 
+      case AppRoutes.addressScreen:
+        return MaterialPageRoute(builder: (_) => AddAddressScreen());
+      case AppRoutes.savedAddressScreen:
+        return MaterialPageRoute(builder: (_) => SavedAddressesScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

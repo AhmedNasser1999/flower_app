@@ -1,15 +1,14 @@
 import 'dart:developer';
-
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
-import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/cart/presentation/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
+import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/cart_model.dart';
 import '../view_model/cart_cubit.dart';
@@ -43,10 +42,21 @@ class _CartScreenState extends State<CartScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title:Text(local.cart),
+          title: !widget.isFromNavBar
+              ? Text(local.cart)
+              : Padding(
+                  padding: EdgeInsetsDirectional.only(start: 18),
+                  child: Text(local.cart),
+                ),
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
+          leading: !widget.isFromNavBar
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new_sharp),
+                  onPressed: () => Navigator.pop(context),
+                )
+              : null,
           actions: [
             BlocBuilder<CartCubit, CartState>(
               builder: (context, state) {
@@ -166,7 +176,9 @@ class _CartScreenState extends State<CartScreen> {
         ),
         const SizedBox(width: 8),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
+          },
           child: SvgPicture.asset(AppIcons.arrowDownIcon),
         ),
       ],
@@ -235,7 +247,8 @@ class _CartScreenState extends State<CartScreen> {
           const SizedBox(height: 42),
           CustomElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.dashboard, (route) => false);
             },
             text: local?.continueShopping ?? "Continue Shopping",
             color: AppColors.pink,
