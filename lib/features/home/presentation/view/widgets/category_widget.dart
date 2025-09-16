@@ -30,15 +30,16 @@ class CategoryWidget extends StatelessWidget {
             ),
             child: (icon.isNotEmpty)
                 ? Image.network(
-              icon,
-              width: 25,
-              height: 28,
-              errorBuilder: (context, error, stackTrace) =>
-              const Icon(Icons.broken_image,
-                  size: 26, color: Colors.grey),
-            )
+                    icon,
+                    width: 25,
+                    height: 28,
+                    errorBuilder: (context, error, stackTrace) => const Icon(
+                        Icons.broken_image,
+                        size: 26,
+                        color: Colors.grey),
+                  )
                 : const Icon(Icons.image_not_supported,
-                size: 22, color: Colors.grey),
+                    size: 22, color: Colors.grey),
           ),
         ),
         SizedBox(

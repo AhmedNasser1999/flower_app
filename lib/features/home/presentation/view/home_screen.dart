@@ -12,7 +12,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flower_app/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flower_app/features/address/data/models/address.dart';
-
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_state.dart';
 import 'widgets/app_logo.dart';
@@ -47,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
       if (state is AddressLoaded && state.response.addresses.isNotEmpty) {
         setState(() {
           _selectedAddress = state.response.addresses.first;
-          _currentAddress = '${_selectedAddress?.street}, ${_selectedAddress?.city}';
+          _currentAddress =
+              '${_selectedAddress?.street}, ${_selectedAddress?.city}';
         });
       } else if (state is AddressLoaded && state.response.addresses.isEmpty) {
         setState(() {
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         setState(
-                () => permissionStatus = LocationPermissionStatus.serviceDisabled);
+            () => permissionStatus = LocationPermissionStatus.serviceDisabled);
         return;
       }
 
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() => permissionStatus = LocationPermissionStatus.denied);
       } else if (geoPerm == LocationPermission.deniedForever) {
         setState(
-                () => permissionStatus = LocationPermissionStatus.deniedForever);
+            () => permissionStatus = LocationPermissionStatus.deniedForever);
       }
     } catch (e, st) {
       debugPrint('Error checking permission: $e\n$st');
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() => permissionStatus = LocationPermissionStatus.granted);
       } else if (gp == LocationPermission.deniedForever) {
         setState(
-                () => permissionStatus = LocationPermissionStatus.deniedForever);
+            () => permissionStatus = LocationPermissionStatus.deniedForever);
         await openAppSettings();
       } else {
         setState(() => permissionStatus = LocationPermissionStatus.denied);
@@ -129,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         final addresses = addressState.response.addresses;
                         if (addresses.isNotEmpty) {
                           _selectedAddress = addresses.first;
-                          _currentAddress = '${_selectedAddress?.street}, ${_selectedAddress?.city}';
+                          _currentAddress =
+                              '${_selectedAddress?.street}, ${_selectedAddress?.city}';
                         } else {
                           _currentAddress = local!.noAddresses;
                         }
@@ -137,12 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         _currentAddress = 'something went wrong....';
                       }
 
-                      return GestureDetector(
-                        onTap: () => Navigator.pushNamed(
-                            context, AppRoutes.savedAddressScreen),
-                        child: OrderInfo(
-                          address: _currentAddress,
-                        ),
+                      return OrderInfo(
+                        address: _currentAddress,
                       );
                     },
                   ),

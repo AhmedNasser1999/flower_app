@@ -42,7 +42,6 @@ class AddressCubit extends Cubit<AddressState> {
     }
   }
 
-
   Future<void> updateAddress(String id, AddressRequest addressRequest) async {
     safeEmit(AddressLoading());
     try {
@@ -65,6 +64,7 @@ class AddressCubit extends Cubit<AddressState> {
       emit(AddressError(e.toString()));
     }
   }
+
   void safeEmit(AddressState state) {
     if (!isClosed) {
       emit(state);

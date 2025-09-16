@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/address/api/client/address_api_client.dart';
 import 'package:flower_app/features/address/api/data_source_impl/address_remote_data_source_impl.dart';
-import 'package:flower_app/features/address/data/data_source/address_remote_data_source.dart';
 import 'package:flower_app/features/address/domain/requests/address_request.dart';
 import 'package:flower_app/features/address/domain/responses/address_response.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,7 +16,8 @@ void main() {
 
   setUp(() {
     mockAddressApiClient = MockAddressApiClient();
-    dataSource = AddressRemoteDataSourceImpl(addressApiClient: mockAddressApiClient);
+    dataSource =
+        AddressRemoteDataSourceImpl(addressApiClient: mockAddressApiClient);
   });
 
   group('AddressRemoteDataSourceImpl', () {
@@ -50,7 +50,8 @@ void main() {
       verify(mockAddressApiClient.addAddress(mockAddressRequest)).called(1);
     });
 
-    test('addAddress throws exception when API fails with DioException', () async {
+    test('addAddress throws exception when API fails with DioException',
+        () async {
       // Arrange
       final dioException = DioException(
         requestOptions: RequestOptions(path: ''),
@@ -106,12 +107,14 @@ void main() {
           .thenAnswer((_) async => mockAddressResponse);
 
       // Act
-      final result = await dataSource.updateAddress(addressId, mockAddressRequest);
+      final result =
+          await dataSource.updateAddress(addressId, mockAddressRequest);
 
       // Assert
       expect(result, isA<AddressResponse>());
       expect(result.message, 'Success');
-      verify(mockAddressApiClient.updateAddress(addressId, mockAddressRequest)).called(1);
+      verify(mockAddressApiClient.updateAddress(addressId, mockAddressRequest))
+          .called(1);
     });
 
     test('deleteAddress returns AddressResponse on success', () async {

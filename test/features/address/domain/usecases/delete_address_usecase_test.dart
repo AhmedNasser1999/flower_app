@@ -45,10 +45,10 @@ void main() {
           .thenThrow(Exception('Repository error'));
 
       // Act
-      final call = useCase;
+      final call = useCase.execute;
 
       // Assert
-      expect(() => call, throwsA(isA<Exception>()));
+      expect(() => call(addressId), throwsA(isA<Exception>()));
       verify(mockRepository.deleteAddress(addressId)).called(1);
     });
   });

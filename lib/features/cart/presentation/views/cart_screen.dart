@@ -188,8 +188,8 @@ class _CartScreenState extends State<CartScreen> {
             const SizedBox(width: 8),
             Text(
               local.deliverTo,
-              style: TextStyle(
-                  color: AppColors.grey, fontWeight: FontWeight.w600),
+              style:
+                  TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600),
             ),
             const SizedBox(width: 8),
             Flexible(
@@ -205,13 +205,15 @@ class _CartScreenState extends State<CartScreen> {
               onTap: () {
                 Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
               },
-              child: SvgPicture.asset(AppIcons.arrowDownIcon),
+              child: SvgPicture.asset(AppIcons.arrowDownIcon,
+                  color: AppColors.pink),
             ),
           ],
         );
       },
     );
   }
+
   Widget _buildCheckoutSection(
       AppLocalizations local, int subtotal, int total) {
     return Column(

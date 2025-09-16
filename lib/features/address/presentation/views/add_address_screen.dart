@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
-import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

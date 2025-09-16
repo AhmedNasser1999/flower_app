@@ -40,7 +40,7 @@ void main() {
           .thenAnswer((_) async => mockAddressResponse);
 
       // Act
-      final result = await mockRepository.addAddress (mockAddressRequest);
+      final result = await mockRepository.addAddress(mockAddressRequest);
 
       // Assert
       expect(result, isA<AddressResponse>());
@@ -54,10 +54,10 @@ void main() {
           .thenThrow(Exception('Repository error'));
 
       // Act
-      final call = useCase;
+      final call = useCase.execute;
 
       // Assert
-      expect(() => call, throwsA(isA<Exception>()));
+      expect(() => call(mockAddressRequest), throwsA(isA<Exception>()));
       verify(mockRepository.addAddress(mockAddressRequest)).called(1);
     });
   });

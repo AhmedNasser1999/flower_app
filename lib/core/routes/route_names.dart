@@ -18,6 +18,6 @@ abstract class AppRoutes {
   static const String notification = "/notificationScreen";
   static const String cart = "/cart";
   static const String orders = "/orders";
-  static const String addressScreen="/addressScreen";
-  static const String savedAddressScreen="/savedAddressScreen";
+  static const String addressScreen = "/addressScreen";
+  static const String savedAddressScreen = "/savedAddressScreen";
 }

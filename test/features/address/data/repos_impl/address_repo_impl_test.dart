@@ -34,7 +34,8 @@ void main() {
       addresses: [],
     );
 
-    test('addAddress returns AddressResponse when data source succeeds', () async {
+    test('addAddress returns AddressResponse when data source succeeds',
+        () async {
       // Arrange
       when(mockDataSource.addAddress(mockAddressRequest))
           .thenAnswer((_) async => mockAddressResponse);
@@ -61,7 +62,8 @@ void main() {
       verify(mockDataSource.addAddress(mockAddressRequest)).called(1);
     });
 
-    test('getAddresses returns AddressResponse when data source succeeds', () async {
+    test('getAddresses returns AddressResponse when data source succeeds',
+        () async {
       // Arrange
       when(mockDataSource.getAddresses())
           .thenAnswer((_) async => mockAddressResponse);
@@ -75,22 +77,26 @@ void main() {
       verify(mockDataSource.getAddresses()).called(1);
     });
 
-    test('updateAddress returns AddressResponse when data source succeeds', () async {
+    test('updateAddress returns AddressResponse when data source succeeds',
+        () async {
       // Arrange
       const addressId = '123';
       when(mockDataSource.updateAddress(addressId, mockAddressRequest))
           .thenAnswer((_) async => mockAddressResponse);
 
       // Act
-      final result = await repository.updateAddress(addressId, mockAddressRequest);
+      final result =
+          await repository.updateAddress(addressId, mockAddressRequest);
 
       // Assert
       expect(result, isA<AddressResponse>());
       expect(result.message, 'Success');
-      verify(mockDataSource.updateAddress(addressId, mockAddressRequest)).called(1);
+      verify(mockDataSource.updateAddress(addressId, mockAddressRequest))
+          .called(1);
     });
 
-    test('deleteAddress returns AddressResponse when data source succeeds', () async {
+    test('deleteAddress returns AddressResponse when data source succeeds',
+        () async {
       // Arrange
       const addressId = '123';
       when(mockDataSource.deleteAddress(addressId))

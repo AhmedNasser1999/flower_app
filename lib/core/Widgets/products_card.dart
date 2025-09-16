@@ -145,13 +145,12 @@ class ProductCard extends StatelessWidget {
                         builder: (_) => const LoginRequiredDialog(),
                       );
                       return;
-                    }
-                    else {
+                    } else {
                       context.read<CartCubit>().addToCart(
-                        productId,
-                        1,
-                        context,
-                      );
+                            productId,
+                            1,
+                            context,
+                          );
                     }
                   },
                   icon: SvgPicture.asset(

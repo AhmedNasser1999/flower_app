@@ -58,7 +58,7 @@ class LoginRequiredDialog extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
                 GuestService.endGuestSession();
-                Navigator.pushNamed(context,AppRoutes.login);
+                Navigator.pushNamed(context, AppRoutes.login);
               },
             ),
           ],
@@ -67,4 +67,3 @@ class LoginRequiredDialog extends StatelessWidget {
     );
   }
 }
-

@@ -174,7 +174,6 @@ class ProfileScreen extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SizedBox(
-
                           width: double.infinity,
                           height: 300,
                           child: Padding(
@@ -204,24 +203,34 @@ class ProfileScreen extends StatelessWidget {
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context.read<LocalizationCubit>().selectLanguage("Arabic");
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("Arabic");
                                         Navigator.pop(context);
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               'Arabic',
-                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                             Icon(
-                                              context.read<LocalizationCubit>().isSelected("Arabic")
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("Arabic")
                                                   ? Icons.radio_button_checked
-                                                  : Icons.radio_button_unchecked,
+                                                  : Icons
+                                                      .radio_button_unchecked,
                                               color: Colors.pink,
                                             ),
                                           ],
@@ -237,24 +246,34 @@ class ProfileScreen extends StatelessWidget {
                                     width: double.infinity,
                                     child: InkWell(
                                       onTap: () {
-                                        context.read<LocalizationCubit>().selectLanguage("English");
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("English");
                                         Navigator.pop(context);
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               'English',
-                                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                             Icon(
-                                              context.read<LocalizationCubit>().isSelected("English")
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("English")
                                                   ? Icons.radio_button_checked
-                                                  : Icons.radio_button_unchecked,
+                                                  : Icons
+                                                      .radio_button_unchecked,
                                               color: Colors.pink,
                                             ),
                                           ],

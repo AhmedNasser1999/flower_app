@@ -19,7 +19,8 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       return response;
     } on DioException catch (e) {
       if (e.response != null) {
-        throw Exception('Server error: ${e.response!.statusCode} - ${e.response!.data}');
+        throw Exception(
+            'Server error: ${e.response!.statusCode} - ${e.response!.data}');
       } else {
         throw Exception('Network error: $e');
       }
@@ -39,7 +40,8 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
   }
 
   @override
-  Future<AddressResponse> updateAddress(String id, AddressRequest addressRequest) async {
+  Future<AddressResponse> updateAddress(
+      String id, AddressRequest addressRequest) async {
     try {
       final response = await addressApiClient.updateAddress(id, addressRequest);
       return response;

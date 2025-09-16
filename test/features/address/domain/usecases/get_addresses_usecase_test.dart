@@ -43,10 +43,10 @@ void main() {
           .thenThrow(Exception('Repository error'));
 
       // Act
-      final call = useCase;
+      final call = useCase.execute;
 
       // Assert
-      expect(() => call, throwsA(isA<Exception>()));
+      expect(() => call(), throwsA(isA<Exception>()));
       verify(mockRepository.getAddresses()).called(1);
     });
   });
