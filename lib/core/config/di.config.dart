@@ -220,8 +220,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i93.SignupUsecase>(
-        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i682.ForgetPasswordUseCase>(
         () => _i682.ForgetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i309.ResetPasswordUseCase>(
@@ -242,8 +240,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
-    gh.factory<_i387.SignupCubit>(
-        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     gh.lazySingleton<_i550.ChangePasswordUseCases>(
         () => _i550.ChangePasswordUseCases(gh<_i894.ProfileRepository>()));
     gh.factory<_i202.GetOccasionsUseCase>(
@@ -256,6 +252,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
     gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
         () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
+    gh.factory<_i93.SignupUsecase>(
+        () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i144.GetAllProductsUseCase>(
         () => _i144.GetAllProductsUseCase(gh<_i1026.ProductRepo>()));
     gh.factory<_i971.UploadPhotoUseCase>(
@@ -288,6 +286,8 @@ extension GetItInjectableX on _i174.GetIt {
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
         ));
+    gh.factory<_i387.SignupCubit>(
+        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     return this;
   }
 }
