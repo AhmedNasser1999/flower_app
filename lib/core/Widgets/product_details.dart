@@ -160,17 +160,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(height: 20),
                   Center(
                     child: CustomElevatedButton(
-                      onPressed: () async{
+                      onPressed: () async {
                         final isGuest = await GuestService.isGuest();
 
-                        if (isGuest ) {
+                        if (isGuest) {
                           showDialog(
                             context: context,
                             builder: (_) => const LoginRequiredDialog(),
                           );
                           return;
-                        }
-                        else {
+                        } else {
                           context
                               .read<CartCubit>()
                               .addToCart(widget.product.Id, 1, context);

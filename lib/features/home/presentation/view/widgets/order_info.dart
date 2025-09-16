@@ -1,27 +1,43 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
+import '../../../../../core/contants/app_icons.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../core/routes/route_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 
 class OrderInfo extends StatelessWidget {
-  const OrderInfo({super.key});
+  const OrderInfo({super.key, required this.address});
+
+  final String address;
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Row(
-      spacing: 5.0,
       children: [
-        Icon(
-          Icons.location_on_outlined,
-        ),
+        SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
+        const SizedBox(width: 8),
         Text(
-          'Deliver to 2XVP+XC - Sheikh Zayed',
-          style: TextStyle(fontFamily: "Inter" ,fontSize: 14, fontWeight: FontWeight.w500)
+          local.deliverTo,
+          style: TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600),
         ),
-        Icon(
-          Icons.keyboard_arrow_down_outlined,
-          size: 35,
-          color: AppColors.pink,
-        )
+        const SizedBox(width: 8),
+        Flexible(
+          child: Text(
+            address,
+            maxLines: 1,
+            style: TextStyle(fontWeight: FontWeight.bold),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(width: 8),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
+          },
+          child:
+              SvgPicture.asset(AppIcons.arrowDownIcon, color: AppColors.pink),
+        ),
       ],
     );
   }

@@ -451,4 +451,144 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeLanguage => 'Change Language';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get addAddress => 'Add Address';
+
+  @override
+  String get savedAddresses => 'Saved Addresses';
+
+  @override
+  String get selectLocation => 'Select Location on Map';
+
+  @override
+  String get addressField => 'Address';
+
+  @override
+  String get addressHint => 'Enter the address';
+
+  @override
+  String get addressRequired => 'Address is required';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get phoneHint => 'Enter the phone number';
+
+  @override
+  String get phoneRequired => 'Phone number is required';
+
+  @override
+  String get recipientName => 'Recipient name';
+
+  @override
+  String get recipientHint => 'Enter the recipient name';
+
+  @override
+  String get recipientRequired => 'Recipient name is required';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get cityHint => 'Cairo';
+
+  @override
+  String get cityRequired => 'City is required';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get areaHint => 'October';
+
+  @override
+  String get areaRequired => 'Area is required';
+
+  @override
+  String get saveAddress => 'Save Address';
+
+  @override
+  String get selectLocationError => 'Please select a location on the map';
+
+  @override
+  String get noAddresses => 'No addresses saved';
+
+  @override
+  String get addNewAddress => 'Add New Address';
+
+  @override
+  String get errorLoading => 'Error loading addresses';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get deleteAddress => 'Delete Address';
+
+  @override
+  String get deleteConfirmation =>
+      'Are you sure you want to delete this address?';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get required => 'Location permission required';
+
+  @override
+  String get grant => 'Grant Permission';
+
+  @override
+  String get permanentlyDenied => 'Location permission permanently denied';
+
+  @override
+  String get openSettings => 'Open Settings';
+
+  @override
+  String get serviceDisabled => 'Location services are disabled';
+
+  @override
+  String get enableLocation => 'Enable Location';
+
+  @override
+  String get selected => 'Selected: ';
+
+  @override
+  String get locationServicesDisabled => 'Location services are disabled';
+
+  @override
+  String get permissionDenied => 'Location permission denied';
+
+  @override
+  String get permissionPermanentlyDenied =>
+      'Location permission permanently denied. Enable it in settings.';
+
+  @override
+  String get errorGettingLocation => 'Error getting location: ';
+
+  @override
+  String get enterAddress => 'Enter the address';
+
+  @override
+  String get enterPhoneNumber => 'Enter the phone number';
+
+  @override
+  String get updateAddress => 'Update Address';
+
+  @override
+  String get editAddress => 'Edit Address';
+
+  @override
+  String get swipeDownToRefresh => 'Swipe down to refresh';
+
+  @override
+  String get selectAnAddress => 'Select an address';
+
+  @override
+  String get errorLoadingAddress => 'Error loading addresses';
 }

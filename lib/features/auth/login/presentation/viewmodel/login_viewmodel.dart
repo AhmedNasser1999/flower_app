@@ -26,7 +26,7 @@ class LoginViewModel extends Cubit<LoginStates> {
     emit(LoginLoadingState());
     final request = LoginRequest(email: email, password: password);
     final response = await _loginUseCase(request);
-    if (response.isSuccess){
+    if (response.isSuccess) {
       await AuthService.saveAuthToken(response.data?.token ?? "");
       if (rememberMe) {
         await AuthService.saveUserId(response.data!.user!.Id.toString());
@@ -34,7 +34,7 @@ class LoginViewModel extends Cubit<LoginStates> {
 
       emit(LoginSuccessState(response.data!));
     } else {
-      emit(LoginErrorState(response.error?? "unknown error"));
+      emit(LoginErrorState(response.error ?? "unknown error"));
     }
   }
 
