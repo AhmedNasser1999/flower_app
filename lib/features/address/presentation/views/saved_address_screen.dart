@@ -4,6 +4,8 @@ import 'package:flower_app/features/address/presentation/view_model/address_cubi
 import 'package:flower_app/features/address/presentation/views/add_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -29,8 +31,21 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(AppImages.arrowBack),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Colors.white,
-        title: Text(local!.savedAddress),
+        title: Text(
+          local!.savedAddress,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         centerTitle: false,
       ),
       body: BlocConsumer<AddressCubit, AddressState>(
@@ -44,7 +59,18 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
         },
         builder: (context, state) {
           if (state is AddressLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: SizedBox(
+                height: 80,
+                width: 80,
+                child: LoadingIndicator(
+                  indicatorType: Indicator.lineScalePulseOut,
+                  colors: [AppColors.pink],
+                  strokeWidth: 2,
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+            );
           } else if (state is AddressLoaded) {
             final addresses = state.response.addresses;
 
@@ -61,14 +87,21 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                     const SizedBox(height: 16),
                     Text(
                       local.noAddresses,
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey),
                     ),
                     const SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, AppRoutes.addressScreen);
-                      },
-                      child: Text(local.addAddress),
+                    SizedBox(
+                      width: 180,
+                      height: 50,
+                      child: CustomElevatedButton(
+                        text: local.addAddress,
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.addressScreen);
+                        },
+                      ),
                     ),
                   ],
                 ),

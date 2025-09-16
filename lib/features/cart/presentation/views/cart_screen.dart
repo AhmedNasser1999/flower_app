@@ -1,14 +1,13 @@
 import 'dart:developer';
-
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
-import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/cart/presentation/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/cart_model.dart';
@@ -44,8 +43,8 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: !widget.isFromNavBar
-              ? const Text(local.cart)
-              : const Padding(
+              ? Text(local.cart)
+              : Padding(
                   padding: EdgeInsetsDirectional.only(start: 18),
                   child: Text(local.cart),
                 ),

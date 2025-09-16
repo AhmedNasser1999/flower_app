@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/custom_text_field.dart';
 import 'package:flower_app/features/address/domain/requests/address_request.dart';
 import 'package:flower_app/features/address/data/models/address.dart';
+import '../../../../core/contants/app_images.dart';
 import '../../../../core/theme/app_colors.dart';
 import 'map_view.dart';
 import 'package:latlong2/latlong.dart';
@@ -70,8 +71,21 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          elevation: 0,
+          leading: IconButton(
+            icon: Image.asset(AppImages.arrowBack),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           backgroundColor: Colors.white,
-          title: Text(_isEditMode ? local!.editAddress : local!.addAddress),
+          title: Text(
+            _isEditMode ? local!.editAddress : local!.addAddress,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           centerTitle: false,
         ),
         body: BlocConsumer<AddressCubit, AddressState>(
@@ -228,7 +242,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
+                              backgroundColor: AppColors.pink,
                               foregroundColor: Colors.white,
                               minimumSize: const Size(double.infinity, 50),
                             ),

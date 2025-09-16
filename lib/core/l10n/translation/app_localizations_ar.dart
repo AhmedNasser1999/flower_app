@@ -36,7 +36,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -108,19 +109,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!';
 
   @override
-  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg =>
+      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg =>
+      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText =>
+      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -279,7 +283,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shoppingCart => 'سلة التسوق';
 
   @override
-  String get emptyCartMessage => 'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
+  String get emptyCartMessage =>
+      'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
 
   @override
   String get viewProducts => 'عرض المنتجات';
@@ -321,7 +326,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get placeOrder => 'تقديم الطلب';
 
   @override
-  String get egp => 'جنيه';
+  String get egp => 'جنيهاً';
 
   @override
   String get active => 'نشط';
@@ -445,4 +450,137 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get changeLanguage => 'تغير اللغه';
+
+  @override
+  String get address => 'عنوان';
+
+  @override
+  String get addAddress => 'إضافة عنوان';
+
+  @override
+  String get savedAddresses => 'العناوين المحفوظة';
+
+  @override
+  String get selectLocation => 'حدد الموقع على الخريطة';
+
+  @override
+  String get addressField => 'العنوان';
+
+  @override
+  String get addressHint => 'أدخل العنوان';
+
+  @override
+  String get addressRequired => 'العنوان مطلوب';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get phoneHint => 'أدخل رقم الهاتف';
+
+  @override
+  String get phoneRequired => 'رقم الهاتف مطلوب';
+
+  @override
+  String get recipientName => 'اسم المستلم';
+
+  @override
+  String get recipientHint => 'أدخل اسم المستلم';
+
+  @override
+  String get recipientRequired => 'اسم المستلم مطلوب';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get cityHint => 'القاهرة';
+
+  @override
+  String get cityRequired => 'المدينة مطلوبة';
+
+  @override
+  String get area => 'المنطقة';
+
+  @override
+  String get areaHint => 'أكتوبر';
+
+  @override
+  String get areaRequired => 'المنطقة مطلوبة';
+
+  @override
+  String get saveAddress => 'حفظ العنوان';
+
+  @override
+  String get selectLocationError => 'يرجى تحديد موقع على الخريطة';
+
+  @override
+  String get noAddresses => 'لا توجد عناوين محفوظة';
+
+  @override
+  String get addNewAddress => 'إضافة عنوان جديد';
+
+  @override
+  String get errorLoading => 'خطأ في تحميل العناوين';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get deleteAddress => 'حذف العنوان';
+
+  @override
+  String get deleteConfirmation => 'هل أنت متأكد أنك تريد حذف هذا العنوان؟';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get required => 'الإذن بالموقع مطلوب';
+
+  @override
+  String get grant => 'منح الإذن';
+
+  @override
+  String get permanentlyDenied => 'تم رفض إذن الموقع بشكل دائم';
+
+  @override
+  String get openSettings => 'فتح الإعدادات';
+
+  @override
+  String get serviceDisabled => 'خدمات الموقع معطلة';
+
+  @override
+  String get enableLocation => 'تمكين الموقع';
+
+  @override
+  String get selected => 'المحدد: ';
+
+  @override
+  String get locationServicesDisabled => 'خدمات الموقع معطلة';
+
+  @override
+  String get permissionDenied => 'تم رفض إذن الموقع';
+
+  @override
+  String get permissionPermanentlyDenied =>
+      'تم رفض إذن الموقع بشكل دائم. يرجى تمكينه من الإعدادات.';
+
+  @override
+  String get errorGettingLocation => 'خطأ في الحصول على الموقع: ';
+
+  @override
+  String get enterAddress => 'ادخل العنوان';
+
+  @override
+  String get enterPhoneNumber => 'ادخل رقم الهاتف';
+
+  @override
+  String get updateAddress => 'تحديث العنوان';
+
+  @override
+  String get editAddress => 'تعديل العنوان';
+
+  @override
+  String get swipeDownToRefresh => 'اسحب لأسفل لإعادة التحميل';
 }
