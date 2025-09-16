@@ -577,4 +577,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get swipeDownToRefresh => 'اسحب لأسفل لإعادة التحميل';
+
+  @override
+  String get selectAnAddress => 'اختر عنواناً';
+
+  @override
+  String get errorLoadingAddress => 'خطأ حاول مرةاخرى';
 }

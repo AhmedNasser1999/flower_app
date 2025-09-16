@@ -577,4 +577,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get swipeDownToRefresh => 'Swipe down to refresh';
+
+  @override
+  String get selectAnAddress => 'Select an address';
+
+  @override
+  String get errorLoadingAddress => 'Error loading addresses';
 }

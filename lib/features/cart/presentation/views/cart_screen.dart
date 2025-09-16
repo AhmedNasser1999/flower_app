@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/contants/app_icons.dart';
@@ -31,6 +32,9 @@ class _CartScreenState extends State<CartScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<CartCubit>().getCart();
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AddressCubit>().getAddresses();
     });
   }
 
@@ -73,7 +77,7 @@ class _CartScreenState extends State<CartScreen> {
                         color: AppColors.pink,
                         fontWeight: FontWeight.bold,
                       ),
-                    ).setHorizontalPadding(context,0.02),
+                    ).setHorizontalPadding(context, 0.02),
                   );
                 }
                 return const SizedBox.shrink();
@@ -160,31 +164,54 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Widget _buildAddressSection(AppLocalizations local) {
-    return Row(
-      children: [
-        SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
-        const SizedBox(width: 8),
-        Text(local.deliverTo, style: TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600) ,),
-        const SizedBox(width: 8),
-        Flexible(
-          child: Text(
-            "2XVP+XC - Sheikh Zayed.....",
-            maxLines: 1,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        const SizedBox(width: 8),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
-          },
-          child: SvgPicture.asset(AppIcons.arrowDownIcon),
-        ),
-      ],
+    return BlocBuilder<AddressCubit, AddressState>(
+      builder: (context, state) {
+        String addressText = local.selectAnAddress;
+
+        if (state is AddressLoaded) {
+          if (state.response.addresses.isNotEmpty) {
+            final address = state.response.addresses.first;
+            addressText = '${address.street}, ${address.city}';
+          } else {
+            addressText = local.noAddresses;
+          }
+        } else if (state is AddressError) {
+          addressText = local.errorLoadingAddress;
+        } else if (state is AddressLoading) {
+          addressText = local.loading;
+        }
+
+        return Row(
+          children: [
+            SvgPicture.asset(AppIcons.locationMarkerIcon,
+                color: AppColors.grey),
+            const SizedBox(width: 8),
+            Text(
+              local.deliverTo,
+              style: TextStyle(
+                  color: AppColors.grey, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                addressText,
+                maxLines: 1,
+                style: TextStyle(fontWeight: FontWeight.bold),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const SizedBox(width: 8),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
+              },
+              child: SvgPicture.asset(AppIcons.arrowDownIcon),
+            ),
+          ],
+        );
+      },
     );
   }
-
   Widget _buildCheckoutSection(
       AppLocalizations local, int subtotal, int total) {
     return Column(

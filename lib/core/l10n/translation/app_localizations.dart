@@ -1234,6 +1234,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Swipe down to refresh'**
   String get swipeDownToRefresh;
+
+  /// No description provided for @selectAnAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an address'**
+  String get selectAnAddress;
+
+  /// No description provided for @errorLoadingAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading addresses'**
+  String get errorLoadingAddress;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

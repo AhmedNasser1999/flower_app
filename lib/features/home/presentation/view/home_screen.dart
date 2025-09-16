@@ -1,4 +1,5 @@
 import 'package:flower_app/core/theme/app_colors.dart';
+import 'package:flower_app/features/address/presentation/views/map_view.dart';
 import 'package:flower_app/features/home/presentation/view/widgets/occison_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,10 +7,12 @@ import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/Widgets/section_header.dart';
-import '../../../../core/l10n/translation/app_localizations.dart';
+import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../../../address/presentation/views/map_view.dart';
+import 'package:flower_app/features/address/presentation/view_model/address_cubit.dart';
+import 'package:flower_app/features/address/data/models/address.dart';
+
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_state.dart';
 import 'widgets/app_logo.dart';
@@ -26,12 +29,32 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   LocationPermissionStatus permissionStatus = LocationPermissionStatus.checking;
+  String _currentAddress = 'Loading address...';
+  Address? _selectedAddress;
 
   @override
   void initState() {
     super.initState();
     _checkLocationPermission();
     _requestLocationPermission();
+    _loadAddresses();
+  }
+
+  Future<void> _loadAddresses() async {
+    final addressCubit = getIt<AddressCubit>();
+    await addressCubit.getAddresses();
+    addressCubit.stream.listen((state) {
+      if (state is AddressLoaded && state.response.addresses.isNotEmpty) {
+        setState(() {
+          _selectedAddress = state.response.addresses.first;
+          _currentAddress = '${_selectedAddress?.street}, ${_selectedAddress?.city}';
+        });
+      } else if (state is AddressLoaded && state.response.addresses.isEmpty) {
+        setState(() {
+          _currentAddress = 'No address saved. Tap to add one.';
+        });
+      }
+    });
   }
 
   Future<void> _checkLocationPermission() async {
@@ -39,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         setState(
-            () => permissionStatus = LocationPermissionStatus.serviceDisabled);
+                () => permissionStatus = LocationPermissionStatus.serviceDisabled);
         return;
       }
 
@@ -47,12 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
       if (geoPerm == LocationPermission.always ||
           geoPerm == LocationPermission.whileInUse) {
         setState(() => permissionStatus = LocationPermissionStatus.granted);
-        // await _getCurrentLocation();
       } else if (geoPerm == LocationPermission.denied) {
         setState(() => permissionStatus = LocationPermissionStatus.denied);
       } else if (geoPerm == LocationPermission.deniedForever) {
         setState(
-            () => permissionStatus = LocationPermissionStatus.deniedForever);
+                () => permissionStatus = LocationPermissionStatus.deniedForever);
       }
     } catch (e, st) {
       debugPrint('Error checking permission: $e\n$st');
@@ -66,10 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
       if (gp == LocationPermission.always ||
           gp == LocationPermission.whileInUse) {
         setState(() => permissionStatus = LocationPermissionStatus.granted);
-        // await _getCurrentLocation();
       } else if (gp == LocationPermission.deniedForever) {
         setState(
-            () => permissionStatus = LocationPermissionStatus.deniedForever);
+                () => permissionStatus = LocationPermissionStatus.deniedForever);
         await openAppSettings();
       } else {
         setState(() => permissionStatus = LocationPermissionStatus.denied);
@@ -83,8 +104,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context);
-    return BlocProvider(
-      create: (_) => getIt<HomeCubit>()..initializeHomeData(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<HomeCubit>()..initializeHomeData(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<AddressCubit>()..getAddresses(),
+        ),
+      ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
           backgroundColor: AppColors.white,
@@ -95,12 +123,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   const AppLogo(),
                   const SizedBox(height: 10.0),
-                  GestureDetector(
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.savedAddressScreen),
-                    child: const OrderInfo(
-                      address: 'Deliver to 2XVP+XC - Sheikh Zayed',
-                    ),
+                  BlocBuilder<AddressCubit, AddressState>(
+                    builder: (context, addressState) {
+                      if (addressState is AddressLoaded) {
+                        final addresses = addressState.response.addresses;
+                        if (addresses.isNotEmpty) {
+                          _selectedAddress = addresses.first;
+                          _currentAddress = '${_selectedAddress?.street}, ${_selectedAddress?.city}';
+                        } else {
+                          _currentAddress = local!.noAddresses;
+                        }
+                      } else if (addressState is AddressError) {
+                        _currentAddress = 'something went wrong....';
+                      }
+
+                      return GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, AppRoutes.savedAddressScreen),
+                        child: OrderInfo(
+                          address: _currentAddress,
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(height: 10.0),
                   SectionHeader(

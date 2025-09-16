@@ -188,5 +188,7 @@
   "enterPhoneNumber": "ادخل رقم الهاتف",
   "updateAddress": "تحديث العنوان",
   "editAddress": "تعديل العنوان",
-  "swipeDownToRefresh": "اسحب لأسفل لإعادة التحميل"
+  "swipeDownToRefresh": "اسحب لأسفل لإعادة التحميل",
+  "selectAnAddress": "اختر عنواناً",
+  "errorLoadingAddress": "خطأ حاول مرةاخرى"
 }

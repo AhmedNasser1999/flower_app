@@ -14,9 +14,16 @@ class OrderInfo extends StatelessWidget {
         Icon(
           Icons.location_on_outlined,
         ),
-        Text(
-          address,
-          style: Theme.of(context).textTheme.bodyMedium,
+        Expanded(
+          child: Text(
+            address,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.grey,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         Icon(
           Icons.keyboard_arrow_down_outlined,
