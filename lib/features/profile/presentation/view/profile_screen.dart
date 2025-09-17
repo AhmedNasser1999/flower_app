@@ -216,7 +216,7 @@ class ProfileScreen extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'Arabic',
+                                              local.arabic,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge
@@ -259,7 +259,7 @@ class ProfileScreen extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'English',
+                                              local.english,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge
@@ -337,7 +337,7 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                // const SizedBox(height: 16),
+                const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
-import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'widgets/search_and_filter_widget.dart';
 import 'widgets/categories_tab_bar_widget.dart';
 import 'widgets/products_grid_widget.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({super.key});
+  final String? initialCategoryId;
+  const CategoriesScreen({super.key, this.initialCategoryId});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -22,7 +22,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   void initState() {
     super.initState();
     context.read<CategoriesCubit>().getAllCategories();
-    context.read<MostSellingProductsViewmodel>().getMostSellingProducts();
   }
 
   @override
@@ -38,6 +37,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
           const SizedBox(height: 10),
           CategoriesTabBarWidget(
+            initialCategoryId: widget.initialCategoryId,
             onTabChanged: (tab, categoryId) {
               setState(() {
                 _currentTab = tab;

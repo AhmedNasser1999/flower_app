@@ -49,7 +49,8 @@ class CategoriesSection extends StatelessWidget {
       return CategoryList(
         categories: state.categoriesList,
         onTap: (category) {
-          Navigator.pushNamed(context, AppRoutes.categoriesScreen);
+          Navigator.pushNamed(context, AppRoutes.categoriesScreen,
+              arguments: category.Id);
         },
       );
     }
