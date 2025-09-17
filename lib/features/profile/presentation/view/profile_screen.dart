@@ -337,7 +337,6 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );
