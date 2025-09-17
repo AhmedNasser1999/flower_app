@@ -11,7 +11,8 @@ class SignupCubit extends Cubit<SignupStates> {
   final GlobalKey<FormState> signUpFormKey;
 
   @factoryMethod
-  SignupCubit({required this.signupUsecase, GlobalKey<FormState>? signUpFormKey})
+  SignupCubit(
+      {required this.signupUsecase, GlobalKey<FormState>? signUpFormKey})
       : signUpFormKey = signUpFormKey ?? GlobalKey<FormState>(),
         super(SignupInitialState());
 

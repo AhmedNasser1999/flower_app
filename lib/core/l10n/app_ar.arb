@@ -190,5 +190,9 @@
   "editAddress": "تعديل العنوان",
   "swipeDownToRefresh": "اسحب لأسفل لإعادة التحميل",
   "selectAnAddress": "اختر عنواناً",
-  "errorLoadingAddress": "خطأ حاول مرةاخرى"
+  "errorLoadingAddress": "خطأ حاول مرةاخرى",
+  "noProductsForCategory": "لا توجد منتجات لهذه الفئة",
+  "noProductsForOccasion": "لا توجد منتجات لهذه المناسبة",
+  "english": "الإنجليزية",
+  "arabic": "العربية"
 }

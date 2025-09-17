@@ -190,5 +190,9 @@
   "editAddress": "Edit Address",
   "swipeDownToRefresh": "Swipe down to refresh",
   "selectAnAddress": "Select an address",
-  "errorLoadingAddress": "Error loading addresses"
+  "errorLoadingAddress": "Error loading addresses",
+  "noProductsForCategory": "No products found for this category",
+  "noProductsForOccasion": "No products found for this occasion",
+  "english": "English",
+  "arabic": "Arabic"
 }

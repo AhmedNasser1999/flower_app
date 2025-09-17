@@ -47,7 +47,8 @@ class OccasionsSection extends StatelessWidget {
       return OccasionList(
         occasionList: state.occasionsList,
         onTap: (occasion) {
-          Navigator.pushNamed(context, AppRoutes.occasions);
+          Navigator.pushNamed(context, AppRoutes.occasions,
+              arguments: occasion.id);
         },
       );
     }

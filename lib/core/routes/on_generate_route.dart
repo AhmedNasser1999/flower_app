@@ -15,7 +15,6 @@ import 'package:flower_app/features/order/presentation/viewmodel/orders_cubit.da
 import 'package:flower_app/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import '../../features/auth/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
@@ -127,32 +126,27 @@ class Routes {
           ),
         );
       case AppRoutes.occasions:
+        final String initialOccasionId = settings.arguments as String? ?? "";
         return MaterialPageRoute(
-          builder: (context) => const OccasionScreen(),
+          builder: (context) =>
+              OccasionScreen(initialOccasionId: initialOccasionId),
         );
       case AppRoutes.categoriesScreen:
+        final args = settings.arguments as String?;
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => getIt<MostSellingProductsViewmodel>()
-                  ..getMostSellingProducts(),
+                create: (context) => getIt<MostSellingProductsViewmodel>(),
               ),
               BlocProvider(
                 create: (context) =>
                     getIt<CategoriesCubit>()..getAllCategories(),
               ),
             ],
-            child: const CategoriesScreen(),
-          ),
-        );
-
-      case AppRoutes.mostSellingProducts:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (_) =>
-                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
-            child: MostSellingProducts(),
+            child: CategoriesScreen(
+              initialCategoryId: args,
+            ),
           ),
         );
 
