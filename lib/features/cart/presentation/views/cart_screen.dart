@@ -326,6 +326,7 @@ class _CartScreenState extends State<CartScreen> {
       final cart = state.cartResponse.cart;
       if (cart.cartItems.isNotEmpty) {
         log('Proceeding to checkout with ${cart.cartItems.length} items');
+        Navigator.pushNamed(context,AppRoutes.checkout);
       }
     }
   }
