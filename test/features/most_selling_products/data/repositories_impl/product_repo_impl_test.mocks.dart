@@ -34,10 +34,20 @@ class MockProductRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.Products>> getAllProduct() => (super.noSuchMethod(
+  _i3.Future<List<_i4.Products>> getAllProduct({
+    String? sort,
+    String? search,
+    String? category,
+  }) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProduct,
           [],
+          {
+            #sort: sort,
+            #search: search,
+            #category: category,
+          },
         ),
         returnValue: _i3.Future<List<_i4.Products>>.value(<_i4.Products>[]),
       ) as _i3.Future<List<_i4.Products>>);

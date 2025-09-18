@@ -19,7 +19,10 @@ class MenuItemWidget extends StatelessWidget {
     final theme = Theme.of(context);
     return ListTile(
       leading: leading,
-      title: Text(title,style: theme.textTheme.bodyMedium,),
+      title: Text(
+        title,
+        style: theme.textTheme.bodyLarge,
+      ),
       trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 20),
       onTap: onTap,
     );

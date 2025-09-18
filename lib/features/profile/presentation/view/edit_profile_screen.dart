@@ -3,10 +3,12 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/Widgets/custom_text_field.dart';
 import '../../../../core/config/di.dart';
+import '../../../../core/contants/app_icons.dart';
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -35,6 +37,7 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isEdit = false;
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -42,7 +45,7 @@ class EditProfileScreen extends StatelessWidget {
         backgroundColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context, true);
+            Navigator.pop(context, isEdit);
           },
           icon: Image.asset(AppImages.arrowBack),
         ),
@@ -55,9 +58,14 @@ class EditProfileScreen extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: 32,
-                icon:
-                    const Icon(Icons.notifications_none, color: AppColors.grey),
-                onPressed: () {},
+                icon: SvgPicture.asset(
+                  AppIcons.notificationsIcon,
+                  width: 30,
+                  height: 30,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                },
               ),
               Positioned(
                 right: 8,
@@ -128,7 +136,10 @@ class EditProfileScreen extends StatelessWidget {
                         bottom: 0,
                         right: 4,
                         child: GestureDetector(
-                          onTap: () => _pickAndUploadPhoto(context, cubit),
+                          onTap: () {
+                            isEdit = true;
+                            _pickAndUploadPhoto(context, cubit);
+                          },
                           child: Container(
                             width: 30,
                             height: 30,
@@ -189,7 +200,8 @@ class EditProfileScreen extends StatelessWidget {
                     initialText: "******",
                     suffixText: local.passwordChangeText,
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
+                      Navigator.pushNamed(
+                          context, AppRoutes.changePasswordScreen);
                     },
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.004),
                   const SizedBox(height: 10),
@@ -249,6 +261,7 @@ class EditProfileScreen extends StatelessWidget {
                     text: local.updateButton,
                     isLoading: state is EditProfileLoadingState,
                     onPressed: () {
+                      isEdit = true;
                       cubit.submitProfileUpdate();
                     },
                   ).setVerticalPadding(context, 0.03),

@@ -19,8 +19,8 @@ class CategoriesSection extends StatelessWidget {
     if (state.isCategoriesLoading) {
       return const Center(
         child: SizedBox(
-          height: 150,
-          width: 100,
+          height: 80,
+          width: 80,
           child: LoadingIndicator(
             indicatorType: Indicator.lineScalePulseOut,
             colors: [AppColors.pink],
@@ -49,7 +49,8 @@ class CategoriesSection extends StatelessWidget {
       return CategoryList(
         categories: state.categoriesList,
         onTap: (category) {
-          Navigator.pushNamed(context, AppRoutes.categoriesScreen);
+          Navigator.pushNamed(context, AppRoutes.categoriesScreen,
+              arguments: category.Id);
         },
       );
     }

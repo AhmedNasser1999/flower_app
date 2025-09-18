@@ -11,10 +11,10 @@ import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart'
 
 import 'occasion_repo_impl_test.mocks.dart';
 
-
 @GenerateMocks([OccasionRemoteDataSource]) // Add this annotation
 void main() {
-  late MockOccasionRemoteDataSource mockRemoteDataSource; // Use the generated mock
+  late MockOccasionRemoteDataSource
+      mockRemoteDataSource; // Use the generated mock
   late OccasionRepositoryImpl repository;
 
   setUp(() {
@@ -23,7 +23,8 @@ void main() {
   });
 
   group('getOccasions', () {
-    test('should return list of OccasionEntity when remote call is successful', () async {
+    test('should return list of OccasionEntity when remote call is successful',
+        () async {
       // Arrange
       final mockResponse = OccasionsResponse(
         message: "success",
@@ -78,7 +79,7 @@ void main() {
 
       // Act & Assert
       expect(
-            () => repository.getOccasions(),
+        () => repository.getOccasions(),
         throwsA(isA<Exception>()),
       );
       verify(mockRemoteDataSource.getOccasions()).called(1);

@@ -22,14 +22,15 @@ void main() {
   group('GetCategoryByIdUseCase', () {
     const categoryId = "673c46fd1159920171827c85";
 
-    test('should return CategoryDetailsResponse when repo returns data', () async {
+    test('should return CategoryDetailsResponse when repo returns data',
+        () async {
       // arrange
       final fakeCategory = Categories(
         Id: categoryId,
         name: "flowers",
         slug: "flowers",
         image:
-        "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
+            "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
         createdAt: "2024-11-19T08:06:21.263Z",
         updatedAt: "2024-11-19T08:06:21.263Z",
         isSuperAdmin: true,

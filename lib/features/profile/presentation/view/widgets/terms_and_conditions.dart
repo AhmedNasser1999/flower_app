@@ -9,7 +9,8 @@ class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({super.key});
 
   Future<model.TermsAndConditions> _loadTerms(BuildContext context) async {
-    final jsonString = await rootBundle.loadString('assets/json/Flowery Terms and Conditions JSON with Arabic and English.json');
+    final jsonString = await rootBundle.loadString(
+        'assets/json/Flowery Terms and Conditions JSON with Arabic and English.json');
     final jsonMap = json.decode(jsonString);
     return model.TermsAndConditions.fromJson(jsonMap);
   }
@@ -17,11 +18,13 @@ class TermsAndConditions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)?.localeName ?? 'en';
+    final local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
         backgroundColor: AppColors.white,
-        title: Text(AppLocalizations.of(context)?.termsConditions ?? 'Terms and Conditions'),
+        title: Text(AppLocalizations.of(context)?.termsConditions ??
+            'Terms and Conditions'),
       ),
       body: FutureBuilder<model.TermsAndConditions>(
         future: _loadTerms(context),
@@ -29,9 +32,9 @@ class TermsAndConditions extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: Text('Error loading terms'));
+            return Center(child: Text(local.errorLoadingTerms));
           } else if (!snapshot.hasData) {
-            return const Center(child: Text('No terms found'));
+            return Center(child: Text(local.noTermsFound));
           }
           final terms = snapshot.data!;
           return _TermsContent(terms: terms, locale: locale);
@@ -65,19 +68,27 @@ class _TermsContent extends StatelessWidget {
     final style = section.style ?? {};
 
     // Helper to parse style
-    TextStyle parseTextStyle(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    TextStyle parseTextStyle(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       return TextStyle(
-        fontSize: (s['fontSize'] is int ? s['fontSize'].toDouble() : s['fontSize']?.toDouble()) ?? (isTitle ? 18 : 16),
-        fontWeight: s['fontWeight'] == 'bold'
-            ? FontWeight.bold
-            : FontWeight.normal,
-        color: s['color'] != null ? _parseColor(s['color']) : (isTitle ? const Color(0xFFD21E6A) : const Color(0xFF333333)),
+        fontSize: (s['fontSize'] is int
+                ? s['fontSize'].toDouble()
+                : s['fontSize']?.toDouble()) ??
+            (isTitle ? 18 : 16),
+        fontWeight:
+            s['fontWeight'] == 'bold' ? FontWeight.bold : FontWeight.normal,
+        color: s['color'] != null
+            ? _parseColor(s['color'])
+            : (isTitle ? const Color(0xFFD21E6A) : const Color(0xFF333333)),
       );
     }
 
-    TextAlign parseTextAlign(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    TextAlign parseTextAlign(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       final align = s['textAlign'];
       if (align is Map) {
         return (align[lang] == 'right')
@@ -92,11 +103,15 @@ class _TermsContent extends StatelessWidget {
                 ? TextAlign.center
                 : TextAlign.left;
       }
-      return isTitle ? TextAlign.center : (lang == 'ar' ? TextAlign.right : TextAlign.left);
+      return isTitle
+          ? TextAlign.center
+          : (lang == 'ar' ? TextAlign.right : TextAlign.left);
     }
 
-    Color? parseBackgroundColor(Map<String, dynamic> style, {bool isTitle = false}) {
-      final s = isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
+    Color? parseBackgroundColor(Map<String, dynamic> style,
+        {bool isTitle = false}) {
+      final s =
+          isTitle ? (style['title'] ?? style) : (style['content'] ?? style);
       if (s['backgroundColor'] != null) {
         return _parseColor(s['backgroundColor']);
       }

@@ -38,7 +38,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     final cubit = context.watch<ForgetPasswordCubit>();
     return Scaffold(
       backgroundColor: AppColors.white,
-
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -46,7 +45,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         ),
         title: Text(
           local.password,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColors.black,
             fontWeight: FontWeight.w500,
           ),
@@ -80,23 +79,23 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     }
                     return null;
                   },
-                  label: "Email",
-                  hint: "Enter your email",
+                  label: local.emailLabel,
+                  hint: local.emailHintText,
                 ),
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
-                    ? const SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: LoadingIndicator(
-                        indicatorType: Indicator.lineScalePulseOut,
-                        colors: [AppColors.pink],
-                        strokeWidth: 2,
-                        backgroundColor: Colors.transparent,
-                      ),
-                    )
+                    ? SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+                          colors: [AppColors.pink],
+                          strokeWidth: 2,
+                          backgroundColor: Colors.transparent,
+                        ),
+                      )
                     : CustomElevatedButton(
-                        text: "Continue",
+                        text: local.continueButton,
                         onPressed: cubit.isFormValid
                             ? () {
                                 if (_formState.currentState!.validate()) {

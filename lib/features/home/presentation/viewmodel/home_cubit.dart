@@ -43,7 +43,8 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getAllCategories() async {
-    emit(state.copyWith(isCategoriesLoadingArg: true, categoriesErrorArg: null));
+    emit(
+        state.copyWith(isCategoriesLoadingArg: true, categoriesErrorArg: null));
     try {
       final response = await getAllCategoriesUseCase();
       final categories = response.categories ?? [];

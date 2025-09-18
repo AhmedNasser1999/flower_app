@@ -37,7 +37,7 @@ void main() {
             name: "flowers",
             slug: "flowers",
             image:
-            "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
+                "https://flower.elevateegy.com/uploads/39c641a6-4ec4-421a-8f55-5d8f5eeba5c3-flowers.png",
             createdAt: "2024-11-19T08:06:21.263Z",
             updatedAt: "2024-11-19T08:06:21.263Z",
             isSuperAdmin: true,
@@ -46,8 +46,7 @@ void main() {
         ],
       );
 
-      when(mockRepo.getAllCategories())
-          .thenAnswer((_) async => fakeResponse);
+      when(mockRepo.getAllCategories()).thenAnswer((_) async => fakeResponse);
 
       // act
       final result = await usecase();
@@ -63,8 +62,7 @@ void main() {
 
     test('should throw Exception when repo throws', () async {
       // arrange
-      when(mockRepo.getAllCategories())
-          .thenThrow(Exception("Server error"));
+      when(mockRepo.getAllCategories()).thenThrow(Exception("Server error"));
 
       // act
       Future call() => usecase();

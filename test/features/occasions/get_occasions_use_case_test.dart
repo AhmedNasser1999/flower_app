@@ -54,7 +54,7 @@ void main() {
 
       // Act & Assert
       expect(
-            () => useCase(),
+        () => useCase(),
         throwsA(isA<Exception>()),
       );
       verify(mockRepository.getOccasions()).called(1);

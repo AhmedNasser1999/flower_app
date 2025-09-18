@@ -7,6 +7,7 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_product_states.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 
+import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/routes/route_names.dart';
 
 class ProductsGridWidget extends StatelessWidget {
@@ -24,6 +25,7 @@ class ProductsGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
     return BlocConsumer<MostSellingProductsViewmodel, MostSellingProductStates>(
       listener: (context, state) {
         if (state is MostSellingProductsErrorState) {
@@ -36,8 +38,8 @@ class ProductsGridWidget extends StatelessWidget {
         if (state is MostSellingLoadingState) {
           return const Center(
             child: SizedBox(
-              height: 40,
-              width: 40,
+              height: 80,
+              width: 80,
               child: LoadingIndicator(
                 indicatorType: Indicator.lineScalePulseOut,
                 colors: [AppColors.pink],
@@ -48,7 +50,11 @@ class ProductsGridWidget extends StatelessWidget {
           );
         } else if (state is MostSellingSuccessState) {
           final List<ProductsEntity> products = state.products;
-
+          if (products.isEmpty) {
+            return Center(
+              child: Text(local.noProductsForCategory),
+            );
+          }
           return GridView.builder(
             padding: EdgeInsets.zero,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -61,7 +67,7 @@ class ProductsGridWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = products[index];
               return ProductCard(
-                productId: product.id,
+                productId: product.Id,
                 productImg: product.imgCover,
                 productPrice: product.price,
                 productPriceDiscount: product.priceAfterDiscount,

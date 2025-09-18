@@ -5,7 +5,6 @@ import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../core/contants/app_images.dart';
@@ -138,11 +137,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Checkbox(
-                          value: viewModel.rememberMe, onChanged: (value) {
+                          value: viewModel.rememberMe,
+                          onChanged: (value) {
                             setState(() {
                               viewModel.toggleRememberMe(value ?? false);
                             });
-                      }),
+                          }),
                       Text(
                         local.rememberMe,
                         style: const TextStyle(color: AppColors.black),
@@ -150,7 +150,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Spacer(),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                          Navigator.pushNamed(
+                              context, AppRoutes.forgetPassword);
                         },
                         child: Text(
                           local.forgetPasswordTextButton,
@@ -170,8 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         viewModel.login(
-                          viewModel.emailController.text,
-                          viewModel.passwordController.text,
+                          viewModel.emailController.text.trim(),
+                          viewModel.passwordController.text.trim(),
                         );
                       }
                     },
@@ -186,11 +187,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.dashboard,
-                              (route) => false,
+                          (route) => false,
                         );
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Failed to start guest session: $e')),
+                          SnackBar(
+                              content:
+                                  Text('Failed to start guest session: $e')),
                         );
                       }
                     },

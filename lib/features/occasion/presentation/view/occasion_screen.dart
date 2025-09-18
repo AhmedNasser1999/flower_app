@@ -13,7 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 class OccasionScreen extends StatefulWidget {
-  const OccasionScreen({super.key});
+  final String? initialOccasionId;
+  const OccasionScreen({super.key, this.initialOccasionId});
 
   @override
   State<OccasionScreen> createState() => _OccasionScreenState();
@@ -29,7 +30,6 @@ class _OccasionScreenState extends State<OccasionScreen>
   @override
   void initState() {
     super.initState();
-
     _tabController = TabController(
       length: 0,
       vsync: this,
@@ -48,6 +48,12 @@ class _OccasionScreenState extends State<OccasionScreen>
       _tabController!.dispose();
     }
 
+    if (widget.initialOccasionId != null) {
+      _selectedTabIndex =
+          occasions.indexWhere((o) => o.id == widget.initialOccasionId);
+      if (_selectedTabIndex == -1) _selectedTabIndex = 0;
+    }
+
     _tabController = TabController(
       length: occasions.length,
       vsync: this,
@@ -62,9 +68,15 @@ class _OccasionScreenState extends State<OccasionScreen>
         final occasionId = occasions[_tabController!.index].id;
         _filterProductsByOccasion(context, occasionId);
       }
-    });
 
-    setState(() {});
+      setState(() {});
+
+      if (!_initialLoadComplete && occasions.isNotEmpty) {
+        _initialLoadComplete = true;
+        final selectedOccasionId = occasions[_selectedTabIndex].id;
+        _filterProductsByOccasion(context, selectedOccasionId);
+      }
+    });
   }
 
   void _filterProductsByOccasion(BuildContext context, String occasionId) {
@@ -73,7 +85,6 @@ class _OccasionScreenState extends State<OccasionScreen>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
 
     return MultiBlocProvider(
@@ -103,11 +114,14 @@ class _OccasionScreenState extends State<OccasionScreen>
             children: [
               Text(
                 local.occasionsTitle,
-                style: const TextStyle(fontSize: 24, fontFamily: "Janna", fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: "Janna",
+                    fontWeight: FontWeight.w400),
               ),
               Text(
                 local.occasionsSubTitle,
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -119,12 +133,6 @@ class _OccasionScreenState extends State<OccasionScreen>
                 if (state is OccasionLoaded) {
                   _occasions = state.occasions;
                   _updateTabController(state.occasions, context);
-
-                  if (state.occasions.isNotEmpty && !_initialLoadComplete) {
-                    _initialLoadComplete = true;
-                    final firstOccasionId = state.occasions[0].id;
-                    _filterProductsByOccasion(context, firstOccasionId);
-                  }
                 }
               },
               builder: (context, state) {
@@ -198,7 +206,17 @@ class _OccasionScreenState extends State<OccasionScreen>
               child: BlocBuilder<MostSellingProductsViewmodel,
                   MostSellingProductStates>(
                 builder: (context, state) {
-                  return _buildProductsSection(context, state);
+                  if (state is MostSellingSuccessState &&
+                      !_initialLoadComplete) {
+                    _initialLoadComplete = true;
+                    if (_occasions.isNotEmpty &&
+                        _selectedTabIndex < _occasions.length) {
+                      final occasionId = _occasions[_selectedTabIndex].id;
+                      _filterProductsByOccasion(context, occasionId);
+                    }
+                  }
+                  return _buildProductsSection(
+                      context, state, local.noProductsForOccasion);
                 },
               ),
             ),
@@ -208,10 +226,10 @@ class _OccasionScreenState extends State<OccasionScreen>
     );
   }
 
-  Widget _buildProductsSection(
-      BuildContext context, MostSellingProductStates state) {
+  Widget _buildProductsSection(BuildContext context,
+      MostSellingProductStates state, String noProductsForOccasion) {
     if (state is MostSellingLoadingState) {
-      return const Center(
+      return Center(
         child: SizedBox(
           height: 50,
           width: 50,
@@ -225,8 +243,8 @@ class _OccasionScreenState extends State<OccasionScreen>
       );
     } else if (state is MostSellingSuccessState) {
       if (state.products.isEmpty) {
-        return const Center(
-          child: Text('No products found for this occasion'),
+        return Center(
+          child: Text(noProductsForOccasion),
         );
       }
 
@@ -240,14 +258,14 @@ class _OccasionScreenState extends State<OccasionScreen>
         },
         color: AppColors.pink,
         backgroundColor: AppColors.white,
-        child: const ProductsGridWidget(),
+        child: ProductsGridWidget(),
       );
     } else if (state is MostSellingProductsErrorState) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Something went wrong, please try again"),
+            Text("Something went wrong, please try again"),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {

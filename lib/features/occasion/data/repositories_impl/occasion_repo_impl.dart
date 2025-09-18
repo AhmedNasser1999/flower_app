@@ -15,10 +15,8 @@ class OccasionRepositoryImpl implements OccasionRepository {
   @override
   Future<List<OccasionEntity>> getOccasions({int? page, int? limit}) async {
     try {
-      final response = await _remoteDataSource.getOccasions(
-          page: page,
-          limit: limit
-      );
+      final response =
+          await _remoteDataSource.getOccasions(page: page, limit: limit);
       return _mapModelsToEntities(response.occasions);
     } catch (e) {
       throw Exception('Failed to get occasions: $e');
@@ -26,15 +24,17 @@ class OccasionRepositoryImpl implements OccasionRepository {
   }
 
   List<OccasionEntity> _mapModelsToEntities(List<OccasionModel> models) {
-    return models.map((model) => OccasionEntity(
-      id: model.id,
-      name: model.name,
-      slug: model.slug,
-      image: model.image,
-      createdAt: model.createdAt,
-      updatedAt: model.updatedAt,
-      isSuperAdmin: model.isSuperAdmin,
-      productsCount: model.productsCount,
-    )).toList();
+    return models
+        .map((model) => OccasionEntity(
+              id: model.id,
+              name: model.name,
+              slug: model.slug,
+              image: model.image,
+              createdAt: model.createdAt,
+              updatedAt: model.updatedAt,
+              isSuperAdmin: model.isSuperAdmin,
+              productsCount: model.productsCount,
+            ))
+        .toList();
   }
 }

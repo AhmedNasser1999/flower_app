@@ -10,109 +10,106 @@ import 'package:flower_app/features/categories/data/models/categoryResponse_byId
 
 import 'categories_data_source_impl_test.mocks.dart';
 
-
 @GenerateMocks([CategoryApiClient])
 void main() {
-   late MockCategoryApiClient mockCategoryApiClient;
+  late MockCategoryApiClient mockCategoryApiClient;
 
-   setUp(() {
-      mockCategoryApiClient = MockCategoryApiClient();
-   });
+  setUp(() {
+    mockCategoryApiClient = MockCategoryApiClient();
+  });
 
-   group('CategoryApiClient', () {
-      test('getAllCategories should return CategoriesResponse', () async {
-         // Arrange
-         final mockResponse = CategoriesResponse(
-            message: "success",
-            categories: [
-               Categories(
-                  Id: "1",
-                  name: "Flowers",
-                  slug: "flowers",
-                  image: "https://example.com/flowers.png",
-                  createdAt: "2024-08-01",
-                  updatedAt: "2024-08-10",
-                  isSuperAdmin: false,
-                  productsCount: 5,
-               ),
-            ],
-         );
-
-         when(mockCategoryApiClient.getAllCategories())
-             .thenAnswer((_) async => mockResponse);
-
-         // Act
-         final result = await mockCategoryApiClient.getAllCategories();
-
-         // Assert
-         expect(result, isA<CategoriesResponse>());
-         expect(result.message, equals("success"));
-         expect(result.categories?.first.name, equals("Flowers"));
-         verify(mockCategoryApiClient.getAllCategories()).called(1);
-      });
-
-      test('getCategoryById should return CategoryDetailsResponse', () async {
-         // Arrange
-         final mockCategory = Categories(
-            Id: "2",
-            name: "Roses",
-            slug: "roses",
-            image: "https://example.com/roses.png",
-            createdAt: "2024-08-02",
-            updatedAt: "2024-08-11",
+  group('CategoryApiClient', () {
+    test('getAllCategories should return CategoriesResponse', () async {
+      // Arrange
+      final mockResponse = CategoriesResponse(
+        message: "success",
+        categories: [
+          Categories(
+            Id: "1",
+            name: "Flowers",
+            slug: "flowers",
+            image: "https://example.com/flowers.png",
+            createdAt: "2024-08-01",
+            updatedAt: "2024-08-10",
             isSuperAdmin: false,
-            productsCount: 10,
-         );
+            productsCount: 5,
+          ),
+        ],
+      );
 
-         final mockDetailsResponse = CategoryDetailsResponse(
-            message: "category found",
-            category: mockCategory,
-         );
+      when(mockCategoryApiClient.getAllCategories())
+          .thenAnswer((_) async => mockResponse);
 
-         when(mockCategoryApiClient.getCategoryById("2"))
-             .thenAnswer((_) async => mockDetailsResponse);
+      // Act
+      final result = await mockCategoryApiClient.getAllCategories();
 
-         // Act
-         final result = await mockCategoryApiClient.getCategoryById("2");
+      // Assert
+      expect(result, isA<CategoriesResponse>());
+      expect(result.message, equals("success"));
+      expect(result.categories?.first.name, equals("Flowers"));
+      verify(mockCategoryApiClient.getAllCategories()).called(1);
+    });
 
-         // Assert
-         expect(result, isA<CategoryDetailsResponse>());
-         expect(result.message, equals("category found"));
-         expect(result.category?.name, equals("Roses"));
-         verify(mockCategoryApiClient.getCategoryById("2")).called(1);
-         verifyNoMoreInteractions(mockCategoryApiClient);
-      });
-   });
+    test('getCategoryById should return CategoryDetailsResponse', () async {
+      // Arrange
+      final mockCategory = Categories(
+        Id: "2",
+        name: "Roses",
+        slug: "roses",
+        image: "https://example.com/roses.png",
+        createdAt: "2024-08-02",
+        updatedAt: "2024-08-11",
+        isSuperAdmin: false,
+        productsCount: 10,
+      );
 
-   group('CategoryApiClient Error Cases', () {
-      test('getAllCategories should throw DioException when API fails', () async {
-         when(mockCategoryApiClient.getAllCategories())
-             .thenThrow(DioException(
-            requestOptions: RequestOptions(path: '/categories'),
-            type: DioExceptionType.badResponse,
-         ));
+      final mockDetailsResponse = CategoryDetailsResponse(
+        message: "category found",
+        category: mockCategory,
+      );
 
-         expect(
-                () => mockCategoryApiClient.getAllCategories(),
-            throwsA(isA<DioException>()),
-         );
+      when(mockCategoryApiClient.getCategoryById("2"))
+          .thenAnswer((_) async => mockDetailsResponse);
 
-         verify(mockCategoryApiClient.getAllCategories()).called(1);
-      });
+      // Act
+      final result = await mockCategoryApiClient.getCategoryById("2");
 
-      test('getCategoryById should throw DioException when API fails', () async {
-         when(mockCategoryApiClient.getCategoryById("5"))
-             .thenThrow(DioException(
-            requestOptions: RequestOptions(path: '/categories/5'),
-            type: DioExceptionType.connectionError,
-         ));
+      // Assert
+      expect(result, isA<CategoryDetailsResponse>());
+      expect(result.message, equals("category found"));
+      expect(result.category?.name, equals("Roses"));
+      verify(mockCategoryApiClient.getCategoryById("2")).called(1);
+      verifyNoMoreInteractions(mockCategoryApiClient);
+    });
+  });
 
-         expect(
-                () => mockCategoryApiClient.getCategoryById("5"),
-            throwsA(isA<DioException>()),
-         );
+  group('CategoryApiClient Error Cases', () {
+    test('getAllCategories should throw DioException when API fails', () async {
+      when(mockCategoryApiClient.getAllCategories()).thenThrow(DioException(
+        requestOptions: RequestOptions(path: '/categories'),
+        type: DioExceptionType.badResponse,
+      ));
 
-         verify(mockCategoryApiClient.getCategoryById("5")).called(1);
-      });
-   });
+      expect(
+        () => mockCategoryApiClient.getAllCategories(),
+        throwsA(isA<DioException>()),
+      );
+
+      verify(mockCategoryApiClient.getAllCategories()).called(1);
+    });
+
+    test('getCategoryById should throw DioException when API fails', () async {
+      when(mockCategoryApiClient.getCategoryById("5")).thenThrow(DioException(
+        requestOptions: RequestOptions(path: '/categories/5'),
+        type: DioExceptionType.connectionError,
+      ));
+
+      expect(
+        () => mockCategoryApiClient.getCategoryById("5"),
+        throwsA(isA<DioException>()),
+      );
+
+      verify(mockCategoryApiClient.getCategoryById("5")).called(1);
+    });
+  });
 }

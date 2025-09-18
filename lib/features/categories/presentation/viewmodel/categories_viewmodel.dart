@@ -4,7 +4,6 @@ import '../../domain/usecases/get_all_categories_usecase.dart';
 import '../../domain/usecases/get_category_byId_usecase.dart';
 import 'categories_states.dart';
 
-
 @injectable
 class CategoriesCubit extends Cubit<CategoriesState> {
   final GetAllCategoriesUseCase getAllCategoriesUseCase;

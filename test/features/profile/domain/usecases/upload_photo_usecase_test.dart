@@ -14,7 +14,7 @@ void main() {
   late MockProfileRepository mockProfileRepository;
   late UploadPhotoUseCase useCase;
 
-  setUpAll((){
+  setUpAll(() {
     provideDummy<ApiResult<UploadPhotoResponse>>(
       ApiSuccessResult(UploadPhotoResponse(message: "uploaded")),
     );

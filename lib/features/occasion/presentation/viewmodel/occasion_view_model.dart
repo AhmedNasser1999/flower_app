@@ -11,8 +11,7 @@ class OccasionViewmodel extends Cubit<OccasionState> {
 
   String? get selectedOccasionId => _selectedOccasionId;
 
-  OccasionViewmodel(this._getOccasionsUseCase)
-      : super(OccasionInitial());
+  OccasionViewmodel(this._getOccasionsUseCase) : super(OccasionInitial());
 
   Future<void> getOccasions({int? page, int? limit}) async {
     emit(OccasionLoading());

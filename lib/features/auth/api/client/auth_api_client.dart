@@ -9,6 +9,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../data/models/forget_password_models/forget_password_request.dart';
 import '../../data/models/forget_password_models/reset_password_request_model.dart';
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
+
 part 'auth_api_client.g.dart';
 
 @injectable
