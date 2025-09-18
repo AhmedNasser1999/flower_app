@@ -38,7 +38,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<ChangePasswordResponseModel> changePassword(ChangePasswordRequestModel changePasswordRequestModel) {
+  Future<ChangePasswordResponseModel> changePassword(
+      ChangePasswordRequestModel changePasswordRequestModel) {
     return _remoteDatasource.changePassword(changePasswordRequestModel);
   }
 

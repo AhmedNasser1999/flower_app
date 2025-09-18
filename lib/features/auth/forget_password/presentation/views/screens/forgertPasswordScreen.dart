@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
-import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
 import '../../../../../../core/Widgets/custom_text_field.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/extensions/validations.dart';
@@ -38,7 +38,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     final cubit = context.watch<ForgetPasswordCubit>();
     return Scaffold(
       backgroundColor: AppColors.white,
-
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -80,23 +79,23 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     }
                     return null;
                   },
-                  label: "Email",
-                  hint: "Enter your email",
+                  label: local.emailLabel,
+                  hint: local.emailHintText,
                 ),
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
                     ? SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: LoadingIndicator(
-                        indicatorType: Indicator.lineScalePulseOut,
-                        colors: [AppColors.pink],
-                        strokeWidth: 2,
-                        backgroundColor: Colors.transparent,
-                      ),
-                    )
+                        height: 50,
+                        width: 50,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+                          colors: [AppColors.pink],
+                          strokeWidth: 2,
+                          backgroundColor: Colors.transparent,
+                        ),
+                      )
                     : CustomElevatedButton(
-                        text: "Continue",
+                        text: local.continueButton,
                         onPressed: cubit.isFormValid
                             ? () {
                                 if (_formState.currentState!.validate()) {

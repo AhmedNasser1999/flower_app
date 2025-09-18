@@ -8,9 +8,12 @@ import 'package:flower_app/features/auth/data/models/signup_model/signup_request
 import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 
 abstract class AuthRemoteDatasource {
-  Future<AuthResponse<String>> forgetPassword(ForgetPasswordRequestModel forgetPasswordRequestModel);
-  Future<AuthResponse<String>> verifyResetPassword(VerifyCodeRequestModel verifyCodeRequestModel);
-  Future<AuthResponse<String>> resetPassword(ResetPasswordRequestModel resetPasswordRequestModel);
+  Future<AuthResponse<String>> forgetPassword(
+      ForgetPasswordRequestModel forgetPasswordRequestModel);
+  Future<AuthResponse<String>> verifyResetPassword(
+      VerifyCodeRequestModel verifyCodeRequestModel);
+  Future<AuthResponse<String>> resetPassword(
+      ResetPasswordRequestModel resetPasswordRequestModel);
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
   Future<RegisterResponse> signUp(RegisterRequest registerRequest);
 

@@ -8,4 +8,8 @@ abstract final class AppIcons {
   static const String translateIcon = 'assets/icons/translate_icon.svg';
   static const String orderIcon = 'assets/icons/order_icon.svg';
   static const String locationIcon = 'assets/icons/location_icon.svg';
+  static const String locationMarkerIcon = 'assets/icons/location_mark.svg';
+  static const String arrowDownIcon = 'assets/icons/arrow_down.svg';
+  static const String deleteIcon = 'assets/icons/delete_icon.svg';
+  static const String notificationsIcon = 'assets/icons/notification_icon.svg';
 }

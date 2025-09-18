@@ -4,7 +4,10 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../routes/route_names.dart';
+
+import '../../features/auth/domain/services/guest_service.dart';
+import '../../features/cart/presentation/view_model/cart_cubit.dart';
+import '../../features/dashboard/presentation/widgets/login_dialog.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductsEntity product;
@@ -155,10 +158,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  CustomElevatedButton(
-                    onPressed: () {},
-                    color: AppColors.pink,
-                    text: 'Add to cart',
+                  Center(
+                    child: CustomElevatedButton(
+                      onPressed: () async {
+                        final isGuest = await GuestService.isGuest();
+
+                        if (isGuest) {
+                          showDialog(
+                            context: context,
+                            builder: (_) => const LoginRequiredDialog(),
+                          );
+                          return;
+                        } else {
+                          context
+                              .read<CartCubit>()
+                              .addToCart(widget.product.Id, 1, context);
+                        }
+                      },
+                      color: AppColors.pink,
+                      text: 'Add to cart',
+                    ),
                   ),
                 ],
               ),

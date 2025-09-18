@@ -15,5 +15,6 @@ abstract class ProductApiClient {
       _ProductApiClient(dio, baseUrl: baseUrl);
 
   @GET('/products')
-  Future<ProductsResponseModel> getAllProducts();
+  Future<ProductsResponseModel> getAllProducts(@Query('sort') String? sort,
+      @Query('search') String? search, @Query('category') String? category);
 }

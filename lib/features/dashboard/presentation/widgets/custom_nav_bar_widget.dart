@@ -17,7 +17,7 @@ class CustomBottomNavBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
+    var local = AppLocalizations.of(context)!;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -27,13 +27,14 @@ class CustomBottomNavBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-              child:
-                  _buildNavBarItem(AppIcons.homeIcon, local.explore, 0, context)),
+              child: _buildNavBarItem(
+                  AppIcons.homeIcon, local.explore, 0, context)),
           Expanded(
               child: _buildNavBarItem(
                   AppIcons.categoriesIcon, local.categories, 1, context)),
           Expanded(
-              child: _buildNavBarItem(AppIcons.cartIcon,local.cart, 2, context)),
+              child:
+                  _buildNavBarItem(AppIcons.cartIcon, local.cart, 2, context)),
           Expanded(
               child: _buildNavBarItem(
                   AppIcons.profileIcon, local.profile, 3, context)),

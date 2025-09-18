@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/routes/route_names.dart';
 
 class NotificationToggleWidget extends StatefulWidget {
   const NotificationToggleWidget({super.key});
 
   @override
-  State<NotificationToggleWidget> createState() => _NotificationToggleWidgetState();
+  State<NotificationToggleWidget> createState() =>
+      _NotificationToggleWidgetState();
 }
 
 class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
@@ -30,10 +31,13 @@ class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Colors.grey.shade400,
       ),
-      title: Text(local.notification, style: theme.textTheme.bodyMedium,),
+      title: Text(
+        local.notification,
+        style: theme.textTheme.bodyMedium,
+      ),
       trailing: const Icon(Icons.arrow_forward_ios, size: 20),
       onTap: () {
-
+        Navigator.pushNamed(context, AppRoutes.notification);
       },
     );
   }

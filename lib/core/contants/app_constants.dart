@@ -15,4 +15,11 @@ class AppConstants {
   static const String editProfile = "/auth/editProfile";
   static const String uploadPhoto = "/auth/upload-photo";
   static const String changePassword = "/auth/change-password";
+  static const String categories = "/categories";
+  static const String addToCart = "cart";
+  static const String getCart = "cart";
+  static const String removeFromCart = "cart";
+  static const String updateCartItem = "cart";
+  static const String deleteUserCart = "cart";
+  static const String addresses = "addresses";
 }

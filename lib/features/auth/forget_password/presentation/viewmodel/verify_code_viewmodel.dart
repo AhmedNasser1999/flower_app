@@ -18,7 +18,8 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   bool isResendEnabled = true;
   Timer? _resendTimer;
 
-  VerifyCodeCubit(this._verifyCodeUseCase, this._forgetPasswordUseCase) : super(VerifyCodeInitialStates());
+  VerifyCodeCubit(this._verifyCodeUseCase, this._forgetPasswordUseCase)
+      : super(VerifyCodeInitialStates());
 
   void setEmail(String emailAddress) {
     email = emailAddress;
@@ -73,4 +74,3 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
     }
   }
 }
-

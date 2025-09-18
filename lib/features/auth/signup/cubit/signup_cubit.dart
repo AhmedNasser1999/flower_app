@@ -8,8 +8,13 @@ import '../../domain/usecases/signup_usecase/signup_usecase.dart';
 @injectable
 class SignupCubit extends Cubit<SignupStates> {
   final SignupUsecase signupUsecase;
+  final GlobalKey<FormState> signUpFormKey;
+
   @factoryMethod
-  SignupCubit({required this.signupUsecase}) : super(SignupInitialState());
+  SignupCubit(
+      {required this.signupUsecase, GlobalKey<FormState>? signUpFormKey})
+      : signUpFormKey = signUpFormKey ?? GlobalKey<FormState>(),
+        super(SignupInitialState());
 
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
@@ -19,7 +24,6 @@ class SignupCubit extends Cubit<SignupStates> {
       TextEditingController();
   final TextEditingController signUpConfirmPasswordController =
       TextEditingController();
-  final signUpFormKey = GlobalKey<FormState>();
   String? selectedGender;
   bool isObscure = true;
   void changeGender(String? value) {

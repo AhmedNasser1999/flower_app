@@ -1,5 +1,3 @@
-
-
 import 'package:flower_app/features/profile/domain/entity/user_entity.dart';
 
 abstract class ProfileStates {}
@@ -13,7 +11,6 @@ class ProfileSuccessState extends ProfileStates {
 
   ProfileSuccessState(this.user);
 }
-
 
 class ProfileErrorState extends ProfileStates {
   final String message;

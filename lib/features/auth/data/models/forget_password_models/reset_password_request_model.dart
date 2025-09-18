@@ -9,7 +9,7 @@ class ResetPasswordRequestModel {
   @JsonKey(name: "newPassword")
   final String newPassword;
 
-  ResetPasswordRequestModel ({
+  ResetPasswordRequestModel({
     required this.email,
     required this.newPassword,
   });
@@ -22,5 +22,3 @@ class ResetPasswordRequestModel {
     return _$ResetPasswordRequestModelToJson(this);
   }
 }
-
-

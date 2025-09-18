@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "937314917519",
+    "project_id": "flowerecomapp-app-distribution",
+    "storage_bucket": "flowerecomapp-app-distribution.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937314917519:android:8cc1c45fb7d4091cdf24fa",
+        "android_client_info": {
+          "package_name": "com.example.flower_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO1zuCUXZxALUgnJeJGh_E9UxkKettpYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
