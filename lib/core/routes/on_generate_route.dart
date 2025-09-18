@@ -45,7 +45,7 @@ class Routes {
         );
 
       case AppRoutes.homeScreen:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       case AppRoutes.signUp:
         return MaterialPageRoute(
@@ -55,7 +55,7 @@ class Routes {
                 ));
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) => DashboardScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
@@ -111,7 +111,7 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (_) => getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
-            child: MostSellingProducts(),
+            child: const MostSellingProducts(),
           ),
         );
 
@@ -147,10 +147,10 @@ class Routes {
 
 
       case AppRoutes.termsAndConditions:
-        return MaterialPageRoute(builder: (_) =>  TermsAndConditions());
+        return MaterialPageRoute(builder: (_) =>  const TermsAndConditions());
 
       case AppRoutes.aboutUs:
-        return MaterialPageRoute(builder: (_) =>  AboutUs());
+        return MaterialPageRoute(builder: (_) =>  const AboutUs());
 
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;

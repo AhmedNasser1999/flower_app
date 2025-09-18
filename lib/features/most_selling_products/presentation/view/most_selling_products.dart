@@ -9,7 +9,6 @@ import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../viewmodel/most_selling_product_states.dart';
 import '../viewmodel/most_selling_products_viewmodel.dart';
 
@@ -36,11 +35,11 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
@@ -49,7 +48,7 @@ class MostSellingProducts extends StatelessWidget {
             BlocBuilder<MostSellingProductsViewmodel, MostSellingProductStates>(
           builder: (context, state) {
             if (state is MostSellingLoadingState) {
-              return Center(child: SizedBox(
+              return const Center(child: SizedBox(
                 height: 50,
                 width: 50,
                 child: LoadingIndicator(

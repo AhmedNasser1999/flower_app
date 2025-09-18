@@ -29,9 +29,9 @@ class TermsAndConditions extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading terms'));
+            return const Center(child: Text('Error loading terms'));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No terms found'));
+            return const Center(child: Text('No terms found'));
           }
           final terms = snapshot.data!;
           return _TermsContent(terms: terms, locale: locale);

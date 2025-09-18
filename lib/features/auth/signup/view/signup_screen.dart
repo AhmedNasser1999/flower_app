@@ -23,7 +23,7 @@ class SignupScreen extends StatelessWidget {
           showDialog(
             context: context,
             barrierDismissible: false,
-            builder: (_) => Center(
+            builder: (_) => const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,7 +37,7 @@ class SignupScreen extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Text(
                     'Loading',
                     style: TextStyle(
@@ -71,7 +71,7 @@ class SignupScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: AppColors.white,
             appBar: AppBar(
-              title: Text(
+              title: const Text(
                 "Sign up",
                 style: TextStyle(
                     fontSize: 23,
@@ -179,7 +179,7 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                     ]),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextFormField(
                       controller: cubit.phoneNumberController,
                       label: "Phone number",
@@ -194,7 +194,7 @@ class SignupScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           "Gender",
                           style: TextStyle(
                             fontSize: 20,
@@ -242,17 +242,17 @@ class SignupScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     RichText(
                       textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: const TextStyle(
+                      text: const TextSpan(
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 14,
                         ),
                         children: [
-                          const TextSpan(
+                          TextSpan(
                               text: "Creating an account, you agree to our "),
                           TextSpan(
                             text: "Terms & Conditions",
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: AppColors.black,
                               decoration: TextDecoration.underline,
                               fontWeight: FontWeight.bold,
@@ -286,16 +286,16 @@ class SignupScreen extends StatelessWidget {
                       },
                       child: RichText(
                         textAlign: TextAlign.center,
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
                           ),
                           children: [
-                            const TextSpan(text: "Already have an account?"),
+                            TextSpan(text: "Already have an account?"),
                             TextSpan(
                               text: " Login",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: AppColors.pink,
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold,

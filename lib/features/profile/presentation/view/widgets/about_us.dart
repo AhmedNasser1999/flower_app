@@ -31,7 +31,7 @@ class AboutUs extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: \\${snapshot.error}'));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No about info found'));
+            return const Center(child: Text('No about info found'));
           }
           final about = snapshot.data!;
           return _AboutContent(about: about, locale: locale);

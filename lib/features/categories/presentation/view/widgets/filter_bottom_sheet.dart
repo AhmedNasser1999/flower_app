@@ -1,6 +1,5 @@
 import 'package:flower_app/core/Widgets/custom_Elevated_Button.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
-import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +30,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(height: 20,),
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Text("Sort By", style: TextStyle(
               color: AppColors.pink,
@@ -57,7 +56,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 },
               ),
             );
-          }).toList(),
+          }),
           const SizedBox(height: 40,),
 
           CustomElevatedButton(text: "Filter", onPressed: (){

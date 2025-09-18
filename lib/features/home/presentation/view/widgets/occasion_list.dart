@@ -24,7 +24,7 @@ class OccasionList extends StatelessWidget {
           price: 0,
           onTap: onTap != null ? () => onTap!(occasionList[index]) : null,
         ),
-        separatorBuilder: (context, index) => SizedBox(width: 16.0),
+        separatorBuilder: (context, index) => const SizedBox(width: 16.0),
         itemCount: occasionList.length,
       ),
     );

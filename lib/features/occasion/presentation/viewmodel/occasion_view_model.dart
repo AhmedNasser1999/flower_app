@@ -2,7 +2,6 @@ import 'package:flower_app/features/occasion/domain/usecases/get_occasions_use_c
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../data/models/occasion_model.dart';
 import 'occasion_states.dart';
 
 @injectable

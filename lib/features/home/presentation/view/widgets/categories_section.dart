@@ -17,7 +17,7 @@ class CategoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (state.isCategoriesLoading) {
-      return Center(
+      return const Center(
         child: SizedBox(
           height: 150,
           width: 100,

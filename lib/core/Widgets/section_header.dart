@@ -19,7 +19,7 @@ class SectionHeader extends StatelessWidget {
         ),
         TextButton(
           onPressed: onPressed,
-          child: Text(
+          child: const Text(
             'View All',
             style: TextStyle(
               color: AppColors.pink,

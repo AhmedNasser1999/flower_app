@@ -44,7 +44,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         ),
         title: Text(
           local.password,
-          style: TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
+          style: const TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
         ),
       ),
       body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(

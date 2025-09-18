@@ -57,7 +57,7 @@ class CustomBottomNavBarWidget extends StatelessWidget {
               BlendMode.srcIn,
             ),
           ),
-          SizedBox(height: 2),
+          const SizedBox(height: 2),
           Text(
             label,
             style: TextStyle(
@@ -66,7 +66,7 @@ class CustomBottomNavBarWidget extends StatelessWidget {
               color: isSelected ? AppColors.pink : AppColors.grey,
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );

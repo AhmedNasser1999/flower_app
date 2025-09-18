@@ -45,7 +45,7 @@ class SearchAndFilterWidget extends StatelessWidget {
             showModalBottomSheet(
               backgroundColor: AppColors.white,
                 context: context,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(37))
                 ),
                 builder: (context) {

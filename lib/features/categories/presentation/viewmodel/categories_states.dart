@@ -1,6 +1,5 @@
 import 'package:flower_app/features/categories/data/models/category_model.dart';
 
-import '../../data/models/categories_response.dart';
 import '../../data/models/categoryResponse_byId_model.dart';
 
 abstract class CategoriesState {}

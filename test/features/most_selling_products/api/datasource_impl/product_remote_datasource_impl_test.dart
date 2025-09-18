@@ -6,7 +6,6 @@ import 'package:flower_app/features/most_selling_products/data/models/products_r
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
-import 'package:dio/dio.dart';
 
 import 'product_remote_datasource_impl_test.mocks.dart';
 

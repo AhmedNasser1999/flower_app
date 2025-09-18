@@ -1,4 +1,3 @@
-import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 import 'package:flower_app/features/occasion/domain/entity/occasion_entity.dart';
 
 abstract class OccasionState {}

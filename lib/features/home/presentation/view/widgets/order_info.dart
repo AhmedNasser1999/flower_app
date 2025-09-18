@@ -8,14 +8,14 @@ class OrderInfo extends StatelessWidget {
     return Row(
       spacing: 5.0,
       children: [
-        Icon(
+        const Icon(
           Icons.location_on_outlined,
         ),
         Text(
           'Deliver to 2XVP+XC - Sheikh Zayed',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        Icon(
+        const Icon(
           Icons.keyboard_arrow_down_outlined,
           size: 35,
         )

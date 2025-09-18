@@ -195,7 +195,7 @@ class EditProfileScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Gender",
                         style: TextStyle(
                           fontSize: 20,

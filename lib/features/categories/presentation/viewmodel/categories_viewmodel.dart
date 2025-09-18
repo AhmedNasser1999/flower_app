@@ -1,5 +1,3 @@
-import 'package:flower_app/features/categories/data/models/categories_response.dart';
-import 'package:flower_app/features/categories/data/models/category_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/usecases/get_all_categories_usecase.dart';

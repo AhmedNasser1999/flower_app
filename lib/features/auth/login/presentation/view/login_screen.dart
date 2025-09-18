@@ -3,7 +3,6 @@ import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
@@ -37,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (_) => Center(
+              builder: (_) => const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -51,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.transparent,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Text(
                       'Loading',
                       style: TextStyle(

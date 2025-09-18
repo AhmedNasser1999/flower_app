@@ -33,30 +33,30 @@ class ProductItem extends StatelessWidget {
                   return Container(
                     width: 150,
                     color: Colors.grey[300],
-                    child: Icon(Icons.error_outline, color: Colors.red),
+                    child: const Icon(Icons.error_outline, color: Colors.red),
                   );
                 },
               ),
             ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Expanded(
             child: Text(
               name,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           isOccasion
-              ? Text('')
+              ? const Text('')
               : Expanded(
                   child: Text(
                     '$price LE',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                     ),
                   ),

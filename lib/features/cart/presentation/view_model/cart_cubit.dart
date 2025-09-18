@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +31,7 @@ class CartCubit extends Cubit<CartState> {
     try {
       final response = await _addToCartUseCase(productId, quantity);
       emit(CartLoaded(response));
-      ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text('Product added to cart')));
+      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text('Product added to cart')));
       onSuccess?.call();
     } catch (e) {
       emit(CartError(e.toString()));

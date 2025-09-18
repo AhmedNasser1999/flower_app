@@ -297,7 +297,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.logout,
-                  trailing: Icon(Icons.logout),
+                  trailing: const Icon(Icons.logout),
                   onTap: () {
                     showDialog(
                         context: context,
@@ -308,7 +308,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
 
-                Spacer(),
+                const Spacer(),
 
                 // Version
                 Center(

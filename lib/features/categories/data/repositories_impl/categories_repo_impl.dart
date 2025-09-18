@@ -9,7 +9,7 @@ import '../datasource/categories_remote_datasource.dart';
 @Injectable(as: CategoriesRepo)
 class CategoriesRepoImpl implements CategoriesRepo{
 
-  GetCategoriesRemoteDataSource _categoriesRemoteDataSource;
+  final GetCategoriesRemoteDataSource _categoriesRemoteDataSource;
 
   CategoriesRepoImpl(this._categoriesRemoteDataSource);
 

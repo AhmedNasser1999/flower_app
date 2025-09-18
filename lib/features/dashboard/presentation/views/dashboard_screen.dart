@@ -1,8 +1,3 @@
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
-import 'package:flower_app/core/routes/route_names.dart';
-import 'package:flower_app/core/theme/app_colors.dart';
-import 'package:flower_app/features/auth/domain/services/auth_service.dart';
-import 'package:flower_app/features/auth/domain/services/guest_service.dart';
 import 'package:flower_app/features/cart/presentation/views/cart_screen.dart';
 import 'package:flower_app/features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import 'package:flower_app/features/dashboard/presentation/cubits/nav_bar_cubit.dart';
@@ -13,11 +8,9 @@ import 'package:flower_app/features/profile/presentation/view/profile_screen.dar
 import 'package:flower_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/config/di.dart';
 import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
-import '../../../categories/presentation/viewmodel/categories_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -26,12 +19,11 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const HomeScreen(),
-
       MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) =>
-            getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
           ),
           BlocProvider(
             create: (context) => getIt<CategoriesCubit>()..getAllCategories(),
@@ -43,7 +35,6 @@ class DashboardScreen extends StatelessWidget {
         create: (_) => getIt<CartCubit>()..getCart(),
         child: const CartScreen(isFromNavBar: true),
       ),
-
       BlocProvider(
         create: (_) => getIt<ProfileViewModel>()..getProfile(),
         child: const ProfileScreen(),
