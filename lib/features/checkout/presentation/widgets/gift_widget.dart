@@ -35,13 +35,15 @@ class GiftSection extends StatelessWidget {
         ).setHorizontalPadding(context, 0.05),
         const SizedBox(height: 10),
         CustomTextFormField(
+          enabled: enabled,
                 controller: giftNameController,
                 hint: local.enterName,
                 label: local.name)
             .setHorizontalPadding(context, 0.05),
         const SizedBox(height: 20),
         CustomTextFormField(
-                controller: giftPhoneController,
+            enabled: enabled,
+            controller: giftPhoneController,
                 hint: local.enterPhoneNumber,
                 label: local.phoneNumber)
             .setHorizontalPadding(context, 0.05),
