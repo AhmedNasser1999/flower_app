@@ -3,7 +3,7 @@ import 'package:flower_app/features/checkout/data/repository/checkout_repo_impl.
 import 'package:flower_app/features/checkout/domain/entities/checkout_entity.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton()
+@Injectable()
 class CheckoutSessionUsecase {
   CheckoutRepoImpl checkoutRepoImpl;
   CheckoutSessionUsecase(this.checkoutRepoImpl);

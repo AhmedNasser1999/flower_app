@@ -9,7 +9,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
-import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -87,6 +86,18 @@ import '../../features/categories/domain/usecases/get_category_byId_usecase.dart
     as _i557;
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart'
     as _i820;
+import '../../features/checkout/api/api_client.dart' as _i244;
+import '../../features/checkout/api/datasource_impl/checkout_data_source_impl.dart'
+    as _i843;
+import '../../features/checkout/data/data_source/checkout_datasource.dart'
+    as _i43;
+import '../../features/checkout/data/repository/checkout_repo_impl.dart'
+    as _i963;
+import '../../features/checkout/domain/repository/checkout_repo.dart' as _i205;
+import '../../features/checkout/domain/use_cases/checkout_session_usecase.dart'
+    as _i981;
+import '../../features/checkout/domain/use_cases/create_cash_order_usecase.dart'
+    as _i32;
 import '../../features/home/presentation/viewmodel/home_cubit.dart' as _i925;
 import '../../features/most_selling_products/api/client/product_api_client.dart'
     as _i67;
@@ -163,8 +174,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => dioModule.baseUrl,
       instanceName: 'baseurl',
     );
+    gh.factory<_i981.CheckoutSessionUsecase>(
+        () => _i981.CheckoutSessionUsecase(gh<_i963.CheckoutRepoImpl>()));
+    gh.factory<_i32.CreateCashOrderUsecase>(
+        () => _i32.CreateCashOrderUsecase(gh<_i963.CheckoutRepoImpl>()));
     gh.lazySingleton<_i361.Dio>(
         () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
+    gh.lazySingleton<_i244.ApiClient>(() => _i244.ApiClient(gh<_i361.Dio>()));
     gh.factory<_i932.AddressApiClient>(() => _i932.AddressApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
@@ -201,6 +217,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i434.AuthRemoteDatasourceImpl(gh<_i213.AuthApiClient>()));
     gh.lazySingleton<_i1026.CartRemoteDataSource>(
         () => _i948.CartRemoteDataSourceImpl(gh<_i131.CartApiClient>()));
+    gh.lazySingleton<_i43.CheckoutDatasource>(
+        () => _i843.CheckoutDataSourceImpl(apiClient: gh<_i244.ApiClient>()));
     gh.lazySingleton<_i701.OrderRemoteDataSource>(
         () => _i841.OrderRemoteDataSourceImpl(gh<_i81.OrderApiClient>()));
     gh.lazySingleton<_i904.GetCategoriesRemoteDataSource>(() =>
@@ -214,6 +232,8 @@ extension GetItInjectableX on _i174.GetIt {
             addressApiClient: gh<_i932.AddressApiClient>()));
     gh.factory<_i669.AuthRepo>(
         () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
+    gh.lazySingleton<_i205.CheckoutRepo>(
+        () => _i963.CheckoutRepoImpl(gh<_i43.CheckoutDatasource>()));
     gh.factory<_i168.OccasionRemoteDataSource>(() =>
         _i633.OccasionRemoteDataSourceImpl(gh<_i1040.OccasionApiClient>()));
     gh.factory<_i682.OccasionRepository>(() =>
@@ -322,10 +342,8 @@ extension GetItInjectableX on _i174.GetIt {
           getAllCategoriesUseCase: gh<_i943.GetAllCategoriesUseCase>(),
           getCategoryDetailsUseCase: gh<_i557.GetCategoryByIdUseCase>(),
         ));
-    gh.factory<_i387.SignupCubit>(() => _i387.SignupCubit(
-          signupUsecase: gh<_i93.SignupUsecase>(),
-          signUpFormKey: gh<_i409.GlobalKey<_i409.FormState>>(),
-        ));
+    gh.factory<_i387.SignupCubit>(
+        () => _i387.SignupCubit(signupUsecase: gh<_i93.SignupUsecase>()));
     return this;
   }
 }

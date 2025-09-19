@@ -3,7 +3,7 @@ import 'package:flower_app/features/checkout/data/repository/checkout_repo_impl.
 import 'package:flower_app/features/checkout/domain/entities/cash_order_entity.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton()
+@Injectable()
 class CreateCashOrderUsecase {
   CheckoutRepoImpl checkoutRepoImpl;
   CreateCashOrderUsecase(this.checkoutRepoImpl);
