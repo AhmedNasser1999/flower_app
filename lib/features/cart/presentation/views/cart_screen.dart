@@ -258,6 +258,7 @@ class _CartScreenState extends State<CartScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             local?.yourCartIsEmpty ?? "Your cart is empty",
             style: const TextStyle(
