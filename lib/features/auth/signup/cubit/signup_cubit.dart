@@ -10,15 +10,16 @@ class SignupCubit extends Cubit<SignupStates> {
   final SignupUsecase signupUsecase;
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
 
-  SignupCubit({required this.signupUsecase})
-      : super(SignupInitialState());
+  SignupCubit({required this.signupUsecase}) : super(SignupInitialState());
 
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController signUpEmailController = TextEditingController();
-  final TextEditingController signUpPasswordController = TextEditingController();
-  final TextEditingController signUpConfirmPasswordController = TextEditingController();
+  final TextEditingController signUpPasswordController =
+      TextEditingController();
+  final TextEditingController signUpConfirmPasswordController =
+      TextEditingController();
 
   String? selectedGender;
   bool isObscure = true;

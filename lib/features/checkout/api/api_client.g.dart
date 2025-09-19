@@ -24,7 +24,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<CashOrderResponse> createCashOrder(
       CashOrderRequest cashOrderRequest) async {
-    final _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{'auth': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<CheckoutResponse> checkoutSession(
       CheckoutRequest checkoutRequest) async {
-    final _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{'auth': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -71,7 +71,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          'checkout',
+          'orders/checkout?url=http://localhost:3000',
           queryParameters: queryParameters,
           data: _data,
         )

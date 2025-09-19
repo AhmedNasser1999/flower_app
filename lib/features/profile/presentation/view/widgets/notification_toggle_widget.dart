@@ -26,7 +26,7 @@ class _NotificationToggleWidgetState extends State<NotificationToggleWidget> {
             _enabled = val;
           });
         },
-        thumbColor: MaterialStateProperty.all(Colors.white),
+        thumbColor: WidgetStateProperty.all(Colors.white),
         activeTrackColor: Colors.pink,
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Colors.grey.shade400,

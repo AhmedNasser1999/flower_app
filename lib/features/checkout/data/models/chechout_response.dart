@@ -1,6 +1,7 @@
 import 'package:flower_app/features/checkout/data/models/session.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'chechout_response.g.dart';
+
 @JsonSerializable()
 class CheckoutResponse {
   const CheckoutResponse({

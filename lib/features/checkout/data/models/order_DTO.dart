@@ -1,6 +1,7 @@
 import 'package:flower_app/features/checkout/data/models/order_items_DTO.dart';
 import 'package:json_annotation/json_annotation.dart';
- part 'order_DTO.g.dart';
+part 'order_DTO.g.dart';
+
 @JsonSerializable()
 class OrderDTO {
   String? user;
@@ -33,5 +34,5 @@ class OrderDTO {
   factory OrderDTO.fromJson(Map<String, dynamic> json) =>
       _$OrderDTOFromJson(json);
 
-  Map<String, dynamic> toJson() =>_$OrderDTOToJson(this);
+  Map<String, dynamic> toJson() => _$OrderDTOToJson(this);
 }

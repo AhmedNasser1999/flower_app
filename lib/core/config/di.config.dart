@@ -98,6 +98,8 @@ import '../../features/checkout/domain/use_cases/checkout_session_usecase.dart'
     as _i981;
 import '../../features/checkout/domain/use_cases/create_cash_order_usecase.dart'
     as _i32;
+import '../../features/checkout/presentation/viewmodel/checkout_cubit.dart'
+    as _i549;
 import '../../features/home/presentation/viewmodel/home_cubit.dart' as _i925;
 import '../../features/most_selling_products/api/client/product_api_client.dart'
     as _i67;
@@ -174,10 +176,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => dioModule.baseUrl,
       instanceName: 'baseurl',
     );
-    gh.factory<_i981.CheckoutSessionUsecase>(
-        () => _i981.CheckoutSessionUsecase(gh<_i963.CheckoutRepoImpl>()));
-    gh.factory<_i32.CreateCashOrderUsecase>(
-        () => _i32.CreateCashOrderUsecase(gh<_i963.CheckoutRepoImpl>()));
     gh.lazySingleton<_i361.Dio>(
         () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
     gh.lazySingleton<_i244.ApiClient>(() => _i244.ApiClient(gh<_i361.Dio>()));
@@ -290,6 +288,10 @@ extension GetItInjectableX on _i174.GetIt {
         _i729.ChangePasswordViewModel(gh<_i550.ChangePasswordUseCases>()));
     gh.factory<_i164.ForgetPasswordCubit>(
         () => _i164.ForgetPasswordCubit(gh<_i682.ForgetPasswordUseCase>()));
+    gh.factory<_i981.CheckoutSessionUsecase>(
+        () => _i981.CheckoutSessionUsecase(gh<_i205.CheckoutRepo>()));
+    gh.factory<_i32.CreateCashOrderUsecase>(
+        () => _i32.CreateCashOrderUsecase(gh<_i205.CheckoutRepo>()));
     gh.lazySingleton<_i943.GetAllCategoriesUseCase>(
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
     gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
@@ -323,6 +325,10 @@ extension GetItInjectableX on _i174.GetIt {
         _i72.MostSellingProductsViewmodel(gh<_i144.GetAllProductsUseCase>()));
     gh.factory<_i1063.LoginViewModel>(
         () => _i1063.LoginViewModel(gh<_i3.LoginUseCase>()));
+    gh.factory<_i549.CheckoutCubit>(() => _i549.CheckoutCubit(
+          createCashOrderUsecase: gh<_i32.CreateCashOrderUsecase>(),
+          checkoutSessionUsecase: gh<_i981.CheckoutSessionUsecase>(),
+        ));
     gh.factory<_i554.AddressCubit>(() => _i554.AddressCubit(
           addAddressUseCase: gh<_i1005.AddAddressUseCase>(),
           getAddressesUseCase: gh<_i1005.GetAddressesUseCase>(),

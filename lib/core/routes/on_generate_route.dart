@@ -27,6 +27,7 @@ import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
 import '../../features/auth/logout/views/logout_widget.dart';
 import '../../features/checkout/presentation/view/checkout_screen.dart';
+import '../../features/checkout/presentation/viewmodel/checkout_cubit.dart';
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
@@ -180,7 +181,11 @@ class Routes {
       case AppRoutes.savedAddressScreen:
         return MaterialPageRoute(builder: (_) => SavedAddressesScreen());
       case AppRoutes.checkout:
-        return MaterialPageRoute(builder: (_) => CheckoutScreen());
+        final args = settings.arguments as int;
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                create: (_) => getIt<CheckoutCubit>(),
+                child: CheckoutScreen(subTotal: args)));
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

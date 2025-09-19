@@ -41,11 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadAddresses() async {
     final addressCubit = getIt<AddressCubit>();
-    await addressCubit.getAddresses();
     addressCubit.stream.listen((state) {
       if (state is AddressLoaded && state.response.addresses.isNotEmpty) {
         setState(() {
-          _selectedAddress = state.response.addresses.first;
+          _selectedAddress = addressCubit.selectedAddress;
           _currentAddress =
               '${_selectedAddress?.street}, ${_selectedAddress?.city}';
         });

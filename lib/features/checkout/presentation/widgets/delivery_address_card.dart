@@ -2,16 +2,20 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class DeliveryAddressCard extends StatefulWidget {
-  final String title;
-  const DeliveryAddressCard({super.key, required this.title});
+import '../../../address/data/models/address.dart';
+import '../../../address/presentation/views/add_address_screen.dart';
 
-  @override
-  State<DeliveryAddressCard> createState() => _DeliveryAddressCardState();
-}
+class DeliveryAddressCard extends StatelessWidget {
+  final Address address;
+  final bool isSelected;
+  final VoidCallback onSelect;
 
-class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
-  bool isSelected = false;
+  const DeliveryAddressCard({
+    super.key,
+    required this.isSelected,
+    required this.onSelect,
+    required this.address,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,18 +42,14 @@ class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
             children: [
               Row(
                 children: [
-                  Radio<bool>(
-                    value: true,
-                    groupValue: isSelected,
+                  Radio<String>(
+                    value: address.id,
+                    groupValue: isSelected ? address.id : null,
                     activeColor: AppColors.pink,
-                    onChanged: (value) {
-                      setState(() {
-                        isSelected = value!;
-                      });
-                    },
+                    onChanged: (_) => onSelect(),
                   ),
                   Text(
-                    widget.title,
+                    "${address.recipientName}",
                     style: const TextStyle(
                       fontSize: 16,
                       color: AppColors.black,
@@ -60,7 +60,7 @@ class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
                 ],
               ),
               Text(
-                "2XVP+XC - Sheikh Zayed",
+                "${address.lat} - ${address.city}",
                 style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 14,
@@ -70,14 +70,23 @@ class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
               ).setHorizontalPadding(context, 0.035)
             ],
           ),
-          const SizedBox(width: 130,),
+          const Spacer(),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      AddAddressScreen(addressToEdit: address),
+                ),
+              );
+            },
             child: const Icon(
-              Icons.edit,
+              Icons.mode_edit_outline_outlined,
               color: AppColors.grey,
             ),
           ),
+          const SizedBox(width: 16),
         ],
       ),
     );

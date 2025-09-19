@@ -1,20 +1,27 @@
 import 'package:flower_app/features/checkout/data/models/product_DTO.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'order_items_DTO.g.dart';
+
 @JsonSerializable()
 class OrderItemsDTO {
-  final String id;
+  @JsonKey(name: '_id')
+  final String id; // force default
+
   final ProductDTO? product;
-  final double? price;
-  final int? quantity;
-  final String? sId;
+
+  final double price;
+  final int quantity;
+
+  @JsonKey(name: 'sId')
+  final String sId;
 
   OrderItemsDTO({
-    required this.id,
+    this.id = "",
     this.product,
-    this.price,
-    this.quantity,
-    this.sId,
+    this.price = 0.0,
+    this.quantity = 0,
+    this.sId = "",
   });
 
   factory OrderItemsDTO.fromJson(Map<String, dynamic> json) =>

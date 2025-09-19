@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'totail_details.g.dart';
+
 @JsonSerializable()
 class TotalDetails {
   @JsonKey(name: "amount_discount")

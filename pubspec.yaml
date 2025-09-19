@@ -46,6 +46,7 @@ dependencies:
   flutter_map: ^8.2.1
   latlong2: ^0.9.1
   location: ^8.0.1
+  webview_flutter:
 
 dev_dependencies:
   bloc_test: ^10.0.0

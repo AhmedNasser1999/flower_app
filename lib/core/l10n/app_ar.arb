@@ -194,5 +194,16 @@
   "noProductsForCategory": "لا توجد منتجات لهذه الفئة",
   "noProductsForOccasion": "لا توجد منتجات لهذه المناسبة",
   "english": "الإنجليزية",
-  "arabic": "العربية"
+  "arabic": "العربية",
+  "deliveryAddress": "عنوان التوصيل",
+  "addNew": "إضافة جديد",
+  "deliveryTime": "وقت التوصيل",
+  "schedule": "جدولة",
+  "instant": "فوري",
+  "arrivesBy": " سيصل في 03 سبتمبر 2024، الساعة 11:00 صباحًا",
+  "itIsAGift": "إنها هدية",
+  "enterName": "أدخل الاسم",
+  "name": "الاسم",
+  "enterPhone": "أدخل رقم الهاتف",
+  "completePayment": "إتمام الدفع"
 }

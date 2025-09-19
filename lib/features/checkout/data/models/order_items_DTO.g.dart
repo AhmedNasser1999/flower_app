@@ -8,18 +8,18 @@ part of 'order_items_DTO.dart';
 
 OrderItemsDTO _$OrderItemsDTOFromJson(Map<String, dynamic> json) =>
     OrderItemsDTO(
-      id: json['id'] as String,
+      id: json['_id'] as String? ?? "",
       product: json['product'] == null
           ? null
           : ProductDTO.fromJson(json['product'] as Map<String, dynamic>),
-      price: (json['price'] as num?)?.toDouble(),
-      quantity: (json['quantity'] as num?)?.toInt(),
-      sId: json['sId'] as String?,
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
+      quantity: (json['quantity'] as num?)?.toInt() ?? 0,
+      sId: json['sId'] as String? ?? "",
     );
 
 Map<String, dynamic> _$OrderItemsDTOToJson(OrderItemsDTO instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'product': instance.product,
       'price': instance.price,
       'quantity': instance.quantity,

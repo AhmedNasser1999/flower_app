@@ -15,10 +15,12 @@ abstract class ApiClient {
   factory ApiClient(Dio dio) = _ApiClient;
 
   @POST(ApiConstant.cashOrder)
+  @Extra({'auth': true})
   Future<CashOrderResponse> createCashOrder(
       @Body() CashOrderRequest cashOrderRequest);
 
   @POST(ApiConstant.checkout)
+  @Extra({'auth': true})
   Future<CheckoutResponse> checkoutSession(
       @Body() CheckoutRequest checkoutRequest);
 }

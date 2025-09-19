@@ -12,7 +12,8 @@ class PaymentMethodConfigurationDetails {
     this.parent,
   });
 
-  factory PaymentMethodConfigurationDetails.fromJson(Map<String, dynamic> json) =>
+  factory PaymentMethodConfigurationDetails.fromJson(
+          Map<String, dynamic> json) =>
       _$PaymentMethodConfigurationDetailsFromJson(json);
 
   Map<String, dynamic> toJson() =>

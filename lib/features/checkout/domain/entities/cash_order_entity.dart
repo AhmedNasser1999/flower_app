@@ -1,4 +1,5 @@
 class CashOrderEntity {
+  final String message;
   final int totalPrice;
   final String paymentType;
   final bool isPaid;
@@ -9,6 +10,7 @@ class CashOrderEntity {
   final String orderNumber;
 
   CashOrderEntity({
+    this.message = "",
     required this.totalPrice,
     required this.paymentType,
     required this.isPaid,

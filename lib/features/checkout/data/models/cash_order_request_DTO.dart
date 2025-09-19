@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-    part 'cash_order_request_DTO.g.dart';
+part 'cash_order_request_DTO.g.dart';
+
 @JsonSerializable()
 class CashOrderRequestDTO {
   String? street;
@@ -8,7 +9,8 @@ class CashOrderRequestDTO {
   String? lat;
   String? long;
 
-  CashOrderRequestDTO({this.street, this.phone, this.city, this.lat, this.long});
+  CashOrderRequestDTO(
+      {this.street, this.phone, this.city, this.lat, this.long});
 
   factory CashOrderRequestDTO.fromJson(Map<String, dynamic> json) =>
       _$CashOrderRequestDTOFromJson(json);

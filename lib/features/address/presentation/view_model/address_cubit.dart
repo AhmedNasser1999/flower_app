@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import '../../data/models/address.dart';
 import '../../domain/requests/address_request.dart';
 import '../../domain/responses/address_response.dart';
 import '../../domain/use_cases/address_use_cases.dart';
@@ -13,6 +14,7 @@ class AddressCubit extends Cubit<AddressState> {
   final GetAddressesUseCase getAddressesUseCase;
   final UpdateAddressUseCase updateAddressUseCase;
   final DeleteAddressUseCase deleteAddressUseCase;
+  String? selectedAddressId;
 
   AddressCubit({
     required this.addAddressUseCase,
@@ -63,6 +65,28 @@ class AddressCubit extends Cubit<AddressState> {
     } catch (e) {
       emit(AddressError(e.toString()));
     }
+  }
+
+  void selectAddress(String addressId) {
+    selectedAddressId = addressId;
+
+    if (state is AddressLoaded) {
+      emit(AddressLoaded((state as AddressLoaded).response));
+    }
+  }
+
+  Address? get selectedAddress {
+    if (state is AddressLoaded && selectedAddressId != null) {
+      final addresses = (state as AddressLoaded).response.addresses;
+      return addresses.firstWhere(
+        (addr) => addr.id == selectedAddressId,
+      );
+    }
+    return null;
+  }
+
+  bool isSelected(String addressId) {
+    return selectedAddressId == addressId;
   }
 
   void safeEmit(AddressState state) {

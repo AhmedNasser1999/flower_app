@@ -11,5 +11,5 @@ class CheckoutRequest {
   factory CheckoutRequest.fromJson(Map<String, dynamic> json) =>
       _$CheckoutRequestFromJson(json);
 
-  Map<String, dynamic> toJson() =>_$CheckoutRequestToJson(this);
+  Map<String, dynamic> toJson() => _$CheckoutRequestToJson(this);
 }

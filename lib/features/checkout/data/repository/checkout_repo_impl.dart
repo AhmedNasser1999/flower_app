@@ -16,10 +16,10 @@ class CheckoutRepoImpl extends CheckoutRepo {
   Future<CheckoutEntity> checkoutSession(CheckoutRequest request) async {
     final response = await checkoutDatasource.checkoutSession(request);
     return CheckoutEntity(
-      id: response.session!.id!,
-      amountTotal: response.session!.amountTotal!,
-      amountSubtotal: response.session!.amountSubtotal!,
-      currency: response.session!.currency!,
+      id: response.session!.id,
+      amountTotal: response.session!.amountTotal,
+      amountSubtotal: response.session!.amountSubtotal,
+      currency: response.session!.currency,
       customerEmail: response.session!.customerEmail ?? '',
       status: response.session!.status ?? '',
       paymentStatus: response.session!.paymentStatus ?? '',
@@ -38,6 +38,7 @@ class CheckoutRepoImpl extends CheckoutRepo {
   Future<CashOrderEntity> createCashOrder(CashOrderRequest request) async {
     final response = await checkoutDatasource.createCashOrder(request);
     return CashOrderEntity(
+      message: response.message!,
       totalPrice: response.order!.totalPrice!,
       paymentType: response.order!.paymentType!,
       isPaid: response.order!.isPaid!,
