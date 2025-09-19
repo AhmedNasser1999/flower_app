@@ -38,10 +38,18 @@ import '../../features/cart/presentation/views/cart_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import '../../features/occasion/presentation/view/occasion_screen.dart';
+import '../../features/splash/view/splash_view.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.initial:
+        {
+          return MaterialPageRoute(
+            builder: (context) => const SplashView(),
+            settings: settings,
+          );
+        }
       case AppRoutes.login:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(

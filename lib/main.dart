@@ -20,8 +20,6 @@ void main() async {
   String languageValue = await LocalizationPreference.getLanguage();
   await SecureStorage.initialize();
 
-  final initialRoute = await _getInitialRoute();
-
   runApp(
     MultiBlocProvider(
       providers: [
@@ -40,24 +38,12 @@ void main() async {
         ),
       ],
       child: MyApp(
-        initialRoute: initialRoute,
+        initialRoute: AppRoutes.initial,
       ),
     ),
   );
 }
 
-Future<String> _getInitialRoute() async {
-  final isLoggedIn = await AuthService.isLoggedIn();
-  final isGuest = await GuestService.isGuest();
-
-  if (isLoggedIn) {
-    return AppRoutes.dashboard;
-  } else if (isGuest) {
-    return AppRoutes.dashboard;
-  } else {
-    return AppRoutes.login;
-  }
-}
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -69,7 +55,6 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
       builder: (context, state) {
         final cubit = context.read<LocalizationCubit>();
-
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute: initialRoute,

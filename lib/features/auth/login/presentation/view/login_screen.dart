@@ -86,12 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(AppImages.arrowBack)
-                            .setHorizontalAndVerticalPadding(
-                                context, 0.05, 0.07),
-                      ),
                       Text(
                         local!.login,
                         style: const TextStyle(
@@ -100,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontFamily: "Inter",
                           fontStyle: FontStyle.normal,
                         ),
-                      ),
+                      ).setHorizontalAndVerticalPadding(
+                          context, 0.04, 0.05),
                     ],
                   ),
                   CustomTextFormField(

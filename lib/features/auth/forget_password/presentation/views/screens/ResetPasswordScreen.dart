@@ -59,23 +59,25 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           }
         },
         builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                local.resetPassword,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                local.resetPasswordUnderMsg,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 25),
-              ResetPasswordForm(formKey: _formKey),
-            ],
-          ).setHorizontalAndVerticalPadding(context, 0.055, 0.05);
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  local.resetPassword,
+                  style:
+                      const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  local.resetPasswordUnderMsg,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 25),
+                ResetPasswordForm(formKey: _formKey),
+              ],
+            ).setHorizontalAndVerticalPadding(context, 0.055, 0.05),
+          );
         },
       ),
     );
