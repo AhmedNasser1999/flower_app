@@ -205,5 +205,12 @@
   "enterName": "Enter the name",
   "name": "Name",
   "enterPhone": "Enter the phone number",
-  "completePayment": "Complete Payment"
+  "completePayment": "Complete Payment",
+  "cashOnDelivery": "Cash on delivery",
+  "creditCard": "Credit card",
+  "placing": "Placing...",
+  "clearCartTitle": "Clear Cart",
+  "clearCartMessage": "Are you sure you want to clear all items?",
+  "addressChanged": "Delivery address changed successfully"
+
 }

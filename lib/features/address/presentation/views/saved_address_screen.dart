@@ -131,6 +131,14 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                               context
                                   .read<AddressCubit>()
                                   .selectAddress(address.id);
+                              Navigator.pop(context, true);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(AppLocalizations.of(context)!.addressChanged),
+                                  backgroundColor: AppColors.black,
+                                  duration: const Duration(seconds: 2),
+                                ),
+                              );
                             },
                             child: AddressWidget(
                               city: address.city,
