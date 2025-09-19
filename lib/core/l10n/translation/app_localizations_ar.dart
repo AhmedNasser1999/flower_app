@@ -637,4 +637,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get placing => 'جارٍ التنفيذ...';
+
+  @override
+  String get clearCartTitle => 'مسح السلة';
+
+  @override
+  String get clearCartMessage => 'هل أنت متأكد أنك تريد مسح كل العناصر؟';
 }

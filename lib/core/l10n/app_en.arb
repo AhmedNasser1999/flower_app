@@ -208,6 +208,7 @@
   "completePayment": "Complete Payment",
   "cashOnDelivery": "Cash on delivery",
   "creditCard": "Credit card",
-  "placing": "Placing..."
-
+  "placing": "Placing...",
+  "clearCartTitle": "Clear Cart",
+  "clearCartMessage": "Are you sure you want to clear all items?"
 }

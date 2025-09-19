@@ -208,6 +208,7 @@
   "completePayment": "إتمام الدفع",
   "cashOnDelivery": "الدفع عند الاستلام",
   "creditCard": "بطاقة ائتمان",
-  "placing": "جارٍ التنفيذ..."
-
+  "placing": "جارٍ التنفيذ...",
+  "clearCartTitle": "مسح السلة",
+  "clearCartMessage": "هل أنت متأكد أنك تريد مسح كل العناصر؟"
 }

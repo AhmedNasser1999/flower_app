@@ -637,4 +637,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placing => 'Placing...';
+
+  @override
+  String get clearCartTitle => 'Clear Cart';
+
+  @override
+  String get clearCartMessage => 'Are you sure you want to clear all items?';
 }

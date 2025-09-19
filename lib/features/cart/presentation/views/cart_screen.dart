@@ -333,23 +333,25 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   void _showClearCartDialog(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text("Clear Cart"),
-        content: const Text("Are you sure you want to clear all items?"),
+        backgroundColor: AppColors.white,
+        title: Text(local.clearCartTitle),
+        content:  Text(local.clearCartMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text("Cancel"),
+            child: Text(local.cancel, style: TextStyle(color: AppColors.black)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               context.read<CartCubit>().clearCart(context);
             },
-            child: const Text(
-              "Clear",
+            child:  Text(
+              local.clear,
               style: TextStyle(color: AppColors.pink),
             ),
           ),
