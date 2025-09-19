@@ -129,7 +129,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                               context
                                   .read<AddressCubit>()
                                   .selectAddress(address.id);
-                              Navigator.pop(context);
+                              Navigator.pop(context, true);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(AppLocalizations.of(context)!.addressChanged),

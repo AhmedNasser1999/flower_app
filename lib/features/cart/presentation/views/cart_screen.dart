@@ -208,8 +208,15 @@ class _CartScreenState extends State<CartScreen> {
             ),
             const SizedBox(width: 8),
             GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.savedAddressScreen);
+              onTap: () async {
+                final result = await Navigator.pushNamed(
+                  context,
+                  AppRoutes.savedAddressScreen,
+                );
+
+                if (result == true) {
+                  setState(() {});
+                }
               },
               child: SvgPicture.asset(AppIcons.arrowDownIcon,
                   color: AppColors.pink),
