@@ -210,5 +210,7 @@
   "creditCard": "Credit card",
   "placing": "Placing...",
   "clearCartTitle": "Clear Cart",
-  "clearCartMessage": "Are you sure you want to clear all items?"
+  "clearCartMessage": "Are you sure you want to clear all items?",
+  "addressChanged": "Delivery address changed successfully"
+
 }

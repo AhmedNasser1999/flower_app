@@ -643,4 +643,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clearCartMessage => 'Are you sure you want to clear all items?';
+
+  @override
+  String get addressChanged => 'Delivery address changed successfully';
 }

@@ -167,8 +167,14 @@ class _CartScreenState extends State<CartScreen> {
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
         String addressText = local.selectAnAddress;
+
         if (state is AddressLoaded) {
-          if (state.response.addresses.isNotEmpty) {
+          final cubit = context.read<AddressCubit>();
+          final selected = cubit.selectedAddress;
+
+          if (selected != null) {
+            addressText = '${selected.street}, ${selected.city}';
+          } else if (state.response.addresses.isNotEmpty) {
             final address = state.response.addresses.first;
             addressText = '${address.street}, ${address.city}';
           } else {
@@ -182,20 +188,21 @@ class _CartScreenState extends State<CartScreen> {
 
         return Row(
           children: [
-            SvgPicture.asset(AppIcons.locationMarkerIcon,
-                color: AppColors.grey),
+            SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
             const SizedBox(width: 8),
             Text(
               local.deliverTo,
-              style:
-                  TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                color: AppColors.grey,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const SizedBox(width: 8),
             Flexible(
               child: Text(
                 addressText,
                 maxLines: 1,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

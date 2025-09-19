@@ -210,5 +210,7 @@
   "creditCard": "بطاقة ائتمان",
   "placing": "جارٍ التنفيذ...",
   "clearCartTitle": "مسح السلة",
-  "clearCartMessage": "هل أنت متأكد أنك تريد مسح كل العناصر؟"
+  "clearCartMessage": "هل أنت متأكد أنك تريد مسح كل العناصر؟",
+  "addressChanged": "تم تغيير عنوان التوصيل بنجاح"
+
 }

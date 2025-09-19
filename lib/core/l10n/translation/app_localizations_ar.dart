@@ -643,4 +643,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get clearCartMessage => 'هل أنت متأكد أنك تريد مسح كل العناصر؟';
+
+  @override
+  String get addressChanged => 'تم تغيير عنوان التوصيل بنجاح';
 }

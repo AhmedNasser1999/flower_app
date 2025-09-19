@@ -137,9 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         _currentAddress = 'something went wrong....';
                       }
 
-                      return OrderInfo(
-                        address: _currentAddress,
-                      );
+                      return OrderInfo();
                     },
                   ),
                   const SizedBox(height: 10.0),
