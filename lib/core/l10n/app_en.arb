@@ -205,5 +205,9 @@
   "enterName": "Enter the name",
   "name": "Name",
   "enterPhone": "Enter the phone number",
-  "completePayment": "Complete Payment"
+  "completePayment": "Complete Payment",
+  "cashOnDelivery": "Cash on delivery",
+  "creditCard": "Credit card",
+  "placing": "Placing..."
+
 }

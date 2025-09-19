@@ -1336,6 +1336,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Complete Payment'**
   String get completePayment;
+
+  /// No description provided for @cashOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash on delivery'**
+  String get cashOnDelivery;
+
+  /// No description provided for @creditCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit card'**
+  String get creditCard;
+
+  /// No description provided for @placing.
+  ///
+  /// In en, this message translates to:
+  /// **'Placing...'**
+  String get placing;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

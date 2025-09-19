@@ -36,8 +36,8 @@ class SummarySection extends StatelessWidget {
           builder: (context, addressState) {
             return CustomElevatedButton(
               text: checkoutState is CheckoutLoading
-                  ? "Placing..."
-                  : "Place order",
+                  ? local.placing
+                  : local.placeOrder,
               onPressed: checkoutState is CheckoutLoading
                   ? null
                   : () {

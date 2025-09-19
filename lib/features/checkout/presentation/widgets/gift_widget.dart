@@ -30,7 +30,7 @@ class GiftSection extends StatelessWidget {
               activeTrackColor: Colors.pink,
             ),
             const SizedBox(width: 10),
-            const Text('It is a gift', style: TextStyle(fontSize: 18)),
+            Text(local.itIsAGift, style: const TextStyle(fontSize: 18)),
           ],
         ).setHorizontalPadding(context, 0.05),
         const SizedBox(height: 10),

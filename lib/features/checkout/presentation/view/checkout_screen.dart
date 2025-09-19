@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../address/presentation/view_model/address_cubit.dart';
@@ -37,6 +38,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
@@ -101,7 +103,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     selectedPayment: selectedPayment,
                     onChanged: (val) => setState(() => selectedPayment = val),
                   ),
-                  if (selectedPayment == "Credit card")
+                  if (selectedPayment == local.creditCard)
                     GiftSection(
                       enabled: _enabledGift,
                       onChanged: (val) => setState(() => _enabledGift = val),

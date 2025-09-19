@@ -628,4 +628,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get completePayment => 'Complete Payment';
+
+  @override
+  String get cashOnDelivery => 'Cash on delivery';
+
+  @override
+  String get creditCard => 'Credit card';
+
+  @override
+  String get placing => 'Placing...';
 }

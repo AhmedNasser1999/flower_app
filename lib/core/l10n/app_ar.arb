@@ -205,5 +205,9 @@
   "enterName": "أدخل الاسم",
   "name": "الاسم",
   "enterPhone": "أدخل رقم الهاتف",
-  "completePayment": "إتمام الدفع"
+  "completePayment": "إتمام الدفع",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "creditCard": "بطاقة ائتمان",
+  "placing": "جارٍ التنفيذ..."
+
 }
