@@ -65,195 +65,192 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   @override
   Widget build(BuildContext context) {
     final local = AppLocalizations.of(context);
-    return BlocProvider(
-      create: (context) => getIt<AddressCubit>(),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          leading: IconButton(
-            icon: Image.asset(AppImages.arrowBack),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          backgroundColor: Colors.white,
-          title: Text(
-            _isEditMode ? local!.editAddress : local!.addAddress,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          centerTitle: false,
-        ),
-        body: BlocConsumer<AddressCubit, AddressState>(
-          listener: (context, state) {
-            if (state is AddressError) {
-              log(state.message);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(local.error),
-                  duration: const Duration(seconds: 2),
-                  backgroundColor: AppColors.red,
-                  behavior: SnackBarBehavior.fixed,
-                ),
-              );
-            } else if (state is AddressLoaded) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.response.message),
-                  duration: const Duration(seconds: 2),
-                  backgroundColor: AppColors.green,
-                  padding: EdgeInsets.all(16),
-                ),
-              );
-              Navigator.pop(context);
-            }
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(AppImages.arrowBack),
+          onPressed: () {
+            Navigator.pop(context);
           },
-          builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Form(
-                key: _formKey,
-                child: ListView(
-                  children: [
-                    MapView(
-                      onLocationSelected: (LatLng latLng) {
-                        setState(() {
-                          _selectedLocation = latLng;
-                          latController.text = latLng.latitude.toString();
-                          longController.text = latLng.longitude.toString();
-                        });
-                      },
-                      onAddressFetched: (String address) {
-                        streetController.text = address;
-                      },
-                      initialLocation: _isEditMode && _selectedLocation != null
-                          ? _selectedLocation
-                          : null,
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextFormField(
-                      controller: streetController,
-                      label: local.address,
-                      hint: local.addressHint,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return local.addressRequired;
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextFormField(
-                      controller: phoneController,
-                      label: local.phoneNumber,
-                      hint: local.phoneHint,
-                      keyboardType: TextInputType.phone,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return local.phoneRequired;
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextFormField(
-                      controller: recipientController,
-                      label: local.recipientName,
-                      hint: local.recipientHint,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return local.recipientRequired;
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextFormField(
-                            controller: cityController,
-                            label: local.city,
-                            hint: local.cityHint,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return local.cityRequired;
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: CustomTextFormField(
-                            controller: areaController,
-                            label: local.area,
-                            hint: local.areaHint,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    state is AddressLoading
-                        ? Center(
-                            child: const CircularProgressIndicator(
-                            color: AppColors.pink,
-                            strokeWidth: 2,
-                          ))
-                        : ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                if (_selectedLocation == null) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(local.selectLocation),
-                                    ),
-                                  );
-                                  return;
-                                }
-
-                                final addressRequest = AddressRequest(
-                                  id: _isEditMode
-                                      ? widget.addressToEdit!.id
-                                      : null,
-                                  street: streetController.text,
-                                  phone: phoneController.text,
-                                  city: cityController.text,
-                                  lat: latController.text,
-                                  long: longController.text,
-                                  recipientName: recipientController.text,
-                                );
-
-                                if (_isEditMode) {
-                                  context.read<AddressCubit>().updateAddress(
-                                        widget.addressToEdit!.id,
-                                        addressRequest,
-                                      );
-                                } else {
-                                  context
-                                      .read<AddressCubit>()
-                                      .addAddress(addressRequest);
-                                }
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.pink,
-                              foregroundColor: Colors.white,
-                              minimumSize: const Size(double.infinity, 50),
-                            ),
-                            child: Text(_isEditMode
-                                ? local.updateAddress
-                                : local.saveAddress),
-                          ),
-                  ],
-                ),
+        ),
+        backgroundColor: Colors.white,
+        title: Text(
+          _isEditMode ? local!.editAddress : local!.addAddress,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        centerTitle: false,
+      ),
+      body: BlocConsumer<AddressCubit, AddressState>(
+        listener: (context, state) {
+          if (state is AddressError) {
+            log(state.message);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(local.error),
+                duration: const Duration(seconds: 2),
+                backgroundColor: AppColors.red,
+                behavior: SnackBarBehavior.fixed,
               ),
             );
-          },
-        ),
+          } else if (state is AddressLoaded) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.response.message),
+                duration: const Duration(seconds: 2),
+                backgroundColor: AppColors.green,
+                padding: EdgeInsets.all(16),
+              ),
+            );
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                children: [
+                  MapView(
+                    onLocationSelected: (LatLng latLng) {
+                      setState(() {
+                        _selectedLocation = latLng;
+                        latController.text = latLng.latitude.toString();
+                        longController.text = latLng.longitude.toString();
+                      });
+                    },
+                    onAddressFetched: (String address) {
+                      streetController.text = address;
+                    },
+                    initialLocation: _isEditMode && _selectedLocation != null
+                        ? _selectedLocation
+                        : null,
+                  ),
+                  const SizedBox(height: 16),
+                  CustomTextFormField(
+                    controller: streetController,
+                    label: local.address,
+                    hint: local.addressHint,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return local.addressRequired;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  CustomTextFormField(
+                    controller: phoneController,
+                    label: local.phoneNumber,
+                    hint: local.phoneHint,
+                    keyboardType: TextInputType.phone,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return local.phoneRequired;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  CustomTextFormField(
+                    controller: recipientController,
+                    label: local.recipientName,
+                    hint: local.recipientHint,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return local.recipientRequired;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextFormField(
+                          controller: cityController,
+                          label: local.city,
+                          hint: local.cityHint,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return local.cityRequired;
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: CustomTextFormField(
+                          controller: areaController,
+                          label: local.area,
+                          hint: local.areaHint,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  state is AddressLoading
+                      ? Center(
+                          child: const CircularProgressIndicator(
+                          color: AppColors.pink,
+                          strokeWidth: 2,
+                        ))
+                      : ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              if (_selectedLocation == null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(local.selectLocation),
+                                  ),
+                                );
+                                return;
+                              }
+
+                              final addressRequest = AddressRequest(
+                                id: _isEditMode
+                                    ? widget.addressToEdit!.id
+                                    : null,
+                                street: streetController.text,
+                                phone: phoneController.text,
+                                city: cityController.text,
+                                lat: latController.text,
+                                long: longController.text,
+                                recipientName: recipientController.text,
+                              );
+
+                              if (_isEditMode) {
+                                context.read<AddressCubit>().updateAddress(
+                                      widget.addressToEdit!.id,
+                                      addressRequest,
+                                    );
+                              } else {
+                                context
+                                    .read<AddressCubit>()
+                                    .addAddress(addressRequest);
+                              }
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.pink,
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size(double.infinity, 50),
+                          ),
+                          child: Text(_isEditMode
+                              ? local.updateAddress
+                              : local.saveAddress),
+                        ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

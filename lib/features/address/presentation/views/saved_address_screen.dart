@@ -22,8 +22,10 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AddressCubit>().getAddresses();
-  }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AddressCubit>().getAddresses();
+    });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -137,14 +139,17 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                                 _deleteAddress(context, address.id);
                               },
                               onEdit: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AddAddressScreen(
-                                        addressToEdit: address),
-                                  ),
-                                );
-                              },
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BlocProvider.value(
+                                        value: context.read<AddressCubit>(),
+                                        child: AddAddressScreen(addressToEdit: address),
+                                      ),
+                                    ),
+                                  );
+                                }
+
                             ),
                           ),
                         );
@@ -230,7 +235,8 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
               Navigator.pop(context);
               context.read<AddressCubit>().deleteAddress(addressId);
               Future.delayed(const Duration(milliseconds: 500), () {
-                context.read<AddressCubit>().getAddresses();
+                if(!mounted){
+                context.read<AddressCubit>().getAddresses();}
               });
             },
             child: Text(local.delete,
