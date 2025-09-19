@@ -15,9 +15,9 @@ A comprehensive Flutter application for flower delivery services with modern UI/
 | ![Categories](assets/screenshots/categories.png) | ![Home](assets/screenshots/home.png) | ![Profile](assets/screenshots/profile.png) |
 
 ### Product Details
-| Product Details Screen                                     |
-|------------------------------------------------------------|
-| ![Product Details](assets/screenshots/product_details.png) |
+| Product Details Screen |
+|------------------------|
+| <img src="assets/screenshots/product_details.png" width="300" alt="Product Details"> |
 
 ## Project Structure
 
