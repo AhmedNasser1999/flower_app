@@ -118,16 +118,21 @@ class ChangePasswordScreen extends StatelessWidget {
                         ),
                       )
                     : CustomElevatedButton(
-                        text: locale.updateText,
-                        onPressed: formKey.currentState != null &&
-                                formKey.currentState!.validate()
-                            ? () {
-                                viewModel.changePassword();
-                                Navigator.pushNamed(
-                                    context, AppRoutes.editProfile);
-                              }
-                            : null,
-                      )
+                  text: locale.updateText,
+                  onPressed: formKey.currentState != null &&
+                      formKey.currentState!.validate()
+                      ? () async {
+                    await viewModel.changePassword();
+                    Navigator.pop(context);
+                    Future.delayed(const Duration(milliseconds: 500), () {
+                      viewModel.currentPasswordController.clear();
+                      viewModel.newPasswordController.clear();
+                      viewModel.confirmPasswordController.clear();
+                    });
+                  }
+                      : null,
+                ),
+
               ],
             ).setHorizontalPadding(context, 0.05),
           ),
