@@ -124,21 +124,28 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                         final address = addresses[index];
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 12),
-                          child: AddressWidget(
-                            city: address.city,
-                            street: address.street,
-                            onDelete: () {
-                              _deleteAddress(context, address.id);
+                          child: GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<AddressCubit>()
+                                  .selectAddress(address.id);
                             },
-                            onEdit: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      AddAddressScreen(addressToEdit: address),
-                                ),
-                              );
-                            },
+                            child: AddressWidget(
+                              city: address.city,
+                              street: address.street,
+                              onDelete: () {
+                                _deleteAddress(context, address.id);
+                              },
+                              onEdit: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddAddressScreen(
+                                        addressToEdit: address),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         );
                       },

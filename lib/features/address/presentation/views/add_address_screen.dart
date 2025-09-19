@@ -109,7 +109,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 ),
               );
               Navigator.pop(context);
-              Navigator.pop(context);
             }
           },
           builder: (context, state) {

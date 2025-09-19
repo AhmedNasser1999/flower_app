@@ -39,7 +39,7 @@ class ResetPasswordForm extends StatelessWidget {
           ),
           const SizedBox(height: 35),
           state is ResetPasswordLoadingState
-              ? SizedBox(
+              ? const SizedBox(
                   height: 50,
                   width: 50,
                   child: LoadingIndicator(

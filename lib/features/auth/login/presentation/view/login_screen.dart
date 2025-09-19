@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (_) => Center(
+              builder: (_) => const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.transparent,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Text(
                       'Loading',
                       style: TextStyle(

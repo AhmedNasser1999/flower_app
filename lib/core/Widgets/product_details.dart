@@ -64,7 +64,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: SmoothPageIndicator(
                     controller: pageViewController,
                     count: widget.product.images.length,
-                    effect: ScrollingDotsEffect(
+                    effect: const ScrollingDotsEffect(
                       dotColor: AppColors.white,
                       activeDotColor: AppColors.pink,
                       dotHeight: 10.0,
@@ -100,7 +100,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(
+                  const Text(
                     'All prices include tax',
                     style: TextStyle(
                       fontSize: 18,
@@ -111,7 +111,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(height: 10),
                   Text(
                     widget.product.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -126,7 +126,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Text(
                     widget.product.description,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
                       color: AppColors.grey,
@@ -141,7 +141,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
+                  const Text(
                     "Pink roses: 15",
                     style: TextStyle(
                       fontSize: 18,
@@ -149,7 +149,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       color: AppColors.grey,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "White wraps: 10",
                     style: TextStyle(
                       fontSize: 18,

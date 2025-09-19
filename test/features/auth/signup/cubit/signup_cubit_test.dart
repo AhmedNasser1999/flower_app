@@ -31,7 +31,6 @@ void main() {
   test('initial state is SignupInitialState', () {
     final signupCubit = SignupCubit(
       signupUsecase: mockSignupUsecase,
-      signUpFormKey: mockFormKey,
     );
     expect(signupCubit.state, isA<SignupInitialState>());
     signupCubit.close();
@@ -59,7 +58,6 @@ void main() {
             .thenAnswer((_) async => registerResponse);
         return SignupCubit(
           signupUsecase: mockSignupUsecase,
-          signUpFormKey: mockFormKey,
         );
       },
       act: (cubit) => cubit.signUp(
@@ -95,7 +93,6 @@ void main() {
             .thenThrow(Exception('Failed to sign up'));
         return SignupCubit(
           signupUsecase: mockSignupUsecase,
-          signUpFormKey: mockFormKey,
         );
       },
       act: (cubit) => cubit.signUp(

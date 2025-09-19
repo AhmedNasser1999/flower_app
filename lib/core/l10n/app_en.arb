@@ -194,5 +194,16 @@
   "noProductsForCategory": "No products found for this category",
   "noProductsForOccasion": "No products found for this occasion",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "deliveryAddress": "Delivery address",
+  "addNew": "Add new",
+  "deliveryTime": "Delivery time",
+  "schedule": "Schedule",
+  "instant": "Instant",
+  "arrivesBy": " Arrive by 03 Sep 2024, 11:00 AM",
+  "itIsAGift": "It is a gift",
+  "enterName": "Enter the name",
+  "name": "Name",
+  "enterPhone": "Enter the phone number",
+  "completePayment": "Complete Payment"
 }

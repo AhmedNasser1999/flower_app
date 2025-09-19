@@ -167,7 +167,6 @@ class _CartScreenState extends State<CartScreen> {
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
         String addressText = local.selectAnAddress;
-
         if (state is AddressLoaded) {
           if (state.response.addresses.isNotEmpty) {
             final address = state.response.addresses.first;
@@ -258,6 +257,7 @@ class _CartScreenState extends State<CartScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             local?.yourCartIsEmpty ?? "Your cart is empty",
             style: const TextStyle(
@@ -326,6 +326,8 @@ class _CartScreenState extends State<CartScreen> {
       final cart = state.cartResponse.cart;
       if (cart.cartItems.isNotEmpty) {
         log('Proceeding to checkout with ${cart.cartItems.length} items');
+        Navigator.pushNamed(context, AppRoutes.checkout,
+            arguments: state.cartResponse.cart.totalPrice);
       }
     }
   }

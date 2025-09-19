@@ -101,7 +101,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     ],
                   ),
                   state is VerifyCodeLoadingStates
-                      ? SizedBox(
+                      ? const SizedBox(
                           height: 50,
                           width: 50,
                           child: LoadingIndicator(
