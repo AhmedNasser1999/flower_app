@@ -108,9 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(
           create: (_) => getIt<HomeCubit>()..initializeHomeData(),
         ),
-        BlocProvider(
-          create: (_) => getIt<AddressCubit>()..getAddresses(),
+        BlocProvider.value(
+          value: context.read<AddressCubit>()..getAddresses(),
         ),
+
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(

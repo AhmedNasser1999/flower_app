@@ -59,15 +59,8 @@ class OrderInfo extends StatelessWidget {
                   context,
                   AppRoutes.savedAddressScreen,
                 );
-
                 if (result == true) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(local.addressChanged),
-                      backgroundColor: AppColors.pink,
-                      duration: const Duration(seconds: 2),
-                    ),
-                  );
+                  context.read<AddressCubit>().getAddresses();
                 }
               },
               child: SvgPicture.asset(AppIcons.arrowDownIcon,
