@@ -27,15 +27,24 @@ class EditProfileScreen extends StatelessWidget {
     EditProfileViewModel cubit,
   ) async {
     final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
-
-    if (picked != null) {
-      final file = File(picked.path);
-      cubit.uploadPhoto(file);
+    try {
+      final picked = await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 90,
+      );
+      if (picked != null) {
+        final file = File(picked.path);
+        cubit.uploadPhoto(file);
+      }
+    } catch (e) {
+      debugPrint("❌ Failed to pick image: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Unsupported image type. Please pick JPG or PNG.")),
+      );
     }
   }
-
-  @override
+    @override
   Widget build(BuildContext context) {
     bool isEdit = false;
     var local = AppLocalizations.of(context)!;
