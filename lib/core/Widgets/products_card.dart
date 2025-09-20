@@ -18,6 +18,7 @@ class ProductCard extends StatelessWidget {
   final int productPriceDiscount;
   final int priceDiscount;
   final VoidCallback? onTap;
+  final int quantity;
 
   const ProductCard({
     super.key,
@@ -28,15 +29,17 @@ class ProductCard extends StatelessWidget {
     required this.priceDiscount,
     required this.productTitle,
     this.onTap,
+    required this.quantity,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
+    final isOutOfStock = quantity <= 0;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: isOutOfStock ? null : onTap,
       child: Card(
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
         color: AppColors.white,
@@ -44,133 +47,209 @@ class ProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Image
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColors.lightPink,
-                ),
-                child: Image.network(
-                  productImg,
-                  height: 120,
-                  width: double.infinity,
-                  fit: BoxFit.fitHeight,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.broken_image,
-                        size: 50, color: Colors.grey);
-                  },
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return const Center(
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: LoadingIndicator(
-                          indicatorType: Indicator.lineScalePulseOut,
-                          colors: [AppColors.pink],
-                          strokeWidth: 2,
-                          backgroundColor: Colors.transparent,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 8),
-
-              // Title
-              Text(
-                productTitle,
-                style: theme.textTheme.bodyMedium,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 4),
-
-              // Price
-              productPriceDiscount == 0
-                  ? Text(
-                      "EGP $productPrice",
-                      style: theme.textTheme.bodyMedium,
-                    )
-                  : Row(
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColors.lightPink,
+                    ),
+                    child: Stack(
                       children: [
-                        Text(
-                          "EGP $productPriceDiscount",
-                          style: theme.textTheme.bodyMedium,
+                        Image.network(
+                          productImg,
+                          height: 120,
+                          width: double.infinity,
+                          fit: BoxFit.fitHeight,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              height: 120,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: AppColors.grey.withValues(alpha: 0.3),
+                              ),
+                              child: const Icon(Icons.broken_image,
+                                  size: 50, color: Colors.grey),
+                            );
+                          },
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return const Center(
+                              child: SizedBox(
+                                height: 50,
+                                width: 50,
+                                child: LoadingIndicator(
+                                  indicatorType: Indicator.lineScalePulseOut,
+                                  colors: [AppColors.pink],
+                                  strokeWidth: 2,
+                                  backgroundColor: Colors.transparent,
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                        const SizedBox(width: 2),
-                        Text(
-                          "EGP$productPrice",
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.grey,
-                            fontSize: 11,
-                            decoration: TextDecoration.lineThrough,
+                        if (isOutOfStock)
+                          Container(
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.black.withValues(alpha: 0.6),
+                            ),
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 6),
+                                decoration: BoxDecoration(
+                                  color: Colors.red.withValues(alpha: 0.9),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Text(
+                                  local.outOfStock,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          "$priceDiscount%",
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.green,
-                            fontSize: 11,
-                          ),
-                        ),
                       ],
                     ),
-              const SizedBox(height: 10),
+                  ),
+                  const SizedBox(height: 8),
 
-              // Add to Cart Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.pink,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
+                  // Title
+                  Text(
+                    productTitle,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: isOutOfStock ? Colors.grey : null,
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  onPressed: () async {
-                    final isGuest = await GuestService.isGuest();
+                  const SizedBox(height: 4),
 
-                    if (isGuest) {
-                      showDialog(
-                        context: context,
-                        builder: (_) => const LoginRequiredDialog(),
-                      );
-                      return;
-                    } else {
-                      context.read<CartCubit>().addToCart(
-                            productId,
-                            1,
-                            context,
-                          );
-                    }
-                  },
-                  icon: SvgPicture.asset(
-                    AppIcons.cartIcon,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.white,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  label: Text(
-                    local.addToCartBtn,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                  // Price
+                  productPriceDiscount == 0
+                      ? Text(
+                          "EGP $productPrice",
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: isOutOfStock ? Colors.grey : null,
+                          ),
+                        )
+                      : Row(
+                          children: [
+                            Text(
+                              "EGP $productPriceDiscount",
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: isOutOfStock ? Colors.grey : null,
+                              ),
+                            ),
+                            const SizedBox(width: 2),
+                            Text(
+                              "EGP$productPrice",
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: Colors.grey,
+                                fontSize: 11,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                            const SizedBox(width: 2),
+                            Text(
+                              "$priceDiscount%",
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color:
+                                    isOutOfStock ? Colors.grey : Colors.green,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                  const SizedBox(height: 10),
+
+                  _buildBottomSection(context, local, isOutOfStock),
+                ],
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomSection(
+      BuildContext context, AppLocalizations local, bool isOutOfStock) {
+    if (isOutOfStock) {
+      return Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.grey.withValues(alpha: 0.2),
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Center(
+          child: Text(
+            local.outOfStock,
+            style: const TextStyle(
+              color: Colors.red,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.pink,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          elevation: 2,
+        ),
+        onPressed: isOutOfStock
+            ? null
+            : () async {
+                final isGuest = await GuestService.isGuest();
+
+                if (isGuest) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => const LoginRequiredDialog(),
+                  );
+                  return;
+                } else {
+                  context.read<CartCubit>().addToCart(
+                        productId,
+                        1,
+                        context,
+                      );
+                }
+              },
+        icon: SvgPicture.asset(
+          AppIcons.cartIcon,
+          colorFilter: const ColorFilter.mode(
+            AppColors.white,
+            BlendMode.srcIn,
+          ),
+          height: 18,
+        ),
+        label: Text(
+          local.addToCartBtn,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
           ),
         ),
       ),

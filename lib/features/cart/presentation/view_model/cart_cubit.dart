@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:flower_app/core/common/widgets/custom_snackbar_widget.dart';
+import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -30,60 +34,103 @@ class CartCubit extends Cubit<CartState> {
     int quantity,
     BuildContext context,
   ) async {
+    var local = AppLocalizations.of(context)!;
     emit(CartLoading());
     try {
       final response = await _addToCartUseCase(productId, quantity);
-      emit(CartLoaded(response));
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Product added to cart')));
-    } catch (e) {
-      emit(CartError(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('This item is sold out')),
-      );
+      if (!isClosed) {
+        emit(CartLoaded(response));
+        showCustomSnackBar(context, local.productAddedToCart, isError: false);
+        Navigator.pop(context);
+        await _refreshCart();
+      }
+    } catch (e, s) {
+      if (!isClosed) {
+        emit(CartError(e.toString()));
+        print(s);
+        showCustomSnackBar(context, local.thisItemIsSoldOut);
+      }
     }
   }
 
   Future<void> getCart() async {
+    if (isClosed) return;
     emit(CartLoading());
     try {
       final response = await _getCartUseCase();
-      emit(CartLoaded(response));
+      if (!isClosed) {
+        emit(CartLoaded(response));
+      }
     } catch (e) {
-      emit(CartError(e.toString()));
+      if (!isClosed) {
+        emit(CartError(e.toString()));
+      }
     }
   }
 
-  Future<void> removeFromCart(String itemId) async {
+  Future<void> removeFromCart(String itemId, BuildContext context) async {
+    var local = AppLocalizations.of(context)!;
+    if (isClosed) return;
     emit(CartLoading());
     try {
       final response = await _removeFromCartUseCase(itemId);
-      emit(CartLoaded(response));
+      if (!isClosed) {
+        // First emit the immediate response
+        emit(CartLoaded(response));
+        showCustomSnackBar(context, local.itemRemovedFromCart, isError: false);
+        await _refreshCart();
+      }
     } catch (e) {
-      emit(CartError(e.toString()));
+      if (!isClosed) {
+        emit(CartError(e.toString()));
+      }
     }
   }
 
   Future<void> updateCartItem(String itemId, int quantity) async {
+    if (isClosed) return;
     emit(CartLoading());
     try {
       final response = await _updateCartItemUseCase(itemId, quantity);
-      emit(CartLoaded(response));
+      if (!isClosed) {
+        emit(CartLoaded(response));
+        await _refreshCart();
+      }
     } catch (e) {
-      emit(CartError(e.toString()));
+      if (!isClosed) {
+        emit(CartError(e.toString()));
+      }
     }
   }
 
   Future<void> clearCart(BuildContext context) async {
+    var local = AppLocalizations.of(context)!;
+    if (isClosed) return;
     emit(CartLoading());
     try {
       final response = await _clearCartUseCase();
-      emit(CartLoaded(response));
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Cart cleared successfully")),
-      );
+      if (!isClosed) {
+        emit(CartLoaded(response));
+        await _refreshCart();
+      }
     } catch (e) {
-      emit(CartError(e.toString()));
+      if (!isClosed) {
+        emit(CartError(e.toString()));
+      }
+    }
+  }
+
+  Future<void> _refreshCart() async {
+    if (isClosed) return;
+    try {
+      final response = await _getCartUseCase();
+      if (!isClosed) {
+        emit(CartLoaded(response));
+      }
+    } catch (e) {
+      if (!isClosed) {
+        log('Error refreshing cart: $e');
+      }
     }
   }
 }

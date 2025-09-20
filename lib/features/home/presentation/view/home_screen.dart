@@ -108,70 +108,76 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(
           create: (_) => getIt<HomeCubit>()..initializeHomeData(),
         ),
-        BlocProvider(
-          create: (_) => getIt<AddressCubit>()..getAddresses(),
+        BlocProvider.value(
+          value: context.read<AddressCubit>()..getAddresses(),
         ),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
           backgroundColor: AppColors.white,
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AppLogo(),
-                  const SizedBox(height: 10.0),
-                  BlocBuilder<AddressCubit, AddressState>(
-                    builder: (context, addressState) {
-                      if (addressState is AddressLoaded) {
-                        final addresses = addressState.response.addresses;
-                        if (addresses.isNotEmpty) {
-                          _selectedAddress = addresses.first;
-                          _currentAddress =
-                              '${_selectedAddress?.street}, ${_selectedAddress?.city}';
-                        } else {
-                          _currentAddress = local!.noAddresses;
+          body: RefreshIndicator(
+            color: AppColors.pink,
+            backgroundColor: AppColors.white,
+            onRefresh: () async {
+              await context.read<HomeCubit>().initializeHomeData();
+            },
+            child: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const AppLogo(),
+                    const SizedBox(height: 10.0),
+                    BlocBuilder<AddressCubit, AddressState>(
+                      builder: (context, addressState) {
+                        if (addressState is AddressLoaded) {
+                          final addresses = addressState.response.addresses;
+                          if (addresses.isNotEmpty) {
+                            _selectedAddress = addresses.first;
+                            _currentAddress =
+                                '${_selectedAddress?.street}, ${_selectedAddress?.city}';
+                          } else {
+                            _currentAddress = local!.noAddresses;
+                          }
+                        } else if (addressState is AddressError) {
+                          _currentAddress = 'something went wrong....';
                         }
-                      } else if (addressState is AddressError) {
-                        _currentAddress = 'something went wrong....';
-                      }
 
-                      return OrderInfo(
-                        address: _currentAddress,
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  SectionHeader(
-                    title: local!.categories,
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.categoriesScreen);
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  CategoriesSection(state: state),
-                  const SizedBox(height: 10.0),
-                  SectionHeader(
-                    title: local.bestSeller,
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.mostSellingProducts);
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  ProductsSection(state: state),
-                  const SizedBox(height: 7.0),
-                  SectionHeader(
-                    title: local.occasion,
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.occasions);
-                    },
-                  ),
-                  const SizedBox(height: 5.0),
-                  OccasionsSection(state: state),
-                ],
-              ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
+                        return OrderInfo();
+                      },
+                    ),
+                    const SizedBox(height: 10.0),
+                    SectionHeader(
+                      title: local!.categories,
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.categoriesScreen);
+                      },
+                    ),
+                    const SizedBox(height: 10.0),
+                    CategoriesSection(state: state),
+                    const SizedBox(height: 10.0),
+                    SectionHeader(
+                      title: local.bestSeller,
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.mostSellingProducts);
+                      },
+                    ),
+                    const SizedBox(height: 10.0),
+                    ProductsSection(state: state),
+                    const SizedBox(height: 7.0),
+                    SectionHeader(
+                      title: local.occasion,
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.occasions);
+                      },
+                    ),
+                    const SizedBox(height: 5.0),
+                    OccasionsSection(state: state),
+                  ],
+                ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
+              ),
             ),
           ),
         ),

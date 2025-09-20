@@ -628,4 +628,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get completePayment => 'Complete Payment';
+
+  @override
+  String get cashOnDelivery => 'Cash on delivery';
+
+  @override
+  String get creditCard => 'Credit card';
+
+  @override
+  String get placing => 'Placing...';
+
+  @override
+  String get clearCartTitle => 'Clear Cart';
+
+  @override
+  String get clearCartMessage => 'Are you sure you want to clear all items?';
+
+  @override
+  String get addressChanged => 'Delivery address changed successfully';
+
+  @override
+  String get warning => 'Warning';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get productAddedToCart => 'Product added to cart';
+
+  @override
+  String get thisItemIsSoldOut => 'This item is sold out';
+
+  @override
+  String get outOfStock => 'Out of Stock';
+
+  @override
+  String get addressAddedSuccessfully => 'Address added Successfully';
+
+  @override
+  String get addressUpdatedSuccessfully => 'Address updated Successfully';
+
+  @override
+  String get addressDeletedSuccessfully => 'Address deleted Successfully';
+
+  @override
+  String get cartClearedSuccessfully => 'Cart cleared successfully';
+
+  @override
+  String get profilePhotoUpdatedSuccessfully => 'Profile photo updated successfully';
 }

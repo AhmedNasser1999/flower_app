@@ -47,6 +47,9 @@ dependencies:
   latlong2: ^0.9.1
   location: ^8.0.1
   webview_flutter:
+  fluttertoast: ^8.2.14
+  another_flushbar: ^1.12.32
+  get: ^4.7.2
 
 dev_dependencies:
   bloc_test: ^10.0.0

@@ -628,4 +628,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get completePayment => 'إتمام الدفع';
+
+  @override
+  String get cashOnDelivery => 'الدفع عند الاستلام';
+
+  @override
+  String get creditCard => 'بطاقة ائتمان';
+
+  @override
+  String get placing => 'جارٍ التنفيذ...';
+
+  @override
+  String get clearCartTitle => 'مسح السلة';
+
+  @override
+  String get clearCartMessage => 'هل أنت متأكد أنك تريد مسح كل العناصر؟';
+
+  @override
+  String get addressChanged => 'تم تغيير عنوان التوصيل بنجاح';
+
+  @override
+  String get warning => 'تحذير';
+
+  @override
+  String get success => 'تمت بنجاح';
+
+  @override
+  String get productAddedToCart => 'تم إضافة المنتج بنجاح';
+
+  @override
+  String get thisItemIsSoldOut => 'لقد نفذت الكمية من هذا المنتج';
+
+  @override
+  String get outOfStock => 'نفذ من الخزون';
+
+  @override
+  String get addressAddedSuccessfully => 'تم إضافة العنوان بنجاح';
+
+  @override
+  String get addressUpdatedSuccessfully => 'تم تحديث العنوان بنجاح';
+
+  @override
+  String get addressDeletedSuccessfully => 'تم إلغاء العنوان بنجاح';
+
+  @override
+  String get cartClearedSuccessfully => 'تم مسح عربة التسوق بالكامل';
+
+  @override
+  String get profilePhotoUpdatedSuccessfully => 'تم تحديث صورة الهوية بنجاح';
 }

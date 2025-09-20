@@ -1336,6 +1336,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Complete Payment'**
   String get completePayment;
+
+  /// No description provided for @cashOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash on delivery'**
+  String get cashOnDelivery;
+
+  /// No description provided for @creditCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit card'**
+  String get creditCard;
+
+  /// No description provided for @placing.
+  ///
+  /// In en, this message translates to:
+  /// **'Placing...'**
+  String get placing;
+
+  /// No description provided for @clearCartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Cart'**
+  String get clearCartTitle;
+
+  /// No description provided for @clearCartMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to clear all items?'**
+  String get clearCartMessage;
+
+  /// No description provided for @addressChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery address changed successfully'**
+  String get addressChanged;
+
+  /// No description provided for @warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get warning;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @productAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added to cart'**
+  String get productAddedToCart;
+
+  /// No description provided for @thisItemIsSoldOut.
+  ///
+  /// In en, this message translates to:
+  /// **'This item is sold out'**
+  String get thisItemIsSoldOut;
+
+  /// No description provided for @outOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outOfStock;
+
+  /// No description provided for @addressAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address added Successfully'**
+  String get addressAddedSuccessfully;
+
+  /// No description provided for @addressUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address updated Successfully'**
+  String get addressUpdatedSuccessfully;
+
+  /// No description provided for @addressDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address deleted Successfully'**
+  String get addressDeletedSuccessfully;
+
+  /// No description provided for @cartClearedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart cleared successfully'**
+  String get cartClearedSuccessfully;
+
+  /// No description provided for @profilePhotoUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile photo updated successfully'**
+  String get profilePhotoUpdatedSuccessfully;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

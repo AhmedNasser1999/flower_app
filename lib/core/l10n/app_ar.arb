@@ -205,5 +205,21 @@
   "enterName": "أدخل الاسم",
   "name": "الاسم",
   "enterPhone": "أدخل رقم الهاتف",
-  "completePayment": "إتمام الدفع"
+  "completePayment": "إتمام الدفع",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "creditCard": "بطاقة ائتمان",
+  "placing": "جارٍ التنفيذ...",
+  "clearCartTitle": "مسح السلة",
+  "clearCartMessage": "هل أنت متأكد أنك تريد مسح كل العناصر؟",
+  "addressChanged": "تم تغيير عنوان التوصيل بنجاح",
+  "warning": "تحذير",
+  "success": "تمت بنجاح",
+  "productAddedToCart": "تم إضافة المنتج بنجاح",
+  "thisItemIsSoldOut": "لقد نفذت الكمية من هذا المنتج",
+  "outOfStock": "نفذ من الخزون",
+  "addressAddedSuccessfully": "تم إضافة العنوان بنجاح",
+  "addressUpdatedSuccessfully": "تم تحديث العنوان بنجاح",
+  "addressDeletedSuccessfully": "تم إلغاء العنوان بنجاح",
+  "cartClearedSuccessfully": "تم مسح عربة التسوق بالكامل",
+  "profilePhotoUpdatedSuccessfully": "تم تحديث صورة الهوية بنجاح"
 }

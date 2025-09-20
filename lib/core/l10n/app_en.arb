@@ -205,5 +205,21 @@
   "enterName": "Enter the name",
   "name": "Name",
   "enterPhone": "Enter the phone number",
-  "completePayment": "Complete Payment"
+  "completePayment": "Complete Payment",
+  "cashOnDelivery": "Cash on delivery",
+  "creditCard": "Credit card",
+  "placing": "Placing...",
+  "clearCartTitle": "Clear Cart",
+  "clearCartMessage": "Are you sure you want to clear all items?",
+  "addressChanged": "Delivery address changed successfully",
+  "warning": "Warning",
+  "success": "Success",
+  "productAddedToCart": "Product added to cart",
+  "thisItemIsSoldOut": "This item is sold out",
+  "outOfStock": "Out of Stock",
+  "addressAddedSuccessfully": "Address added Successfully",
+  "addressUpdatedSuccessfully": "Address updated Successfully",
+  "addressDeletedSuccessfully": "Address deleted Successfully",
+  "cartClearedSuccessfully": "Cart cleared successfully",
+  "profilePhotoUpdatedSuccessfully": "Profile photo updated successfully"
 }
