@@ -37,99 +37,101 @@ class ChangePasswordScreen extends StatelessWidget {
             onChanged: () {
               (context as Element).markNeedsBuild();
             },
-            child: Column(
-              children: [
-                const SizedBox(height: 60),
-                Row(
-                  children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset("assets/icons/arrow_back_icon.png")),
-                    const SizedBox(width: 20),
-                    Text(
-                      locale!.resetPassword,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Inter",
-                        fontSize: 22,
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 35),
-                CustomTextFormField(
-                  hint: locale.currentPassword,
-                  label: locale.currentPassword,
-                  controller: viewModel.currentPasswordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return locale.invalidPasswordMsg;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 25),
-                CustomTextFormField(
-                  hint: locale.newPassword,
-                  label: locale.newPassword,
-                  controller: viewModel.newPasswordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return locale.invalidPasswordMsg;
-                    } else if (!Validations.validatePassword(value)) {
-                      return locale.passwordValidationErrorMsg;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 25),
-                CustomTextFormField(
-                  hint: locale.confirmPassword,
-                  label: locale.confirmPassword,
-                  controller: viewModel.confirmPasswordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return locale.passwordErrorMatchingMsg;
-                    } else if (value != viewModel.newPasswordController.text) {
-                      return locale.passwordErrorMatchingMsg;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 50),
-                state is ChangePasswordLoading
-                    ? const Center(
-                        child: SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: LoadingIndicator(
-                            indicatorType: Indicator.lineScalePulseOut,
-                            colors: [AppColors.pink],
-                            strokeWidth: 2,
-                            backgroundColor: Colors.transparent,
-                          ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 60),
+                  Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Image.asset("assets/icons/arrow_back_icon.png")),
+                      const SizedBox(width: 20),
+                      Text(
+                        locale!.resetPassword,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Inter",
+                          fontSize: 22,
                         ),
                       )
-                    : CustomElevatedButton(
-                  text: locale.updateText,
-                  onPressed: formKey.currentState != null &&
-                      formKey.currentState!.validate()
-                      ? () async {
-                    await viewModel.changePassword();
-                    Navigator.pop(context);
-                    Future.delayed(const Duration(milliseconds: 500), () {
-                      viewModel.currentPasswordController.clear();
-                      viewModel.newPasswordController.clear();
-                      viewModel.confirmPasswordController.clear();
-                    });
-                  }
-                      : null,
-                ),
-
-              ],
-            ).setHorizontalPadding(context, 0.05),
+                    ],
+                  ),
+                  const SizedBox(height: 35),
+                  CustomTextFormField(
+                    hint: locale.currentPassword,
+                    label: locale.currentPassword,
+                    controller: viewModel.currentPasswordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return locale.invalidPasswordMsg;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 25),
+                  CustomTextFormField(
+                    hint: locale.newPassword,
+                    label: locale.newPassword,
+                    controller: viewModel.newPasswordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return locale.invalidPasswordMsg;
+                      } else if (!Validations.validatePassword(value)) {
+                        return locale.passwordValidationErrorMsg;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 25),
+                  CustomTextFormField(
+                    hint: locale.confirmPassword,
+                    label: locale.confirmPassword,
+                    controller: viewModel.confirmPasswordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return locale.passwordErrorMatchingMsg;
+                      } else if (value != viewModel.newPasswordController.text) {
+                        return locale.passwordErrorMatchingMsg;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 50),
+                  state is ChangePasswordLoading
+                      ? const Center(
+                          child: SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: LoadingIndicator(
+                              indicatorType: Indicator.lineScalePulseOut,
+                              colors: [AppColors.pink],
+                              strokeWidth: 2,
+                              backgroundColor: Colors.transparent,
+                            ),
+                          ),
+                        )
+                      : CustomElevatedButton(
+                    text: locale.updateText,
+                    onPressed: formKey.currentState != null &&
+                        formKey.currentState!.validate()
+                        ? () async {
+                      await viewModel.changePassword();
+                      Navigator.pop(context);
+                      Future.delayed(const Duration(milliseconds: 500), () {
+                        viewModel.currentPasswordController.clear();
+                        viewModel.newPasswordController.clear();
+                        viewModel.confirmPasswordController.clear();
+                      });
+                    }
+                        : null,
+                  ),
+              
+                ],
+              ).setHorizontalPadding(context, 0.05),
+            ),
           ),
         );
       },

@@ -1,8 +1,8 @@
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../address/presentation/view_model/address_cubit.dart';
 import '../viewmodel/checkout_cubit.dart';
@@ -46,10 +46,7 @@ class SummarySection extends StatelessWidget {
                       final selected = addressCubit.selectedAddress;
 
                       if (selected == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text("Please select address")),
-                        );
+                        showCustomSnackBar(context, "Please select address", isError: false);
                         return;
                       }
                       checkoutCubit.placeOrder(

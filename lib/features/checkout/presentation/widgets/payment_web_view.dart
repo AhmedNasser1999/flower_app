@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 
@@ -35,17 +36,13 @@ class _PaymentWebViewScreenState extends State<PaymentWebViewScreen> {
   }
 
   void _handlePaymentSuccess() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Payment successful ✅.")),
-    );
+    showCustomSnackBar(context, "Payment successful", isError: false);
     Navigator.pushNamedAndRemoveUntil(
         context, AppRoutes.dashboard, (route) => false);
   }
 
   void _handlePaymentFailure() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Payment failed.")),
-    );
+    showCustomSnackBar(context, "Payment failed", isError: true);
     Navigator.pop(context);
   }
 
