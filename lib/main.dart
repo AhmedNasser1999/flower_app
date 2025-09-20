@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
@@ -24,7 +23,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider<ProfileViewModel>(
-          create: (_) => getIt<ProfileViewModel>(),
+          create: (_) => getIt<ProfileViewModel>()..getProfile(),
         ),
         BlocProvider<LocalizationCubit>(
           create: (BuildContext context) =>

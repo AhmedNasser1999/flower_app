@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/core/errors/api_result.dart';
 import 'package:flower_app/features/auth/data/models/login_models/user_model.dart';
 import 'package:flower_app/features/profile/api/client/profile_api_client.dart';
@@ -17,13 +18,13 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_remote_datasource_impl_test.mocks.dart';
 
-@GenerateMocks([ProfileApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockProfileApiClient mockProfileApiClient;
+  late MockApiClient mockProfileApiClient;
   late ProfileRemoteDatasource datasource;
 
   setUp(() {
-    mockProfileApiClient = MockProfileApiClient();
+    mockProfileApiClient = MockApiClient();
     datasource = ProfileRemoteDatasourceImpl(apiClient: mockProfileApiClient);
   });
 

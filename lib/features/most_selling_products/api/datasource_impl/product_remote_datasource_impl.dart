@@ -2,11 +2,12 @@ import 'package:flower_app/features/most_selling_products/api/client/product_api
 import 'package:flower_app/features/most_selling_products/data/models/products_model.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/api/api_client.dart';
 import '../../data/datasource/product_remote_datasource.dart';
 
 @LazySingleton(as: ProductRemoteDataSource)
 class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
-  final ProductApiClient productApiClient;
+  final ApiClient productApiClient;
 
   ProductRemoteDataSourceImpl(this.productApiClient);
 

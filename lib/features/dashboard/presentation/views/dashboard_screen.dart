@@ -5,11 +5,9 @@ import 'package:flower_app/features/dashboard/presentation/widgets/custom_nav_ba
 import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/viewmodel/most_selling_products_viewmodel.dart';
 import 'package:flower_app/features/profile/presentation/view/profile_screen.dart';
-import 'package:flower_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/config/di.dart';
-import '../../../cart/presentation/view_model/cart_cubit.dart';
 import '../../../categories/presentation/view/categories_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -32,10 +30,7 @@ class DashboardScreen extends StatelessWidget {
         child: const CategoriesScreen(),
       ),
       const CartScreen(isFromNavBar: true),
-      BlocProvider(
-        create: (_) => getIt<ProfileViewModel>()..getProfile(),
-        child: const ProfileScreen(),
-      ),
+      const ProfileScreen(),
     ];
 
     return BlocProvider(

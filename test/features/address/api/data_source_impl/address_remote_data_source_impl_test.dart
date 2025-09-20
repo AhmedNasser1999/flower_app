@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/address/api/client/address_api_client.dart';
 import 'package:flower_app/features/address/api/data_source_impl/address_remote_data_source_impl.dart';
 import 'package:flower_app/features/address/domain/requests/address_request.dart';
@@ -9,13 +10,13 @@ import 'package:mockito/annotations.dart';
 
 import 'address_remote_data_source_impl_test.mocks.dart';
 
-@GenerateMocks([AddressApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockAddressApiClient mockAddressApiClient;
+  late MockApiClient mockAddressApiClient;
   late AddressRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockAddressApiClient = MockAddressApiClient();
+    mockAddressApiClient = MockApiClient();
     dataSource =
         AddressRemoteDataSourceImpl(addressApiClient: mockAddressApiClient);
   });

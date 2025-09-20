@@ -39,7 +39,7 @@ class EditProfileViewModel extends Cubit<EditProfileStates> {
   }
 
   Future<void> submitProfileUpdate() async {
-    emit(EditProfileInitialState());
+    emit(EditProfileLoadingState());
     final request = EditProfileRequestModel(
       firstName: firstnameController.text,
       lastName: lastnameController.text,

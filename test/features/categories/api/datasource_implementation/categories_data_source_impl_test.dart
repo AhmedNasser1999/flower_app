@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/categories/api/client/categories_api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -10,12 +11,12 @@ import 'package:flower_app/features/categories/data/models/categoryResponse_byId
 
 import 'categories_data_source_impl_test.mocks.dart';
 
-@GenerateMocks([CategoryApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockCategoryApiClient mockCategoryApiClient;
+  late MockApiClient mockCategoryApiClient;
 
   setUp(() {
-    mockCategoryApiClient = MockCategoryApiClient();
+    mockCategoryApiClient = MockApiClient();
   });
 
   group('CategoryApiClient', () {

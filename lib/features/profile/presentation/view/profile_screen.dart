@@ -96,6 +96,8 @@ class ProfileScreen extends StatelessWidget {
                         context, AppRoutes.editProfile,
                         arguments: profile);
                     if (updated == true) {
+                      // Clear cache and refresh profile data
+                      context.read<ProfileViewModel>().clearProfileCache();
                       context.read<ProfileViewModel>().getProfile();
                     }
                   },

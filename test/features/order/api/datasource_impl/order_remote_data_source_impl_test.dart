@@ -1,3 +1,4 @@
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/order/api/data_source_impl/order_remote_data_source_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -8,13 +9,13 @@ import 'package:flower_app/features/order/api/client/order_api_client.dart';
 
 import 'order_remote_data_source_impl_test.mocks.dart';
 
-@GenerateMocks([OrderApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockOrderApiClient mockOrderApiClient;
+  late MockApiClient mockOrderApiClient;
   late OrderRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockOrderApiClient = MockOrderApiClient();
+    mockOrderApiClient = MockApiClient();
     dataSource = OrderRemoteDataSourceImpl(mockOrderApiClient);
   });
 

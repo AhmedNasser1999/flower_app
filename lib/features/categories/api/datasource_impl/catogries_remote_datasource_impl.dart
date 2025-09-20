@@ -2,13 +2,14 @@ import 'package:flower_app/features/categories/data/models/categories_response.d
 import 'package:flower_app/features/categories/data/models/categoryResponse_byId_model.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/api/api_client.dart';
 import '../../data/datasource/categories_remote_datasource.dart';
 import '../client/categories_api_client.dart';
 
 @LazySingleton(as: GetCategoriesRemoteDataSource)
 class GetCategoriesRemoteDataSourceImpl
     implements GetCategoriesRemoteDataSource {
-  final CategoryApiClient _apiClient;
+  final ApiClient _apiClient;
 
   GetCategoriesRemoteDataSourceImpl(this._apiClient);
 

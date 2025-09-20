@@ -1,5 +1,6 @@
 // test/features/occasion/data/datasource/occasion_remote_data_source_impl_test.dart
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/occasion/api/datasource_impl/occasion_remote_data_source_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -11,13 +12,13 @@ import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 
 import 'occasion_api_client_test.mocks.dart';
 
-@GenerateMocks([OccasionApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockOccasionApiClient mockApiClient;
+  late MockApiClient mockApiClient;
   late OccasionRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockApiClient = MockOccasionApiClient();
+    mockApiClient = MockApiClient();
     dataSource = OccasionRemoteDataSourceImpl(mockApiClient);
   });
 

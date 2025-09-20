@@ -1,11 +1,12 @@
 import 'package:flower_app/features/occasion/api/client/occasion_api_client.dart';
 import 'package:flower_app/features/occasion/data/datasource/occasion_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/api/api_client.dart';
 import '../../data/models/occasion_response_model.dart';
 
 @Injectable(as: OccasionRemoteDataSource)
 class OccasionRemoteDataSourceImpl implements OccasionRemoteDataSource {
-  final OccasionApiClient _apiClient;
+  final ApiClient _apiClient;
 
   OccasionRemoteDataSourceImpl(this._apiClient);
 
