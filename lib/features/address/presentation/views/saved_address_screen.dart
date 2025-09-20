@@ -5,6 +5,7 @@ import 'package:flower_app/features/address/presentation/views/add_address_scree
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
@@ -25,7 +26,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AddressCubit>().getAddresses();
     });
-}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
         leading: IconButton(
           icon: Image.asset(AppImages.arrowBack),
           onPressed: () {
@@ -132,33 +134,27 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                                   .read<AddressCubit>()
                                   .selectAddress(address.id);
                               Navigator.pop(context, true);
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(AppLocalizations.of(context)!.addressChanged),
-                                  backgroundColor: AppColors.black,
-                                  duration: const Duration(seconds: 2),
-                                ),
-                              );
+                              showCustomSnackBar(context, local.addressChanged,
+                                  isError: false);
                             },
                             child: AddressWidget(
-                              city: address.city,
-                              street: address.street,
-                              onDelete: () {
-                                _deleteAddress(context, address.id);
-                              },
-                              onEdit: () {
+                                city: address.city,
+                                street: address.street,
+                                onDelete: () {
+                                  _deleteAddress(context, address.id);
+                                },
+                                onEdit: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => BlocProvider.value(
                                         value: context.read<AddressCubit>(),
-                                        child: AddAddressScreen(addressToEdit: address),
+                                        child: AddAddressScreen(
+                                            addressToEdit: address),
                                       ),
                                     ),
                                   );
-                                }
-
-                            ),
+                                }),
                           ),
                         );
                       },
@@ -241,11 +237,12 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
             ),
             onPressed: () {
               Navigator.pop(context);
-              context.read<AddressCubit>().deleteAddress(addressId);
-              Future.delayed(const Duration(milliseconds: 500), () {
-                if(!mounted){
-                context.read<AddressCubit>().getAddresses();}
-              });
+              context.read<AddressCubit>().deleteAddress(addressId, context);
+              if (mounted) {
+                context.read<AddressCubit>().getAddresses();
+                showCustomSnackBar(context, local.addressDeletedSuccessfully,
+                    isError: false);
+              }
             },
             child: Text(local.delete,
                 style: TextStyle(

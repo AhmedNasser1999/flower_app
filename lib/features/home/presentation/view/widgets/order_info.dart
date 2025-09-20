@@ -34,39 +34,39 @@ class OrderInfo extends StatelessWidget {
           displayAddress = local.errorLoadingAddress;
         }
 
-        return Row(
-          children: [
-            SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
-            const SizedBox(width: 8),
-            Text(
-              local.deliverTo,
-              style: const TextStyle(
-                  color: AppColors.grey, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(width: 8),
-            Flexible(
-              child: Text(
-                displayAddress,
-                maxLines: 1,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-                overflow: TextOverflow.ellipsis,
+        return GestureDetector(
+          onTap: () async {
+            final result = await Navigator.pushNamed(
+              context,
+              AppRoutes.savedAddressScreen,
+            );
+            if (result == true) {
+              context.read<AddressCubit>().getAddresses();
+            }
+          },
+          child: Row(
+            children: [
+              SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
+              const SizedBox(width: 8),
+              Text(
+                local.deliverTo,
+                style: const TextStyle(
+                    color: AppColors.grey, fontWeight: FontWeight.w600),
               ),
-            ),
-            const SizedBox(width: 8),
-            GestureDetector(
-              onTap: () async {
-                final result = await Navigator.pushNamed(
-                  context,
-                  AppRoutes.savedAddressScreen,
-                );
-                if (result == true) {
-                  context.read<AddressCubit>().getAddresses();
-                }
-              },
-              child: SvgPicture.asset(AppIcons.arrowDownIcon,
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  displayAddress,
+                  maxLines: 1,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(width: 8),
+              SvgPicture.asset(AppIcons.arrowDownIcon,
                   color: AppColors.pink),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

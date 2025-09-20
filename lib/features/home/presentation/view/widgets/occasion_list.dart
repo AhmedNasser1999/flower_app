@@ -20,7 +20,7 @@ class OccasionList extends StatelessWidget {
       "assets/images/anniversay.jpg",
       "assets/images/newyear.jpg",
       "assets/images/valantainesday.jpg",
-      "assets/images/mothersday.jpeg",
+      "assets/images/mothersday.jpg",
       "assets/images/fatherday.jpg",
       "assets/images/chrism.jpg",
       "assets/images/esterday.jpg",
@@ -39,6 +39,7 @@ class OccasionList extends StatelessWidget {
             isOccasion: true,
             price: 0,
             onTap: onTap != null ? () => onTap!(occasionList[index]) : null,
+            quantity: occasionList[index].productsCount,
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 16.0),

@@ -18,6 +18,7 @@ class BestSellerList extends StatelessWidget {
           name: productList[index].title,
           price: productList[index].price,
           onTap: onTap != null ? () => onTap!(productList[index]) : null,
+          quantity: productList[index].quantity,
         ),
         separatorBuilder: (context, index) => const SizedBox(width: 16.0),
         itemCount: productList.length,

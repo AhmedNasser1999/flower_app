@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
@@ -62,9 +63,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   setState(() {
                     notifications.removeAt(index);
                   });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(local.notificationDelete)),
-                  );
+                  showCustomSnackBar(context, local.notificationDelete, isError: false);
                 },
                 background: Container(
                   color: Colors.red,

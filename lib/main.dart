@@ -6,8 +6,6 @@ import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
 import 'features/address/presentation/view_model/address_cubit.dart';
-import 'features/auth/domain/services/auth_service.dart';
-import 'features/auth/domain/services/guest_service.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
@@ -19,8 +17,6 @@ void main() async {
   await configureDependencies();
   String languageValue = await LocalizationPreference.getLanguage();
   await SecureStorage.initialize();
-
-  final initialRoute = await _getInitialRoute();
 
   runApp(
     MultiBlocProvider(
@@ -40,24 +36,12 @@ void main() async {
         ),
       ],
       child: MyApp(
-        initialRoute: initialRoute,
+        initialRoute: AppRoutes.initial,
       ),
     ),
   );
 }
 
-Future<String> _getInitialRoute() async {
-  final isLoggedIn = await AuthService.isLoggedIn();
-  final isGuest = await GuestService.isGuest();
-
-  if (isLoggedIn) {
-    return AppRoutes.dashboard;
-  } else if (isGuest) {
-    return AppRoutes.dashboard;
-  } else {
-    return AppRoutes.login;
-  }
-}
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -69,7 +53,6 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
       builder: (context, state) {
         final cubit = context.read<LocalizationCubit>();
-
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute: initialRoute,
@@ -77,7 +60,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           locale:
-              cubit.language == "en" ? const Locale("en") : const Locale("ar"),
+          cubit.language == "en" ? const Locale("en") : const Locale("ar"),
         );
       },
     );

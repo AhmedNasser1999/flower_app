@@ -23,7 +23,7 @@ class DashboardScreen extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+            getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
           ),
           BlocProvider(
             create: (context) => getIt<CategoriesCubit>()..getAllCategories(),
@@ -31,18 +31,22 @@ class DashboardScreen extends StatelessWidget {
         ],
         child: const CategoriesScreen(),
       ),
-      BlocProvider(
-        create: (_) => getIt<CartCubit>()..getCart(),
-        child: const CartScreen(isFromNavBar: true),
-      ),
+      const CartScreen(isFromNavBar: true),
       BlocProvider(
         create: (_) => getIt<ProfileViewModel>()..getProfile(),
         child: const ProfileScreen(),
       ),
     ];
 
-    return BlocProvider(
-      create: (context) => NavBarCubit()..changeTab(context, 0),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => NavBarCubit()..changeTab(context, 0),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CartCubit>()..getCart(),
+        ),
+      ],
       child: Builder(
         builder: (context) {
           return BlocBuilder<NavBarCubit, NavBarState>(

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flower_app/core/common/widgets/custom_snackbar_widget.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ import '../viewmodel/states/edit_profile_states.dart';
 
 class EditProfileScreen extends StatelessWidget {
   final UserEntity user;
+
   const EditProfileScreen({super.key, required this.user});
 
   Future<void> _pickAndUploadPhoto(
@@ -44,7 +46,8 @@ class EditProfileScreen extends StatelessWidget {
       );
     }
   }
-    @override
+
+  @override
   Widget build(BuildContext context) {
     bool isEdit = false;
     var local = AppLocalizations.of(context)!;
@@ -107,17 +110,16 @@ class EditProfileScreen extends StatelessWidget {
         child: BlocConsumer<EditProfileViewModel, EditProfileStates>(
           listener: (context, state) {
             if (state is EditProfileSuccessState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(local.profileUpdatedSuccessMsg)),
-              );
+              showCustomSnackBar(context, local.profileUpdatedSuccessMsg,
+                  isError: false);
+              Navigator.pop(context);
             } else if (state is EditProfileErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${local.errorText}: ${state.message}')),
               );
             } else if (state is ProfilePhotoUpdatedState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Updating photo ${state.message}")),
-              );
+              showCustomSnackBar(context, local.profilePhotoUpdatedSuccessfully,
+                  isError: false);
             } else if (state is ProfilePhotoErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../../core/routes/route_names.dart';
@@ -50,9 +51,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               arguments: widget.email,
             );
           } else if (state is VerifyCodeErrorStates) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            showCustomSnackBar(context, state.message, isError: true);
           }
         },
         builder: (context, state) {

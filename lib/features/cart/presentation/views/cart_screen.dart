@@ -8,6 +8,7 @@ import 'package:flower_app/features/cart/presentation/widgets/product_card_widge
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -55,6 +56,8 @@ class _CartScreenState extends State<CartScreen> {
           backgroundColor: Colors.white,
           centerTitle: false,
           automaticallyImplyLeading: !widget.isFromNavBar,
+          elevation: 0,
+          surfaceTintColor: Colors.transparent,
           leading: !widget.isFromNavBar
               ? IconButton(
                   icon: const Icon(Icons.arrow_back_ios_new_sharp),
@@ -88,7 +91,7 @@ class _CartScreenState extends State<CartScreen> {
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
             if (state is CartError) {
-              print(state.message);
+              log(state.message);
             }
           },
           builder: (context, state) {
@@ -143,7 +146,7 @@ class _CartScreenState extends State<CartScreen> {
                           cartItem: item,
                           onRemove: () => context
                               .read<CartCubit>()
-                              .removeFromCart(item.product.Id),
+                              .removeFromCart(item.product.Id, context),
                           onUpdateQuantity: (quantity) {
                             if (quantity > 0) {
                               context
@@ -353,7 +356,7 @@ class _CartScreenState extends State<CartScreen> {
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.white,
         title: Text(local.clearCartTitle),
-        content:  Text(local.clearCartMessage),
+        content: Text(local.clearCartMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
@@ -362,9 +365,12 @@ class _CartScreenState extends State<CartScreen> {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
-              context.read<CartCubit>().clearCart(context);
-            },
-            child:  Text(
+              context.read<CartCubit>().clearCart(context).then((value) {
+                showCustomSnackBar(context, local.cartClearedSuccessfully,isError: false);
+              });
+
+              },
+            child: Text(
               local.clear,
               style: TextStyle(color: AppColors.pink),
             ),

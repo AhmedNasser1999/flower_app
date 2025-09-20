@@ -76,6 +76,7 @@ class ProductsGridWidget extends StatelessWidget {
                   product.priceAfterDiscount,
                 ),
                 productTitle: product.title,
+                quantity: product.quantity,
                 onTap: () {
                   Navigator.pushNamed(
                     context,

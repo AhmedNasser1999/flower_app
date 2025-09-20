@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flutter/material.dart';
@@ -98,14 +97,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               ),
             );
           } else if (state is AddressLoaded) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.response.message),
-                duration: const Duration(seconds: 2),
-                backgroundColor: AppColors.green,
-                padding: EdgeInsets.all(16),
-              ),
-            );
+
             Navigator.pop(context);
           }
         },
@@ -229,11 +221,12 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                 context.read<AddressCubit>().updateAddress(
                                       widget.addressToEdit!.id,
                                       addressRequest,
+                                  context
                                     );
                               } else {
                                 context
                                     .read<AddressCubit>()
-                                    .addAddress(addressRequest);
+                                    .addAddress(addressRequest,context);
                               }
                             }
                           },

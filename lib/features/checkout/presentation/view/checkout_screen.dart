@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../address/presentation/view_model/address_cubit.dart';
@@ -38,7 +38,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
@@ -62,9 +61,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               );
             } else if (state is CheckoutCashSuccess) {
               Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Order placed ${state.message}fully")),
-              );
+              showCustomSnackBar(context, "Order placed ${state.message}fully", isError: false);
               Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.dashboard, (route) => false);
             } else if (state is CheckoutCardSuccess) {
@@ -75,14 +72,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   builder: (_) => PaymentWebViewScreen(url: state.url),
                 ),
               );
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Credit card session created")),
-              );
+              showCustomSnackBar(context,"Credit card session created", isError: false);
             } else if (state is CheckoutError) {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
               );
+              showCustomSnackBar(context, state.message, isError: true);
             }
           },
           builder: (context, checkoutState) {
@@ -103,7 +99,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     selectedPayment: selectedPayment,
                     onChanged: (val) => setState(() => selectedPayment = val),
                   ),
-                  if (selectedPayment == local.creditCard)
+                  if (selectedPayment == "Credit card")
                     GiftSection(
                       enabled: _enabledGift,
                       onChanged: (val) => setState(() => _enabledGift = val),

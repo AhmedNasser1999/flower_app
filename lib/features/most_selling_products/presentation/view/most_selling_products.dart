@@ -4,7 +4,6 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
@@ -17,7 +16,6 @@ class MostSellingProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
         backgroundColor: AppColors.white,
@@ -62,44 +60,54 @@ class MostSellingProducts extends StatelessWidget {
               final List<ProductsEntity> products = state.products;
               products.sort((a, b) => b.sold.compareTo(a.sold));
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: GridView.builder(
-                      itemCount: products.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                      ),
-                      itemBuilder: (context, index) {
-                        final product = products[index];
+              return RefreshIndicator(
+                color: AppColors.pink,
+                backgroundColor: AppColors.white,
+                onRefresh: () async {
+                  await context
+                      .read<MostSellingProductsViewmodel>()
+                      .getMostSellingProducts();
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: GridView.builder(
+                        itemCount: products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.7,
+                        ),
+                        itemBuilder: (context, index) {
+                          final product = products[index];
 
-                        return ProductCard(
-                          productId: product.Id,
-                          productImg: product.imgCover,
-                          productPrice: product.price,
-                          productPriceDiscount: product.priceAfterDiscount,
-                          priceDiscount:
-                              ((product.price - product.priceAfterDiscount) /
-                                      product.price *
-                                      100)
-                                  .round(),
-                          productTitle: product.title,
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              AppRoutes.productDetails,
-                              arguments: product,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ).setHorizontalAndVerticalPadding(context, 0.05, 0.02);
+                          return ProductCard(
+                            productId: product.Id,
+                            productImg: product.imgCover,
+                            productPrice: product.price,
+                            productPriceDiscount: product.priceAfterDiscount,
+                            priceDiscount:
+                                ((product.price - product.priceAfterDiscount) /
+                                        product.price *
+                                        100)
+                                    .round(),
+                            productTitle: product.title,
+                            quantity: product.quantity,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.productDetails,
+                                arguments: product,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+              );
             } else if (state is MostSellingProductsErrorState) {
               return Center(child: Text("Error: ${state.message}"));
             } else {

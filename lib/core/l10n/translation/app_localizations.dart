@@ -62,7 +62,8 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,7 +84,8 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -1372,9 +1375,76 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delivery address changed successfully'**
   String get addressChanged;
+
+  /// No description provided for @warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get warning;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @productAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added to cart'**
+  String get productAddedToCart;
+
+  /// No description provided for @thisItemIsSoldOut.
+  ///
+  /// In en, this message translates to:
+  /// **'This item is sold out'**
+  String get thisItemIsSoldOut;
+
+  /// No description provided for @outOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outOfStock;
+
+  /// No description provided for @addressAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address added Successfully'**
+  String get addressAddedSuccessfully;
+
+  /// No description provided for @addressUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address updated Successfully'**
+  String get addressUpdatedSuccessfully;
+
+  /// No description provided for @addressDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address deleted Successfully'**
+  String get addressDeletedSuccessfully;
+
+  /// No description provided for @cartClearedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart cleared successfully'**
+  String get cartClearedSuccessfully;
+
+  /// No description provided for @profilePhotoUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile photo updated successfully'**
+  String get profilePhotoUpdatedSuccessfully;
+
+  /// No description provided for @passwordUpdatedSuccessMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully!'**
+  String get passwordUpdatedSuccessMsg;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1383,25 +1453,25 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return AppLocalizationsAr();
-    case 'en': return AppLocalizationsEn();
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }
