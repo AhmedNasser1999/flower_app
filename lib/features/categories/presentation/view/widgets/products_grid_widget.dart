@@ -11,7 +11,8 @@ import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/routes/route_names.dart';
 
 class ProductsGridWidget extends StatelessWidget {
-  const ProductsGridWidget({super.key});
+  const ProductsGridWidget({super.key, required this.isFromCategories});
+  final bool isFromCategories;
 
   int calculateDiscountPercentage(int originalPrice, int discountedPrice) {
     if (originalPrice <= 0 ||
@@ -84,6 +85,7 @@ class ProductsGridWidget extends StatelessWidget {
                     arguments: product,
                   );
                 },
+                isFromProductDetails: !isFromCategories,
               );
             },
           );

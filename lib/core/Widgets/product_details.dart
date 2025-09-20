@@ -172,7 +172,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         } else {
                           context
                               .read<CartCubit>()
-                              .addToCart(widget.product.Id, 1, context);
+                              .addToCart(widget.product.Id, 1, context, true);
                         }
                       },
                       color: AppColors.pink,

@@ -19,6 +19,7 @@ class ProductCard extends StatelessWidget {
   final int priceDiscount;
   final VoidCallback? onTap;
   final int quantity;
+  final bool isFromProductDetails;
 
   const ProductCard({
     super.key,
@@ -30,6 +31,7 @@ class ProductCard extends StatelessWidget {
     required this.productTitle,
     this.onTap,
     required this.quantity,
+    required this.isFromProductDetails,
   });
 
   @override
@@ -229,11 +231,9 @@ class ProductCard extends StatelessWidget {
                   );
                   return;
                 } else {
-                  context.read<CartCubit>().addToCart(
-                        productId,
-                        1,
-                        context,
-                      );
+                  context
+                      .read<CartCubit>()
+                      .addToCart(productId, 1, context, isFromProductDetails);
                 }
               },
         icon: SvgPicture.asset(
