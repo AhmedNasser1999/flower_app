@@ -4,18 +4,18 @@ import 'package:flower_app/core/errors/api_result.dart';
 import 'package:flower_app/features/profile/data/models/change_password_request_model.dart';
 import 'package:flower_app/features/profile/data/models/profile_response.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/api/api_client.dart';
 import '../../data/datasource/profile_remote_datasource.dart';
 import '../../data/models/change_password_response_model.dart';
 import '../../data/models/edit_profile_request_model.dart';
 import '../../data/models/edit_profile_response_model.dart';
 import '../../data/models/upload_photo_response.dart';
-import '../client/profile_api_client.dart';
 
 @LazySingleton(as: ProfileRemoteDatasource)
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
-  final ProfileApiClient _profileApiClient;
+  final ApiClient _profileApiClient;
 
-  ProfileRemoteDatasourceImpl({required ProfileApiClient apiClient})
+  ProfileRemoteDatasourceImpl({required ApiClient apiClient})
       : _profileApiClient = apiClient;
 
   @override

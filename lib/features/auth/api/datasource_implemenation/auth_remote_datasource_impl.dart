@@ -9,13 +9,14 @@ import 'package:flower_app/features/auth/data/models/signup_model/signup_request
 import 'package:flower_app/features/auth/data/models/signup_model/signup_response_model.dart';
 import 'package:injectable/injectable.dart';
 import 'dart:convert';
+import '../../../../core/api/api_client.dart';
 import '../../data/models/forget_password_models/forget_password_request.dart';
 import '../../data/models/forget_password_models/reset_password_request_model.dart';
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
 
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
-  final AuthApiClient _authApiClient;
+  final ApiClient _authApiClient;
 
   AuthRemoteDatasourceImpl(this._authApiClient);
 

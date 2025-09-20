@@ -19,10 +19,17 @@ import '../../domain/usecases/upload_photo_usecase.dart';
 import '../viewmodel/edit_profile_viewmodel.dart';
 import '../viewmodel/states/edit_profile_states.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   final UserEntity user;
 
   const EditProfileScreen({super.key, required this.user});
+
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  bool isEdit = false;
 
   Future<void> _pickAndUploadPhoto(
     BuildContext context,
@@ -37,6 +44,9 @@ class EditProfileScreen extends StatelessWidget {
       if (picked != null) {
         final file = File(picked.path);
         cubit.uploadPhoto(file);
+        setState(() {
+          isEdit = true;
+        });
       }
     } catch (e) {
       debugPrint("❌ Failed to pick image: $e");
@@ -49,7 +59,6 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isEdit = false;
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -104,7 +113,7 @@ class EditProfileScreen extends StatelessWidget {
             getIt<EditProfileDataUseCase>(),
             getIt<UploadPhotoUseCase>(),
           );
-          cubit.setInitialData(user);
+          cubit.setInitialData(widget.user);
           return cubit;
         },
         child: BlocConsumer<EditProfileViewModel, EditProfileStates>(
@@ -112,7 +121,7 @@ class EditProfileScreen extends StatelessWidget {
             if (state is EditProfileSuccessState) {
               showCustomSnackBar(context, local.profileUpdatedSuccessMsg,
                   isError: false);
-              Navigator.pop(context);
+              Navigator.pop(context, isEdit);
             } else if (state is EditProfileErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${local.errorText}: ${state.message}')),
@@ -141,14 +150,16 @@ class EditProfileScreen extends StatelessWidget {
                                 ? NetworkImage(cubit.currentPhotoUrl!)
                                 : FileImage(File(cubit.currentPhotoUrl!))
                                     as ImageProvider)
-                            : NetworkImage(user.photo),
+                            : NetworkImage(widget.user.photo),
                       ),
                       Positioned(
                         bottom: 0,
                         right: 4,
                         child: GestureDetector(
                           onTap: () {
-                            isEdit = true;
+                            setState(() {
+                              isEdit = true;
+                            });
                             _pickAndUploadPhoto(context, cubit);
                           },
                           child: Container(
@@ -232,7 +243,7 @@ class EditProfileScreen extends StatelessWidget {
                       IgnorePointer(
                         child: Radio<String>(
                           value: "male",
-                          groupValue: user.gender,
+                          groupValue: widget.user.gender,
                           onChanged: (_) {},
                           activeColor: AppColors.pink,
                         ),
@@ -250,7 +261,7 @@ class EditProfileScreen extends StatelessWidget {
                       IgnorePointer(
                         child: Radio<String>(
                           value: "female",
-                          groupValue: user.gender,
+                          groupValue: widget.user.gender,
                           onChanged: (_) {},
                           activeColor: AppColors.pink,
                         ),
@@ -272,7 +283,9 @@ class EditProfileScreen extends StatelessWidget {
                     text: local.updateButton,
                     isLoading: state is EditProfileLoadingState,
                     onPressed: () {
-                      isEdit = true;
+                      setState(() {
+                        isEdit = true;
+                      });
                       cubit.submitProfileUpdate();
                     },
                   ).setVerticalPadding(context, 0.03),

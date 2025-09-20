@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/features/address/api/client/address_api_client.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/address/domain/requests/address_request.dart';
 import 'package:flower_app/features/address/domain/responses/address_response.dart';
 import 'package:injectable/injectable.dart';
@@ -8,7 +8,7 @@ import '../../data/data_source/address_remote_data_source.dart';
 
 @Injectable(as: AddressRemoteDataSource)
 class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
-  final AddressApiClient addressApiClient;
+  final ApiClient addressApiClient;
 
   AddressRemoteDataSourceImpl({required this.addressApiClient});
 

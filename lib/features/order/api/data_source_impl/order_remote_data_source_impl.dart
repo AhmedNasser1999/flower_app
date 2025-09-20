@@ -1,12 +1,12 @@
 import 'package:flower_app/features/order/data/models/order_response.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/api/api_client.dart';
 import '../../data/data_sources/order_remote_data_source.dart';
-import '../client/order_api_client.dart';
 
 @LazySingleton(as: OrderRemoteDataSource)
 class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
-  final OrderApiClient orderApiClient;
+  final ApiClient orderApiClient;
 
   OrderRemoteDataSourceImpl(this.orderApiClient);
 

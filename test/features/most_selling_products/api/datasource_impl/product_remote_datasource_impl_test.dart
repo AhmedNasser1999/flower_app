@@ -1,4 +1,4 @@
-import 'package:flower_app/features/most_selling_products/api/client/product_api_client.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart';
 import 'package:flower_app/features/most_selling_products/data/models/meta_data_model.dart';
 import 'package:flower_app/features/most_selling_products/data/models/products_model.dart';
@@ -9,13 +9,13 @@ import 'package:mockito/annotations.dart';
 
 import 'product_remote_datasource_impl_test.mocks.dart';
 
-@GenerateMocks([ProductApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockProductApiClient mockProductApiClient;
+  late MockApiClient mockProductApiClient;
   late ProductRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockProductApiClient = MockProductApiClient();
+    mockProductApiClient = MockApiClient();
     dataSource = ProductRemoteDataSourceImpl(mockProductApiClient);
   });
 

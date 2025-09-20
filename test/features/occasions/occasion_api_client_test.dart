@@ -1,21 +1,21 @@
 // test/features/occasion/api/client/occasion_api_client_test.dart
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:flower_app/features/occasion/api/client/occasion_api_client.dart';
 import 'package:flower_app/features/occasion/data/models/occasion_response_model.dart';
 import 'package:flower_app/features/occasion/data/models/occasion_model.dart';
 
 import 'occasion_api_client_test.mocks.dart';
 
-@GenerateMocks([OccasionApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockOccasionApiClient mockOccasionApiClient;
+  late MockApiClient mockOccasionApiClient;
 
   setUp(() {
-    mockOccasionApiClient = MockOccasionApiClient();
+    mockOccasionApiClient = MockApiClient();
   });
 
   group('OccasionApiClient', () {
