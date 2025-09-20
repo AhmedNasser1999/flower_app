@@ -1373,42 +1373,6 @@ abstract class AppLocalizations {
   /// **'Delivery address changed successfully'**
   String get addressChanged;
 
-  /// No description provided for @cashOnDelivery.
-  ///
-  /// In en, this message translates to:
-  /// **'Cash on delivery'**
-  String get cashOnDelivery;
-
-  /// No description provided for @creditCard.
-  ///
-  /// In en, this message translates to:
-  /// **'Credit card'**
-  String get creditCard;
-
-  /// No description provided for @placing.
-  ///
-  /// In en, this message translates to:
-  /// **'Placing...'**
-  String get placing;
-
-  /// No description provided for @clearCartTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Clear Cart'**
-  String get clearCartTitle;
-
-  /// No description provided for @clearCartMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to clear all items?'**
-  String get clearCartMessage;
-
-  /// No description provided for @addressChanged.
-  ///
-  /// In en, this message translates to:
-  /// **'Delivery address changed successfully'**
-  String get addressChanged;
-
   /// No description provided for @warning.
   ///
   /// In en, this message translates to:

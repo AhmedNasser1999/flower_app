@@ -179,39 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
               ),
-                      return OrderInfo();
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  SectionHeader(
-                    title: local!.categories,
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.categoriesScreen);
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  CategoriesSection(state: state),
-                  const SizedBox(height: 10.0),
-                  SectionHeader(
-                    title: local.bestSeller,
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.mostSellingProducts);
-                    },
-                  ),
-                  const SizedBox(height: 10.0),
-                  ProductsSection(state: state),
-                  const SizedBox(height: 7.0),
-                  SectionHeader(
-                    title: local.occasion,
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.occasions);
-                    },
-                  ),
-                  const SizedBox(height: 5.0),
-                  OccasionsSection(state: state),
-                ],
-              ).setHorizontalAndVerticalPadding(context, 0.0364, 0.0131),
             ),
           ),
         ),

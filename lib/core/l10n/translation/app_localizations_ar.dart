@@ -648,24 +648,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addressChanged => 'تم تغيير عنوان التوصيل بنجاح';
 
   @override
-  String get cashOnDelivery => 'الدفع عند الاستلام';
-
-  @override
-  String get creditCard => 'بطاقة ائتمان';
-
-  @override
-  String get placing => 'جارٍ التنفيذ...';
-
-  @override
-  String get clearCartTitle => 'مسح السلة';
-
-  @override
-  String get clearCartMessage => 'هل أنت متأكد أنك تريد مسح كل العناصر؟';
-
-  @override
-  String get addressChanged => 'تم تغيير عنوان التوصيل بنجاح';
-
-  @override
   String get warning => 'تحذير';
 
   @override

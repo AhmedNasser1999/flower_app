@@ -357,9 +357,6 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: AppColors.white,
         title: Text(local.clearCartTitle),
         content: Text(local.clearCartMessage),
-        backgroundColor: AppColors.white,
-        title: Text(local.clearCartTitle),
-        content:  Text(local.clearCartMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
