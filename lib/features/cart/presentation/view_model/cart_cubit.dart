@@ -22,18 +22,18 @@ class CartCubit extends Cubit<CartState> {
   final ClearCartUseCase _clearCartUseCase;
 
   CartCubit(
-    this._addToCartUseCase,
-    this._getCartUseCase,
-    this._removeFromCartUseCase,
-    this._updateCartItemUseCase,
-    this._clearCartUseCase,
-  ) : super(CartInitial());
+      this._addToCartUseCase,
+      this._getCartUseCase,
+      this._removeFromCartUseCase,
+      this._updateCartItemUseCase,
+      this._clearCartUseCase,
+      ) : super(CartInitial());
 
   Future<void> addToCart(
-    String productId,
-    int quantity,
-    BuildContext context,
-  ) async {
+      String productId,
+      int quantity,
+      BuildContext context,
+      ) async {
     var local = AppLocalizations.of(context)!;
     emit(CartLoading());
     try {
@@ -41,6 +41,7 @@ class CartCubit extends Cubit<CartState> {
       if (!isClosed) {
         emit(CartLoaded(response));
         showCustomSnackBar(context, local.productAddedToCart, isError: false);
+        Navigator.pop(context);
         await _refreshCart();
       }
     } catch (e, s) {
@@ -59,10 +60,12 @@ class CartCubit extends Cubit<CartState> {
       final response = await _getCartUseCase();
       if (!isClosed) {
         emit(CartLoaded(response));
+        log('Cart loaded successfully with ${response.numOfCartItems} items');
       }
     } catch (e) {
       if (!isClosed) {
-        emit(CartError(e.toString()));
+        log('Error getting cart: $e');
+        emit(CartInitial());
       }
     }
   }
@@ -74,7 +77,6 @@ class CartCubit extends Cubit<CartState> {
     try {
       final response = await _removeFromCartUseCase(itemId);
       if (!isClosed) {
-        // First emit the immediate response
         emit(CartLoaded(response));
         showCustomSnackBar(context, local.itemRemovedFromCart, isError: false);
         await _refreshCart();
@@ -125,10 +127,12 @@ class CartCubit extends Cubit<CartState> {
       final response = await _getCartUseCase();
       if (!isClosed) {
         emit(CartLoaded(response));
+        log('Cart refreshed successfully with ${response.numOfCartItems} items');
       }
     } catch (e) {
       if (!isClosed) {
         log('Error refreshing cart: $e');
+        // Don't emit error here as it might override the successful state
       }
     }
   }

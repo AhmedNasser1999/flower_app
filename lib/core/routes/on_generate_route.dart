@@ -113,10 +113,7 @@ class Routes {
       case AppRoutes.cart:
         final bool isFromNavBar = settings.arguments as bool? ?? false;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<CartCubit>(),
-                  child: CartScreen(isFromNavBar: isFromNavBar),
-                ));
+            builder: (context) => CartScreen(isFromNavBar: isFromNavBar));
 
       case AppRoutes.mostSellingProducts:
         return MaterialPageRoute(
@@ -130,10 +127,7 @@ class Routes {
       case AppRoutes.productDetails:
         final product = settings.arguments as ProductsEntity;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<CartCubit>(),
-            child: ProductDetails(product: product),
-          ),
+          builder: (context) => ProductDetails(product: product),
         );
       case AppRoutes.occasions:
         final String initialOccasionId = settings.arguments as String? ?? "";

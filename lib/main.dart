@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ void main() async {
               LocalizationCubit(language: languageValue),
         ),
         BlocProvider<CartCubit>(
-          create: (_) => getIt<CartCubit>(),
+          create: (_) => getIt<CartCubit>()..getCart(),
         ),
         BlocProvider<AddressCubit>(
           create: (_) => getIt<AddressCubit>(),

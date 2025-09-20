@@ -38,15 +38,8 @@ class DashboardScreen extends StatelessWidget {
       ),
     ];
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => NavBarCubit()..changeTab(context, 0),
-        ),
-        BlocProvider(
-          create: (context) => getIt<CartCubit>()..getCart(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => NavBarCubit()..changeTab(context, 0),
       child: Builder(
         builder: (context) {
           return BlocBuilder<NavBarCubit, NavBarState>(
