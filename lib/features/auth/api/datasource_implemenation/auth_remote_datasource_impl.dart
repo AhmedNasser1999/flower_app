@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/features/auth/api/client/auth_api_client.dart';
 import 'package:flower_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:flower_app/features/auth/data/models/login_models/login_response_model.dart';

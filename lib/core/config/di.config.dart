@@ -221,25 +221,25 @@ extension GetItInjectableX on _i174.GetIt {
           updateAddressUseCase: gh<_i1005.UpdateAddressUseCase>(),
           deleteAddressUseCase: gh<_i1005.DeleteAddressUseCase>(),
         ));
-    gh.factory<_i147.UpdateCartItemUseCase>(
-        () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
-    gh.factory<_i176.GetCartUseCase>(
-        () => _i176.GetCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i252.AddToCartUseCase>(
         () => _i252.AddToCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i176.GetCartUseCase>(
+        () => _i176.GetCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i30.RemoveFromCartUseCase>(
         () => _i30.RemoveFromCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i147.UpdateCartItemUseCase>(
+        () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i493.ClearCartUseCase>(
         () => _i493.ClearCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i719.VerifyCodeUseCase>(
-        () => _i719.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i682.ForgetPasswordUseCase>(
         () => _i682.ForgetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i309.ResetPasswordUseCase>(
         () => _i309.ResetPasswordUseCase(gh<_i669.AuthRepo>()));
+    gh.factory<_i719.VerifyCodeUseCase>(
+        () => _i719.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
     gh.lazySingleton<_i1026.ProductRepo>(
         () => _i680.ProductRepoImpl(gh<_i955.ProductRemoteDataSource>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
@@ -262,14 +262,14 @@ extension GetItInjectableX on _i174.GetIt {
         _i729.ChangePasswordViewModel(gh<_i550.ChangePasswordUseCases>()));
     gh.factory<_i164.ForgetPasswordCubit>(
         () => _i164.ForgetPasswordCubit(gh<_i682.ForgetPasswordUseCase>()));
-    gh.factory<_i32.CreateCashOrderUsecase>(
-        () => _i32.CreateCashOrderUsecase(gh<_i205.CheckoutRepo>()));
     gh.factory<_i981.CheckoutSessionUsecase>(
         () => _i981.CheckoutSessionUsecase(gh<_i205.CheckoutRepo>()));
-    gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
-        () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
+    gh.factory<_i32.CreateCashOrderUsecase>(
+        () => _i32.CreateCashOrderUsecase(gh<_i205.CheckoutRepo>()));
     gh.lazySingleton<_i943.GetAllCategoriesUseCase>(
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
+    gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
+        () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
     gh.factory<_i93.SignupUsecase>(
         () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i144.GetAllProductsUseCase>(
