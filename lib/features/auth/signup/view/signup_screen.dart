@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
+
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
@@ -58,10 +60,10 @@ class SignupScreen extends StatelessWidget {
             AppRoutes.login,
             (route) => false,
           );
-          showSuccessMessage(context, local.signup_success);
+          showCustomSnackBar(context, local.signup_success, isError: false);
         } else if (state is SignupErrorState) {
           Navigator.pop(context);
-          showErrorMessage(context, state.errorMessage);
+          showCustomSnackBar(context, state.errorMessage, isError: true);
         }
       },
       builder: (context, state) {

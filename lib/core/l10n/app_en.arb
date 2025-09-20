@@ -221,6 +221,6 @@
   "addressUpdatedSuccessfully": "Address updated Successfully",
   "addressDeletedSuccessfully": "Address deleted Successfully",
   "cartClearedSuccessfully": "Cart cleared successfully",
-  "profilePhotoUpdatedSuccessfully": "Profile photo updated successfully"
-
+  "profilePhotoUpdatedSuccessfully": "Profile photo updated successfully",
+  "passwordUpdatedSuccessMsg": "Password changed successfully!"
 }

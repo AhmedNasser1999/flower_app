@@ -221,6 +221,6 @@
   "addressUpdatedSuccessfully": "تم تحديث العنوان بنجاح",
   "addressDeletedSuccessfully": "تم إلغاء العنوان بنجاح",
   "cartClearedSuccessfully": "تم مسح عربة التسوق بالكامل",
-  "profilePhotoUpdatedSuccessfully": "تم تحديث صورة الهوية بنجاح"
-
+  "profilePhotoUpdatedSuccessfully": "تم تحديث صورة الهوية بنجاح",
+  "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!"
 }

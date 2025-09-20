@@ -36,7 +36,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -108,19 +109,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!';
 
   @override
-  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg =>
+      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg =>
+      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText =>
+      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -279,7 +283,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shoppingCart => 'سلة التسوق';
 
   @override
-  String get emptyCartMessage => 'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
+  String get emptyCartMessage =>
+      'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
 
   @override
   String get viewProducts => 'عرض المنتجات';
@@ -558,7 +563,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get permissionDenied => 'تم رفض إذن الموقع';
 
   @override
-  String get permissionPermanentlyDenied => 'تم رفض إذن الموقع بشكل دائم. يرجى تمكينه من الإعدادات.';
+  String get permissionPermanentlyDenied =>
+      'تم رفض إذن الموقع بشكل دائم. يرجى تمكينه من الإعدادات.';
 
   @override
   String get errorGettingLocation => 'خطأ في الحصول على الموقع: ';
@@ -676,4 +682,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profilePhotoUpdatedSuccessfully => 'تم تحديث صورة الهوية بنجاح';
+
+  @override
+  String get passwordUpdatedSuccessMsg => 'تم تغير كلمة المرور بنجاح!';
 }

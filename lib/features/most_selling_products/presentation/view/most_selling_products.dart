@@ -3,9 +3,7 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/features/most_selling_products/domain/entity/products_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';

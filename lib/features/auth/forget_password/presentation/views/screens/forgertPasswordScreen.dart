@@ -5,6 +5,7 @@ import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
 import '../../../../../../core/Widgets/custom_text_field.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/extensions/validations.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
@@ -119,9 +120,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               AppRoutes.emailVerification,
             );
           } else if (state is ForgetPasswordErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            showCustomSnackBar(context, state.message, isError: true);
           }
         },
       ),

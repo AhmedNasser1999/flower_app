@@ -8,9 +8,8 @@ import 'package:flower_app/features/profile/change_password/presentation/viewmod
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../../../core/routes/route_names.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
@@ -23,13 +22,9 @@ class ChangePasswordScreen extends StatelessWidget {
     return BlocConsumer<ChangePasswordViewModel, ChangePasswordStates>(
       listener: (context, state) {
         if (state is ChangePasswordSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          showCustomSnackBar(context, state.message, isError: false);
         } else if (state is ChangePasswordError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          showCustomSnackBar(context, state.message, isError: true);
         }
       },
       builder: (context, state) {

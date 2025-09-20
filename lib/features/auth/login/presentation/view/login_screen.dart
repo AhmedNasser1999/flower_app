@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
-import '../../../../../core/contants/app_images.dart';
+import '../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../core/extensions/validations.dart';
 import '../../../../../core/routes/route_names.dart';
 import '../viewmodel/login_states.dart';
@@ -68,13 +68,11 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.dashboard,
-              (route) => false,
+                  (route) => false,
             );
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMsg)),
-            );
+            showCustomSnackBar(context, state.errorMsg, isError: true);
           }
         },
         builder: (BuildContext context, LoginStates state) {
@@ -86,12 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(AppImages.arrowBack)
-                            .setHorizontalAndVerticalPadding(
-                                context, 0.05, 0.07),
-                      ),
                       Text(
                         local!.login,
                         style: const TextStyle(
@@ -100,7 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontFamily: "Inter",
                           fontStyle: FontStyle.normal,
                         ),
-                      ),
+                      ).setHorizontalAndVerticalPadding(
+                          context, 0.04, 0.05),
                     ],
                   ),
                   CustomTextFormField(
@@ -187,13 +180,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.dashboard,
-                          (route) => false,
+                              (route) => false,
                         );
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                               content:
-                                  Text('Failed to start guest session: $e')),
+                              Text('Failed to start guest session: $e')),
                         );
                       }
                     },

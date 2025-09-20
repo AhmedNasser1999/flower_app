@@ -41,7 +41,6 @@ class CartCubit extends Cubit<CartState> {
       if (!isClosed) {
         emit(CartLoaded(response));
         showCustomSnackBar(context, local.productAddedToCart, isError: false);
-        Navigator.pop(context);
         await _refreshCart();
       }
     } catch (e, s) {
