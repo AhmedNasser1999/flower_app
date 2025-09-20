@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/api/api_client.dart';
 import '../../data/data_sources/order_remote_data_source.dart';
-import '../client/order_api_client.dart';
 
 @LazySingleton(as: OrderRemoteDataSource)
 class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {

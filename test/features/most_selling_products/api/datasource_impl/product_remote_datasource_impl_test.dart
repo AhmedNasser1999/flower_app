@@ -1,5 +1,4 @@
 import 'package:flower_app/core/api/api_client.dart';
-import 'package:flower_app/features/most_selling_products/api/client/product_api_client.dart';
 import 'package:flower_app/features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart';
 import 'package:flower_app/features/most_selling_products/data/models/meta_data_model.dart';
 import 'package:flower_app/features/most_selling_products/data/models/products_model.dart';

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/api/api_client.dart';
-import 'package:flower_app/features/categories/api/client/categories_api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

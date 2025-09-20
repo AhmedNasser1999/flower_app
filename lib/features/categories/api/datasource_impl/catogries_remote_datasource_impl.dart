@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/api/api_client.dart';
 import '../../data/datasource/categories_remote_datasource.dart';
-import '../client/categories_api_client.dart';
 
 @LazySingleton(as: GetCategoriesRemoteDataSource)
 class GetCategoriesRemoteDataSourceImpl

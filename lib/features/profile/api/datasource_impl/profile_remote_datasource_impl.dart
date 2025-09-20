@@ -10,7 +10,6 @@ import '../../data/models/change_password_response_model.dart';
 import '../../data/models/edit_profile_request_model.dart';
 import '../../data/models/edit_profile_response_model.dart';
 import '../../data/models/upload_photo_response.dart';
-import '../client/profile_api_client.dart';
 
 @LazySingleton(as: ProfileRemoteDatasource)
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {

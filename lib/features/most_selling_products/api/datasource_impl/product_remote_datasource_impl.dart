@@ -1,4 +1,3 @@
-import 'package:flower_app/features/most_selling_products/api/client/product_api_client.dart';
 import 'package:flower_app/features/most_selling_products/data/models/products_model.dart';
 import 'package:injectable/injectable.dart';
 
