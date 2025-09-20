@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/api/api_client.dart';
-import 'package:flower_app/features/auth/api/client/auth_api_client.dart';
 import 'package:flower_app/features/auth/api/datasource_implemenation/auth_remote_datasource_impl.dart';
 import 'package:flower_app/features/auth/data/models/forget_password_models/forget_password_request.dart';
 import 'package:flower_app/features/auth/data/models/forget_password_models/reset_password_request_model.dart';

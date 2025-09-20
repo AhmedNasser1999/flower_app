@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/api/api_client.dart';
 import '../../../../../core/extensions/validations.dart';
-import '../../../api/client/auth_api_client.dart';
 import '../../../data/models/forget_password_models/reset_password_request_model.dart';
 import 'states/reset_code_states.dart';
 

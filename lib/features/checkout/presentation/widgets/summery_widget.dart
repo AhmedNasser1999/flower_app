@@ -52,7 +52,7 @@ class SummarySection extends StatelessWidget {
                       checkoutCubit.placeOrder(
                           paymentMethod: selectedPayment, address: selected);
                     },
-            );
+            ).setOnlyPadding(context,0, 0.02, 0, 0);
           },
         ),
       ],
