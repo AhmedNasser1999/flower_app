@@ -9,10 +9,9 @@ A comprehensive Flutter application for flower delivery services with modern UI/
 |----------------------------------------|------------------------------------------|
 | ![Login](assets/screenshots/login.png) | ![Signup](assets/screenshots/signup.png) |
 
-### Main Application Tabs
-| Home Tab                                        | Categories Tab                                   | Profile Tab                                        |
-|-------------------------------------------------|--------------------------------------------------|----------------------------------------------------|
-| ![Home       ](assets/screenshots/home.png)     | ![Categories](assets/screenshots/categories.png) | ![Profile    ](assets/screenshots/profile.png)     |
+| Home Tab | Categories Tab | Profile Tab |
+|----------|----------------|-------------|
+| <img src="assets/screenshots/home.png" width="150"> | <img src="assets/screenshots/categories.png" width="150"> | <img src="assets/screenshots/profile.png" width="150"> |
 
 ### Product Details
 | Product Details Screen |
