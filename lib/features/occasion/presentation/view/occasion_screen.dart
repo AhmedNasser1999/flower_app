@@ -258,7 +258,7 @@ class _OccasionScreenState extends State<OccasionScreen>
         },
         color: AppColors.pink,
         backgroundColor: AppColors.white,
-        child: ProductsGridWidget(),
+        child: ProductsGridWidget(isFromCategories: false),
       );
     } else if (state is MostSellingProductsErrorState) {
       return Center(

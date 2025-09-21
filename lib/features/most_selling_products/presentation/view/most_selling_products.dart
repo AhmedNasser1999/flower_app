@@ -101,6 +101,7 @@ class MostSellingProducts extends StatelessWidget {
                                 arguments: product,
                               );
                             },
+                            isFromProductDetails: true,
                           );
                         },
                       ),

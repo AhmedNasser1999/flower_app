@@ -46,7 +46,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             },
           ),
           const SizedBox(height: 10),
-          const Expanded(child: ProductsGridWidget()),
+          const Expanded(child: ProductsGridWidget(isFromCategories: true,)),
         ],
       ).setHorizontalPadding(context, 0.04),
     );
