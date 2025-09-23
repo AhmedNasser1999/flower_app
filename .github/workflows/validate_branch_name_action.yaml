@@ -1,0 +1,25 @@
+name: Validate PR Branch Name
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Branch Name against Regex
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          # Regex to match the pattern: prefix/TICKET-ID-task-name
+          # Allowed prefixes: bugfix, hotfix, release, feature (from example)
+          # Ticket ID format: one or more uppercase letters followed by a hyphen and digits
+          BRANCH_REGEX="^(bugfix|hotfix|release|feature)\/([A-Z]+-[0-9]+)-.+$"
+
+          if [[ ! "$BRANCH_NAME" =~ $BRANCH_REGEX ]]; then
+            echo "::error::Branch name does not match the required format 'type/TICKET-ID-Task-Name'."
+            echo "::error::Allowed prefixes: bugfix/, hotfix/, release/, feature/"
+            echo "::error::Example: feature/ECOM-27-Initialize-Project"
+            exit 1
+          fi
+        shell: bash
