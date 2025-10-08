@@ -33,7 +33,6 @@ import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 import '../../features/profile/presentation/view/widgets/about_us.dart';
-import '../../features/cart/presentation/view_model/cart_cubit.dart';
 import '../../features/cart/presentation/views/cart_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
@@ -59,7 +58,7 @@ class Routes {
         );
 
       case AppRoutes.homeScreen:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       case AppRoutes.signUp:
         return MaterialPageRoute(
@@ -69,7 +68,7 @@ class Routes {
                 ));
 
       case AppRoutes.dashboard:
-        return MaterialPageRoute(builder: (_) => DashboardScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
@@ -120,7 +119,7 @@ class Routes {
           builder: (context) => BlocProvider(
             create: (_) =>
                 getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
-            child: MostSellingProducts(),
+            child: const MostSellingProducts(),
           ),
         );
 
@@ -155,10 +154,10 @@ class Routes {
         );
 
       case AppRoutes.termsAndConditions:
-        return MaterialPageRoute(builder: (_) => TermsAndConditions());
+        return MaterialPageRoute(builder: (_) => const TermsAndConditions());
 
       case AppRoutes.aboutUs:
-        return MaterialPageRoute(builder: (_) => AboutUs());
+        return MaterialPageRoute(builder: (_) => const AboutUs());
 
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
@@ -176,12 +175,12 @@ class Routes {
         );
 
       case AppRoutes.notification:
-        return MaterialPageRoute(builder: (_) => NotificationsScreen());
+        return MaterialPageRoute(builder: (_) => const NotificationsScreen());
 
       case AppRoutes.addressScreen:
-        return MaterialPageRoute(builder: (_) => AddAddressScreen());
+        return MaterialPageRoute(builder: (_) => const AddAddressScreen());
       case AppRoutes.savedAddressScreen:
-        return MaterialPageRoute(builder: (_) => SavedAddressesScreen());
+        return MaterialPageRoute(builder: (_) => const SavedAddressesScreen());
       case AppRoutes.checkout:
         final args = settings.arguments as int;
         return MaterialPageRoute(

@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
     Navigator.pushNamedAndRemoveUntil(
       context,
       route,
-          (r) => false,
+      (r) => false,
     );
   }
 

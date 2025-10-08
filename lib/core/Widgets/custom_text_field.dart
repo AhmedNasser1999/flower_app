@@ -66,7 +66,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       validator: widget.validator,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.black,
         fontWeight: FontWeight.w400,
         fontSize: 18,
@@ -74,11 +74,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       cursorColor: AppColors.pink,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.grey, width: 1.5),
         ),
         labelText: widget.label,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: AppColors.black,
           fontWeight: FontWeight.w400,
         ),
@@ -104,7 +104,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 onTap: widget.onPressed ?? () {},
                 child: Text(
                   widget.suffixText!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.pink,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -113,7 +113,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               )
             : null,
         border: const OutlineInputBorder(),
-        disabledBorder: OutlineInputBorder(
+        disabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.black),
         ),
         errorStyle: const TextStyle(color: Colors.red, fontSize: 12),

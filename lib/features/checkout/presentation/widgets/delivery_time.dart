@@ -16,9 +16,10 @@ class DeliveryTimeSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(local.deliveryTime,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
             Text(local.schedule,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: AppColors.pink)),
@@ -31,7 +32,7 @@ class DeliveryTimeSection extends StatelessWidget {
             const SizedBox(width: 5),
             Text(local.instant),
             Text(local.arrivesBy,
-                style: TextStyle(
+                style: const TextStyle(
                     color: AppColors.green, fontWeight: FontWeight.w500)),
           ],
         ).setHorizontalPadding(context, 0.05),

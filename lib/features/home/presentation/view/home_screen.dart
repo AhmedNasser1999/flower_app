@@ -111,7 +111,6 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider.value(
           value: context.read<AddressCubit>()..getAddresses(),
         ),
-
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
@@ -144,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           _currentAddress = 'something went wrong....';
                         }
 
-                        return OrderInfo();
+                        return const OrderInfo();
                       },
                     ),
                     const SizedBox(height: 10.0),

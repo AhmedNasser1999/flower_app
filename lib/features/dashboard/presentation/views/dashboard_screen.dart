@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-            getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
+                getIt<MostSellingProductsViewmodel>()..getMostSellingProducts(),
           ),
           BlocProvider(
             create: (context) => getIt<CategoriesCubit>()..getAllCategories(),
