@@ -36,7 +36,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include M#12m';
+  String get passwordValidationErrorMsg =>
+      'Password must be at least 6 characters and include M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -108,19 +109,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!';
 
   @override
-  String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
 
   @override
   String get emailVerificationScreen => 'Email Verification';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'Please enter the code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter the code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText => 'Please enter your email associated with\nyour account';
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated with\nyour account';
 
   @override
   String get forgetPassword => 'Forgot Password';
@@ -279,7 +283,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shoppingCart => 'Shopping Cart';
 
   @override
-  String get emptyCartMessage => 'Your shopping cart is empty. Start adding some beautiful flowers!';
+  String get emptyCartMessage =>
+      'Your shopping cart is empty. Start adding some beautiful flowers!';
 
   @override
   String get viewProducts => 'View Products';
@@ -441,7 +446,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginRequiredTitle => 'Login Required';
 
   @override
-  String get loginRequiredMessage => 'You need to login to access this feature.';
+  String get loginRequiredMessage =>
+      'You need to login to access this feature.';
 
   @override
   String get changeLanguage => 'Change Language';
@@ -525,7 +531,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteAddress => 'Delete Address';
 
   @override
-  String get deleteConfirmation => 'Are you sure you want to delete this address?';
+  String get deleteConfirmation =>
+      'Are you sure you want to delete this address?';
 
   @override
   String get delete => 'Delete';
@@ -558,7 +565,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get permissionDenied => 'Location permission denied';
 
   @override
-  String get permissionPermanentlyDenied => 'Location permission permanently denied. Enable it in settings.';
+  String get permissionPermanentlyDenied =>
+      'Location permission permanently denied. Enable it in settings.';
 
   @override
   String get errorGettingLocation => 'Error getting location: ';
@@ -675,7 +683,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cartClearedSuccessfully => 'Cart cleared successfully';
 
   @override
-  String get profilePhotoUpdatedSuccessfully => 'Profile photo updated successfully';
+  String get profilePhotoUpdatedSuccessfully =>
+      'Profile photo updated successfully';
 
   @override
   String get passwordUpdatedSuccessMsg => 'Password changed successfully!';

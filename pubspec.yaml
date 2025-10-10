@@ -9,52 +9,53 @@ environment:
   sdk: ">=3.2.1 <4.0.0"
 
 dependencies:
+  another_flushbar: ^1.12.32
+  cached_network_image: ^3.4.1
+  cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  dio: ^5.9.0
+  firebase_core: ^4.1.0
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  injectable: ^2.5.1
-  get_it: ^8.2.0
-  retrofit:
-  logger: ^2.6.1
-  json_annotation: ^4.9.0
-  dio: ^5.9.0
   flutter_bloc: ^9.1.1
-  dartz: ^0.10.1
-  pinput: ^5.0.1
-  flutter_secure_storage: ^9.2.4
-  cached_network_image: ^3.4.1
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  path_provider: ^2.1.5
-  flutter_otp_text_field:
   flutter_localizations:
     sdk: flutter
-  intl: any
+  flutter_map: ^8.2.1
+  flutter_otp_text_field: null
+  flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.0
-  mockito: ^5.4.5
-  loading_indicator: ^3.1.1
+  fluttertoast: ^8.2.14
+  geocoding: ^4.0.0
+  geolocator: ^14.0.2
+  get: ^4.7.2
+  get_it: ^8.2.0
   google_fonts: ^6.2.1
-  smooth_page_indicator: ^1.2.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  http: ^1.5.0
+  image_picker: ^1.2.0
+  injectable: ^2.5.1
+  intl: any
+  json_annotation: ^4.9.0
+  latlong2: ^0.9.1
+  loading_indicator: ^3.1.1
+  location: ^8.0.1
+  logger: ^2.6.1
+  mockito: 5.4.4
+  path_provider: ^2.1.5
+  permission_handler: ^12.0.1
+  pinput: ^5.0.1
+  retrofit: null
+  shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   shimmer_animation: ^2.2.2
-  image_picker: ^1.2.0
-  shared_preferences: ^2.5.3
-  firebase_core: ^4.1.0
-  geolocator: ^14.0.2
-  geocoding: ^4.0.0
-  permission_handler: ^12.0.1
-  flutter_map: ^8.2.1
-  latlong2: ^0.9.1
-  location: ^8.0.1
-  webview_flutter:
-  fluttertoast: ^8.2.14
-  another_flushbar: ^1.12.32
-  get: ^4.7.2
+  smooth_page_indicator: ^1.2.1
+  webview_flutter: null
 
 dev_dependencies:
   bloc_test: ^10.0.0
   build_runner: ^2.4.13
-  flutter_lints:
+  flutter_lints: null
   flutter_test:
     sdk: flutter
   hive_generator: ^2.0.1
@@ -87,11 +88,10 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/core/constant/
   filename: app_assets.dart
-  field_prefix:
+  field_prefix: null
   ignore_comments: true
   classname: AppAssets
