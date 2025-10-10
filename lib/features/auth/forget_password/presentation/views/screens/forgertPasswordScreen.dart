@@ -46,7 +46,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         ),
         title: Text(
           local.password,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppColors.black,
             fontWeight: FontWeight.w500,
           ),
@@ -85,7 +85,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 50,
                         width: 50,
                         child: LoadingIndicator(

@@ -1,4 +1,3 @@
-
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +35,12 @@ void main() async {
           create: (_) => getIt<AddressCubit>(),
         ),
       ],
-      child: MyApp(
+      child: const MyApp(
         initialRoute: AppRoutes.initial,
       ),
     ),
   );
 }
-
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -61,7 +59,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           locale:
-          cubit.language == "en" ? const Locale("en") : const Locale("ar"),
+              cubit.language == "en" ? const Locale("en") : const Locale("ar"),
         );
       },
     );

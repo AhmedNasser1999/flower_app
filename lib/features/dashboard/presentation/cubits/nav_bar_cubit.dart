@@ -5,7 +5,7 @@ import '../widgets/login_dialog.dart';
 part 'nav_bar_state.dart';
 
 class NavBarCubit extends Cubit<NavBarState> {
-  NavBarCubit() : super(NavBarInitial(0));
+  NavBarCubit() : super(const NavBarInitial(0));
 
   Future<void> changeTab(BuildContext context, int index) async {
     final isGuest = await GuestService.isGuest();
@@ -23,6 +23,6 @@ class NavBarCubit extends Cubit<NavBarState> {
   }
 
   void navigateToCategories() {
-    emit(NavBarInitial(1));
+    emit(const NavBarInitial(1));
   }
 }

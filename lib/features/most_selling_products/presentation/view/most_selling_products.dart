@@ -32,11 +32,13 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
@@ -45,7 +47,7 @@ class MostSellingProducts extends StatelessWidget {
             BlocBuilder<MostSellingProductsViewmodel, MostSellingProductStates>(
           builder: (context, state) {
             if (state is MostSellingLoadingState) {
-              return Center(
+              return const Center(
                   child: SizedBox(
                 height: 50,
                 width: 50,

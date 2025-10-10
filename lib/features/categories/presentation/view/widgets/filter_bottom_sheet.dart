@@ -35,7 +35,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           const SizedBox(
             height: 20,
           ),
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "Sort By",

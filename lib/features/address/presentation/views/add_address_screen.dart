@@ -97,7 +97,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               ),
             );
           } else if (state is AddressLoaded) {
-
             Navigator.pop(context);
           }
         },
@@ -188,8 +187,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   ),
                   const SizedBox(height: 24),
                   state is AddressLoading
-                      ? Center(
-                          child: const CircularProgressIndicator(
+                      ? const Center(
+                          child: CircularProgressIndicator(
                           color: AppColors.pink,
                           strokeWidth: 2,
                         ))
@@ -219,14 +218,13 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
 
                               if (_isEditMode) {
                                 context.read<AddressCubit>().updateAddress(
-                                      widget.addressToEdit!.id,
-                                      addressRequest,
-                                  context
-                                    );
+                                    widget.addressToEdit!.id,
+                                    addressRequest,
+                                    context);
                               } else {
                                 context
                                     .read<AddressCubit>()
-                                    .addAddress(addressRequest,context);
+                                    .addAddress(addressRequest, context);
                               }
                             }
                           },

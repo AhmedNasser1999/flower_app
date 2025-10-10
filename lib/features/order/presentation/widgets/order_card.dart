@@ -49,7 +49,7 @@ class OrderCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: AppColors.black,
@@ -58,7 +58,7 @@ class OrderCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   price,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,
@@ -67,7 +67,7 @@ class OrderCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   subtitle,
-                  style: TextStyle(fontSize: 14, color: AppColors.grey),
+                  style: const TextStyle(fontSize: 14, color: AppColors.grey),
                 ),
                 const SizedBox(height: 8),
                 CustomElevatedButton(

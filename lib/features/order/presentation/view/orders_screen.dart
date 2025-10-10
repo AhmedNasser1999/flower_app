@@ -49,7 +49,7 @@ class OrdersScreen extends StatelessWidget {
         ),
         body: BlocBuilder<OrdersCubit, OrdersState>(builder: (context, state) {
           if (state is OrdersLoadingState) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 height: 80,
                 width: 80,

@@ -21,7 +21,7 @@ class SummarySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int deliveryFee = 22;
+    const int deliveryFee = 22;
     final local = AppLocalizations.of(context)!;
     return Column(
       children: [
@@ -46,13 +46,14 @@ class SummarySection extends StatelessWidget {
                       final selected = addressCubit.selectedAddress;
 
                       if (selected == null) {
-                        showCustomSnackBar(context, "Please select address", isError: false);
+                        showCustomSnackBar(context, "Please select address",
+                            isError: false);
                         return;
                       }
                       checkoutCubit.placeOrder(
                           paymentMethod: selectedPayment, address: selected);
                     },
-            ).setOnlyPadding(context,0, 0.02, 0, 0);
+            ).setOnlyPadding(context, 0, 0.02, 0, 0);
           },
         ),
       ],
