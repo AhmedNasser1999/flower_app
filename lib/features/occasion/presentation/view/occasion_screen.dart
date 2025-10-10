@@ -114,14 +114,14 @@ class _OccasionScreenState extends State<OccasionScreen>
             children: [
               Text(
                 local.occasionsTitle,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 24,
                     fontFamily: "Janna",
                     fontWeight: FontWeight.w400),
               ),
               Text(
                 local.occasionsSubTitle,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -229,7 +229,7 @@ class _OccasionScreenState extends State<OccasionScreen>
   Widget _buildProductsSection(BuildContext context,
       MostSellingProductStates state, String noProductsForOccasion) {
     if (state is MostSellingLoadingState) {
-      return Center(
+      return const Center(
         child: SizedBox(
           height: 50,
           width: 50,
@@ -258,14 +258,14 @@ class _OccasionScreenState extends State<OccasionScreen>
         },
         color: AppColors.pink,
         backgroundColor: AppColors.white,
-        child: ProductsGridWidget(isFromCategories: false),
+        child: const ProductsGridWidget(isFromCategories: false),
       );
     } else if (state is MostSellingProductsErrorState) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Something went wrong, please try again"),
+            const Text("Something went wrong, please try again"),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {

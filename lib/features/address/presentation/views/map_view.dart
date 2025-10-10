@@ -60,7 +60,7 @@ class _MapViewState extends State<MapView> {
       children: [
         Text(
           local!.selectLocation,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         if (_permissionStatus == LocationPermissionStatus.checking)
@@ -170,9 +170,9 @@ class _MapViewState extends State<MapView> {
       }
 
       Position position = await Geolocator.getCurrentPosition(
-        locationSettings: LocationSettings(
+        locationSettings: const LocationSettings(
           accuracy: LocationAccuracy.best,
-          timeLimit: const Duration(seconds: 10),
+          timeLimit: Duration(seconds: 10),
         ),
       );
 
@@ -316,7 +316,7 @@ class _MapViewState extends State<MapView> {
                         _mapController.camera.zoom + 1,
                       );
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                       color: AppColors.pink,
                     ),
@@ -332,7 +332,7 @@ class _MapViewState extends State<MapView> {
                         _mapController.camera.zoom - 1,
                       );
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.remove,
                       color: AppColors.pink,
                     ),
@@ -343,7 +343,7 @@ class _MapViewState extends State<MapView> {
                     mini: true,
                     backgroundColor: Colors.white,
                     onPressed: _getCurrentLocation,
-                    child: Icon(
+                    child: const Icon(
                       Icons.my_location,
                       color: AppColors.pink,
                     ),

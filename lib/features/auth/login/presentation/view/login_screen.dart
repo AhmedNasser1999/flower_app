@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.dashboard,
-                  (route) => false,
+              (route) => false,
             );
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
@@ -92,8 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontFamily: "Inter",
                           fontStyle: FontStyle.normal,
                         ),
-                      ).setHorizontalAndVerticalPadding(
-                          context, 0.04, 0.05),
+                      ).setHorizontalAndVerticalPadding(context, 0.04, 0.05),
                     ],
                   ),
                   CustomTextFormField(
@@ -180,13 +179,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.dashboard,
-                              (route) => false,
+                          (route) => false,
                         );
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                               content:
-                              Text('Failed to start guest session: $e')),
+                                  Text('Failed to start guest session: $e')),
                         );
                       }
                     },

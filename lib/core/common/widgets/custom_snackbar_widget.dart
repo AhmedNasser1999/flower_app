@@ -4,15 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'custom_toast.dart';
-Future<void> showCustomSnackBar(
-    BuildContext context,
-    String? message,
-    {
-      bool isError = true,
-      bool isWarning = false,
-      bool showToaster = false
-    }
-    ) async {
+
+Future<void> showCustomSnackBar(BuildContext context, String? message,
+    {bool isError = true,
+    bool isWarning = false,
+    bool showToaster = false}) async {
   if (message == null || message.isEmpty) return;
 
   if (isWarning) {
@@ -25,7 +21,7 @@ Future<void> showCustomSnackBar(
           fontSize: 16,
         ),
       ),
-      messageText: Text(message, style: TextStyle(color: AppColors.grey)),
+      messageText: Text(message, style: const TextStyle(color: AppColors.grey)),
       icon: Icon(
         isError ? Icons.warning_amber_rounded : Icons.check_circle,
         size: 32,

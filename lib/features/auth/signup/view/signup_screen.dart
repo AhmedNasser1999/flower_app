@@ -29,7 +29,7 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                     width: 50,
                     child: LoadingIndicator(
@@ -42,7 +42,7 @@ class SignupScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     local.loading,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Janna",
                       fontSize: 10,
                       fontWeight: FontWeight.w600,

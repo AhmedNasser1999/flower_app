@@ -17,7 +17,7 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               color: AppColors.black,
               fontSize: 20,
               fontWeight: FontWeight.w500,
@@ -27,7 +27,7 @@ class SectionHeader extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             local.viewAll,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.pink,
               decorationColor: AppColors.pink,
               decoration: TextDecoration.underline,

@@ -41,32 +41,31 @@ class ProductItem extends StatelessWidget {
                     children: [
                       isAsset
                           ? Image.asset(
-                        image,
-                        fit: BoxFit.cover,
-                        width: 150,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            width: 150,
-                            color: Colors.grey[300],
-                            child: const Icon(Icons.error_outline,
-                                color: Colors.red),
-                          );
-                        },
-                      )
+                              image,
+                              fit: BoxFit.cover,
+                              width: 150,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  width: 150,
+                                  color: Colors.grey[300],
+                                  child: const Icon(Icons.error_outline,
+                                      color: Colors.red),
+                                );
+                              },
+                            )
                           : Image.network(
-                        image,
-                        fit: BoxFit.cover,
-                        width: 150,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            width: 150,
-                            color: Colors.grey[300],
-                            child: const Icon(Icons.error_outline,
-                                color: Colors.red),
-                          );
-                        },
-                      ),
-
+                              image,
+                              fit: BoxFit.cover,
+                              width: 150,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  width: 150,
+                                  color: Colors.grey[300],
+                                  child: const Icon(Icons.error_outline,
+                                      color: Colors.red),
+                                );
+                              },
+                            ),
                       if (isOutOfStock)
                         Container(
                           width: 150,
@@ -116,16 +115,17 @@ class ProductItem extends StatelessWidget {
                 isOccasion
                     ? const SizedBox.shrink()
                     : Expanded(
-                  child: Text(
-                    '$price EGP',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "Inter",
-                      color: isOutOfStock ? Colors.grey[600] : Colors.black,
-                    ),
-                  ),
-                ),
+                        child: Text(
+                          '$price EGP',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: "Inter",
+                            color:
+                                isOutOfStock ? Colors.grey[600] : Colors.black,
+                          ),
+                        ),
+                      ),
               ],
             ),
           ],

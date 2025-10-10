@@ -22,19 +22,19 @@ class CartCubit extends Cubit<CartState> {
   final ClearCartUseCase _clearCartUseCase;
 
   CartCubit(
-      this._addToCartUseCase,
-      this._getCartUseCase,
-      this._removeFromCartUseCase,
-      this._updateCartItemUseCase,
-      this._clearCartUseCase,
-      ) : super(CartInitial());
+    this._addToCartUseCase,
+    this._getCartUseCase,
+    this._removeFromCartUseCase,
+    this._updateCartItemUseCase,
+    this._clearCartUseCase,
+  ) : super(CartInitial());
 
   Future<void> addToCart(
-      String productId,
-      int quantity,
-      BuildContext context,
-      bool isFromProductDetails,
-      ) async {
+    String productId,
+    int quantity,
+    BuildContext context,
+    bool isFromProductDetails,
+  ) async {
     var local = AppLocalizations.of(context)!;
     emit(CartLoading());
     try {

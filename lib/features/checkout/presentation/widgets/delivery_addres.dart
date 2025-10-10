@@ -21,7 +21,7 @@ class DeliveryAddressSection extends StatelessWidget {
       children: [
         Text(
           local.deliveryAddress,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ).setHorizontalPadding(context, 0.05),
         const SizedBox(height: 10),
         BlocBuilder<AddressCubit, AddressState>(
@@ -72,10 +72,10 @@ class DeliveryAddressSection extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add, color: AppColors.pink),
-                    SizedBox(width: 10),
+                    const Icon(Icons.add, color: AppColors.pink),
+                    const SizedBox(width: 10),
                     Text(local.addNew,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: AppColors.pink,
                             fontWeight: FontWeight.w500)),
                   ],

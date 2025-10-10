@@ -61,7 +61,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               );
             } else if (state is CheckoutCashSuccess) {
               Navigator.pop(context);
-              showCustomSnackBar(context, "Order placed ${state.message}fully", isError: false);
+              showCustomSnackBar(context, "Order placed ${state.message}fully",
+                  isError: false);
               Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.dashboard, (route) => false);
             } else if (state is CheckoutCardSuccess) {
@@ -72,7 +73,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   builder: (_) => PaymentWebViewScreen(url: state.url),
                 ),
               );
-              showCustomSnackBar(context,"Credit card session created", isError: false);
+              showCustomSnackBar(context, "Credit card session created",
+                  isError: false);
             } else if (state is CheckoutError) {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
@@ -91,7 +93,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   const SizedBox(height: 25),
                   const Divider(thickness: 24, color: Color(0xffEAEAEA)),
                   const SizedBox(height: 25),
-                  DeliveryAddressSection(),
+                  const DeliveryAddressSection(),
                   const SizedBox(height: 30),
                   const Divider(thickness: 24, color: Color(0xffEAEAEA)),
                   const SizedBox(height: 20),

@@ -47,7 +47,8 @@ class ChangePasswordScreen extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Image.asset("assets/icons/arrow_back_icon.png")),
+                          child:
+                              Image.asset("assets/icons/arrow_back_icon.png")),
                       const SizedBox(width: 20),
                       Text(
                         locale!.resetPassword,
@@ -93,7 +94,8 @@ class ChangePasswordScreen extends StatelessWidget {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return locale.passwordErrorMatchingMsg;
-                      } else if (value != viewModel.newPasswordController.text) {
+                      } else if (value !=
+                          viewModel.newPasswordController.text) {
                         return locale.passwordErrorMatchingMsg;
                       }
                       return null;
@@ -114,21 +116,21 @@ class ChangePasswordScreen extends StatelessWidget {
                           ),
                         )
                       : CustomElevatedButton(
-                    text: locale.updateText,
-                    onPressed: formKey.currentState != null &&
-                        formKey.currentState!.validate()
-                        ? () async {
-                      await viewModel.changePassword();
-                      Navigator.pop(context);
-                      Future.delayed(const Duration(milliseconds: 500), () {
-                        viewModel.currentPasswordController.clear();
-                        viewModel.newPasswordController.clear();
-                        viewModel.confirmPasswordController.clear();
-                      });
-                    }
-                        : null,
-                  ),
-              
+                          text: locale.updateText,
+                          onPressed: formKey.currentState != null &&
+                                  formKey.currentState!.validate()
+                              ? () async {
+                                  await viewModel.changePassword();
+                                  Navigator.pop(context);
+                                  Future.delayed(
+                                      const Duration(milliseconds: 500), () {
+                                    viewModel.currentPasswordController.clear();
+                                    viewModel.newPasswordController.clear();
+                                    viewModel.confirmPasswordController.clear();
+                                  });
+                                }
+                              : null,
+                        ),
                 ],
               ).setHorizontalPadding(context, 0.05),
             ),

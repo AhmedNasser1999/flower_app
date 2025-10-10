@@ -17,7 +17,7 @@ class CheckoutHeader extends StatelessWidget {
         ),
         Text(
           local.checkout,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 20,
             fontFamily: "Janna",

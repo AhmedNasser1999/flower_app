@@ -46,7 +46,8 @@ class OrderInfo extends StatelessWidget {
           },
           child: Row(
             children: [
-              SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
+              SvgPicture.asset(AppIcons.locationMarkerIcon,
+                  color: AppColors.grey),
               const SizedBox(width: 8),
               Text(
                 local.deliverTo,
@@ -63,8 +64,7 @@ class OrderInfo extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              SvgPicture.asset(AppIcons.arrowDownIcon,
-                  color: AppColors.pink),
+              SvgPicture.asset(AppIcons.arrowDownIcon, color: AppColors.pink),
             ],
           ),
         );

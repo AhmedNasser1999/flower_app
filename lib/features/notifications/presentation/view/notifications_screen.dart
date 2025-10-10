@@ -63,13 +63,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   setState(() {
                     notifications.removeAt(index);
                   });
-                  showCustomSnackBar(context, local.notificationDelete, isError: false);
+                  showCustomSnackBar(context, local.notificationDelete,
+                      isError: false);
                 },
                 background: Container(
                   color: Colors.red,
                   alignment: Alignment.centerRight,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Icon(Icons.delete, color: Colors.white),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: const Icon(Icons.delete, color: Colors.white),
                 ),
                 child: ListTile(
                   leading: Column(

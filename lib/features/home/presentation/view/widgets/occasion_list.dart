@@ -42,7 +42,7 @@ class OccasionList extends StatelessWidget {
             quantity: occasionList[index].productsCount,
           );
         },
-        separatorBuilder: (context, index) => SizedBox(width: 16.0),
+        separatorBuilder: (context, index) => const SizedBox(width: 16.0),
         itemCount: occasionList.length,
       ),
     );

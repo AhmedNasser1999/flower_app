@@ -91,7 +91,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
                     const SizedBox(height: 16),
                     Text(
                       local.noAddresses,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           color: Colors.grey),
@@ -219,7 +219,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
             onPressed: () => Navigator.pop(context),
             child: Text(
               local.cancel,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),
@@ -245,7 +245,7 @@ class _SavedAddressesScreenState extends State<SavedAddressesScreen> {
               }
             },
             child: Text(local.delete,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.pink,
                 )),
           ),

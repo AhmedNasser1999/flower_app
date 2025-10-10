@@ -50,7 +50,7 @@ class _CartScreenState extends State<CartScreen> {
           title: !widget.isFromNavBar
               ? Text(local.cart)
               : Padding(
-                  padding: EdgeInsetsDirectional.only(start: 18),
+                  padding: const EdgeInsetsDirectional.only(start: 18),
                   child: Text(local.cart),
                 ),
           backgroundColor: Colors.white,
@@ -75,7 +75,7 @@ class _CartScreenState extends State<CartScreen> {
                     },
                     child: Text(
                       local.clear,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         color: AppColors.pink,
                         fontWeight: FontWeight.bold,
@@ -96,7 +96,7 @@ class _CartScreenState extends State<CartScreen> {
           },
           builder: (context, state) {
             if (state is CartLoading) {
-              return Center(
+              return const Center(
                 child: SizedBox(
                   height: 80,
                   width: 80,
@@ -191,7 +191,8 @@ class _CartScreenState extends State<CartScreen> {
 
         return Row(
           children: [
-            SvgPicture.asset(AppIcons.locationMarkerIcon, color: AppColors.grey),
+            SvgPicture.asset(AppIcons.locationMarkerIcon,
+                color: AppColors.grey),
             const SizedBox(width: 8),
             Text(
               local.deliverTo,
@@ -360,19 +361,20 @@ class _CartScreenState extends State<CartScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text(local.cancel, style: TextStyle(color: AppColors.black)),
+            child: Text(local.cancel,
+                style: const TextStyle(color: AppColors.black)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               context.read<CartCubit>().clearCart(context).then((value) {
-                showCustomSnackBar(context, local.cartClearedSuccessfully,isError: false);
+                showCustomSnackBar(context, local.cartClearedSuccessfully,
+                    isError: false);
               });
-
-              },
+            },
             child: Text(
               local.clear,
-              style: TextStyle(color: AppColors.pink),
+              style: const TextStyle(color: AppColors.pink),
             ),
           ),
         ],

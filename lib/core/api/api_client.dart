@@ -90,10 +90,8 @@ abstract class ApiClient {
 
   /// PRODUCTS ENDPOINTS ///
   @GET('/products')
-  Future<ProductsResponseModel> getAllProducts(
-      @Query('sort') String? sort,
-      @Query('search') String? search,
-      @Query('category') String? category);
+  Future<ProductsResponseModel> getAllProducts(@Query('sort') String? sort,
+      @Query('search') String? search, @Query('category') String? category);
 
   /// CART ENDPOINTS ///
   @POST(AppConstants.addToCart)
@@ -111,9 +109,9 @@ abstract class ApiClient {
   @PUT("${AppConstants.updateCartItem}/{id}")
   @Extra({'auth': true})
   Future<CartResponse> updateCartItem(
-      @Path('id') String itemId,
-      @Body() Map<String, dynamic> data,
-      );
+    @Path('id') String itemId,
+    @Body() Map<String, dynamic> data,
+  );
 
   @DELETE(AppConstants.deleteUserCart)
   @Extra({'auth': true})
