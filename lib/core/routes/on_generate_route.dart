@@ -38,6 +38,8 @@ import '../../features/profile/change_password/presentation/views/screens/change
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import '../../features/occasion/presentation/view/occasion_screen.dart';
 import '../../features/splash/view/splash_view.dart';
+import '../../features/track_order/presentation/cubit/track_order_cubit.dart';
+import '../../features/track_order/presentation/screens/track_order_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -187,6 +189,20 @@ class Routes {
             builder: (_) => BlocProvider(
                 create: (_) => getIt<CheckoutCubit>(),
                 child: CheckoutScreen(subTotal: args)));
+
+      case AppRoutes.trackOrder:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<TrackOrderCubit>()..watchOrder(
+              userId: '678a783d3c3797492747c8e6',
+              orderId: '678a9bb63745562ff48ce07b',
+            ),
+            child: const TrackOrderScreen(
+              userId: '678a783d3c3797492747c8e6',
+              orderId: '678a9bb63745562ff48ce07b',
+            ),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

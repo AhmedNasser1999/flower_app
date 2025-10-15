@@ -22,4 +22,5 @@ abstract class AppRoutes {
   static const String addressScreen = "/addressScreen";
   static const String savedAddressScreen = "/savedAddressScreen";
   static const String checkout = "/checkout";
+  static const String trackOrder = "/trackOrder";
 }
