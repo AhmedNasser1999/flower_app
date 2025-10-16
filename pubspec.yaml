@@ -53,6 +53,8 @@ dependencies:
   cloud_firestore:
   firebase_messaging:
   firebase_storage:
+  url_launcher: ^6.3.2
+
 
 dev_dependencies:
   bloc_test: ^10.0.0

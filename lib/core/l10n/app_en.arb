@@ -222,5 +222,13 @@
   "addressDeletedSuccessfully": "Address deleted Successfully",
   "cartClearedSuccessfully": "Cart cleared successfully",
   "profilePhotoUpdatedSuccessfully": "Profile photo updated successfully",
-  "passwordUpdatedSuccessMsg": "Password changed successfully!"
+  "passwordUpdatedSuccessMsg": "Password changed successfully!",
+  "orderPlacedSuccessfully": "Your order placed\n successfully!",
+  "receivedYourOrder": "Received your order",
+  "preparingYourOrder": "Preparing your order",
+  "outForDelivery": "Out for delivery",
+  "delivered": "Delivered",
+  "estimatedArrival": "Estimated arrival",
+  "deliveryHeroToday": "Is your delivery hero for today",
+  "showMap": "Show map"
 }

@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/contants/app_images.dart';
+import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../cubit/track_order_cubit.dart';
@@ -34,9 +35,10 @@ class TrackOrderScreen extends StatelessWidget {
         return 0;
     }
   }
-
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return BlocProvider(
       create: (_) => getIt<TrackOrderCubit>()
         ..watchOrder(userId: userId, orderId: orderId),
@@ -51,9 +53,9 @@ class TrackOrderScreen extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          title: const Text(
-            "Track Order",
-            style: TextStyle(
+          title: Text(
+            local.trackOrder,
+            style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w500,
             ),
@@ -62,25 +64,28 @@ class TrackOrderScreen extends StatelessWidget {
         body: BlocBuilder<TrackOrderCubit, TrackOrderState>(
           builder: (context, state) {
             if (state is TrackOrderLoading || state is TrackOrderInitial) {
-              return const Center(child: SizedBox(
-                height: 80,
-                width: 80,
-                child: LoadingIndicator(
-                  indicatorType: Indicator.lineScalePulseOut,
-                  colors: [AppColors.pink],
-                  strokeWidth: 2,
-                  backgroundColor: Colors.transparent,
+              return const Center(
+                child: SizedBox(
+                  height: 80,
+                  width: 80,
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [AppColors.pink],
+                    strokeWidth: 2,
+                    backgroundColor: Colors.transparent,
+                  ),
                 ),
-              ),);
+              );
             } else if (state is TrackOrderLoaded) {
               final order = state.order;
               final stages = [
-                'Received your order',
-                'Preparing your order',
-                'Out for delivery',
-                'Delivered'
+                local.receivedYourOrder,
+                local.preparingYourOrder,
+                local.outForDelivery,
+                local.delivered
               ];
               final currentStage = getActiveStageIndex(order.updateOrderButton);
+
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(18),
@@ -92,7 +97,7 @@ class TrackOrderScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Estimated arrival',
+                              local.estimatedArrival,
                               style: Theme.of(context)
                                   .textTheme
                                   .displayMedium
@@ -105,8 +110,8 @@ class TrackOrderScreen extends StatelessWidget {
                                   .textTheme
                                   .titleMedium
                                   ?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
                             ),
                           ],
                         ),
@@ -128,17 +133,21 @@ class TrackOrderScreen extends StatelessWidget {
                                   'Omar',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
-                                const Text('Is your delivery hero for today'),
+                                Text(local.deliveryHeroToday),
                               ],
                             ),
                           ),
                           IconButton(
-                            icon: SvgPicture.asset(AppIcons.phoneIcon,color: AppColors.pink,),
-                            onPressed: () {},
+                            icon: SvgPicture.asset(AppIcons.phoneIcon, color: AppColors.pink),
+                            onPressed: () {
+                              context.read<TrackOrderCubit>().call(state.order.pickupAddress.phoneNumber);
+                            },
                           ),
                           IconButton(
-                            icon: SvgPicture.asset(AppIcons.whatsappIcon,width: 25,height: 25,),
-                            onPressed: () {},
+                            icon: SvgPicture.asset(AppIcons.whatsappIcon, width: 25, height: 25),
+                            onPressed: () {
+                              context.read<TrackOrderCubit>().shareViaWhatsApp(state.order.pickupAddress.phoneNumber);
+                            },
                           ),
                         ],
                       ),
@@ -149,7 +158,7 @@ class TrackOrderScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 60),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 26,horizontal: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 8),
                         child: Column(
                           children: List.generate(stages.length, (index) {
                             final isCompleted = index < currentStage;
@@ -166,18 +175,15 @@ class TrackOrderScreen extends StatelessWidget {
                                         color: isActive
                                             ? Colors.pink
                                             : (isCompleted
-                                                ? Colors.pink.shade200
-                                                : Colors.white),
+                                            ? Colors.pink.shade200
+                                            : Colors.white),
                                         border: Border.all(
-                                          color: isActive
-                                              ? Colors.pink
-                                              : Colors.grey,
+                                          color: isActive ? Colors.pink : Colors.grey,
                                         ),
                                         shape: BoxShape.circle,
                                       ),
                                       child: (isCompleted || isActive)
-                                          ? const Icon(Icons.check,
-                                              color: Colors.white, size: 16)
+                                          ? const Icon(Icons.check, color: Colors.white, size: 16)
                                           : null,
                                     ),
                                     if (index < stages.length - 1)
@@ -201,15 +207,13 @@ class TrackOrderScreen extends StatelessWidget {
                                         color: isActive
                                             ? Colors.pink
                                             : (isCompleted
-                                                ? Colors.pink.shade200
-                                                : Colors.black),
+                                            ? Colors.pink.shade200
+                                            : Colors.black),
                                       ),
                                     ),
                                     Text(
                                       _formatArrival(order.createdAt),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium,
+                                      style: Theme.of(context).textTheme.displayMedium,
                                     ),
                                   ],
                                 )
@@ -219,9 +223,12 @@ class TrackOrderScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      CustomElevatedButton(text: "Show map", onPressed: () {
-                        Navigator.pushNamed(context, AppRoutes.orderMapView);
-                      }),
+                      CustomElevatedButton(
+                        text: local.showMap,
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.orderMapView);
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -235,6 +242,7 @@ class TrackOrderScreen extends StatelessWidget {
       ),
     );
   }
+
 
   static String _formatArrival(int ts) {
     if (ts <= 0) return '--';

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../core/contants/app_icons.dart';
 
 class OrderMapView extends StatefulWidget {
@@ -296,11 +299,7 @@ class _OrderMapViewState extends State<OrderMapView>
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.grey[200],
-                  child: const Icon(
-                    Icons.person,
-                    color: Colors.black,
-                    size: 30,
-                  ),
+                  child: SvgPicture.asset(AppIcons.deliveryBoyIcon),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -325,7 +324,9 @@ class _OrderMapViewState extends State<OrderMapView>
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    call('+201122795825');
+                  },
                   child: SvgPicture.asset(
                     AppIcons.phoneIcon,
                     width: 24,
@@ -334,7 +335,9 @@ class _OrderMapViewState extends State<OrderMapView>
                 ),
                 const SizedBox(width: 16),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    shareViaWhatsApp('+201122795825');
+                  },
                   child: SvgPicture.asset(
                     AppIcons.whatsappIcon,
                     width: 24,
@@ -345,9 +348,11 @@ class _OrderMapViewState extends State<OrderMapView>
             ),
             const Spacer(),
             SizedBox(
-              child: CustomElevatedButton(
-                text: 'Order Details',
-                onPressed: () {},
+              child: Center(
+                child: CustomElevatedButton(
+                  text: 'Order Details',
+                  onPressed: () {},
+                ),
               ),
             ),
           ],
@@ -366,5 +371,30 @@ class _OrderMapViewState extends State<OrderMapView>
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+}
+
+void call(String phoneNumber) async {
+  final url = Uri.parse("tel:$phoneNumber");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+  } else {
+    log("Phone is not installed");
+  }
+}
+
+void shareViaWhatsApp(String phoneNumber) async {
+  final cleanedPhone = phoneNumber.replaceAll(RegExp(r'[^\d+]'), '');
+  final phone =
+  cleanedPhone.startsWith('+') ? cleanedPhone : '+$cleanedPhone';
+  final url = Uri.parse("https://wa.me/$phone");
+
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+  } else {
+    final phoneUrl = Uri.parse("tel:$phone");
+    if (await canLaunchUrl(phoneUrl)) {
+      await launchUrl(phoneUrl);
+    }
   }
 }

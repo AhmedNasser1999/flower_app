@@ -222,5 +222,13 @@
   "addressDeletedSuccessfully": "تم إلغاء العنوان بنجاح",
   "cartClearedSuccessfully": "تم مسح عربة التسوق بالكامل",
   "profilePhotoUpdatedSuccessfully": "تم تحديث صورة الهوية بنجاح",
-  "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!"
+  "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!",
+  "orderPlacedSuccessfully": "تم تقديم طلبك بنجاح!",
+  "receivedYourOrder": "تم استلام طلبك",
+  "preparingYourOrder": "يتم تجهيز طلبك",
+  "outForDelivery": "الطلب في طريقه إليك",
+  "delivered": "تم التوصيل",
+  "estimatedArrival": "موعد الوصول المتوقع",
+  "deliveryHeroToday": "هو بطل التوصيل الخاص بك لهذا اليوم",
+  "showMap": "عرض الخريطة"
 }
