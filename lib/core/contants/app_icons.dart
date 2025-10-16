@@ -15,4 +15,7 @@ abstract final class AppIcons {
   static const String deliveryBoyIcon = 'assets/icons/delivery_boy_icon.svg';
   static const String whatsappIcon = 'assets/icons/whatsapp_icon.svg';
   static const String phoneIcon = 'assets/icons/call_icon.svg';
+  static const String motorcycleDeliveryIcon = 'assets/icons/motorcycle_delivery.svg';
+  static const String floweryIcon = 'assets/icons/flowery_icon.svg';
+  static const String flowerHomeIcon = 'assets/icons/flower_home_icon.svg';
 }
