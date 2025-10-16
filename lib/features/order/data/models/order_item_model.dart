@@ -7,7 +7,7 @@ part 'order_item_model.g.dart';
 class OrderItemModel {
   @JsonKey(name: "_id")
   final String id;
-  final ProductModel product;
+  final ProductModel? product;
   final double price;
   final int quantity;
 

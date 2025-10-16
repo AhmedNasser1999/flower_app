@@ -14,9 +14,9 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       final orders = await _getOrdersUseCase();
 
-      final active = orders.where((order) => order.state == 'pending').toList();
+      final active = orders.where((order) => order.state == 'pending'||order.state == 'inProgress').toList();
       final completed =
-          orders.where((order) => order.state != 'pending').toList();
+          orders.where((order) => order.state == 'completed').toList();
 
       emit(
           OrdersSuccessState(activeOrders: active, completedOrders: completed));
