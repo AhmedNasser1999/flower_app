@@ -29,7 +29,7 @@ dependencies:
   flutter_otp_text_field: ^1.2.0 # Specify a version
   flutter_localizations:
     sdk: flutter
-  intl: ^0.20.2 
+  intl:
   flutter_svg: ^2.2.0
   loading_indicator: ^3.1.1
   google_fonts: ^6.2.1
@@ -49,10 +49,10 @@ dependencies:
   fluttertoast: ^8.2.14
   another_flushbar: ^1.12.32
   get: ^4.7.2
-  firebase_auth: 
-  cloud_firestore: 
-  firebase_messaging: 
-  firebase_storage: 
+  firebase_auth:
+  cloud_firestore:
+  firebase_messaging:
+  firebase_storage:
 
 dev_dependencies:
   bloc_test: ^10.0.0

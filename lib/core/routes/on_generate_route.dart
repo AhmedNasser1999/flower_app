@@ -28,6 +28,7 @@ import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
 import '../../features/auth/logout/views/logout_widget.dart';
 import '../../features/checkout/presentation/view/checkout_screen.dart';
 import '../../features/checkout/presentation/viewmodel/checkout_cubit.dart';
+import '../../features/map/view/order_map_view.dart';
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
@@ -202,6 +203,10 @@ class Routes {
               orderId: '678a9bb63745562ff48ce07b',
             ),
           ),
+        );
+        case AppRoutes.orderMapView:
+        return MaterialPageRoute(
+          builder: (_) => const OrderMapView(),
         );
       default:
         return MaterialPageRoute(
