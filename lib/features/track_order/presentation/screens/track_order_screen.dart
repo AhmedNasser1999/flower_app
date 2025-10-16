@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/contants/app_images.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../cubit/track_order_cubit.dart';
 import '../cubit/track_order_state.dart';
@@ -218,7 +219,9 @@ class TrackOrderScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      CustomElevatedButton(text: "Show map", onPressed: () {}),
+                      CustomElevatedButton(text: "Show map", onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.orderMapView);
+                      }),
                     ],
                   ),
                 ),
