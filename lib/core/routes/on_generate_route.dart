@@ -6,6 +6,7 @@ import 'package:flower_app/features/address/presentation/views/saved_address_scr
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
+import 'package:flower_app/features/checkout/presentation/view/thanks_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
@@ -203,6 +204,10 @@ class Routes {
             ),
           ),
         );
+
+      case AppRoutes.thanksPage:
+        return MaterialPageRoute(builder: (_) => const ThanksScreen());
+
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

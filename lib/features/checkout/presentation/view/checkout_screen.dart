@@ -64,7 +64,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               showCustomSnackBar(context, "Order placed ${state.message}fully",
                   isError: false);
               Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.dashboard, (route) => false);
+                  context, AppRoutes.thanksPage, (route) => false);
             } else if (state is CheckoutCardSuccess) {
               Navigator.pop(context);
               Navigator.push(
