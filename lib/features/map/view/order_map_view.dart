@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
 import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -8,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/contants/app_icons.dart';
+import '../../../core/l10n/translation/app_localizations.dart';
 
 class OrderMapView extends StatefulWidget {
   const OrderMapView({super.key});
@@ -58,7 +57,10 @@ class _OrderMapViewState extends State<OrderMapView>
     )..repeat(reverse: false);
 
     _animation =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController)
+        Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+          parent: _animationController,
+          curve: Curves.linear, // Use linear curve for smooth movement
+        ))
           ..addListener(() {
             setState(() {
               _progress = _animation.value;
@@ -82,12 +84,19 @@ class _OrderMapViewState extends State<OrderMapView>
       if (accumulatedDistance + segmentDistance >= targetDistance) {
         final double segmentProgress =
             (targetDistance - accumulatedDistance) / segmentDistance;
+        // Clamp progress to ensure it stays within [0, 1]
+        final double clampedProgress = segmentProgress.clamp(0.0, 1.0);
         _currentVehiclePosition =
-            _interpolatePoint(start, end, segmentProgress);
+            _interpolatePoint(start, end, clampedProgress);
         break;
       } else {
         accumulatedDistance += segmentDistance;
       }
+    }
+
+    // Handle edge case where progress is 1.0 (end of route)
+    if (_progress >= 1.0) {
+      _currentVehiclePosition = _routePoints.last;
     }
   }
 
@@ -105,9 +114,12 @@ class _OrderMapViewState extends State<OrderMapView>
   }
 
   LatLng _interpolatePoint(LatLng start, LatLng end, double progress) {
+    // Ensure progress is clamped between 0 and 1
+    final double clampedProgress = progress.clamp(0.0, 1.0);
+    
     return LatLng(
-      start.latitude + (end.latitude - start.latitude) * progress,
-      start.longitude + (end.longitude - start.longitude) * progress,
+      start.latitude + (end.latitude - start.latitude) * clampedProgress,
+      start.longitude + (end.longitude - start.longitude) * clampedProgress,
     );
   }
 
@@ -260,8 +272,9 @@ class _OrderMapViewState extends State<OrderMapView>
   }
 
   Widget _buildBottomSheet() {
+    final local = AppLocalizations.of(context)!;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.33,
+      height: MediaQuery.of(context).size.height * 0.23,
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
@@ -270,18 +283,18 @@ class _OrderMapViewState extends State<OrderMapView>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Estimated arrival',
-                  style: TextStyle(
+                  local.estimatedArrival,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 4),
-                Text(
+                const SizedBox(height: 4),
+                const Text(
                   '03 Sep 2024, 11:00 AM',
                   style: TextStyle(
                     fontSize: 24,
@@ -314,7 +327,7 @@ class _OrderMapViewState extends State<OrderMapView>
                         ),
                       ),
                       Text(
-                        'Is your delivery hero for today',
+                        local.deliveryHeroToday,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey[800],
@@ -345,15 +358,6 @@ class _OrderMapViewState extends State<OrderMapView>
                   ),
                 ),
               ],
-            ),
-            const Spacer(),
-            SizedBox(
-              child: Center(
-                child: CustomElevatedButton(
-                  text: 'Order Details',
-                  onPressed: () {},
-                ),
-              ),
             ),
           ],
         ),
