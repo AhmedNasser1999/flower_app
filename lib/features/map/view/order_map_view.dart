@@ -274,7 +274,7 @@ class _OrderMapViewState extends State<OrderMapView>
   Widget _buildBottomSheet() {
     final local = AppLocalizations.of(context)!;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.23,
+      height: MediaQuery.of(context).size.height * 0.26,
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
