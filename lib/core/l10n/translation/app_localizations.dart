@@ -1441,6 +1441,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password changed successfully!'**
   String get passwordUpdatedSuccessMsg;
+
+  /// No description provided for @orderPlacedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order placed\n successfully!'**
+  String get orderPlacedSuccessfully;
+
+  /// No description provided for @receivedYourOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Received your order'**
+  String get receivedYourOrder;
+
+  /// No description provided for @preparingYourOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing your order'**
+  String get preparingYourOrder;
+
+  /// No description provided for @outForDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Out for delivery'**
+  String get outForDelivery;
+
+  /// No description provided for @delivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get delivered;
+
+  /// No description provided for @estimatedArrival.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated arrival'**
+  String get estimatedArrival;
+
+  /// No description provided for @deliveryHeroToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Is your delivery hero for today'**
+  String get deliveryHeroToday;
+
+  /// No description provided for @showMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Show map'**
+  String get showMap;
 }
 
 class _AppLocalizationsDelegate

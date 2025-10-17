@@ -685,4 +685,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordUpdatedSuccessMsg => 'تم تغير كلمة المرور بنجاح!';
+
+  @override
+  String get orderPlacedSuccessfully => 'تم تقديم طلبك بنجاح!';
+
+  @override
+  String get receivedYourOrder => 'تم استلام طلبك';
+
+  @override
+  String get preparingYourOrder => 'يتم تجهيز طلبك';
+
+  @override
+  String get outForDelivery => 'الطلب في طريقه إليك';
+
+  @override
+  String get delivered => 'تم التوصيل';
+
+  @override
+  String get estimatedArrival => 'موعد الوصول المتوقع';
+
+  @override
+  String get deliveryHeroToday => 'هو بطل التوصيل الخاص بك لهذا اليوم';
+
+  @override
+  String get showMap => 'عرض الخريطة';
 }

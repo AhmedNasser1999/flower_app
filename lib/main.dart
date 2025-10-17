@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/contants/secure_storage.dart';
 import 'package:flutter/material.dart';
@@ -5,15 +6,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
+import 'core/theme/app_theme.dart';
 import 'features/address/presentation/view_model/address_cubit.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
 import 'features/cart/presentation/view_model/cart_cubit.dart';
 import 'features/profile/presentation/viewmodel/profile_viewmodel.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await configureDependencies();
   String languageValue = await LocalizationPreference.getLanguage();
   await SecureStorage.initialize();
@@ -55,6 +61,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute: initialRoute,
+          theme: AppTheme.lightTheme,
           onGenerateRoute: Routes.onGenerateRoute,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

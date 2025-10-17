@@ -6,7 +6,9 @@ import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../auth/domain/services/auth_service.dart';
 import '../widgets/order_card.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -77,28 +79,29 @@ class OrdersScreen extends StatelessWidget {
                       price: 'EGP ${order.totalPrice.toStringAsFixed(0)}',
                       subtitle: 'Order number# ${order.orderNumber}',
                       buttonText: local.trackOrder,
-                      onPressed: () {},
+                      onPressed: () async{
+                        final userId = await AuthService.getUserId();
+                        final orderId = order.id;
+                        final args = TrackOrderData(userId: userId!, orderId: orderId);
+                        Navigator.pushNamed(context, AppRoutes.trackOrder,arguments: args);},
                     );
                   },
                 ),
                 ListView.builder(
                   padding: const EdgeInsets.all(8),
-                  itemCount: 1,
-                  //itemCount: state.completedOrders.length,
+                  itemCount: state.completedOrders.length,
                   itemBuilder: (context, index) {
+                    final order = state.completedOrders[index];
+                    final firstItem = order.orderItems.isNotEmpty ? order.orderItems.first : null;
                     return OrderCard(
-                        buttonText: local.recorder,
-                        title: "Test with dummy data",
-                        onPressed: () {});
-                    // final order = state.completedOrders[index];
-                    // final firstItem = order.orderItems.isNotEmpty ? order.orderItems.first : null;
-                    // return OrderCard(
-                    //   title: firstItem?.title ?? '-',
-                    //   price: 'EGP ${order.totalPrice.toStringAsFixed(0)}',
-                    //   subtitle: 'Order number# ${order.orderNumber}',
-                    //   buttonText: local.recorder,
-                    //   onPressed: () {},
-                    // );
+                      title: firstItem?.title ?? '-',
+                      price: 'EGP ${order.totalPrice.toStringAsFixed(0)}',
+                      subtitle: 'Order number# ${order.orderNumber}',
+                      buttonText: local.recorder,
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.dashboard);
+                      },
+                    );
                   },
                 ),
               ],
@@ -112,4 +115,11 @@ class OrdersScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class TrackOrderData {
+  final String userId;
+  final String orderId;
+
+  TrackOrderData({required this.userId,required this.orderId});
 }

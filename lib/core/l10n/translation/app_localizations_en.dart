@@ -688,4 +688,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordUpdatedSuccessMsg => 'Password changed successfully!';
+
+  @override
+  String get orderPlacedSuccessfully => 'Your order placed\n successfully!';
+
+  @override
+  String get receivedYourOrder => 'Received your order';
+
+  @override
+  String get preparingYourOrder => 'Preparing your order';
+
+  @override
+  String get outForDelivery => 'Out for delivery';
+
+  @override
+  String get delivered => 'Delivered';
+
+  @override
+  String get estimatedArrival => 'Estimated arrival';
+
+  @override
+  String get deliveryHeroToday => 'Is your delivery hero for today';
+
+  @override
+  String get showMap => 'Show map';
 }

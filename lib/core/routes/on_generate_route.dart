@@ -6,6 +6,7 @@ import 'package:flower_app/features/address/presentation/views/saved_address_scr
 import 'package:flower_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:flower_app/features/auth/signup/view/signup_screen.dart';
 import 'package:flower_app/features/categories/presentation/view/categories_screen.dart';
+import 'package:flower_app/features/checkout/presentation/view/thanks_screen.dart';
 import 'package:flower_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flower_app/features/home/presentation/view/home_screen.dart';
 import 'package:flower_app/features/most_selling_products/presentation/view/most_selling_products.dart';
@@ -28,6 +29,7 @@ import '../../features/auth/logout/viewmodel/logout_viewmodel.dart';
 import '../../features/auth/logout/views/logout_widget.dart';
 import '../../features/checkout/presentation/view/checkout_screen.dart';
 import '../../features/checkout/presentation/viewmodel/checkout_cubit.dart';
+import '../../features/map/view/order_map_view.dart';
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/most_selling_products/domain/entity/products_entity.dart';
@@ -38,6 +40,8 @@ import '../../features/profile/change_password/presentation/views/screens/change
 import '../../features/categories/presentation/viewmodel/categories_viewmodel.dart';
 import '../../features/occasion/presentation/view/occasion_screen.dart';
 import '../../features/splash/view/splash_view.dart';
+import '../../features/track_order/presentation/cubit/track_order_cubit.dart';
+import '../../features/track_order/presentation/screens/track_order_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -187,6 +191,29 @@ class Routes {
             builder: (_) => BlocProvider(
                 create: (_) => getIt<CheckoutCubit>(),
                 child: CheckoutScreen(subTotal: args)));
+
+      case AppRoutes.trackOrder:
+        final args = settings.arguments as TrackOrderData;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<TrackOrderCubit>()..watchOrder(
+              userId: args.userId,
+              orderId: args.orderId,
+            ),
+            child: TrackOrderScreen(
+              userId: args.userId,
+              orderId: args.orderId,
+            ),
+          ),
+        );
+        case AppRoutes.orderMapView:
+        return MaterialPageRoute(
+          builder: (_) => const OrderMapView(),
+        );
+
+      case AppRoutes.thanksPage:
+        return MaterialPageRoute(builder: (_) => const ThanksScreen());
+
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

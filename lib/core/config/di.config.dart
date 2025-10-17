@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -147,6 +148,19 @@ import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
     as _i971;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
+import '../../features/track_order/data/datasources/order_remote_data_source.dart'
+    as _i419;
+import '../../features/track_order/data/repositories_implementation/order_repository_impl.dart'
+    as _i406;
+import '../../features/track_order/domain/repositories/order_repository.dart'
+    as _i273;
+import '../../features/track_order/domain/usecases/get_order_by_id_usecase.dart'
+    as _i91;
+import '../../features/track_order/domain/usecases/watch_order_updates_usecase.dart'
+    as _i711;
+import '../../features/track_order/presentation/cubit/track_order_cubit.dart'
+    as _i932;
+import '../../firebase_module.dart' as _i1008;
 import '../api/api_client.dart' as _i277;
 import 'dio_module/dio_module.dart' as _i484;
 
@@ -161,13 +175,19 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final firebaseModule = _$FirebaseModule();
     final dioModule = _$DioModule();
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.factory<String>(
       () => dioModule.baseUrl,
       instanceName: 'baseurl',
     );
+    gh.lazySingleton<_i419.OrderRemoteDataSource>(
+        () => _i419.OrderRemoteDataSourceImpl(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i361.Dio>(
         () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
+    gh.lazySingleton<_i273.OrderRepository>(
+        () => _i406.OrderRepositoryImpl(gh<_i419.OrderRemoteDataSource>()));
     gh.factory<_i277.ApiClient>(() => _i277.ApiClient(
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
@@ -181,6 +201,10 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i747.AddressRemoteDataSource>()));
     gh.lazySingleton<_i175.AuthRemoteDatasource>(
         () => _i434.AuthRemoteDatasourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i91.GetOrderByIdUseCase>(
+        () => _i91.GetOrderByIdUseCase(gh<_i273.OrderRepository>()));
+    gh.factory<_i711.WatchOrderUpdatesUseCase>(
+        () => _i711.WatchOrderUpdatesUseCase(gh<_i273.OrderRepository>()));
     gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
         _i121.ProfileRemoteDatasourceImpl(apiClient: gh<_i277.ApiClient>()));
     gh.lazySingleton<_i43.CheckoutDatasource>(
@@ -203,6 +227,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i963.CheckoutRepoImpl(gh<_i43.CheckoutDatasource>()));
     gh.lazySingleton<_i955.ProductRemoteDataSource>(
         () => _i313.ProductRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i932.TrackOrderCubit>(() => _i932.TrackOrderCubit(
+          getOrderByIdUseCase: gh<_i91.GetOrderByIdUseCase>(),
+          watchOrderUpdatesUseCase: gh<_i711.WatchOrderUpdatesUseCase>(),
+        ));
     gh.factory<_i168.OccasionRemoteDataSource>(
         () => _i633.OccasionRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i341.ResetPasswordCubit>(
@@ -221,25 +249,25 @@ extension GetItInjectableX on _i174.GetIt {
           updateAddressUseCase: gh<_i1005.UpdateAddressUseCase>(),
           deleteAddressUseCase: gh<_i1005.DeleteAddressUseCase>(),
         ));
-    gh.factory<_i147.UpdateCartItemUseCase>(
-        () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
-    gh.factory<_i176.GetCartUseCase>(
-        () => _i176.GetCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i252.AddToCartUseCase>(
         () => _i252.AddToCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i176.GetCartUseCase>(
+        () => _i176.GetCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i30.RemoveFromCartUseCase>(
         () => _i30.RemoveFromCartUseCase(gh<_i322.CartRepository>()));
+    gh.factory<_i147.UpdateCartItemUseCase>(
+        () => _i147.UpdateCartItemUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i493.ClearCartUseCase>(
         () => _i493.ClearCartUseCase(gh<_i322.CartRepository>()));
     gh.factory<_i3.LoginUseCase>(() => _i3.LoginUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i669.AuthRepo>()));
-    gh.factory<_i719.VerifyCodeUseCase>(
-        () => _i719.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i682.ForgetPasswordUseCase>(
         () => _i682.ForgetPasswordUseCase(gh<_i669.AuthRepo>()));
     gh.factory<_i309.ResetPasswordUseCase>(
         () => _i309.ResetPasswordUseCase(gh<_i669.AuthRepo>()));
+    gh.factory<_i719.VerifyCodeUseCase>(
+        () => _i719.VerifyCodeUseCase(gh<_i669.AuthRepo>()));
     gh.lazySingleton<_i1026.ProductRepo>(
         () => _i680.ProductRepoImpl(gh<_i955.ProductRemoteDataSource>()));
     gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
@@ -262,14 +290,14 @@ extension GetItInjectableX on _i174.GetIt {
         _i729.ChangePasswordViewModel(gh<_i550.ChangePasswordUseCases>()));
     gh.factory<_i164.ForgetPasswordCubit>(
         () => _i164.ForgetPasswordCubit(gh<_i682.ForgetPasswordUseCase>()));
-    gh.factory<_i32.CreateCashOrderUsecase>(
-        () => _i32.CreateCashOrderUsecase(gh<_i205.CheckoutRepo>()));
     gh.factory<_i981.CheckoutSessionUsecase>(
         () => _i981.CheckoutSessionUsecase(gh<_i205.CheckoutRepo>()));
-    gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
-        () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
+    gh.factory<_i32.CreateCashOrderUsecase>(
+        () => _i32.CreateCashOrderUsecase(gh<_i205.CheckoutRepo>()));
     gh.lazySingleton<_i943.GetAllCategoriesUseCase>(
         () => _i943.GetAllCategoriesUseCase(gh<_i594.CategoriesRepo>()));
+    gh.lazySingleton<_i557.GetCategoryByIdUseCase>(
+        () => _i557.GetCategoryByIdUseCase(gh<_i594.CategoriesRepo>()));
     gh.factory<_i93.SignupUsecase>(
         () => _i93.SignupUsecase(gh<_i669.AuthRepo>()));
     gh.factory<_i144.GetAllProductsUseCase>(
@@ -313,5 +341,7 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$FirebaseModule extends _i1008.FirebaseModule {}
 
 class _$DioModule extends _i484.DioModule {}

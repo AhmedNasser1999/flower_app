@@ -38,7 +38,7 @@ class _PaymentWebViewScreenState extends State<PaymentWebViewScreen> {
   void _handlePaymentSuccess() {
     showCustomSnackBar(context, "Payment successful", isError: false);
     Navigator.pushNamedAndRemoveUntil(
-        context, AppRoutes.dashboard, (route) => false);
+        context, AppRoutes.thanksPage, (route) => false);
   }
 
   void _handlePaymentFailure() {
