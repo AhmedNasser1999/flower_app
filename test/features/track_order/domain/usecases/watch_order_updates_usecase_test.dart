@@ -46,3 +46,4 @@ void main() {
     expectLater(result, emits(isNull));
   });
 }
+

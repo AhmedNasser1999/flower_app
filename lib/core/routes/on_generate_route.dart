@@ -193,15 +193,16 @@ class Routes {
                 child: CheckoutScreen(subTotal: args)));
 
       case AppRoutes.trackOrder:
+        final args = settings.arguments as TrackOrderData;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<TrackOrderCubit>()..watchOrder(
-              userId: '678a783d3c3797492747c8e6',
-              orderId: '678a9bb63745562ff48ce07b',
+              userId: args.userId,
+              orderId: args.orderId,
             ),
-            child: const TrackOrderScreen(
-              userId: '678a783d3c3797492747c8e6',
-              orderId: '678a9bb63745562ff48ce07b',
+            child: TrackOrderScreen(
+              userId: args.userId,
+              orderId: args.orderId,
             ),
           ),
         );

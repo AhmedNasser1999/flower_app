@@ -15,3 +15,4 @@ class TrackOrderError extends TrackOrderState {
   final String message;
   TrackOrderError(this.message);
 }
+

@@ -32,7 +32,7 @@ class ThanksScreen extends StatelessWidget {
                   AppRoutes.dashboard,
                       (route) => false,
                 );
-                Navigator.pushNamed(context, AppRoutes.trackOrder);
+                Navigator.pushNamed(context, AppRoutes.orders);
               },
             )
           ],

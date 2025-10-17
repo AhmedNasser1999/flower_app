@@ -8,6 +8,7 @@ import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../auth/domain/services/auth_service.dart';
 import '../widgets/order_card.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -78,7 +79,11 @@ class OrdersScreen extends StatelessWidget {
                       price: 'EGP ${order.totalPrice.toStringAsFixed(0)}',
                       subtitle: 'Order number# ${order.orderNumber}',
                       buttonText: local.trackOrder,
-                      onPressed: () {Navigator.pushNamed(context, AppRoutes.trackOrder);},
+                      onPressed: () async{
+                        final userId = await AuthService.getUserId();
+                        final orderId = order.id;
+                        final args = TrackOrderData(userId: userId!, orderId: orderId);
+                        Navigator.pushNamed(context, AppRoutes.trackOrder,arguments: args);},
                     );
                   },
                 ),
@@ -110,4 +115,11 @@ class OrdersScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class TrackOrderData {
+  final String userId;
+  final String orderId;
+
+  TrackOrderData({required this.userId,required this.orderId});
 }
