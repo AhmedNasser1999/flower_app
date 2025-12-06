@@ -35,7 +35,8 @@ class AuthService {
 
   static Future<bool> isLoggedIn() async {
     final token = await SecureStorage.read(tokenKey);
-    return token != null && token.isNotEmpty;
+    final userId = await SecureStorage.read(userIdKey);
+    return token != null && token.isNotEmpty && userId != null && userId.isNotEmpty;
   }
 
   static Future<String?> getUserId() async {
