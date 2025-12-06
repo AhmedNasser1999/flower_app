@@ -4,20 +4,25 @@ A comprehensive Flutter application for flower delivery services with modern UI/
 
 ## Screenshots
 
-### Authentication Features
-| Login Screen                           | Signup Screen                            |
-|----------------------------------------|------------------------------------------|
-| ![Login](assets/screenshots/login.png) | ![Signup](assets/screenshots/signup.png) |
-
+### Authentication & Splash
+| Splash Screen | Login Screen | Signup Screen |
+|---------------|--------------|---------------|
+| ![Splash](assets/screenshots/splash.png) | ![Login](assets/screenshots/login.png) | ![Signup](assets/screenshots/signup.png) |
 
 ### Main Application Tabs
-| Home Tab | Profile Tab |
-|----------|-------------|
-| ![Home](assets/screenshots/home.png) | ![Profile](assets/screenshots/profile.png) |
+| Home Tab | Profile Tab | Categories Tab |
+|----------|-------------|----------------|
+| ![Home](assets/screenshots/home.png) | ![Profile](assets/screenshots/profile.png) | ![Categories](assets/screenshots/categories.png) |
 
-| Categories Tab | Product Details Screen |
-|----------------|----------------------|
-| ![Categories](assets/screenshots/categories.png) | ![Product Details](assets/screenshots/product_details.png) |
+### Shopping Experience
+| Product Details | Address Management | Checkout |
+|-----------------|-------------------|----------|
+| ![Product Details](assets/screenshots/product_details.png) | ![Address](assets/screenshots/address.png) | ![Checkout](assets/screenshots/checkout.png) |
+
+### Order Tracking
+| Track Order | Order Map |
+|------------|-----------|
+| ![Track Order](assets/screenshots/track_order.png) | ![Map](assets/screenshots/map.png) |
 
 ## Project Structure
 
@@ -45,6 +50,7 @@ lib/
 │   ├── notifications/              # Push notifications
 │   ├── occasion/                   # Special occasions
 │   ├── order/                      # Order management
+│   ├── track_order/                # Order tracking feature
 │   └── profile/                    # User profile
 └── main.dart                       # App entry point
 ```
@@ -68,7 +74,17 @@ lib/
 - **Product Details**: Detailed product information
 - **Shopping Cart**: Add/remove items
 - **Checkout Process**: Secure payment flow
-- **Order Tracking**: Real-time order status
+
+### 📦 Order Tracking
+- **Real-time Order Status**: Live updates via Firestore streams
+- **Order Timeline**: Visual progress tracking with multiple stages
+  - Received your order
+  - Preparing your order
+  - Out for delivery
+  - Delivered
+- **Interactive Map View**: Real-time vehicle tracking on map
+- **Driver Information**: Contact driver via phone or WhatsApp
+- **Order Details**: Complete order information and history
 
 ### 📍 Address Management
 - **Add Address**: Save multiple delivery addresses
@@ -93,6 +109,8 @@ lib/
 - **Architecture**: Clean Architecture
 - **Dependency Injection**: GetIt + Injectable
 - **Networking**: Dio + Retrofit
+- **Backend**: Firebase (Firestore, Auth, Storage)
+- **Real-time Updates**: Firestore Streams for order tracking
 - **Local Storage**: Hive + SharedPreferences
 - **Maps**: Flutter Map + Geolocator
 - **Testing**: Unit tests with Mockito
@@ -170,3 +188,9 @@ flutter test --coverage
 - `geolocator` - Location services
 - `flutter_map` - Interactive maps
 - `permission_handler` - Runtime permissions
+
+### Backend & Real-time
+- `firebase_core` - Firebase integration
+- `cloud_firestore` - Real-time database for order tracking
+- `firebase_auth` - Authentication
+- `firebase_storage` - File storage
