@@ -1,6 +1,7 @@
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../../core/routes/route_names.dart';
@@ -44,36 +45,40 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         ),
         title: Text(
           local.password,
-          style: TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
+          style: const TextStyle(
+              color: AppColors.black, fontWeight: FontWeight.w500),
         ),
       ),
       body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
         listener: (context, state) {
           if (state is ResetPasswordSuccessState) {
+            showCustomSnackBar(context, local.passwordUpdatedSuccessMsg,
+                isError: false);
             Navigator.pushNamed(context, AppRoutes.login);
           } else if (state is ResetPasswordErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            showCustomSnackBar(context, state.message, isError: true);
           }
         },
         builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-               Text(
-                local.resetPassword,
-                style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-              ),
-              const SizedBox(height: 10),
-               Text(
-                local.resetPasswordUnderMsg,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 25),
-              ResetPasswordForm(formKey: _formKey),
-            ],
-          ).setHorizontalAndVerticalPadding(context, 0.055, 0.05);
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  local.resetPassword,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 20),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  local.resetPasswordUnderMsg,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 25),
+                ResetPasswordForm(formKey: _formKey),
+              ],
+            ).setHorizontalAndVerticalPadding(context, 0.055, 0.05),
+          );
         },
       ),
     );

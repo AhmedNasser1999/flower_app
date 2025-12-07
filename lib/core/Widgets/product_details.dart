@@ -4,7 +4,10 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../routes/route_names.dart';
+
+import '../../features/auth/domain/services/guest_service.dart';
+import '../../features/cart/presentation/view_model/cart_cubit.dart';
+import '../../features/dashboard/presentation/widgets/login_dialog.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductsEntity product;
@@ -61,7 +64,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: SmoothPageIndicator(
                     controller: pageViewController,
                     count: widget.product.images.length,
-                    effect: ScrollingDotsEffect(
+                    effect: const ScrollingDotsEffect(
                       dotColor: AppColors.white,
                       activeDotColor: AppColors.pink,
                       dotHeight: 10.0,
@@ -97,7 +100,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(
+                  const Text(
                     'All prices include tax',
                     style: TextStyle(
                       fontSize: 18,
@@ -108,7 +111,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(height: 10),
                   Text(
                     widget.product.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -123,7 +126,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Text(
                     widget.product.description,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
                       color: AppColors.grey,
@@ -138,7 +141,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
+                  const Text(
                     "Pink roses: 15",
                     style: TextStyle(
                       fontSize: 18,
@@ -146,7 +149,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       color: AppColors.grey,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "White wraps: 10",
                     style: TextStyle(
                       fontSize: 18,
@@ -155,10 +158,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  CustomElevatedButton(
-                    onPressed: () {},
-                    color: AppColors.pink,
-                    text: 'Add to cart',
+                  Center(
+                    child: CustomElevatedButton(
+                      onPressed: () async {
+                        final isGuest = await GuestService.isGuest();
+
+                        if (isGuest) {
+                          showDialog(
+                            context: context,
+                            builder: (_) => const LoginRequiredDialog(),
+                          );
+                          return;
+                        } else {
+                          context
+                              .read<CartCubit>()
+                              .addToCart(widget.product.Id, 1, context, true);
+                        }
+                      },
+                      color: AppColors.pink,
+                      text: 'Add to cart',
+                    ),
                   ),
                 ],
               ),

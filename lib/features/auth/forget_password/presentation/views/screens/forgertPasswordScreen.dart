@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
-import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
 import '../../../../../../core/Widgets/custom_text_field.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/extensions/validations.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
@@ -38,7 +39,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     final cubit = context.watch<ForgetPasswordCubit>();
     return Scaffold(
       backgroundColor: AppColors.white,
-
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -46,7 +46,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         ),
         title: Text(
           local.password,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppColors.black,
             fontWeight: FontWeight.w500,
           ),
@@ -80,23 +80,23 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     }
                     return null;
                   },
-                  label: "Email",
-                  hint: "Enter your email",
+                  label: local.emailLabel,
+                  hint: local.emailHintText,
                 ),
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
-                    ? SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: LoadingIndicator(
-                        indicatorType: Indicator.lineScalePulseOut,
-                        colors: [AppColors.pink],
-                        strokeWidth: 2,
-                        backgroundColor: Colors.transparent,
-                      ),
-                    )
+                    ? const SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+                          colors: [AppColors.pink],
+                          strokeWidth: 2,
+                          backgroundColor: Colors.transparent,
+                        ),
+                      )
                     : CustomElevatedButton(
-                        text: "Continue",
+                        text: local.continueButton,
                         onPressed: cubit.isFormValid
                             ? () {
                                 if (_formState.currentState!.validate()) {
@@ -120,9 +120,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               AppRoutes.emailVerification,
             );
           } else if (state is ForgetPasswordErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            showCustomSnackBar(context, state.message, isError: true);
           }
         },
       ),

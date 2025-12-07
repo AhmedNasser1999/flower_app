@@ -10,6 +10,5 @@ class ForgetPasswordUseCase {
 
   Future<AuthResponse<String>> call(String email) {
     return _forgetPasswordRepo.forgetPassword(email);
-
   }
 }

@@ -1,4 +1,4 @@
-import 'package:flower_app/features/most_selling_products/api/client/product_api_client.dart';
+import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/features/most_selling_products/api/datasource_impl/product_remote_datasource_impl.dart';
 import 'package:flower_app/features/most_selling_products/data/models/meta_data_model.dart';
 import 'package:flower_app/features/most_selling_products/data/models/products_model.dart';
@@ -6,26 +6,24 @@ import 'package:flower_app/features/most_selling_products/data/models/products_r
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
-import 'package:dio/dio.dart';
 
 import 'product_remote_datasource_impl_test.mocks.dart';
 
-@GenerateMocks([ProductApiClient])
+@GenerateMocks([ApiClient])
 void main() {
-  late MockProductApiClient mockProductApiClient;
+  late MockApiClient mockProductApiClient;
   late ProductRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockProductApiClient = MockProductApiClient();
+    mockProductApiClient = MockApiClient();
     dataSource = ProductRemoteDataSourceImpl(mockProductApiClient);
   });
 
-  group('ProductRemoteDataSource success', () {
-    test('getAllProduct returns list of products on success', () async{
-      //Arrange
+  group('ProductRemoteDataSourceImpl', () {
+    test('getAllProduct returns list of products on success', () async {
+      // Arrange
       final product = Products(
         Id: "123",
-        id: "123",
         title: "Flower Bouquet",
         slug: "flower-bouquet",
         description: "A beautiful bouquet",
@@ -41,37 +39,45 @@ void main() {
         isSuperAdmin: false,
         sold: 50,
         rateAvg: 4,
-        rateCount: 10, V: 0,
+        rateCount: 10,
+        V: 0,
       );
 
       final responseModel = ProductsResponseModel(
         message: "Success",
-        metadata: Metadata(currentPage: 1, totalPages: 2, limit: 40, totalItems: 5),
+        metadata: Metadata(
+          currentPage: 1,
+          totalPages: 2,
+          limit: 40,
+          totalItems: 5,
+        ),
         products: [product],
       );
 
-      when(mockProductApiClient.getAllProducts()).thenAnswer((_) async => responseModel);
+      when(mockProductApiClient.getAllProducts(any, any, any))
+          .thenAnswer((_) async => responseModel);
 
-      //Act
+      // Act
       final result = await dataSource.getAllProduct();
 
-      //Assert
+      // Assert
       expect(result, isA<List<Products>>());
       expect(result.length, 1);
       expect(result.first.title, "Flower Bouquet");
-      verify(mockProductApiClient.getAllProducts()).called(1);
+      verify(mockProductApiClient.getAllProducts(any, any, any)).called(1);
     });
 
-    test('getAllProduct throws exception when API fails', (){
-      //Arrange
-      when(mockProductApiClient.getAllProducts()).thenThrow(Exception("API error"));
+    test('getAllProduct throws exception when API fails', () {
+      // Arrange
+      when(mockProductApiClient.getAllProducts(any, any, any))
+          .thenThrow(Exception("API error"));
 
-      //Act
-      final call= dataSource.getAllProduct;
+      // Act
+      call() => dataSource.getAllProduct();
 
-      //Assert
-      expect(()=> call(), throwsA(isA<Exception>()));
-      verify(mockProductApiClient.getAllProducts()).called(1);
+      // Assert
+      expect(call, throwsA(isA<Exception>()));
+      verify(mockProductApiClient.getAllProducts(any, any, any)).called(1);
     });
   });
 }

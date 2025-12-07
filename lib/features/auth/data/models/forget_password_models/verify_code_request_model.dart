@@ -7,7 +7,7 @@ class VerifyCodeRequestModel {
   @JsonKey(name: "resetCode")
   final String resetCode;
 
-  VerifyCodeRequestModel ({
+  VerifyCodeRequestModel({
     required this.resetCode,
   });
 
@@ -19,5 +19,3 @@ class VerifyCodeRequestModel {
     return _$VerifyCodeRequestModelToJson(this);
   }
 }
-
-

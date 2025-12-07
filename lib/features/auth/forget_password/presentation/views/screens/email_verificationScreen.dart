@@ -2,7 +2,8 @@ import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import '../../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../../../core/Widgets/custom_Elevated_Button.dart';
+import '../../../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../../../core/contants/app_images.dart';
 import '../../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../../core/routes/route_names.dart';
@@ -34,7 +35,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
-
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
@@ -51,9 +51,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               arguments: widget.email,
             );
           } else if (state is VerifyCodeErrorStates) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            showCustomSnackBar(context, state.message, isError: true);
           }
         },
         builder: (context, state) {
@@ -89,7 +87,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             ? () => cubit.resendCode()
                             : null,
                         child: Text(
-                          cubit.isResendEnabled ? "Resend" : "Resend",
+                          cubit.isResendEnabled ? local.resend : local.resend,
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontSize: 17,
@@ -102,7 +100,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     ],
                   ),
                   state is VerifyCodeLoadingStates
-                      ? SizedBox(
+                      ? const SizedBox(
                           height: 50,
                           width: 50,
                           child: LoadingIndicator(
@@ -113,7 +111,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           ),
                         )
                       : CustomElevatedButton(
-                          text: "Next",
+                          text: local.nextButton,
                           onPressed: cubit.enteredCode.length == 6
                               ? () {
                                   cubit.verify(context);

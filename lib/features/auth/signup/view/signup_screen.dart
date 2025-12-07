@@ -1,7 +1,6 @@
-import 'package:flower_app/core/Widgets/Custom_Elevated_Button.dart';
+import 'package:flower_app/core/Widgets/custom_Elevated_Button.dart';
 import 'package:flower_app/core/Widgets/custom_text_field.dart';
 import 'package:flower_app/core/Widgets/messages/messages_methods.dart';
-import 'package:flower_app/core/config/di.dart';
 import 'package:flower_app/core/extensions/validations.dart';
 import 'package:flower_app/core/l10n/translation/app_localizations.dart';
 import 'package:flower_app/core/routes/route_names.dart';
@@ -12,12 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
+
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var local = AppLocalizations.of(context);
+    var local = AppLocalizations.of(context)!;
     return BlocConsumer<SignupCubit, SignupStates>(
       listener: (context, state) {
         if (state is SignupLoadingState) {
@@ -28,7 +29,7 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                     width: 50,
                     child: LoadingIndicator(
@@ -40,8 +41,8 @@ class SignupScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Loading',
-                    style: TextStyle(
+                    local.loading,
+                    style: const TextStyle(
                       fontFamily: "Janna",
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
@@ -59,10 +60,10 @@ class SignupScreen extends StatelessWidget {
             AppRoutes.login,
             (route) => false,
           );
-          showSuccessMessage(context, "created successfully");
+          showCustomSnackBar(context, local.signup_success, isError: false);
         } else if (state is SignupErrorState) {
           Navigator.pop(context);
-          showErrorMessage(context, state.errorMessage);
+          showCustomSnackBar(context, state.errorMessage, isError: true);
         }
       },
       builder: (context, state) {
@@ -73,12 +74,13 @@ class SignupScreen extends StatelessWidget {
             backgroundColor: AppColors.white,
             appBar: AppBar(
               title: Text(
-                "Sign up",
-                style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Inter",
-                    fontStyle: FontStyle.normal),
+                local.signup_title,
+                style: const TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Inter",
+                  fontStyle: FontStyle.normal,
+                ),
               ),
             ),
             body: SingleChildScrollView(
@@ -92,11 +94,11 @@ class SignupScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 3),
                           child: CustomTextFormField(
                             controller: cubit.firstNameController,
-                            label: "First name",
-                            hint: "First name",
+                            label: local.first_name,
+                            hint: local.first_name,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return "First name is required";
+                                return local.first_name_required;
                               }
                               return null;
                             },
@@ -109,11 +111,11 @@ class SignupScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 3),
                           child: CustomTextFormField(
                             controller: cubit.lastNameController,
-                            label: "Last name",
-                            hint: "Last name",
+                            label: local.last_name,
+                            hint: local.last_name,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return "Last name is required";
+                                return local.last_name_required;
                               }
                               return null;
                             },
@@ -124,13 +126,13 @@ class SignupScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     CustomTextFormField(
                       controller: cubit.signUpEmailController,
-                      label: "Email",
-                      hint: "Enter your email",
+                      label: local.email,
+                      hint: local.enter_email,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return local!.emailIsEmptyErrorMessage;
+                          return local
+                              .emailIsEmptyErrorMessage; // already exists
                         }
-
                         return null;
                       },
                     ),
@@ -141,14 +143,14 @@ class SignupScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 3),
                           child: CustomTextFormField(
                             controller: cubit.signUpPasswordController,
-                            label: "Password",
-                            hint: "Password",
+                            label: local.password,
+                            hint: local.password,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return local!.passwordRequiredErrorMsg;
+                                return local.passwordRequiredErrorMsg;
                               }
                               if (!Validations.validatePassword(value)) {
-                                return local!.passwordValidationErrorMsg;
+                                return local.passwordValidationErrorMsg;
                               }
                               return null;
                             },
@@ -161,18 +163,18 @@ class SignupScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 3),
                           child: CustomTextFormField(
                             controller: cubit.signUpConfirmPasswordController,
-                            label: "Confirm Password",
-                            hint: "Confirm Password",
+                            label: local.confirm_password,
+                            hint: local.confirm_password,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return local!.passwordRequiredErrorMsg;
+                                return local.passwordRequiredErrorMsg;
                               }
                               if (cubit.signUpPasswordController.text !=
                                   cubit.signUpConfirmPasswordController.text) {
-                                return "Password does not match";
+                                return local.password_mismatch;
                               }
                               if (!Validations.validatePassword(value)) {
-                                return local!.passwordValidationErrorMsg;
+                                return local.passwordValidationErrorMsg;
                               }
                               return null;
                             },
@@ -180,14 +182,14 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                     ]),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextFormField(
                       controller: cubit.phoneNumberController,
-                      label: "Phone number",
-                      hint: "Enter phone number",
+                      label: local.phone_number,
+                      hint: local.enter_phone_number,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Phone number is required";
+                          return local.phone_number_required;
                         }
                         return null;
                       },
@@ -196,8 +198,8 @@ class SignupScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Gender",
-                          style: TextStyle(
+                          local.gender,
+                          style: const TextStyle(
                             fontSize: 20,
                             color: AppColors.grey,
                             fontWeight: FontWeight.w100,
@@ -212,32 +214,14 @@ class SignupScreen extends StatelessWidget {
                           onChanged: (value) => cubit.changeGender(value),
                           activeColor: AppColors.pink,
                         ),
-                        const Text(
-                          "Male",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: AppColors.black,
-                            fontWeight: FontWeight.w100,
-                            fontFamily: "Inter",
-                            fontStyle: FontStyle.normal,
-                          ),
-                        ),
+                        Text(local.male),
                         Radio<String>(
                           value: "female",
                           groupValue: cubit.selectedGender,
                           onChanged: (value) => cubit.changeGender(value),
                           activeColor: AppColors.pink,
                         ),
-                        const Text(
-                          "Female",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: AppColors.black,
-                            fontWeight: FontWeight.w100,
-                            fontFamily: "Inter",
-                            fontStyle: FontStyle.normal,
-                          ),
-                        ),
+                        Text(local.female),
                       ],
                     ),
                     const SizedBox(height: 20),
@@ -249,10 +233,9 @@ class SignupScreen extends StatelessWidget {
                           fontSize: 14,
                         ),
                         children: [
-                          const TextSpan(
-                              text: "Creating an account, you agree to our "),
+                          TextSpan(text: local.terms_prefix),
                           TextSpan(
-                            text: "Terms & Conditions",
+                            text: local.terms_conditions,
                             style: const TextStyle(
                               color: AppColors.black,
                               decoration: TextDecoration.underline,
@@ -264,23 +247,24 @@ class SignupScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 50),
                     CustomElevatedButton(
-                        onPressed: () {
-                          if (cubit.selectedGender == null) {
-                            showErrorMessage(context, "Gender is required");
-                            return;
-                          } //! Check if gender is selected or no "Validation"
-
-                          cubit.signUp(
-                              selectedGender: cubit.selectedGender,
-                              firstName: cubit.firstNameController.text,
-                              lastName: cubit.lastNameController.text,
-                              phoneNumber: cubit.phoneNumberController.text,
-                              email: cubit.signUpEmailController.text,
-                              password: cubit.signUpPasswordController.text,
-                              confirmPassword:
-                                  cubit.signUpConfirmPasswordController.text);
-                        },
-                        text: "Sign up"),
+                      onPressed: () {
+                        if (cubit.selectedGender == null) {
+                          showErrorMessage(context, local.gender_required);
+                          return;
+                        }
+                        cubit.signUp(
+                          selectedGender: cubit.selectedGender,
+                          firstName: cubit.firstNameController.text,
+                          lastName: cubit.lastNameController.text,
+                          phoneNumber: cubit.phoneNumberController.text,
+                          email: cubit.signUpEmailController.text,
+                          password: cubit.signUpPasswordController.text,
+                          confirmPassword:
+                              cubit.signUpConfirmPasswordController.text,
+                        );
+                      },
+                      text: local.signup_button,
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.login);
@@ -293,9 +277,9 @@ class SignupScreen extends StatelessWidget {
                             fontSize: 18,
                           ),
                           children: [
-                            const TextSpan(text: "Already have an account?"),
+                            TextSpan(text: local.already_have_account),
                             TextSpan(
-                              text: " Login",
+                              text: " ${local.login}",
                               style: const TextStyle(
                                 color: AppColors.pink,
                                 decoration: TextDecoration.underline,

@@ -8,7 +8,6 @@ import 'package:flower_app/features/profile/data/models/edit_profile_response_mo
 import 'package:flower_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:flower_app/features/profile/domain/usecases/edit_profile_data_usecase.dart';
 
-
 import 'edit_profile_usecase_test.mocks.dart';
 
 @GenerateMocks([ProfileRepository])
@@ -38,7 +37,6 @@ void main() {
       ),
     );
   });
-
 
   setUp(() {
     mockProfileRepository = MockProfileRepository();

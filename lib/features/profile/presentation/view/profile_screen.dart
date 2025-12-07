@@ -1,4 +1,5 @@
 import 'package:flower_app/core/extensions/extensions.dart';
+import 'package:flower_app/features/localization/localization_controller/localization_cubit.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:flower_app/features/profile/presentation/view/widgets/notification_toggle_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,9 @@ class ProfileScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         automaticallyImplyLeading: false,
         centerTitle: false,
         elevation: 0,
@@ -37,9 +40,14 @@ class ProfileScreen extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: 32,
-                icon:
-                    const Icon(Icons.notifications_none, color: AppColors.grey),
-                onPressed: () {},
+                icon: SvgPicture.asset(
+                  AppIcons.notificationsIcon,
+                  width: 30,
+                  height: 30,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                },
               ),
               Positioned(
                 right: 8,
@@ -84,8 +92,12 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    final updated = await Navigator.pushNamed(context, AppRoutes.editProfile,arguments: profile);
-                    if(updated==true){
+                    final updated = await Navigator.pushNamed(
+                        context, AppRoutes.editProfile,
+                        arguments: profile);
+                    if (updated == true) {
+                      // Clear cache and refresh profile data
+                      context.read<ProfileViewModel>().clearProfileCache();
                       context.read<ProfileViewModel>().getProfile();
                     }
                   },
@@ -96,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                         radius: 50,
                         backgroundImage: NetworkImage(profile.photo),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       Text("${profile.firstName} ${profile.lastName}",
                           style: theme.textTheme.bodyLarge),
                       const SizedBox(height: 8),
@@ -108,7 +120,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 8),
+                // const SizedBox(height: 4),
 
                 MenuItemWidget(
                   leading: SvgPicture.asset(
@@ -117,7 +129,9 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.myOrders,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.orders);
+                  },
                 ),
 
                 MenuItemWidget(
@@ -127,7 +141,8 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.savedAddress,
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(
+                      context, AppRoutes.savedAddressScreen),
                 ),
 
                 const SizedBox(height: 2),
@@ -150,11 +165,132 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   title: local.language,
                   trailing: Text(
+                    textAlign: TextAlign.left,
                     local.languageChanged,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: AppColors.pink),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: AppColors.white,
+                      context: context,
+                      builder: (context) {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 300,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              spacing: 16.0,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: Text(
+                                    textAlign: TextAlign.start,
+                                    local.changeLanguage,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.pink,
+                                        ),
+                                  ),
+                                ),
+                                Card(
+                                  color: AppColors.white,
+                                  child: SizedBox(
+                                    height: 60,
+                                    width: double.infinity,
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("Arabic");
+                                        Navigator.pop(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              local.arabic,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                            Icon(
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("Arabic")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons
+                                                      .radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  color: AppColors.white,
+                                  child: SizedBox(
+                                    height: 60,
+                                    width: double.infinity,
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LocalizationCubit>()
+                                            .selectLanguage("English");
+                                        Navigator.pop(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              local.english,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                            Icon(
+                                              context
+                                                      .read<LocalizationCubit>()
+                                                      .isSelected("English")
+                                                  ? Icons.radio_button_checked
+                                                  : Icons
+                                                      .radio_button_unchecked,
+                                              color: Colors.pink,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
 
                 MenuItemWidget(
@@ -182,7 +318,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 24,
                   ),
                   title: local.logout,
-                  trailing: Icon(Icons.logout),
+                  trailing: const Icon(Icons.logout),
                   onTap: () {
                     showDialog(
                         context: context,
@@ -193,7 +329,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
 
-                Spacer(),
+                const Spacer(),
 
                 // Version
                 Center(
@@ -203,7 +339,6 @@ class ProfileScreen extends StatelessWidget {
                         theme.textTheme.displayMedium?.copyWith(fontSize: 12),
                   ),
                 ),
-                const SizedBox(height: 16),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.03, 0.02),
           );

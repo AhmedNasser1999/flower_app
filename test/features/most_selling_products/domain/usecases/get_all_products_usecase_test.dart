@@ -22,7 +22,6 @@ void main() {
       // Arrange
       final productEntity = ProductsEntity(
         Id: "123",
-        id: "123",
         title: "Flower Bouquet",
         slug: "flower-bouquet",
         description: "A beautiful bouquet",
@@ -53,8 +52,7 @@ void main() {
 
     test('should throw exception when repo fails', () async {
       // Arrange
-      when(mockProductRepo.getAllProducts())
-          .thenThrow(Exception("Repo error"));
+      when(mockProductRepo.getAllProducts()).thenThrow(Exception("Repo error"));
 
       // Act
       final call = useCase;

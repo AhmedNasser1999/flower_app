@@ -20,9 +20,14 @@ class ProfileViewModel extends Cubit<ProfileStates> {
 
     switch (result) {
       case ApiSuccessResult(:final data):
+        user = data;
         emit(ProfileSuccessState(data));
       case ApiErrorResult(:final errorMessage):
         emit(ProfileErrorState(errorMessage));
     }
+  }
+
+  void clearProfileCache() {
+    user = null;
   }
 }

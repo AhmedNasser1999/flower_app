@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../auth/data/models/login_models/user_model.dart';
 
-
 part 'profile_response.g.dart';
 
 @JsonSerializable()
@@ -12,7 +11,7 @@ class ProfileResponse {
   @JsonKey(name: "user")
   final User user;
 
-  ProfileResponse ({
+  ProfileResponse({
     required this.message,
     required this.user,
   });
@@ -25,5 +24,3 @@ class ProfileResponse {
     return _$ProfileResponseToJson(this);
   }
 }
-
-

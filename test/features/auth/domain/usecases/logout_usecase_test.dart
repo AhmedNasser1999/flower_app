@@ -1,5 +1,3 @@
-
-
 import 'package:flower_app/features/auth/domain/repositories/Auth_repo.dart';
 import 'package:flower_app/features/auth/domain/usecases/logout_usecase/logout_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,10 +7,9 @@ import 'package:mockito/mockito.dart';
 import 'forget_password_use_cases_test.mocks.dart';
 
 @GenerateMocks([AuthRepo])
-void main(){
+void main() {
   late MockAuthRepo mockAuthRepo;
   late LogoutUseCase logoutUseCase;
-
 
   setUp(() {
     mockAuthRepo = MockAuthRepo();
@@ -20,10 +17,10 @@ void main(){
   });
 
   group('LogoutUseCase', () {
-    test('should return success message when repo.logout is successful', () async {
+    test('should return success message when repo.logout is successful',
+        () async {
       // Arrange
-      when(mockAuthRepo.logout())
-          .thenAnswer((_) async => "Logout Success");
+      when(mockAuthRepo.logout()).thenAnswer((_) async => "Logout Success");
 
       // Act
       final result = await logoutUseCase();
@@ -33,11 +30,9 @@ void main(){
       verify(mockAuthRepo.logout()).called(1);
     });
 
-
     test('should throw exception when repo.logout fails', () async {
       // Arrange
-      when(mockAuthRepo.logout())
-          .thenThrow(Exception("Logout Failed"));
+      when(mockAuthRepo.logout()).thenThrow(Exception("Logout Failed"));
 
       // Act
       Future<String> call() => logoutUseCase();

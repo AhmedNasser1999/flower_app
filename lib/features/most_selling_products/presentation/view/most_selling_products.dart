@@ -4,7 +4,6 @@ import 'package:flower_app/features/most_selling_products/domain/entity/products
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
 import '../../../../core/Widgets/products_card.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/routes/route_names.dart';
@@ -17,10 +16,11 @@ class MostSellingProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
     return Scaffold(
+        backgroundColor: AppColors.white,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -32,11 +32,13 @@ class MostSellingProducts extends StatelessWidget {
             children: [
               Text(
                 local.mostSellingTitle,
-                style: theme.textTheme.headlineMedium,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               Text(
                 local.mostSellingSubTitle,
-                style: theme.textTheme.displayMedium,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
@@ -45,7 +47,8 @@ class MostSellingProducts extends StatelessWidget {
             BlocBuilder<MostSellingProductsViewmodel, MostSellingProductStates>(
           builder: (context, state) {
             if (state is MostSellingLoadingState) {
-              return Center(child: SizedBox(
+              return const Center(
+                  child: SizedBox(
                 height: 50,
                 width: 50,
                 child: LoadingIndicator(
@@ -59,43 +62,56 @@ class MostSellingProducts extends StatelessWidget {
               final List<ProductsEntity> products = state.products;
               products.sort((a, b) => b.sold.compareTo(a.sold));
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: GridView.builder(
-                      itemCount: products.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                      ),
-                      itemBuilder: (context, index) {
-                        final product = products[index];
+              return RefreshIndicator(
+                color: AppColors.pink,
+                backgroundColor: AppColors.white,
+                onRefresh: () async {
+                  await context
+                      .read<MostSellingProductsViewmodel>()
+                      .getMostSellingProducts();
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: GridView.builder(
+                        itemCount: products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.7,
+                        ),
+                        itemBuilder: (context, index) {
+                          final product = products[index];
 
-                        return ProductCard(
-                          productImg: product.imgCover,
-                          productPrice: product.price,
-                          productPriceDiscount: product.priceAfterDiscount,
-                          priceDiscount: ((product.price - product.priceAfterDiscount) /
-                              product.price *
-                              100)
-                              .round(),
-                          productTitle: product.title,
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              AppRoutes.productDetails,
-                              arguments: product,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ).setHorizontalAndVerticalPadding(context, 0.05, 0.02);
-            }
-            else if (state is MostSellingProductsErrorState) {
+                          return ProductCard(
+                            productId: product.Id,
+                            productImg: product.imgCover,
+                            productPrice: product.price,
+                            productPriceDiscount: product.priceAfterDiscount,
+                            priceDiscount:
+                                ((product.price - product.priceAfterDiscount) /
+                                        product.price *
+                                        100)
+                                    .round(),
+                            productTitle: product.title,
+                            quantity: product.quantity,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.productDetails,
+                                arguments: product,
+                              );
+                            },
+                            isFromProductDetails: true,
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ).setHorizontalAndVerticalPadding(context, 0.05, 0.02),
+              );
+            } else if (state is MostSellingProductsErrorState) {
               return Center(child: Text("Error: ${state.message}"));
             } else {
               return const SizedBox.shrink();
@@ -104,4 +120,3 @@ class MostSellingProducts extends StatelessWidget {
         ));
   }
 }
-

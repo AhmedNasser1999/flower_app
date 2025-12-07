@@ -21,7 +21,8 @@ void main() {
 
   group('AuthRepoImpl', () {
     group('forgetPassword', () {
-      test('returns success when datasource returns success response', () async {
+      test('returns success when datasource returns success response',
+          () async {
         final successResponse = AuthResponse<String>.success('success');
         when(mockDatasource.forgetPassword(any))
             .thenAnswer((_) async => successResponse);
@@ -32,9 +33,8 @@ void main() {
         expect(result.data, 'success');
         expect(result.isSuccess, true);
 
-        final captured = verify(mockDatasource.forgetPassword(captureAny))
-            .captured
-            .single;
+        final captured =
+            verify(mockDatasource.forgetPassword(captureAny)).captured.single;
         expect(captured.email, 'test@example.com');
       });
 
@@ -52,7 +52,8 @@ void main() {
     });
 
     group('verifyCode', () {
-      test('returns success when datasource returns success response', () async {
+      test('returns success when datasource returns success response',
+          () async {
         final successResponse = AuthResponse<String>.success('verified');
         when(mockDatasource.verifyResetPassword(any))
             .thenAnswer((_) async => successResponse);
@@ -83,7 +84,8 @@ void main() {
     });
 
     group('resetPassword', () {
-      test('returns success when datasource returns success response', () async {
+      test('returns success when datasource returns success response',
+          () async {
         final successResponse = AuthResponse<String>.success('reset done');
         when(mockDatasource.resetPassword(any))
             .thenAnswer((_) async => successResponse);
@@ -97,19 +99,20 @@ void main() {
         expect(result.data, 'reset done');
         expect(result.isSuccess, true);
 
-        final captured = verify(mockDatasource.resetPassword(captureAny))
-            .captured
-            .single;
+        final captured =
+            verify(mockDatasource.resetPassword(captureAny)).captured.single;
         expect(captured.email, 'test@example.com');
         expect(captured.newPassword, 'newPass123');
       });
 
       test('returns error when datasource returns error response', () async {
-        final errorResponse = AuthResponse<String>.error('Password reset failed');
+        final errorResponse =
+            AuthResponse<String>.error('Password reset failed');
         when(mockDatasource.resetPassword(any))
             .thenAnswer((_) async => errorResponse);
 
-        final result = await repo.resetPassword('test@example.com', 'newPass123');
+        final result =
+            await repo.resetPassword('test@example.com', 'newPass123');
 
         expect(result, isA<AuthResponse<String>>());
         expect(result.error, 'Password reset failed');
@@ -119,7 +122,9 @@ void main() {
   });
 
   group('AuthRepoImpl login', () {
-    test('Should call remote datasource and return AuthResponse with LoginResponse', () async {
+    test(
+        'Should call remote datasource and return AuthResponse with LoginResponse',
+        () async {
       // Arrange
       final loginRequest = LoginRequest(
         email: "test@example.com",
@@ -137,7 +142,8 @@ void main() {
         ),
       );
 
-      final successResponse = AuthResponse<LoginResponse>.success(loginResponse);
+      final successResponse =
+          AuthResponse<LoginResponse>.success(loginResponse);
       when(mockDatasource.login(loginRequest))
           .thenAnswer((_) async => successResponse);
 
@@ -153,7 +159,9 @@ void main() {
       verify(mockDatasource.login(loginRequest)).called(1);
     });
 
-    test('Should return error AuthResponse when remote datasource returns error', () async {
+    test(
+        'Should return error AuthResponse when remote datasource returns error',
+        () async {
       // Arrange
       final loginRequest = LoginRequest(
         email: "wrong@example.com",

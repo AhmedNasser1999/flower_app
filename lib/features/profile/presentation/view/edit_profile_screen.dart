@@ -1,12 +1,15 @@
 import 'dart:io';
+import 'package:flower_app/core/common/widgets/custom_snackbar_widget.dart';
 import 'package:flower_app/core/extensions/extensions.dart';
 import 'package:flower_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/Widgets/custom_text_field.dart';
 import '../../../../core/config/di.dart';
+import '../../../../core/contants/app_icons.dart';
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -16,20 +19,41 @@ import '../../domain/usecases/upload_photo_usecase.dart';
 import '../viewmodel/edit_profile_viewmodel.dart';
 import '../viewmodel/states/edit_profile_states.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   final UserEntity user;
+
   const EditProfileScreen({super.key, required this.user});
+
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  bool isEdit = false;
 
   Future<void> _pickAndUploadPhoto(
     BuildContext context,
     EditProfileViewModel cubit,
   ) async {
     final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
-
-    if (picked != null) {
-      final file = File(picked.path);
-      cubit.uploadPhoto(file);
+    try {
+      final picked = await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 90,
+      );
+      if (picked != null) {
+        final file = File(picked.path);
+        cubit.uploadPhoto(file);
+        setState(() {
+          isEdit = true;
+        });
+      }
+    } catch (e) {
+      debugPrint("❌ Failed to pick image: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Unsupported image type. Please pick JPG or PNG.")),
+      );
     }
   }
 
@@ -37,10 +61,12 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context, true);
+            Navigator.pop(context, isEdit);
           },
           icon: Image.asset(AppImages.arrowBack),
         ),
@@ -53,9 +79,14 @@ class EditProfileScreen extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: 32,
-                icon:
-                    const Icon(Icons.notifications_none, color: AppColors.grey),
-                onPressed: () {},
+                icon: SvgPicture.asset(
+                  AppIcons.notificationsIcon,
+                  width: 30,
+                  height: 30,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                },
               ),
               Positioned(
                 right: 8,
@@ -82,23 +113,22 @@ class EditProfileScreen extends StatelessWidget {
             getIt<EditProfileDataUseCase>(),
             getIt<UploadPhotoUseCase>(),
           );
-          cubit.setInitialData(user);
+          cubit.setInitialData(widget.user);
           return cubit;
         },
         child: BlocConsumer<EditProfileViewModel, EditProfileStates>(
           listener: (context, state) {
             if (state is EditProfileSuccessState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(local.profileUpdatedSuccessMsg)),
-              );
+              showCustomSnackBar(context, local.profileUpdatedSuccessMsg,
+                  isError: false);
+              Navigator.pop(context, isEdit);
             } else if (state is EditProfileErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${local.errorText}: ${state.message}')),
               );
             } else if (state is ProfilePhotoUpdatedState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Updating photo ${state.message}")),
-              );
+              showCustomSnackBar(context, local.profilePhotoUpdatedSuccessfully,
+                  isError: false);
             } else if (state is ProfilePhotoErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
@@ -120,13 +150,18 @@ class EditProfileScreen extends StatelessWidget {
                                 ? NetworkImage(cubit.currentPhotoUrl!)
                                 : FileImage(File(cubit.currentPhotoUrl!))
                                     as ImageProvider)
-                            : NetworkImage(user.photo),
+                            : NetworkImage(widget.user.photo),
                       ),
                       Positioned(
                         bottom: 0,
                         right: 4,
                         child: GestureDetector(
-                          onTap: () => _pickAndUploadPhoto(context, cubit),
+                          onTap: () {
+                            setState(() {
+                              isEdit = true;
+                            });
+                            _pickAndUploadPhoto(context, cubit);
+                          },
                           child: Container(
                             width: 30,
                             height: 30,
@@ -187,13 +222,14 @@ class EditProfileScreen extends StatelessWidget {
                     initialText: "******",
                     suffixText: local.passwordChangeText,
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
+                      Navigator.pushNamed(
+                          context, AppRoutes.changePasswordScreen);
                     },
                   ).setHorizontalAndVerticalPadding(context, 0.05, 0.004),
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Gender",
                         style: TextStyle(
                           fontSize: 20,
@@ -207,7 +243,7 @@ class EditProfileScreen extends StatelessWidget {
                       IgnorePointer(
                         child: Radio<String>(
                           value: "male",
-                          groupValue: user.gender,
+                          groupValue: widget.user.gender,
                           onChanged: (_) {},
                           activeColor: AppColors.pink,
                         ),
@@ -225,7 +261,7 @@ class EditProfileScreen extends StatelessWidget {
                       IgnorePointer(
                         child: Radio<String>(
                           value: "female",
-                          groupValue: user.gender,
+                          groupValue: widget.user.gender,
                           onChanged: (_) {},
                           activeColor: AppColors.pink,
                         ),
@@ -247,6 +283,9 @@ class EditProfileScreen extends StatelessWidget {
                     text: local.updateButton,
                     isLoading: state is EditProfileLoadingState,
                     onPressed: () {
+                      setState(() {
+                        isEdit = true;
+                      });
                       cubit.submitProfileUpdate();
                     },
                   ).setVerticalPadding(context, 0.03),
